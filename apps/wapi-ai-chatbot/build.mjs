@@ -8,7 +8,7 @@ import { TsconfigPathsPlugin } from '@esbuild-plugins/tsconfig-paths'
 const commonOptions = {
 	entryPoints: ['./src/index.ts'],
 	target: 'es6',
-	format: "cjs",
+	format: 'cjs',
 	splitting: false,
 	outdir: './dist',
 	platform: 'node',

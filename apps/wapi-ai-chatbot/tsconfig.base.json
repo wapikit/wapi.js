@@ -5,6 +5,7 @@
 		"moduleResolution": "Node10",
 		"pretty": true,
 		"allowUnreachableCode": false,
+		"esModuleInterop": true,
 		"allowJs": true,
 		"strict": true,
 		"declaration": true,
