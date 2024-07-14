@@ -1,0 +1,25 @@
+{
+	"extends": "@wapijs/typescript-config/node.base.json",
+	"compilerOptions": {
+		"strictNullChecks": true,
+		"moduleResolution": "Node10",
+		"pretty": true,
+		"allowUnreachableCode": false,
+		"allowJs": true,
+		"strict": true,
+		"declaration": true,
+		"resolveJsonModule": true,
+		"declarationMap": false,
+		"newLine": "lf",
+		"outDir": "dist",
+		"removeComments": false,
+		"sourceMap": true,
+		"module": "CommonJS",
+		"target": "ESNext",
+		"types": ["node"],
+		"paths": {
+			"~/*": ["./src/*"],
+			"root/*": ["./*"]
+		}
+	}
+}
