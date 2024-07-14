@@ -1,11 +1,28 @@
-import NodeCache from 'node-cache'
+import { AiConversationRoleEnum, ConversationMessageType } from '~/types'
+import { caching } from 'cache-manager'
 
-const cache = new NodeCache()
+const cacheStore = caching({
+	store: 'memory'
+})
 
-export const setCache = (key: string, value: any, ttl: number = 3600) => {
-	cache.set(key, value, ttl)
+export async function cacheData(params: { key: string; data: any; ttl?: number }) {
+	const { key, ttl, data } = params
+	await cacheStore.set(key, data, { ...(ttl ? { ttl: ttl } : {}) })
 }
 
-export const getCache = (key: string) => {
-	return cache.get(key)
+export async function getCachedData<T>(key: string): Promise<T> {
+	const response = await cacheStore.get(key)
+	console.log(response)
+	return response as T
+}
+
+export function computeCacheKey(params: { id: string; context: string }) {
+	return `${params.id}-${params.context}`
+}
+
+export function getConversationContextCacheKey(phoneNumber: string) {
+	return computeCacheKey({
+		id: phoneNumber,
+		context: 'conversation'
+	})
 }

@@ -18,13 +18,14 @@
 	"license": "MIT",
 	"dependencies": {
 		"@wapijs/wapi.js": "workspace:*",
+		"cache-manager": "^4.0.0",
 		"ms": "^2.1.3",
-		"node-cache": "^5.1.2",
 		"openai": "^4.52.7"
 	},
 	"devDependencies": {
 		"@esbuild-plugins/tsconfig-paths": "^0.1.2",
-		"@types/node": "^20.10.2",
+		"@types/cache-manager": "^4.0.6",
+		"@types/node": "^20.12.12",
 		"@wapijs/eslint-config": "workspace:*",
 		"@wapijs/prettier-config": "workspace:*",
 		"@wapijs/typescript-config": "workspace:*",
