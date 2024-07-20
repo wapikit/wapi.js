@@ -15,11 +15,12 @@ async function init() {
 
 		whatsappClient.on('TextMessage', async (event: TextMessageEvent) => {
 			const aiResponse = await askAi(event.text.data.text, event.context.from)
-			await event.reply({
+			const response = await event.reply({
 				message: new TextMessage({
 					text: aiResponse
 				})
 			})
+			console.log({ response })
 		})
 
 		whatsappClient.initiate()

@@ -63,8 +63,8 @@ export const CloudApiErrorResponseSchemaType = z.object({
     error_data: z.object({
       messaging_product: z.string(),
       details: z.string(),
-    }),
-    error_subcode: z.string().optional(),
+    }).nullish(),
+    error_subcode: z.number().optional(),
     fbtrace_id: z.string().optional(),
   }),
 });
