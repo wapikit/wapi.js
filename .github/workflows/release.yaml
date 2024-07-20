@@ -24,6 +24,7 @@ jobs:
       id-token: write
     env:
       HUSKY: 0
+      GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
