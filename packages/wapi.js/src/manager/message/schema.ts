@@ -5,7 +5,7 @@ export const ErrorSchemaType = z.object({
   title: z.string(),
   description: z.string(),
   errorCode: z.number(),
-  errorSubCode: z.string().optional(),
+  errorSubCode: z.number().optional(),
 });
 
 export const MessageSuccessResponseSchemaType = z.object({

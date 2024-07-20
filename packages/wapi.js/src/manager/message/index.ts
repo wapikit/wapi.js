@@ -18,8 +18,7 @@ import { type MessageResponseSchemaType } from "./schema";
  */
 export class MessageManager
   extends BaseManager
-  implements MessageManagerInterface
-{
+  implements MessageManagerInterface {
   client: Client;
   constructor(props: { client: Client }) {
     super(props.client);
@@ -59,7 +58,7 @@ export class MessageManager
         return {
           status: "error",
           error: {
-            description: responseData.error.error_data.details,
+            description: responseData.error.error_data?.details || responseData.error.message,
             title: responseData.error.message,
             errorCode: responseData.error.code,
             errorSubCode: responseData.error.error_subcode,
@@ -122,7 +121,7 @@ export class MessageManager
         return {
           status: "error",
           error: {
-            description: responseData.error.error_data.details,
+            description: responseData.error.error_data?.details || responseData.error.message,
             title: responseData.error.message,
             errorCode: responseData.error.code,
             errorSubCode: responseData.error.error_subcode,

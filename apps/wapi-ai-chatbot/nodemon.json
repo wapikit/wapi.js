@@ -1,0 +1,10 @@
+{
+    "watch": [
+        "./dist/src/index.js"
+    ],
+    "ignore": [
+        "node_modules/*.*"
+    ],
+    "ext": "js",
+    "exec": "sleep 2 &&  NODE_ENV=development node -r dotenv/config ./dist/index.js dotenv_config_path=./.env.dev"
+}

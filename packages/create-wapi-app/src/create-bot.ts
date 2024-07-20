@@ -74,7 +74,8 @@ export async function createWhatsappBot(options: {
   if (bun) {
     await cp(
       new URL(
-        `../template/Bun/${isTypescriptEnabled ? "typescript" : "javascript"
+        `../template/Bun/${
+          isTypescriptEnabled ? "typescript" : "javascript"
         }/package.json`,
         import.meta.url,
       ),
