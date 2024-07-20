@@ -1,6 +1,6 @@
 import { OpenAI } from 'openai'
 import { cacheData, computeCacheKey, getCachedData, getConversationContextCacheKey } from './cache'
-import { AiConversationRoleEnum, ConversationMessageType } from '~/types'
+import { AiConversationRoleEnum, type ConversationMessageType } from '~/types'
 
 const openAiApiKey = process.env.OPEN_AI_API_KEY
 const organizationId = process.env.OPEN_AI_ORG_ID

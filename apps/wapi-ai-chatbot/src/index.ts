@@ -1,7 +1,6 @@
 import { TextMessage, type TextMessageEvent } from '@wapijs/wapi.js'
 import { whatsappClient } from './utils/client'
 import { askAi } from './utils/gpt'
-import { cacheData, computeCacheKey, getCachedData } from './utils/cache'
 
 async function init() {
 	try {
