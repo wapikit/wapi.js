@@ -15,7 +15,7 @@
 		"email": "sarthak@softlancer.co",
 		"url": "https://linkedin.com/in/sarthakjdev"
 	},
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"dependencies": {
 		"@wapijs/wapi.js": "workspace:*",
 		"cache-manager": "^4.0.0",
