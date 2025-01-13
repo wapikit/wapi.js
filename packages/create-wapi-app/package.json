@@ -38,7 +38,7 @@
     "whatsapp-bot"
   ],
   "homepage": "https://javascript.wapikit.com",
-  "license": "AGPL-3.0",
+  "license": "Apache-2.0",
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^12.0.0",

@@ -31,10 +31,10 @@
   "authors": [
     "sarthak@softlancer.co"
   ],
-  "license": "AGPL-3.0",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sarthakjdev/wapi.js.git"
+    "url": "git+https://github.com/wapikit/wapi.js.git"
   },
   "bugs": {
     "url": "https://github.com/wapijs/wapi.js/issues"
