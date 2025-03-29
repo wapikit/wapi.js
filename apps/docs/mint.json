@@ -6,6 +6,11 @@
     "dark": "/logo/dark.svg",
     "href": "/"
   },
+  "analytics": {
+    "gtm": {
+      "tagId": "G-R7HQXH2BE2"
+    }
+  },
   "metadata": {
     "title": "Wapi.js",
     "description": "Wapi.js is a node.js SDK built for developing WhatsApp Business platform apps with ease and faster",
