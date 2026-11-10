@@ -4,6 +4,9 @@ type AnyEventMap = Record<string, any>
 /** A listener may be sync or async. */
 export type Listener<T> = (data: T) => void | Promise<void>
 
+/** Wrapper registered by `once`, pointing back at the caller's listener so `off` finds it. */
+type OnceListener<T> = Listener<T> & { original?: Listener<T> }
+
 /**
  * Small, runtime-agnostic typed event emitter (no `node:events` dependency, so
  * it also runs on edge runtimes).
@@ -39,16 +42,22 @@ export class TypedEventEmitter<Events extends AnyEventMap> {
 	 * Registers a listener that is removed after its first call.
 	 */
 	once<K extends keyof Events>(event: K, listener: Listener<Events[K]>): () => void {
-		const wrapped: Listener<Events[K]> = data => {
+		const wrapped: OnceListener<Events[K]> = data => {
 			this.off(event, wrapped)
 			return listener(data)
 		}
+		wrapped.original = listener
 		return this.on(event, wrapped)
 	}
 
-	/** Removes a listener previously passed to {@link on}. */
+	/** Removes a listener previously passed to {@link on} or {@link once}. */
 	off<K extends keyof Events>(event: K, listener: Listener<Events[K]>): void {
-		this.listeners.get(event)?.delete(listener as Listener<never>)
+		const set = this.listeners.get(event)
+		if (!set) return
+		set.delete(listener as Listener<never>)
+		for (const registered of set) {
+			if ((registered as OnceListener<never>).original === listener) set.delete(registered)
+		}
 	}
 
 	/** Removes every listener of `event`, or of every event when omitted. */

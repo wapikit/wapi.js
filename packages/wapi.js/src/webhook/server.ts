@@ -13,7 +13,10 @@ export interface WebhookServerOptions {
 	host?: string
 	/** Path Meta calls. Default `"/webhook"`. */
 	path?: string
-	/** Maximum accepted body size in bytes. Default 3 MB. */
+	/**
+	 * Maximum accepted body size in bytes; larger requests get `413`. Default
+	 * 3 MB. Applies to the built-in server and to `nodeHandler` / `fetchHandler`.
+	 */
 	maxBodyBytes?: number
 }
 
@@ -34,7 +37,7 @@ export class WebhookServer {
 
 	constructor(
 		private readonly handler: NodeWebhookHandler,
-		private readonly options: Required<Omit<WebhookServerOptions, 'host'>> & { host?: string },
+		private readonly options: { port: number; host?: string; path: string },
 		private readonly onError: (error: Error) => void
 	) {}
 
@@ -45,20 +48,13 @@ export class WebhookServer {
 	async listen(): Promise<WebhookServerAddress> {
 		if (this.server?.listening) return this.address()
 		const { createServer } = await import('node:http')
-		const { path, maxBodyBytes } = this.options
+		const { path } = this.options
 
 		const server = createServer((request, response) => {
 			const pathname = new URL(request.url ?? '/', 'http://localhost').pathname
 			if (pathname !== path) {
 				response.statusCode = 404
 				response.end('Not Found')
-				return
-			}
-			const declaredLength = Number(request.headers['content-length'] ?? 0)
-			if (declaredLength > maxBodyBytes) {
-				response.statusCode = 413
-				response.end('Payload Too Large')
-				request.resume()
 				return
 			}
 			this.handler(request, response).catch((error: unknown) => {

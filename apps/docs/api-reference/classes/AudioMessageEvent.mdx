@@ -2,7 +2,7 @@
 
 # Class: AudioMessageEvent
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:43](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L43)
+Defined in: [packages/wapi.js/src/events/message-events.ts:65](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L65)
 
 An audio message or voice note.
 
@@ -16,7 +16,7 @@ An audio message or voice note.
 
 > **new AudioMessageEvent**(`init`): `AudioMessageEvent`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:48](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L48)
+Defined in: [packages/wapi.js/src/events/message-events.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L71)
 
 #### Parameters
 
@@ -134,7 +134,7 @@ Shortcut for `context.forwarded`.
 
 > `readonly` **isVoice**: `boolean`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:45](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L45)
+Defined in: [packages/wapi.js/src/events/message-events.ts:67](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L67)
 
 True for a voice note recorded in WhatsApp.
 
@@ -149,14 +149,6 @@ Defined in: [packages/wapi.js/src/events/base.ts:224](https://github.com/wapikit
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`mediaId`](MediaMessageEvent.mdx#mediaid)
-
-***
-
-### message
-
-> `readonly` **message**: [`AudioMessage`](AudioMessage.mdx)
-
-Defined in: [packages/wapi.js/src/events/message-events.ts:46](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L46)
 
 ***
 
@@ -341,6 +333,25 @@ Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`date`](MediaMessageEvent.mdx#date)
+
+***
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): [`AudioMessage`](AudioMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:84](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L84)
+
+The message as a component, ready to be sent or forwarded.
+
+Built on first access. Throws a `ValidationError` when the inbound content
+breaks a sending limit (for example a text longer than 4096 characters).
+
+##### Returns
+
+[`AudioMessage`](AudioMessage.mdx)
 
 ***
 

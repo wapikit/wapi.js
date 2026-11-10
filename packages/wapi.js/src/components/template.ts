@@ -556,9 +556,9 @@ function assertUniqueIndexes(buttons: readonly TemplateButtonComponentPayload[],
  *
  * Add the components whose variables you fill in; components without
  * variables come from the approved template. `addHeader`, `addBody`,
- * `addLimitedTimeOffer` and `addCarousel` replace an earlier call; buttons are
- * kept per index. Components are serialised in the order header, body,
- * limited-time offer, carousel, buttons.
+ * `addLimitedTimeOffer` and `addCarousel` replace an earlier call; each
+ * button `index` (0 to 9) can be added once. Components are
+ * serialised in the order header, body, limited-time offer, carousel, buttons.
  *
  * @example
  * ```ts

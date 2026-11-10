@@ -60,7 +60,7 @@ const url = await client.media.getUrl(mediaId);
 const { data, mimeType } = await client.media.download(mediaId); // or download(url)
 ```
 
-<Warning>Media URLs expire after about 5 minutes and need your access token. `download()` sends the token for you; a plain `fetch(url)` without the `Authorization` header fails.</Warning>
+<Warning>Media URLs expire after about 5 minutes and need your access token. `download()` sends the token for you; a plain `fetch(url)` without the `Authorization` header fails. To keep the token from leaking, `download(url)` only accepts HTTPS URLs on Meta's media hosts (the ones `getUrl()` returns) and throws a `ValidationError` for anything else.</Warning>
 
 ## Forwarding received media
 

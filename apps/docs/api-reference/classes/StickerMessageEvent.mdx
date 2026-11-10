@@ -2,7 +2,7 @@
 
 # Class: StickerMessageEvent
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:89](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L89)
+Defined in: [packages/wapi.js/src/events/message-events.ts:148](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L148)
 
 A sticker message.
 
@@ -16,7 +16,7 @@ A sticker message.
 
 > **new StickerMessageEvent**(`init`): `StickerMessageEvent`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:93](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L93)
+Defined in: [packages/wapi.js/src/events/message-events.ts:153](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L153)
 
 #### Parameters
 
@@ -120,7 +120,7 @@ Group id, for messages received in a group.
 
 > `readonly` **isAnimated**: `boolean`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:90](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L90)
+Defined in: [packages/wapi.js/src/events/message-events.ts:149](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L149)
 
 ***
 
@@ -147,14 +147,6 @@ Defined in: [packages/wapi.js/src/events/base.ts:224](https://github.com/wapikit
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`mediaId`](MediaMessageEvent.mdx#mediaid)
-
-***
-
-### message
-
-> `readonly` **message**: [`StickerMessage`](StickerMessage.mdx)
-
-Defined in: [packages/wapi.js/src/events/message-events.ts:91](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L91)
 
 ***
 
@@ -339,6 +331,25 @@ Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`date`](MediaMessageEvent.mdx#date)
+
+***
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): [`StickerMessage`](StickerMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:166](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L166)
+
+The message as a component, ready to be sent or forwarded.
+
+Built on first access. Throws a `ValidationError` when the inbound content
+breaks a sending limit (for example a text longer than 4096 characters).
+
+##### Returns
+
+[`StickerMessage`](StickerMessage.mdx)
 
 ***
 

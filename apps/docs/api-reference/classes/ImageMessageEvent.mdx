@@ -2,7 +2,7 @@
 
 # Class: ImageMessageEvent
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:29](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L29)
+Defined in: [packages/wapi.js/src/events/message-events.ts:40](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L40)
 
 An image message.
 
@@ -16,7 +16,7 @@ An image message.
 
 > **new ImageMessageEvent**(`init`): `ImageMessageEvent`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:34](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L34)
+Defined in: [packages/wapi.js/src/events/message-events.ts:45](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L45)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ WhatsApp Business Account the message was delivered to.
 
 > `readonly` `optional` **caption?**: `string`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:30](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L30)
+Defined in: [packages/wapi.js/src/events/message-events.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L41)
 
 ***
 
@@ -147,16 +147,6 @@ Defined in: [packages/wapi.js/src/events/base.ts:224](https://github.com/wapikit
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`mediaId`](MediaMessageEvent.mdx#mediaid)
-
-***
-
-### message
-
-> `readonly` **message**: [`ImageMessage`](ImageMessage.mdx)
-
-Defined in: [packages/wapi.js/src/events/message-events.ts:32](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L32)
-
-The image as a component (by media id), ready to be forwarded.
 
 ***
 
@@ -341,6 +331,25 @@ Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`date`](MediaMessageEvent.mdx#date)
+
+***
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): [`ImageMessage`](ImageMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:58](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L58)
+
+The image as a component (by media id), ready to be forwarded.
+
+Built on first access. Throws a `ValidationError` when the inbound content
+breaks a sending limit (for example a text longer than 4096 characters).
+
+##### Returns
+
+[`ImageMessage`](ImageMessage.mdx)
 
 ***
 

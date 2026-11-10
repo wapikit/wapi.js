@@ -130,16 +130,6 @@ Shortcut for `context.forwarded`.
 
 ***
 
-### message
-
-> `readonly` **message**: [`TextMessage`](TextMessage.mdx)
-
-Defined in: [packages/wapi.js/src/events/message-events.ts:19](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L19)
-
-The body as a component, ready to be sent again.
-
-***
-
 ### messageId
 
 > `readonly` **messageId**: `string`
@@ -307,6 +297,25 @@ Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/
 #### Inherited from
 
 [`BaseMessageEvent`](BaseMessageEvent.mdx).[`date`](BaseMessageEvent.mdx#date)
+
+***
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): [`TextMessage`](TextMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:33](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L33)
+
+The body as a component, ready to be sent again.
+
+Built on first access. Throws a `ValidationError` when the inbound content
+breaks a sending limit (for example a text longer than 4096 characters).
+
+##### Returns
+
+[`TextMessage`](TextMessage.mdx)
 
 ***
 

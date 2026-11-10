@@ -1,4 +1,4 @@
-import { GraphApiError, RequestError } from '../errors'
+import { GraphApiError, RequestError, ValidationError } from '../errors'
 
 /** Graph API version used when none is configured. Matches wapi.go. */
 export const DEFAULT_API_VERSION = 'v20.0'
@@ -10,6 +10,12 @@ export const DEFAULT_TIMEOUT_MS = 60_000
 export const DEFAULT_UPLOAD_TIMEOUT_MS = 300_000
 
 export type HttpMethod = 'GET' | 'POST' | 'DELETE'
+
+/**
+ * Hosts Meta serves WhatsApp media from. `download()` only sends the access
+ * token to these (over HTTPS) and to the configured Graph API origin.
+ */
+const MEDIA_HOST_SUFFIXES = ['fbsbx.com', 'facebook.com', 'fbcdn.net', 'whatsapp.net']
 
 /** A `fetch` compatible function. Defaults to `globalThis.fetch`. */
 export type FetchLike = (input: string, init: RequestInit) => Promise<Response>
@@ -117,71 +123,101 @@ export class RequestClient {
 
 		const timeoutMs = request.timeoutMs ?? this.timeoutMs
 		const timeoutSignal = AbortSignal.timeout(timeoutMs)
-		const signal = request.signal ? anySignal([request.signal, timeoutSignal]) : timeoutSignal
+		const combined = combineSignals(request.signal, timeoutSignal)
+		const describe = `${request.method} ${request.path}`
 
-		let response: Response
+		let status: number
+		let ok: boolean
+		let text: string
 		try {
-			response = await this.fetchImpl(url, {
+			const response = await this.fetchImpl(url, {
 				method: request.method,
 				headers,
 				body,
-				signal
+				signal: combined.signal
 			})
+			status = response.status
+			ok = response.ok
+			text = await response.text()
 		} catch (error) {
-			const timedOut = timeoutSignal.aborted
-			throw new RequestError(
-				timedOut
-					? `Graph API request timed out after ${timeoutMs}ms: ${request.method} ${request.path}`
-					: `Graph API request failed: ${request.method} ${request.path}`,
-				{ cause: error, timedOut }
-			)
+			throw toRequestError(error, `Graph API request ${describe}`, timeoutSignal, timeoutMs)
+		} finally {
+			combined.dispose()
 		}
 
-		const text = await response.text()
-		if (!response.ok) {
-			throw new GraphApiError({ status: response.status, body: text })
+		if (!ok) {
+			throw new GraphApiError({ status, body: text })
 		}
 		if (text === '') return undefined as T
 		let parsed: unknown
 		try {
 			parsed = JSON.parse(text)
-		} catch (error) {
-			throw new GraphApiError({ status: response.status, body: text })
+		} catch {
+			throw new GraphApiError({ status, body: text })
 		}
 		if (parsed && typeof parsed === 'object' && 'error' in parsed) {
-			throw new GraphApiError({ status: response.status, body: text })
+			throw new GraphApiError({ status, body: text })
 		}
 		return parsed as T
 	}
 
 	/**
 	 * Downloads a binary resource (for example a media URL returned by
-	 * `media.getUrl`). Media URLs require the access token as a bearer header.
+	 * `media.getUrl`) and returns its bytes. Media URLs require the access
+	 * token as a bearer header, so the URL must be an HTTPS URL on one of
+	 * Meta's media hosts (`*.fbsbx.com`, `*.facebook.com`, `*.fbcdn.net`,
+	 * `*.whatsapp.net`) or on the configured Graph API origin.
+	 *
+	 * @throws {ValidationError} when the URL is on any other host, so the
+	 * access token is never sent to a third party.
 	 */
 	async download(
 		url: string,
 		options?: { timeoutMs?: number; signal?: AbortSignal }
-	): Promise<Response> {
+	): Promise<{ data: ArrayBuffer; mimeType: string }> {
+		this.assertMediaUrl(url)
 		const timeoutMs = options?.timeoutMs ?? DEFAULT_UPLOAD_TIMEOUT_MS
 		const timeoutSignal = AbortSignal.timeout(timeoutMs)
-		const signal = options?.signal ? anySignal([options.signal, timeoutSignal]) : timeoutSignal
-		let response: Response
+		const combined = combineSignals(options?.signal, timeoutSignal)
 		try {
-			response = await this.fetchImpl(url, {
+			const response = await this.fetchImpl(url, {
 				method: 'GET',
 				headers: { Authorization: `Bearer ${this.accessToken}` },
-				signal
+				signal: combined.signal
 			})
+			if (!response.ok) {
+				throw new GraphApiError({ status: response.status, body: await response.text() })
+			}
+			return {
+				data: await response.arrayBuffer(),
+				mimeType: response.headers.get('content-type') ?? 'application/octet-stream'
+			}
 		} catch (error) {
-			throw new RequestError(`Media download failed: ${url}`, {
-				cause: error,
-				timedOut: timeoutSignal.aborted
-			})
+			if (error instanceof GraphApiError) throw error
+			throw toRequestError(error, 'Media download', timeoutSignal, timeoutMs)
+		} finally {
+			combined.dispose()
 		}
-		if (!response.ok) {
-			throw new GraphApiError({ status: response.status, body: await response.text() })
+	}
+
+	private assertMediaUrl(url: string): void {
+		let parsed: URL
+		try {
+			parsed = new URL(url)
+		} catch {
+			throw new ValidationError(`Not a valid media URL: ${url}`)
 		}
-		return response
+		if (parsed.origin === new URL(this.baseUrl).origin) return
+		const host = parsed.hostname.toLowerCase()
+		const isMetaHost = MEDIA_HOST_SUFFIXES.some(
+			suffix => host === suffix || host.endsWith(`.${suffix}`)
+		)
+		if (parsed.protocol !== 'https:' || !isMetaHost) {
+			throw new ValidationError(
+				`Refusing to send the access token to ${parsed.origin}: media downloads only go to Meta's media hosts. ` +
+					'Fetch other URLs yourself.'
+			)
+		}
 	}
 }
 
@@ -202,16 +238,44 @@ export function renderFields(fields: (string | GraphField)[]): string {
 		.join(',')
 }
 
-function anySignal(signals: AbortSignal[]): AbortSignal {
+/**
+ * Combines an optional caller signal with the timeout signal. `dispose()`
+ * removes the listeners the fallback adds, so a long-lived caller signal does
+ * not accumulate one listener per request.
+ */
+function combineSignals(
+	signal: AbortSignal | undefined,
+	timeoutSignal: AbortSignal
+): { signal: AbortSignal; dispose: () => void } {
+	if (!signal) return { signal: timeoutSignal, dispose: () => undefined }
 	const anyFn = (AbortSignal as unknown as { any?: (s: AbortSignal[]) => AbortSignal }).any
-	if (anyFn) return anyFn(signals)
+	if (anyFn) return { signal: anyFn([signal, timeoutSignal]), dispose: () => undefined }
+
 	const controller = new AbortController()
-	for (const signal of signals) {
-		if (signal.aborted) {
-			controller.abort(signal.reason)
-			break
-		}
-		signal.addEventListener('abort', () => controller.abort(signal.reason), { once: true })
+	const sources = [signal, timeoutSignal]
+	const onAbort = (event: Event) => controller.abort((event.target as AbortSignal).reason)
+	const dispose = () => {
+		for (const source of sources) source.removeEventListener('abort', onAbort)
 	}
-	return controller.signal
+	const alreadyAborted = sources.find(source => source.aborted)
+	if (alreadyAborted) {
+		controller.abort(alreadyAborted.reason)
+	} else {
+		for (const source of sources) source.addEventListener('abort', onAbort, { once: true })
+	}
+	return { signal: controller.signal, dispose }
+}
+
+function toRequestError(
+	error: unknown,
+	what: string,
+	timeoutSignal: AbortSignal,
+	timeoutMs: number
+): RequestError {
+	if (error instanceof RequestError) return error
+	const timedOut = timeoutSignal.aborted
+	return new RequestError(
+		timedOut ? `${what} timed out after ${timeoutMs}ms` : `${what} failed`,
+		{ cause: error, timedOut }
+	)
 }

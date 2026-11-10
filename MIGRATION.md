@@ -28,7 +28,7 @@ to stable.
 | `event.react({ emoji, phoneNumber })` | `event.react(emoji)` |
 | `event.read()` | `event.markAsRead({ typingIndicator? })` |
 | `event.context.from` | `event.from` (sender), `event.context.repliedToMessageId` (quoted message) |
-| `event.text.data.text` (TextMessage) | `event.text` (string). Every message event (text, media, location, contacts) exposes its content as a ready-to-send component on `event.message` |
+| `event.text.data.text` (TextMessage) | `event.text` (string). Every message event (text, media, location, contacts) exposes its content as a ready-to-send component on `event.message`, built on first access |
 | `event.client` | `event.messaging` (the messaging client of the receiving number) |
 | `client.on("Ready", () => {})` | `Ready` now receives `{ host, port, path }` |
 | Status events had no message id | `event.messageId`, `recipientId`, `pricing`, `conversation`, `errors`, `bizOpaqueCallbackData` |

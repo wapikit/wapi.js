@@ -2,7 +2,7 @@
 
 # Class: DocumentMessageEvent
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:70](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L70)
+Defined in: [packages/wapi.js/src/events/message-events.ts:116](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L116)
 
 A document message.
 
@@ -16,7 +16,7 @@ A document message.
 
 > **new DocumentMessageEvent**(`init`): `DocumentMessageEvent`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:75](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L75)
+Defined in: [packages/wapi.js/src/events/message-events.ts:122](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L122)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ WhatsApp Business Account the message was delivered to.
 
 > `readonly` `optional` **caption?**: `string`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L71)
+Defined in: [packages/wapi.js/src/events/message-events.ts:117](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L117)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [packages/wapi.js/src/events/base.ts:143](https://github.com/wapikit
 
 > `readonly` `optional` **filename?**: `string`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:72](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L72)
+Defined in: [packages/wapi.js/src/events/message-events.ts:118](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L118)
 
 ***
 
@@ -155,14 +155,6 @@ Defined in: [packages/wapi.js/src/events/base.ts:224](https://github.com/wapikit
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`mediaId`](MediaMessageEvent.mdx#mediaid)
-
-***
-
-### message
-
-> `readonly` **message**: [`DocumentMessage`](DocumentMessage.mdx)
-
-Defined in: [packages/wapi.js/src/events/message-events.ts:73](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L73)
 
 ***
 
@@ -347,6 +339,25 @@ Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`date`](MediaMessageEvent.mdx#date)
+
+***
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): [`DocumentMessage`](DocumentMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:141](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L141)
+
+The message as a component, ready to be sent or forwarded.
+
+Built on first access. Throws a `ValidationError` when the inbound content
+breaks a sending limit (for example a text longer than 4096 characters).
+
+##### Returns
+
+[`DocumentMessage`](DocumentMessage.mdx)
 
 ***
 

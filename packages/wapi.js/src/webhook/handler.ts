@@ -61,8 +61,12 @@ function readHeader(headers: HeaderBag | undefined, name: string): string | unde
 	if (typeof (headers as Headers).get === 'function') {
 		return (headers as Headers).get(name) ?? undefined
 	}
+	// Plain objects keep whatever casing the platform used (API Gateway REST,
+	// ALB, Netlify...), so match the key case-insensitively.
 	const bag = headers as Record<string, string | string[] | undefined>
-	const value = bag[name] ?? bag[name.toLowerCase()]
+	const wanted = name.toLowerCase()
+	const key = Object.keys(bag).find(candidate => candidate.toLowerCase() === wanted)
+	const value = key === undefined ? undefined : bag[key]
 	return Array.isArray(value) ? value[0] : value
 }
 

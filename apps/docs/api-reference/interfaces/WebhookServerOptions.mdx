@@ -27,9 +27,10 @@ in containers; use `"127.0.0.1"` behind a reverse proxy or tunnel.
 
 > `optional` **maxBodyBytes?**: `number`
 
-Defined in: [packages/wapi.js/src/webhook/server.ts:17](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L17)
+Defined in: [packages/wapi.js/src/webhook/server.ts:20](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L20)
 
-Maximum accepted body size in bytes. Default 3 MB.
+Maximum accepted body size in bytes; larger requests get `413`. Default
+3 MB. Applies to the built-in server and to `nodeHandler` / `fetchHandler`.
 
 ***
 

@@ -2,7 +2,7 @@
 
 # Class: VideoMessageEvent
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:57](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L57)
+Defined in: [packages/wapi.js/src/events/message-events.ts:91](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L91)
 
 A video message.
 
@@ -16,7 +16,7 @@ A video message.
 
 > **new VideoMessageEvent**(`init`): `VideoMessageEvent`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:61](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L61)
+Defined in: [packages/wapi.js/src/events/message-events.ts:96](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L96)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ WhatsApp Business Account the message was delivered to.
 
 > `readonly` `optional` **caption?**: `string`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:58](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L58)
+Defined in: [packages/wapi.js/src/events/message-events.ts:92](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L92)
 
 ***
 
@@ -147,14 +147,6 @@ Defined in: [packages/wapi.js/src/events/base.ts:224](https://github.com/wapikit
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`mediaId`](MediaMessageEvent.mdx#mediaid)
-
-***
-
-### message
-
-> `readonly` **message**: [`VideoMessage`](VideoMessage.mdx)
-
-Defined in: [packages/wapi.js/src/events/message-events.ts:59](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L59)
 
 ***
 
@@ -339,6 +331,25 @@ Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/
 #### Inherited from
 
 [`MediaMessageEvent`](MediaMessageEvent.mdx).[`date`](MediaMessageEvent.mdx#date)
+
+***
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): [`VideoMessage`](VideoMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:109](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L109)
+
+The message as a component, ready to be sent or forwarded.
+
+Built on first access. Throws a `ValidationError` when the inbound content
+breaks a sending limit (for example a text longer than 4096 characters).
+
+##### Returns
+
+[`VideoMessage`](VideoMessage.mdx)
 
 ***
 

@@ -88,7 +88,7 @@ export class MediaManager {
 	}
 
 	/** Returns the metadata (including a short lived download URL) of a media id. */
-	getMetadata(mediaId: string, options?: { signal?: AbortSignal }): Promise<MediaMetadata> {
+	async getMetadata(mediaId: string, options?: { signal?: AbortSignal }): Promise<MediaMetadata> {
 		if (!mediaId) throw new ValidationError('`mediaId` is required')
 		return this.requester.request<MediaMetadata>({
 			method: 'GET',
@@ -118,11 +118,7 @@ export class MediaManager {
 		const url = /^https?:\/\//.test(mediaIdOrUrl)
 			? mediaIdOrUrl
 			: await this.getUrl(mediaIdOrUrl, options)
-		const response = await this.requester.download(url, options)
-		return {
-			data: await response.arrayBuffer(),
-			mimeType: response.headers.get('content-type') ?? 'application/octet-stream'
-		}
+		return this.requester.download(url, options)
 	}
 
 	/** Deletes an uploaded media file. */

@@ -2,6 +2,7 @@ import { type MessagingClient } from '../client/messaging-client'
 import { type WapiEventMap } from '../events'
 import { type Logger } from '../internal/logger'
 import {
+	type AdapterOptions,
 	createFetchHandler,
 	createNodeHandler,
 	type FetchWebhookHandler,
@@ -42,6 +43,8 @@ export class WebhookManager {
 	private readonly init: WebhookManagerInit
 	private handlerInstance?: WebhookHandler
 	private server?: WebhookServer
+	/** Pending `listen()`, so concurrent calls share one server. */
+	private starting?: Promise<WebhookServerAddress>
 	private fetchHandlerFn?: FetchWebhookHandler
 	private nodeHandlerFn?: NodeWebhookHandler
 
@@ -83,13 +86,13 @@ export class WebhookManager {
 
 	/** `(request: Request, ctx?) => Promise<Response>` for Fetch API runtimes. */
 	get fetchHandler(): FetchWebhookHandler {
-		this.fetchHandlerFn ??= createFetchHandler(this.handler)
+		this.fetchHandlerFn ??= createFetchHandler(this.handler, this.adapterOptions())
 		return this.fetchHandlerFn
 	}
 
 	/** `(req, res) => Promise<void>` for `node:http`, Express, Fastify, Koa. */
 	get nodeHandler(): NodeWebhookHandler {
-		this.nodeHandlerFn ??= createNodeHandler(this.handler)
+		this.nodeHandlerFn ??= createNodeHandler(this.handler, this.adapterOptions())
 		return this.nodeHandlerFn
 	}
 
@@ -100,32 +103,46 @@ export class WebhookManager {
 
 	/**
 	 * Starts the built-in `node:http` server and emits `Ready`. Options override
-	 * the ones from the client config.
+	 * the ones from the client config. Calling it again while the server is
+	 * starting or running returns the same address.
 	 */
-	async listen(options?: WebhookServerOptions): Promise<WebhookServerAddress> {
-		if (this.server?.listening) return this.server.address()
+	listen(options?: WebhookServerOptions): Promise<WebhookServerAddress> {
+		if (this.server?.listening) return Promise.resolve(this.server.address())
+		this.starting ??= this.start(options).finally(() => {
+			this.starting = undefined
+		})
+		return this.starting
+	}
+
+	private async start(options?: WebhookServerOptions): Promise<WebhookServerAddress> {
 		const merged = { ...this.init.options, ...options }
-		this.server = new WebhookServer(
-			this.nodeHandler,
+		const server = new WebhookServer(
+			createNodeHandler(this.handler, { maxBodyBytes: merged.maxBodyBytes }),
 			{
 				port: merged.port ?? 8080,
 				host: merged.host,
-				path: merged.path ?? '/webhook',
-				maxBodyBytes: merged.maxBodyBytes ?? 3 * 1024 * 1024
+				path: merged.path ?? '/webhook'
 			},
 			error => {
 				void this.init.emit('Error', error)
 			}
 		)
-		const address = await this.server.listen()
+		const address = await server.listen()
+		this.server = server
 		void this.init.emit('Ready', address)
 		return address
 	}
 
 	/** Stops the built-in server, waiting up to `timeoutMs` for in-flight requests. */
 	async close(timeoutMs?: number): Promise<void> {
+		// a server still binding is closed once it is up
+		await this.starting?.catch(() => undefined)
 		const server = this.server
 		this.server = undefined
 		await server?.close(timeoutMs)
+	}
+
+	private adapterOptions(): AdapterOptions {
+		return { maxBodyBytes: this.init.options?.maxBodyBytes }
 	}
 }

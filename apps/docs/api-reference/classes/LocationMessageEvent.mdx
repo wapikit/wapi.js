@@ -2,7 +2,7 @@
 
 # Class: LocationMessageEvent
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:102](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L102)
+Defined in: [packages/wapi.js/src/events/message-events.ts:173](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L173)
 
 A shared location.
 
@@ -16,7 +16,7 @@ A shared location.
 
 > **new LocationMessageEvent**(`init`): `LocationMessageEvent`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:110](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L110)
+Defined in: [packages/wapi.js/src/events/message-events.ts:182](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L182)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: [packages/wapi.js/src/events/message-events.ts:110](https://github.c
 
 > `readonly` `optional` **address?**: `string`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:106](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L106)
+Defined in: [packages/wapi.js/src/events/message-events.ts:177](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L177)
 
 ***
 
@@ -142,7 +142,7 @@ Shortcut for `context.forwarded`.
 
 > `readonly` **latitude**: `number`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:103](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L103)
+Defined in: [packages/wapi.js/src/events/message-events.ts:174](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L174)
 
 ***
 
@@ -150,15 +150,7 @@ Defined in: [packages/wapi.js/src/events/message-events.ts:103](https://github.c
 
 > `readonly` **longitude**: `number`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:104](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L104)
-
-***
-
-### message
-
-> `readonly` **message**: [`LocationMessage`](LocationMessage.mdx)
-
-Defined in: [packages/wapi.js/src/events/message-events.ts:108](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L108)
+Defined in: [packages/wapi.js/src/events/message-events.ts:175](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L175)
 
 ***
 
@@ -180,7 +172,7 @@ WhatsApp message id (`wamid.*`).
 
 > `readonly` `optional` **name?**: `string`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:105](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L105)
+Defined in: [packages/wapi.js/src/events/message-events.ts:176](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L176)
 
 ***
 
@@ -272,7 +264,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > `readonly` `optional` **url?**: `string`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:107](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L107)
+Defined in: [packages/wapi.js/src/events/message-events.ts:178](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L178)
 
 ***
 
@@ -335,6 +327,25 @@ Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/
 #### Inherited from
 
 [`BaseMessageEvent`](BaseMessageEvent.mdx).[`date`](BaseMessageEvent.mdx#date)
+
+***
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): [`LocationMessage`](LocationMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:205](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L205)
+
+The message as a component, ready to be sent or forwarded.
+
+Built on first access. Throws a `ValidationError` when the inbound content
+breaks a sending limit (for example a text longer than 4096 characters).
+
+##### Returns
+
+[`LocationMessage`](LocationMessage.mdx)
 
 ***
 

@@ -2,7 +2,7 @@
 
 # Class: WebhookHandler
 
-Defined in: [packages/wapi.js/src/webhook/handler.ts:97](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L97)
+Defined in: [packages/wapi.js/src/webhook/handler.ts:101](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L101)
 
 Processes WhatsApp webhook requests: subscription verification (`GET`) and
 event notifications (`POST`).
@@ -22,7 +22,7 @@ Behaviour, matching wapi.go:
 
 > **new WebhookHandler**(`options`): `WebhookHandler`
 
-Defined in: [packages/wapi.js/src/webhook/handler.ts:100](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L100)
+Defined in: [packages/wapi.js/src/webhook/handler.ts:104](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L104)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ Defined in: [packages/wapi.js/src/webhook/handler.ts:100](https://github.com/wap
 
 > **dispatch**(`payload`): `Promise`\<`void`\>
 
-Defined in: [packages/wapi.js/src/webhook/handler.ts:179](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L179)
+Defined in: [packages/wapi.js/src/webhook/handler.ts:183](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L183)
 
 Dispatches an already authenticated and parsed payload. Useful when the
 request is verified elsewhere (for example a queue worker). Resolves when
@@ -62,7 +62,7 @@ every listener has settled.
 
 > **handle**(`request`): `Promise`\<[`WebhookResponse`](../interfaces/WebhookResponse.mdx)\>
 
-Defined in: [packages/wapi.js/src/webhook/handler.ts:103](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L103)
+Defined in: [packages/wapi.js/src/webhook/handler.ts:107](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L107)
 
 Handles one request. Never throws.
 

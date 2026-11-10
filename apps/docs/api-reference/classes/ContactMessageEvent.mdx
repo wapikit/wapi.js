@@ -2,7 +2,7 @@
 
 # Class: ContactMessageEvent
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:128](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L128)
+Defined in: [packages/wapi.js/src/events/message-events.ts:212](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L212)
 
 One or more shared contact cards.
 
@@ -16,7 +16,7 @@ One or more shared contact cards.
 
 > **new ContactMessageEvent**(`init`): `ContactMessageEvent`
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:134](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L134)
+Defined in: [packages/wapi.js/src/events/message-events.ts:218](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L218)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ WhatsApp Business Account the message was delivered to.
 
 > `readonly` **contacts**: [`InboundContact`](../interfaces/InboundContact.mdx)[]
 
-Defined in: [packages/wapi.js/src/events/message-events.ts:130](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L130)
+Defined in: [packages/wapi.js/src/events/message-events.ts:214](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L214)
 
 The contact cards exactly as Meta sent them.
 
@@ -137,16 +137,6 @@ Shortcut for `context.forwarded`.
 #### Inherited from
 
 [`BaseMessageEvent`](BaseMessageEvent.mdx).[`isForwarded`](BaseMessageEvent.mdx#isforwarded)
-
-***
-
-### message
-
-> `readonly` **message**: [`ContactMessage`](ContactMessage.mdx)
-
-Defined in: [packages/wapi.js/src/events/message-events.ts:132](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L132)
-
-The contacts as a component, ready to be forwarded.
 
 ***
 
@@ -307,6 +297,25 @@ Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/
 #### Inherited from
 
 [`BaseMessageEvent`](BaseMessageEvent.mdx).[`date`](BaseMessageEvent.mdx#date)
+
+***
+
+### message
+
+#### Get Signature
+
+> **get** **message**(): [`ContactMessage`](ContactMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:230](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L230)
+
+The contacts as a component, ready to be forwarded.
+
+Built on first access. Throws a `ValidationError` when the inbound content
+breaks a sending limit (for example a text longer than 4096 characters).
+
+##### Returns
+
+[`ContactMessage`](ContactMessage.mdx)
 
 ***
 

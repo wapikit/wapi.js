@@ -1,6 +1,38 @@
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import { type WebhookHandler, type WebhookResponse } from './handler'
 
+/** Default maximum webhook body size: 3 MB. Meta's payloads are far smaller. */
+export const DEFAULT_MAX_BODY_BYTES = 3 * 1024 * 1024
+
+/** @internal Options shared by the adapters. */
+export interface AdapterOptions {
+	/** Requests with a larger body are answered with `413` without being buffered. */
+	maxBodyBytes?: number
+}
+
+class BodyTooLargeError extends Error {}
+
+function declaredLength(value: string | null | undefined): number {
+	const length = Number(value ?? 0)
+	return Number.isFinite(length) ? length : 0
+}
+
+function concat(chunks: Uint8Array[], length: number): Uint8Array {
+	const body = new Uint8Array(length)
+	let offset = 0
+	for (const chunk of chunks) {
+		body.set(chunk, offset)
+		offset += chunk.length
+	}
+	return body
+}
+
+const tooLarge = (): Response =>
+	new Response('Payload Too Large', {
+		status: 413,
+		headers: { 'Content-Type': 'text/plain; charset=utf-8', Connection: 'close' }
+	})
+
 /**
  * Fetch API handler: `(request: Request) => Promise<Response>`. Works with
  * Next.js route handlers, Hono, Bun, Deno, Cloudflare Workers, Vercel and any
@@ -26,12 +58,43 @@ export type NodeWebhookHandler = (
 	response: ServerResponse
 ) => Promise<void>
 
+/** Reads a Fetch API body, giving up as soon as it exceeds `maxBytes`. */
+async function readWebBody(request: Request, maxBytes: number): Promise<Uint8Array> {
+	if (!request.body) return new Uint8Array(0)
+	const reader = request.body.getReader()
+	const chunks: Uint8Array[] = []
+	let length = 0
+	for (;;) {
+		const { done, value } = await reader.read()
+		if (done) break
+		length += value.length
+		if (length > maxBytes) {
+			await reader.cancel().catch(() => undefined)
+			throw new BodyTooLargeError()
+		}
+		chunks.push(value)
+	}
+	return concat(chunks, length)
+}
+
 /** @internal */
-export function createFetchHandler(handler: WebhookHandler): FetchWebhookHandler {
+export function createFetchHandler(
+	handler: WebhookHandler,
+	options: AdapterOptions = {}
+): FetchWebhookHandler {
+	const maxBytes = options.maxBodyBytes ?? DEFAULT_MAX_BODY_BYTES
 	return async (request, context) => {
 		const url = new URL(request.url)
-		const rawBody =
-			request.method.toUpperCase() === 'POST' ? await request.arrayBuffer() : undefined
+		let rawBody: Uint8Array | undefined
+		if (request.method.toUpperCase() === 'POST') {
+			if (declaredLength(request.headers.get('content-length')) > maxBytes) return tooLarge()
+			try {
+				rawBody = await readWebBody(request, maxBytes)
+			} catch (error) {
+				if (error instanceof BodyTooLargeError) return tooLarge()
+				throw error
+			}
+		}
 		const result = await handler.handle({
 			method: request.method,
 			query: url.searchParams,
@@ -43,21 +106,26 @@ export function createFetchHandler(handler: WebhookHandler): FetchWebhookHandler
 	}
 }
 
-async function readStream(request: IncomingMessage): Promise<Uint8Array> {
+/** Reads a Node.js request body, giving up as soon as it exceeds `maxBytes`. */
+async function readStream(request: IncomingMessage, maxBytes: number): Promise<Uint8Array> {
 	const chunks: Uint8Array[] = []
+	let length = 0
 	for await (const chunk of request) {
-		chunks.push(
+		const bytes =
 			typeof chunk === 'string' ? new TextEncoder().encode(chunk) : (chunk as Uint8Array)
-		)
+		length += bytes.length
+		if (length > maxBytes) throw new BodyTooLargeError()
+		chunks.push(bytes)
 	}
-	const length = chunks.reduce((total, chunk) => total + chunk.length, 0)
-	const body = new Uint8Array(length)
-	let offset = 0
-	for (const chunk of chunks) {
-		body.set(chunk, offset)
-		offset += chunk.length
-	}
-	return body
+	return concat(chunks, length)
+}
+
+function writeTooLarge(request: IncomingMessage, response: ServerResponse): void {
+	response.statusCode = 413
+	response.setHeader('Content-Type', 'text/plain; charset=utf-8')
+	response.setHeader('Connection', 'close')
+	// Stop reading the rest of the upload once the answer is out.
+	response.end('Payload Too Large', () => request.destroy())
 }
 
 function writeNodeResponse(response: ServerResponse, result: WebhookResponse): void {
@@ -67,7 +135,11 @@ function writeNodeResponse(response: ServerResponse, result: WebhookResponse): v
 }
 
 /** @internal */
-export function createNodeHandler(handler: WebhookHandler): NodeWebhookHandler {
+export function createNodeHandler(
+	handler: WebhookHandler,
+	options: AdapterOptions = {}
+): NodeWebhookHandler {
+	const maxBytes = options.maxBodyBytes ?? DEFAULT_MAX_BODY_BYTES
 	return async (request, response) => {
 		const method = request.method ?? 'GET'
 		const url = new URL(request.url ?? '/', 'http://localhost')
@@ -83,7 +155,19 @@ export function createNodeHandler(handler: WebhookHandler): NodeWebhookHandler {
 				// e.g. express.json(): the raw body is gone, only usable without appSecret
 				parsedBody = body
 			} else if (!request.readableEnded) {
-				rawBody = await readStream(request)
+				if (declaredLength(request.headers['content-length']) > maxBytes) {
+					writeTooLarge(request, response)
+					return
+				}
+				try {
+					rawBody = await readStream(request, maxBytes)
+				} catch (error) {
+					if (error instanceof BodyTooLargeError) {
+						writeTooLarge(request, response)
+						return
+					}
+					throw error
+				}
 			}
 		}
 

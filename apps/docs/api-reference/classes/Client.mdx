@@ -202,7 +202,7 @@ Stops the built-in webhook server, if running, waiting up to `timeoutMs` for in-
 
 > `protected` **dispatch**\<`K`\>(`event`, `data`): `Promise`\<`void`\>
 
-Defined in: [packages/wapi.js/src/internal/event-emitter.ts:69](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L69)
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:78](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L78)
 
 Calls every listener of `event` with `data`. Resolves once every listener
 has settled. Never rejects: listener errors go to `onListenerError`.
@@ -257,7 +257,7 @@ use) is emitted as `Error` instead of becoming an unhandled rejection.
 
 > **listenerCount**(`event`): `number`
 
-Defined in: [packages/wapi.js/src/internal/event-emitter.ts:61](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L61)
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:70](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L70)
 
 Number of listeners registered for `event`.
 
@@ -302,9 +302,9 @@ an argument, uses `config.phoneNumberId`.
 
 > **off**\<`K`\>(`event`, `listener`): `void`
 
-Defined in: [packages/wapi.js/src/internal/event-emitter.ts:50](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L50)
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L54)
 
-Removes a listener previously passed to [on](#on).
+Removes a listener previously passed to [on](#on) or [once](#once).
 
 #### Type Parameters
 
@@ -336,7 +336,7 @@ Removes a listener previously passed to [on](#on).
 
 > **on**\<`K`\>(`event`, `listener`): () => `void`
 
-Defined in: [packages/wapi.js/src/internal/event-emitter.ts:28](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L28)
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:31](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L31)
 
 Registers a listener. Returns a function that removes it.
 
@@ -370,7 +370,7 @@ Registers a listener. Returns a function that removes it.
 
 > **once**\<`K`\>(`event`, `listener`): () => `void`
 
-Defined in: [packages/wapi.js/src/internal/event-emitter.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L41)
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:44](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L44)
 
 Registers a listener that is removed after its first call.
 
@@ -432,7 +432,7 @@ keyof MessageEventMap \| keyof StatusEventMap \| keyof BusinessEventMap \| keyof
 
 > **removeAllListeners**(`event?`): `void`
 
-Defined in: [packages/wapi.js/src/internal/event-emitter.ts:55](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L55)
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:64](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L64)
 
 Removes every listener of `event`, or of every event when omitted.
 

@@ -15,27 +15,49 @@ import { BaseMessageEvent, MediaMessageEvent, type MessageEventInit } from './ba
 export class TextMessageEvent extends BaseMessageEvent {
 	/** Message body. */
 	readonly text: string
-	/** The body as a component, ready to be sent again. */
-	readonly message: TextMessage
+	readonly #build: () => TextMessage
+	#message?: TextMessage
 
 	constructor(init: MessageEventInit) {
 		super(init)
 		this.text = init.message.text?.body ?? ''
-		this.message = new TextMessage({ text: this.text || ' ' })
+		this.#build = () => new TextMessage({ text: this.text || ' ' })
+	}
+
+	/**
+	 * The body as a component, ready to be sent again.
+	 *
+	 * Built on first access. Throws a `ValidationError` when the inbound content
+	 * breaks a sending limit (for example a text longer than 4096 characters).
+	 */
+	get message(): TextMessage {
+		this.#message ??= this.#build()
+		return this.#message
 	}
 }
 
 /** An image message. */
 export class ImageMessageEvent extends MediaMessageEvent {
 	readonly caption?: string
-	/** The image as a component (by media id), ready to be forwarded. */
-	readonly message: ImageMessage
+	readonly #build: () => ImageMessage
+	#message?: ImageMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.image ?? { id: '' }
 		super(init, media)
 		this.caption = media.caption || undefined
-		this.message = new ImageMessage({ id: media.id, caption: this.caption })
+		this.#build = () => new ImageMessage({ id: media.id, caption: this.caption })
+	}
+
+	/**
+	 * The image as a component (by media id), ready to be forwarded.
+	 *
+	 * Built on first access. Throws a `ValidationError` when the inbound content
+	 * breaks a sending limit (for example a text longer than 4096 characters).
+	 */
+	get message(): ImageMessage {
+		this.#message ??= this.#build()
+		return this.#message
 	}
 }
 
@@ -43,26 +65,50 @@ export class ImageMessageEvent extends MediaMessageEvent {
 export class AudioMessageEvent extends MediaMessageEvent {
 	/** True for a voice note recorded in WhatsApp. */
 	readonly isVoice: boolean
-	readonly message: AudioMessage
+	readonly #build: () => AudioMessage
+	#message?: AudioMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.audio ?? { id: '' }
 		super(init, media)
 		this.isVoice = media.voice ?? false
-		this.message = new AudioMessage({ id: media.id })
+		this.#build = () => new AudioMessage({ id: media.id })
+	}
+
+	/**
+	 * The message as a component, ready to be sent or forwarded.
+	 *
+	 * Built on first access. Throws a `ValidationError` when the inbound content
+	 * breaks a sending limit (for example a text longer than 4096 characters).
+	 */
+	get message(): AudioMessage {
+		this.#message ??= this.#build()
+		return this.#message
 	}
 }
 
 /** A video message. */
 export class VideoMessageEvent extends MediaMessageEvent {
 	readonly caption?: string
-	readonly message: VideoMessage
+	readonly #build: () => VideoMessage
+	#message?: VideoMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.video ?? { id: '' }
 		super(init, media)
 		this.caption = media.caption || undefined
-		this.message = new VideoMessage({ id: media.id, caption: this.caption })
+		this.#build = () => new VideoMessage({ id: media.id, caption: this.caption })
+	}
+
+	/**
+	 * The message as a component, ready to be sent or forwarded.
+	 *
+	 * Built on first access. Throws a `ValidationError` when the inbound content
+	 * breaks a sending limit (for example a text longer than 4096 characters).
+	 */
+	get message(): VideoMessage {
+		this.#message ??= this.#build()
+		return this.#message
 	}
 }
 
@@ -70,31 +116,56 @@ export class VideoMessageEvent extends MediaMessageEvent {
 export class DocumentMessageEvent extends MediaMessageEvent {
 	readonly caption?: string
 	readonly filename?: string
-	readonly message: DocumentMessage
+	readonly #build: () => DocumentMessage
+	#message?: DocumentMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.document ?? { id: '' }
 		super(init, media)
 		this.caption = media.caption || undefined
 		this.filename = media.filename || undefined
-		this.message = new DocumentMessage({
-			id: media.id,
-			caption: this.caption,
-			filename: this.filename
-		})
+		this.#build = () =>
+			new DocumentMessage({
+				id: media.id,
+				caption: this.caption,
+				filename: this.filename
+			})
+	}
+
+	/**
+	 * The message as a component, ready to be sent or forwarded.
+	 *
+	 * Built on first access. Throws a `ValidationError` when the inbound content
+	 * breaks a sending limit (for example a text longer than 4096 characters).
+	 */
+	get message(): DocumentMessage {
+		this.#message ??= this.#build()
+		return this.#message
 	}
 }
 
 /** A sticker message. */
 export class StickerMessageEvent extends MediaMessageEvent {
 	readonly isAnimated: boolean
-	readonly message: StickerMessage
+	readonly #build: () => StickerMessage
+	#message?: StickerMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.sticker ?? { id: '' }
 		super(init, media)
 		this.isAnimated = media.animated ?? false
-		this.message = new StickerMessage({ id: media.id })
+		this.#build = () => new StickerMessage({ id: media.id })
+	}
+
+	/**
+	 * The message as a component, ready to be sent or forwarded.
+	 *
+	 * Built on first access. Throws a `ValidationError` when the inbound content
+	 * breaks a sending limit (for example a text longer than 4096 characters).
+	 */
+	get message(): StickerMessage {
+		this.#message ??= this.#build()
+		return this.#message
 	}
 }
 
@@ -105,7 +176,8 @@ export class LocationMessageEvent extends BaseMessageEvent {
 	readonly name?: string
 	readonly address?: string
 	readonly url?: string
-	readonly message: LocationMessage
+	readonly #build: () => LocationMessage
+	#message?: LocationMessage
 
 	constructor(init: MessageEventInit) {
 		super(init)
@@ -115,12 +187,24 @@ export class LocationMessageEvent extends BaseMessageEvent {
 		this.name = location.name || undefined
 		this.address = location.address || undefined
 		this.url = location.url || undefined
-		this.message = new LocationMessage({
-			latitude: this.latitude,
-			longitude: this.longitude,
-			name: this.name,
-			address: this.address
-		})
+		this.#build = () =>
+			new LocationMessage({
+				latitude: this.latitude,
+				longitude: this.longitude,
+				name: this.name,
+				address: this.address
+			})
+	}
+
+	/**
+	 * The message as a component, ready to be sent or forwarded.
+	 *
+	 * Built on first access. Throws a `ValidationError` when the inbound content
+	 * breaks a sending limit (for example a text longer than 4096 characters).
+	 */
+	get message(): LocationMessage {
+		this.#message ??= this.#build()
+		return this.#message
 	}
 }
 
@@ -128,13 +212,24 @@ export class LocationMessageEvent extends BaseMessageEvent {
 export class ContactMessageEvent extends BaseMessageEvent {
 	/** The contact cards exactly as Meta sent them. */
 	readonly contacts: InboundContact[]
-	/** The contacts as a component, ready to be forwarded. */
-	readonly message: ContactMessage
+	readonly #build: () => ContactMessage
+	#message?: ContactMessage
 
 	constructor(init: MessageEventInit) {
 		super(init)
 		this.contacts = init.message.contacts ?? []
-		this.message = new ContactMessage({ contacts: this.contacts })
+		this.#build = () => new ContactMessage({ contacts: this.contacts })
+	}
+
+	/**
+	 * The contacts as a component, ready to be forwarded.
+	 *
+	 * Built on first access. Throws a `ValidationError` when the inbound content
+	 * breaks a sending limit (for example a text longer than 4096 characters).
+	 */
+	get message(): ContactMessage {
+		this.#message ??= this.#build()
+		return this.#message
 	}
 }
 

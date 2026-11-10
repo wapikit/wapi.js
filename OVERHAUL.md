@@ -142,6 +142,34 @@ phone number name/quality, `security`).
 - [ ] Regenerate `apps/docs/api-reference` with `pnpm --filter @wapijs/wapi.js doc:gen`.
 - [ ] Verify against the live Graph API: analytics filter syntax, template button `index` type, business webhook field names.
 
+### Review round 1 (PR #48)
+
+A first review pass over the PR found these, all fixed with a regression test
+in `test/core/review-fixes.test.ts` or `test/webhook/review-fixes.test.ts`:
+
+- [x] Inbound events built their `message` component eagerly through the
+  outgoing validators, so a text over 4096 characters, a caption over 1024 or
+  a contact card without `formatted_name` dropped the whole event. The
+  component is now built on first access.
+- [x] The built-in server only enforced `maxBodyBytes` against
+  `Content-Length`; a chunked upload was buffered without limit. Both adapters
+  now count bytes while reading and answer `413`.
+- [x] Header lookup on plain objects was case sensitive, so signed webhooks
+  from API Gateway REST, ALB or Netlify were rejected with `401`.
+- [x] `media.download(url)` sent the access token to any URL. It now only
+  accepts HTTPS URLs on Meta's media hosts or the configured Graph origin.
+- [x] A failure or timeout while reading a response body escaped as a raw
+  `DOMException` instead of `RequestError`.
+- [x] `off()` could not remove a listener added with `once()`.
+- [x] Concurrent `listen()` calls started two servers and orphaned one.
+- [x] `getMetadata('')` threw synchronously instead of rejecting.
+- [x] The `AbortSignal.any` fallback never removed its listeners.
+- [x] The `TemplateMessage` docs contradicted `addButton` (duplicate indexes
+  throw; the 10 button limit was already enforced through the index range).
+
+Not yet reviewed in depth: the phone number, catalog and business managers,
+business event decoding and most components.
+
 ## 7. wapi.go bugs found during the port (to fix upstream)
 
 The JS port does **not** copy these.
