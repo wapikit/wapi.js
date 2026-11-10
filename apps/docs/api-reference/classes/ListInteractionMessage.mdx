@@ -2,7 +2,7 @@
 
 # Class: ListInteractionMessage
 
-Defined in: packages/wapi.js/src/components/list.ts:65
+Defined in: [packages/wapi.js/src/components/list.ts:65](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/list.ts#L65)
 
 An interactive list message: a button that opens a menu of up to ten rows.
 
@@ -10,7 +10,7 @@ An interactive list message: a button that opens a menu of up to ten rows.
 
 ```ts
 new ListInteractionMessage({
-  headerText: "Our menu",
+  header: "Our menu",
   bodyText: "What would you like?",
   buttonText: "View menu",
   sections: [
@@ -30,7 +30,7 @@ new ListInteractionMessage({
 
 > **new ListInteractionMessage**(`data`): `ListInteractionMessage`
 
-Defined in: packages/wapi.js/src/components/list.ts:68
+Defined in: [packages/wapi.js/src/components/list.ts:68](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/list.ts#L68)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: packages/wapi.js/src/components/list.ts:68
 
 > `readonly` **data**: `Readonly`\<[`ListInteractionMessageOptions`](../interfaces/ListInteractionMessageOptions.mdx)\>
 
-Defined in: packages/wapi.js/src/components/list.ts:66
+Defined in: [packages/wapi.js/src/components/list.ts:66](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/list.ts#L66)
 
 ***
 
@@ -60,7 +60,7 @@ Defined in: packages/wapi.js/src/components/list.ts:66
 
 > `readonly` **interactiveType**: [`List`](../enumerations/InteractiveMessageTypeEnum.mdx#list)
 
-Defined in: packages/wapi.js/src/components/interactive.ts:127
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
 `interactive.type`.
 
@@ -74,7 +74,7 @@ Defined in: packages/wapi.js/src/components/interactive.ts:127
 
 > `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
@@ -86,7 +86,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > `protected` **content**(): `object`
 
-Defined in: packages/wapi.js/src/components/interactive.ts:137
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -109,7 +109,7 @@ for example `{ text: { body: "hi" } }`.
 
 > `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-Defined in: packages/wapi.js/src/components/list.ts:112
+Defined in: [packages/wapi.js/src/components/list.ts:112](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/list.ts#L112)
 
 The `interactive` object, without `type`. Undefined keys are dropped.
 
@@ -127,7 +127,7 @@ The `interactive` object, without `type`. Undefined keys are dropped.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

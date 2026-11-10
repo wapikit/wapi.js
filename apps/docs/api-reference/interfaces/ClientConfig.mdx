@@ -2,7 +2,7 @@
 
 # Interface: ClientConfig
 
-Defined in: packages/wapi.js/src/client/client.ts:15
+Defined in: [packages/wapi.js/src/client/client.ts:15](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L15)
 
 Configuration of a [Client](../classes/Client.mdx). Only `accessToken` is required.
 
@@ -12,7 +12,7 @@ Configuration of a [Client](../classes/Client.mdx). Only `accessToken` is requir
 
 > **accessToken**: `string`
 
-Defined in: packages/wapi.js/src/client/client.ts:17
+Defined in: [packages/wapi.js/src/client/client.ts:17](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L17)
 
 System user or user access token with `whatsapp_business_messaging` (and `_management`) permissions.
 
@@ -22,7 +22,7 @@ System user or user access token with `whatsapp_business_messaging` (and `_manag
 
 > `optional` **apiVersion?**: `string`
 
-Defined in: packages/wapi.js/src/client/client.ts:29
+Defined in: [packages/wapi.js/src/client/client.ts:29](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L29)
 
 Graph API version. Default `"v20.0"`.
 
@@ -32,7 +32,7 @@ Graph API version. Default `"v20.0"`.
 
 > `optional` **businessAccountId?**: `string`
 
-Defined in: packages/wapi.js/src/client/client.ts:22
+Defined in: [packages/wapi.js/src/client/client.ts:22](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L22)
 
 WhatsApp Business Account id. Required for `templates`, `phoneNumbers`,
 `catalogs` and `business`.
@@ -43,7 +43,7 @@ WhatsApp Business Account id. Required for `templates`, `phoneNumbers`,
 
 > `optional` **fetch?**: [`FetchLike`](../type-aliases/FetchLike.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:33
+Defined in: [packages/wapi.js/src/client/client.ts:33](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L33)
 
 Custom `fetch` (proxies, instrumentation, tests). Default `globalThis.fetch`.
 
@@ -53,7 +53,7 @@ Custom `fetch` (proxies, instrumentation, tests). Default `globalThis.fetch`.
 
 > `optional` **graphBaseUrl?**: `string`
 
-Defined in: packages/wapi.js/src/client/client.ts:31
+Defined in: [packages/wapi.js/src/client/client.ts:31](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L31)
 
 Graph API origin. Default `"https://graph.facebook.com"`; point it at a mock server in tests.
 
@@ -63,7 +63,7 @@ Graph API origin. Default `"https://graph.facebook.com"`; point it at a mock ser
 
 > `optional` **logger?**: [`Logger`](Logger.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:37
+Defined in: [packages/wapi.js/src/client/client.ts:37](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L37)
 
 Where wapi.js logs. Default: warnings and errors to `console`. Pass `silentLogger` to mute.
 
@@ -73,7 +73,7 @@ Where wapi.js logs. Default: warnings and errors to `console`. Pass `silentLogge
 
 > `optional` **phoneNumberId?**: `string`
 
-Defined in: packages/wapi.js/src/client/client.ts:27
+Defined in: [packages/wapi.js/src/client/client.ts:27](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L27)
 
 Default business phone number id. Enables the `client.message` /
 `client.media` shortcuts; use `client.messaging(id)` for other numbers.
@@ -84,7 +84,7 @@ Default business phone number id. Enables the `client.message` /
 
 > `optional` **timeoutMs?**: `number`
 
-Defined in: packages/wapi.js/src/client/client.ts:35
+Defined in: [packages/wapi.js/src/client/client.ts:35](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L35)
 
 Per-request timeout in milliseconds. Default 60 000 (uploads: 300 000).
 
@@ -94,6 +94,6 @@ Per-request timeout in milliseconds. Default 60 000 (uploads: 300 000).
 
 > `optional` **webhook?**: [`WebhookOptions`](WebhookOptions.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:39
+Defined in: [packages/wapi.js/src/client/client.ts:39](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L39)
 
 Webhook settings. Required to receive messages.

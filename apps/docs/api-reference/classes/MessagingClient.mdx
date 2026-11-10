@@ -2,7 +2,7 @@
 
 # Class: MessagingClient
 
-Defined in: packages/wapi.js/src/client/messaging-client.ts:17
+Defined in: [packages/wapi.js/src/client/messaging-client.ts:17](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/messaging-client.ts#L17)
 
 Everything scoped to one business phone number: sending messages and
 managing media. Get one with `client.messaging(phoneNumberId)`; instances
@@ -16,7 +16,7 @@ Mirrors wapi.go's `MessagingClient`.
 
 > **new MessagingClient**(`requester`, `phoneNumberId`): `MessagingClient`
 
-Defined in: packages/wapi.js/src/client/messaging-client.ts:23
+Defined in: [packages/wapi.js/src/client/messaging-client.ts:23](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/messaging-client.ts#L23)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ The business phone number id this client sends from.
 
 > `readonly` **media**: [`MediaManager`](MediaManager.mdx)
 
-Defined in: packages/wapi.js/src/client/messaging-client.ts:21
+Defined in: [packages/wapi.js/src/client/messaging-client.ts:21](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/messaging-client.ts#L21)
 
 Upload, download, delete media.
 
@@ -50,7 +50,7 @@ Upload, download, delete media.
 
 > `readonly` **message**: [`MessageManager`](MessageManager.mdx)
 
-Defined in: packages/wapi.js/src/client/messaging-client.ts:19
+Defined in: [packages/wapi.js/src/client/messaging-client.ts:19](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/messaging-client.ts#L19)
 
 Send, reply, mark as read.
 
@@ -60,7 +60,7 @@ Send, reply, mark as read.
 
 > `readonly` **phoneNumberId**: `string`
 
-Defined in: packages/wapi.js/src/client/messaging-client.ts:26
+Defined in: [packages/wapi.js/src/client/messaging-client.ts:26](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/messaging-client.ts#L26)
 
 The business phone number id this client sends from.
 
@@ -70,7 +70,7 @@ The business phone number id this client sends from.
 
 > **markAsRead**(`messageId`, `options?`): `Promise`\<`void`\>
 
-Defined in: packages/wapi.js/src/client/messaging-client.ts:41
+Defined in: [packages/wapi.js/src/client/messaging-client.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/messaging-client.ts#L41)
 
 Shortcut for `message.markAsRead`.
 
@@ -94,7 +94,7 @@ Shortcut for `message.markAsRead`.
 
 > **send**(`params`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/client/messaging-client.ts:36
+Defined in: [packages/wapi.js/src/client/messaging-client.ts:36](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/messaging-client.ts#L36)
 
 Shortcut for `message.send`.
 

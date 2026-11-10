@@ -101,7 +101,7 @@ export interface ProductListMessageOptions {
 	/** Id of the catalog connected to the WhatsApp Business Account. */
 	catalogId: string
 	/** Text header, up to 60 characters. Required for product lists. */
-	headerText: string
+	header: string
 	/** Up to 1024 characters. */
 	bodyText: string
 	/** Up to 60 characters. */
@@ -117,7 +117,7 @@ export interface ProductListMessageOptions {
  * ```ts
  * new ProductListMessage({
  *   catalogId: "123",
- *   headerText: "Summer sale",
+ *   header: "Summer sale",
  *   bodyText: "Pick your favourites",
  *   sections: [{ title: "Shoes", productRetailerIds: ["sku-1", "sku-2"] }],
  * });
@@ -129,7 +129,7 @@ export class ProductListMessage extends InteractiveMessage<InteractiveMessageTyp
 	constructor(data: ProductListMessageOptions) {
 		super(InteractiveMessageTypeEnum.ProductList)
 		assertText(data.catalogId, 'catalogId')
-		toTextHeaderPayload(data.headerText)
+		toTextHeaderPayload(data.header, 'header')
 		toBodyPayload(data.bodyText)
 		toFooterPayload(data.footerText)
 		toProductSectionsPayload(data.sections)
@@ -145,7 +145,7 @@ export class ProductListMessage extends InteractiveMessage<InteractiveMessageTyp
 	protected interactive(): Record<string, unknown> {
 		const { data } = this
 		return {
-			header: toTextHeaderPayload(data.headerText),
+			header: toTextHeaderPayload(data.header, 'header'),
 			body: toBodyPayload(data.bodyText),
 			footer: toFooterPayload(data.footerText),
 			action: {

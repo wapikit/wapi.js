@@ -2,7 +2,7 @@
 
 # Class: AccountUpdateEvent
 
-Defined in: packages/wapi.js/src/events/business-events.ts:474
+Defined in: [packages/wapi.js/src/events/business-events.ts:474](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L474)
 
 The WhatsApp Business Account changed: verified, banned, restricted, partner added... (`account_update`).
 
@@ -16,7 +16,7 @@ The WhatsApp Business Account changed: verified, banned, restricted, partner add
 
 > **new AccountUpdateEvent**(`init`): `AccountUpdateEvent`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:491
+Defined in: [packages/wapi.js/src/events/business-events.ts:492](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L492)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:491
 
 > `readonly` `optional` **authInternationalRateEligibility?**: [`AccountUpdateAuthInternationalRateEligibility`](../interfaces/AccountUpdateAuthInternationalRateEligibility.mdx)
 
-Defined in: packages/wapi.js/src/events/business-events.ts:483
+Defined in: [packages/wapi.js/src/events/business-events.ts:484](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L484)
 
 `AUTH_INTL_PRICE_ELIGIBILITY_UPDATE` only.
 
@@ -48,7 +48,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:483
 
 > `readonly` `optional` **banInfo?**: [`AccountUpdateBanInfo`](../interfaces/AccountUpdateBanInfo.mdx)
 
-Defined in: packages/wapi.js/src/events/business-events.ts:485
+Defined in: [packages/wapi.js/src/events/business-events.ts:486](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L486)
 
 `DISABLED_UPDATE` only.
 
@@ -58,7 +58,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:485
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:344
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
 
 WhatsApp Business Account id (`entry.id`).
 
@@ -72,9 +72,19 @@ WhatsApp Business Account id (`entry.id`).
 
 > `readonly` `optional` **country?**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:478
+Defined in: [packages/wapi.js/src/events/business-events.ts:479](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L479)
 
 `BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE` only.
+
+***
+
+### displayPhoneNumber?
+
+> `readonly` `optional` **displayPhoneNumber?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:477](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L477)
+
+Display number the update is about (`phone_number`), when Meta includes one.
 
 ***
 
@@ -82,7 +92,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:478
 
 > `readonly` **event**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`AccountUpdateEventEnum`](../enumerations/AccountUpdateEventEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:475
+Defined in: [packages/wapi.js/src/events/business-events.ts:475](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L475)
 
 ***
 
@@ -90,17 +100,9 @@ Defined in: packages/wapi.js/src/events/business-events.ts:475
 
 > `readonly` `optional` **partnerClientCertificationInfo?**: [`AccountUpdatePartnerClientCertificationInfo`](../interfaces/AccountUpdatePartnerClientCertificationInfo.mdx)
 
-Defined in: packages/wapi.js/src/events/business-events.ts:489
+Defined in: [packages/wapi.js/src/events/business-events.ts:490](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L490)
 
 `PARTNER_CLIENT_CERTIFICATION_STATUS_UPDATE` only.
-
-***
-
-### phoneNumber?
-
-> `readonly` `optional` **phoneNumber?**: `string`
-
-Defined in: packages/wapi.js/src/events/business-events.ts:476
 
 ***
 
@@ -108,7 +110,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:476
 
 > `readonly` **raw**: `unknown`
 
-Defined in: packages/wapi.js/src/events/base.ts:346
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
 
 The untouched `change.value` from the webhook payload.
 
@@ -122,7 +124,7 @@ The untouched `change.value` from the webhook payload.
 
 > `readonly` `optional` **restrictionInfo?**: [`AccountUpdateRestrictionInfo`](../interfaces/AccountUpdateRestrictionInfo.mdx)[]
 
-Defined in: packages/wapi.js/src/events/business-events.ts:487
+Defined in: [packages/wapi.js/src/events/business-events.ts:488](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L488)
 
 `ACCOUNT_RESTRICTION` only. Meta sends a list; a single object is accepted too.
 
@@ -132,7 +134,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:487
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -146,7 +148,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > `readonly` `optional` **violationInfo?**: `object`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:481
+Defined in: [packages/wapi.js/src/events/business-events.ts:482](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L482)
 
 `ACCOUNT_VIOLATION` only.
 
@@ -160,7 +162,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:481
 
 > `readonly` `optional` **wabaInfo?**: [`AccountUpdateWabaInfo`](../interfaces/AccountUpdateWabaInfo.mdx)
 
-Defined in: packages/wapi.js/src/events/business-events.ts:479
+Defined in: [packages/wapi.js/src/events/business-events.ts:480](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L480)
 
 ## Accessors
 
@@ -170,7 +172,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:479
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 

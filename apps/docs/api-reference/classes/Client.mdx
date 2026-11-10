@@ -2,7 +2,7 @@
 
 # Class: Client
 
-Defined in: packages/wapi.js/src/client/client.ts:64
+Defined in: [packages/wapi.js/src/client/client.ts:64](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L64)
 
 Entry point of wapi.js.
 
@@ -36,7 +36,7 @@ await client.webhook.listen({ port: 8080 });
 
 > **new Client**(`config`): `Client`
 
-Defined in: packages/wapi.js/src/client/client.ts:78
+Defined in: [packages/wapi.js/src/client/client.ts:78](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L78)
 
 #### Parameters
 
@@ -58,7 +58,7 @@ Defined in: packages/wapi.js/src/client/client.ts:78
 
 > `readonly` **logger**: [`Logger`](../interfaces/Logger.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:69
+Defined in: [packages/wapi.js/src/client/client.ts:69](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L69)
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: packages/wapi.js/src/client/client.ts:69
 
 > `readonly` **requester**: [`RequestClient`](RequestClient.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:66
+Defined in: [packages/wapi.js/src/client/client.ts:66](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L66)
 
 Low level Graph API client, for endpoints wapi.js does not wrap yet.
 
@@ -76,7 +76,7 @@ Low level Graph API client, for endpoints wapi.js does not wrap yet.
 
 > `readonly` **webhook**: [`WebhookManager`](WebhookManager.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:68
+Defined in: [packages/wapi.js/src/client/client.ts:68](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L68)
 
 Receive webhooks: built-in server or handlers for your own server.
 
@@ -88,7 +88,7 @@ Receive webhooks: built-in server or handlers for your own server.
 
 > **get** **business**(): [`BusinessAccountManager`](BusinessAccountManager.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:152
+Defined in: [packages/wapi.js/src/client/client.ts:152](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L152)
 
 Business account details, analytics and webhook app subscriptions.
 
@@ -104,7 +104,7 @@ Business account details, analytics and webhook app subscriptions.
 
 > **get** **catalogs**(): [`CatalogManager`](CatalogManager.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:146
+Defined in: [packages/wapi.js/src/client/client.ts:146](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L146)
 
 Product catalogs connected to the business account.
 
@@ -120,7 +120,7 @@ Product catalogs connected to the business account.
 
 > **get** **media**(): [`MediaManager`](MediaManager.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:123
+Defined in: [packages/wapi.js/src/client/client.ts:123](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L123)
 
 Media manager of the default phone number (`config.phoneNumberId`).
 
@@ -136,7 +136,7 @@ Media manager of the default phone number (`config.phoneNumberId`).
 
 > **get** **message**(): [`MessageManager`](MessageManager.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:118
+Defined in: [packages/wapi.js/src/client/client.ts:118](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L118)
 
 Message manager of the default phone number (`config.phoneNumberId`).
 
@@ -152,7 +152,7 @@ Message manager of the default phone number (`config.phoneNumberId`).
 
 > **get** **phoneNumbers**(): [`PhoneNumberManager`](PhoneNumberManager.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:137
+Defined in: [packages/wapi.js/src/client/client.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L137)
 
 Phone numbers of the business account: registration, verification, QR codes, profile.
 
@@ -168,7 +168,7 @@ Phone numbers of the business account: registration, verification, QR codes, pro
 
 > **get** **templates**(): [`TemplateManager`](TemplateManager.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:128
+Defined in: [packages/wapi.js/src/client/client.ts:128](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L128)
 
 Message templates of the business account.
 
@@ -182,7 +182,7 @@ Message templates of the business account.
 
 > **close**(`timeoutMs?`): `Promise`\<`void`\>
 
-Defined in: packages/wapi.js/src/client/client.ts:184
+Defined in: [packages/wapi.js/src/client/client.ts:184](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L184)
 
 Stops the built-in webhook server, if running, waiting up to `timeoutMs` for in-flight requests.
 
@@ -202,7 +202,7 @@ Stops the built-in webhook server, if running, waiting up to `timeoutMs` for in-
 
 > `protected` **dispatch**\<`K`\>(`event`, `data`): `Promise`\<`void`\>
 
-Defined in: packages/wapi.js/src/internal/event-emitter.ts:69
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:69](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L69)
 
 Calls every listener of `event` with `data`. Resolves once every listener
 has settled. Never rejects: listener errors go to `onListenerError`.
@@ -237,7 +237,7 @@ has settled. Never rejects: listener errors go to `onListenerError`.
 
 > **initiate**(): `Promise`\<`void`\>
 
-Defined in: packages/wapi.js/src/client/client.ts:172
+Defined in: [packages/wapi.js/src/client/client.ts:172](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L172)
 
 Starts the built-in webhook server.
 
@@ -257,7 +257,7 @@ use) is emitted as `Error` instead of becoming an unhandled rejection.
 
 > **listenerCount**(`event`): `number`
 
-Defined in: packages/wapi.js/src/internal/event-emitter.ts:61
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:61](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L61)
 
 Number of listeners registered for `event`.
 
@@ -281,7 +281,7 @@ keyof MessageEventMap \| keyof StatusEventMap \| keyof BusinessEventMap \| keyof
 
 > **messaging**(`phoneNumberId?`): [`MessagingClient`](MessagingClient.mdx)
 
-Defined in: packages/wapi.js/src/client/client.ts:102
+Defined in: [packages/wapi.js/src/client/client.ts:102](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L102)
 
 Returns the (cached) messaging client of a business phone number. Without
 an argument, uses `config.phoneNumberId`.
@@ -302,7 +302,7 @@ an argument, uses `config.phoneNumberId`.
 
 > **off**\<`K`\>(`event`, `listener`): `void`
 
-Defined in: packages/wapi.js/src/internal/event-emitter.ts:50
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:50](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L50)
 
 Removes a listener previously passed to [on](#on).
 
@@ -336,7 +336,7 @@ Removes a listener previously passed to [on](#on).
 
 > **on**\<`K`\>(`event`, `listener`): () => `void`
 
-Defined in: packages/wapi.js/src/internal/event-emitter.ts:28
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:28](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L28)
 
 Registers a listener. Returns a function that removes it.
 
@@ -370,7 +370,7 @@ Registers a listener. Returns a function that removes it.
 
 > **once**\<`K`\>(`event`, `listener`): () => `void`
 
-Defined in: packages/wapi.js/src/internal/event-emitter.ts:41
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L41)
 
 Registers a listener that is removed after its first call.
 
@@ -404,7 +404,7 @@ Registers a listener that is removed after its first call.
 
 > `protected` **onListenerError**(`error`, `event`): `void`
 
-Defined in: packages/wapi.js/src/client/client.ts:207
+Defined in: [packages/wapi.js/src/client/client.ts:207](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L207)
 
 A listener threw or rejected: report it as an `Error` event (or log it).
 
@@ -432,7 +432,7 @@ keyof MessageEventMap \| keyof StatusEventMap \| keyof BusinessEventMap \| keyof
 
 > **removeAllListeners**(`event?`): `void`
 
-Defined in: packages/wapi.js/src/internal/event-emitter.ts:55
+Defined in: [packages/wapi.js/src/internal/event-emitter.ts:55](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/event-emitter.ts#L55)
 
 Removes every listener of `event`, or of every event when omitted.
 
@@ -456,7 +456,7 @@ keyof MessageEventMap \| keyof StatusEventMap \| keyof BusinessEventMap \| keyof
 
 > **setAccessToken**(`accessToken`): `void`
 
-Defined in: packages/wapi.js/src/client/client.ts:161
+Defined in: [packages/wapi.js/src/client/client.ts:161](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/client/client.ts#L161)
 
 Replaces the access token for every subsequent request (token rotation).
 

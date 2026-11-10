@@ -358,7 +358,7 @@ describe('dispatchBusinessChange: account', () => {
 			AccountUpdateEvent
 		)
 		expect(event.event).toBe('VERIFIED_ACCOUNT')
-		expect(event.phoneNumber).toBe('15550783881')
+		expect(event.displayPhoneNumber).toBe('15550783881')
 		expect(event.banInfo).toBeUndefined()
 	})
 

@@ -82,7 +82,7 @@ function assertNever(value: never, field: string): never {
 /** @internal Validates a header text (text only headers). */
 export function toTextHeaderPayload(
 	text: string,
-	field = 'headerText'
+	field = 'header'
 ): { type: 'text'; text: string } {
 	assertText(text, field, MessageLimits.headerText)
 	return { type: 'text', text }

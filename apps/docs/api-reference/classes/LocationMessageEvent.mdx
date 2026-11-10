@@ -2,7 +2,7 @@
 
 # Class: LocationMessageEvent
 
-Defined in: packages/wapi.js/src/events/message-events.ts:102
+Defined in: [packages/wapi.js/src/events/message-events.ts:102](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L102)
 
 A shared location.
 
@@ -16,7 +16,7 @@ A shared location.
 
 > **new LocationMessageEvent**(`init`): `LocationMessageEvent`
 
-Defined in: packages/wapi.js/src/events/message-events.ts:110
+Defined in: [packages/wapi.js/src/events/message-events.ts:110](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L110)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: packages/wapi.js/src/events/message-events.ts:110
 
 > `readonly` `optional` **address?**: `string`
 
-Defined in: packages/wapi.js/src/events/message-events.ts:106
+Defined in: [packages/wapi.js/src/events/message-events.ts:106](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L106)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: packages/wapi.js/src/events/message-events.ts:106
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:140
+Defined in: [packages/wapi.js/src/events/base.ts:140](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L140)
 
 WhatsApp Business Account the message was delivered to.
 
@@ -60,7 +60,7 @@ WhatsApp Business Account the message was delivered to.
 
 > `readonly` **context**: [`MessageContext`](../interfaces/MessageContext.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:143
+Defined in: [packages/wapi.js/src/events/base.ts:143](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L143)
 
 #### Inherited from
 
@@ -72,7 +72,7 @@ Defined in: packages/wapi.js/src/events/base.ts:143
 
 > `readonly` **from**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:124
+Defined in: [packages/wapi.js/src/events/base.ts:124](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L124)
 
 Sender wa_id / phone number. May be empty for BSUID-only senders.
 
@@ -86,7 +86,7 @@ Sender wa_id / phone number. May be empty for BSUID-only senders.
 
 > `readonly` `optional` **fromParentUserId?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:128
+Defined in: [packages/wapi.js/src/events/base.ts:128](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L128)
 
 Sender parent BSUID (`from_parent_user_id`).
 
@@ -100,7 +100,7 @@ Sender parent BSUID (`from_parent_user_id`).
 
 > `readonly` `optional` **fromUserId?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:126
+Defined in: [packages/wapi.js/src/events/base.ts:126](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L126)
 
 Sender BSUID (`from_user_id`), when Meta includes it.
 
@@ -114,7 +114,7 @@ Sender BSUID (`from_user_id`), when Meta includes it.
 
 > `readonly` `optional` **groupId?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:149
+Defined in: [packages/wapi.js/src/events/base.ts:149](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L149)
 
 Group id, for messages received in a group.
 
@@ -128,7 +128,7 @@ Group id, for messages received in a group.
 
 > `readonly` **isForwarded**: `boolean`
 
-Defined in: packages/wapi.js/src/events/base.ts:145
+Defined in: [packages/wapi.js/src/events/base.ts:145](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L145)
 
 Shortcut for `context.forwarded`.
 
@@ -142,15 +142,7 @@ Shortcut for `context.forwarded`.
 
 > `readonly` **latitude**: `number`
 
-Defined in: packages/wapi.js/src/events/message-events.ts:103
-
-***
-
-### location
-
-> `readonly` **location**: [`LocationMessage`](LocationMessage.mdx)
-
-Defined in: packages/wapi.js/src/events/message-events.ts:108
+Defined in: [packages/wapi.js/src/events/message-events.ts:103](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L103)
 
 ***
 
@@ -158,7 +150,15 @@ Defined in: packages/wapi.js/src/events/message-events.ts:108
 
 > `readonly` **longitude**: `number`
 
-Defined in: packages/wapi.js/src/events/message-events.ts:104
+Defined in: [packages/wapi.js/src/events/message-events.ts:104](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L104)
+
+***
+
+### message
+
+> `readonly` **message**: [`LocationMessage`](LocationMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/message-events.ts:108](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L108)
 
 ***
 
@@ -166,7 +166,7 @@ Defined in: packages/wapi.js/src/events/message-events.ts:104
 
 > `readonly` **messageId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:122
+Defined in: [packages/wapi.js/src/events/base.ts:122](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L122)
 
 WhatsApp message id (`wamid.*`).
 
@@ -180,7 +180,7 @@ WhatsApp message id (`wamid.*`).
 
 > `readonly` `optional` **name?**: `string`
 
-Defined in: packages/wapi.js/src/events/message-events.ts:105
+Defined in: [packages/wapi.js/src/events/message-events.ts:105](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L105)
 
 ***
 
@@ -188,7 +188,7 @@ Defined in: packages/wapi.js/src/events/message-events.ts:105
 
 > `readonly` `optional` **parentUserId?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:136
+Defined in: [packages/wapi.js/src/events/base.ts:136](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L136)
 
 Parent BSUID from the contacts block.
 
@@ -202,7 +202,7 @@ Parent BSUID from the contacts block.
 
 > `readonly` **phoneNumber**: [`BusinessPhoneNumber`](../interfaces/BusinessPhoneNumber.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:142
+Defined in: [packages/wapi.js/src/events/base.ts:142](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L142)
 
 Business phone number the message was delivered to.
 
@@ -216,7 +216,7 @@ Business phone number the message was delivered to.
 
 > `readonly` **raw**: [`InboundMessage`](../interfaces/InboundMessage.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:151
+Defined in: [packages/wapi.js/src/events/base.ts:151](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L151)
 
 The untouched message object from the webhook payload.
 
@@ -230,7 +230,7 @@ The untouched message object from the webhook payload.
 
 > `readonly` `optional` **referral?**: [`AdReferral`](../interfaces/AdReferral.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:147
+Defined in: [packages/wapi.js/src/events/base.ts:147](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L147)
 
 Click-to-WhatsApp ad referral, when the message came from an ad.
 
@@ -244,7 +244,7 @@ Click-to-WhatsApp ad referral, when the message came from an ad.
 
 > `readonly` `optional` **senderName?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:130
+Defined in: [packages/wapi.js/src/events/base.ts:130](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L130)
 
 Profile name of the sender.
 
@@ -258,7 +258,7 @@ Profile name of the sender.
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -272,7 +272,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > `readonly` `optional` **url?**: `string`
 
-Defined in: packages/wapi.js/src/events/message-events.ts:107
+Defined in: [packages/wapi.js/src/events/message-events.ts:107](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L107)
 
 ***
 
@@ -280,7 +280,7 @@ Defined in: packages/wapi.js/src/events/message-events.ts:107
 
 > `readonly` `optional` **userId?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:134
+Defined in: [packages/wapi.js/src/events/base.ts:134](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L134)
 
 BSUID from the contacts block.
 
@@ -294,7 +294,7 @@ BSUID from the contacts block.
 
 > `readonly` `optional` **username?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:138
+Defined in: [packages/wapi.js/src/events/base.ts:138](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L138)
 
 WhatsApp username of the sender, when Meta surfaces it.
 
@@ -308,7 +308,7 @@ WhatsApp username of the sender, when Meta surfaces it.
 
 > `readonly` `optional` **waId?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:132
+Defined in: [packages/wapi.js/src/events/base.ts:132](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L132)
 
 wa_id from the contacts block (equals `from` for phone-known contacts).
 
@@ -324,7 +324,7 @@ wa_id from the contacts block (equals `from` for phone-known contacts).
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 
@@ -344,7 +344,7 @@ Defined in: packages/wapi.js/src/events/base.ts:95
 
 > **get** **messaging**(): [`MessagingClient`](MessagingClient.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:183
+Defined in: [packages/wapi.js/src/events/base.ts:183](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L183)
 
 Messaging client of the business number that received this message.
 
@@ -362,7 +362,7 @@ Messaging client of the business number that received this message.
 
 > **markAsRead**(`options?`): `Promise`\<`void`\>
 
-Defined in: packages/wapi.js/src/events/base.ts:217
+Defined in: [packages/wapi.js/src/events/base.ts:217](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L217)
 
 Marks this message as read, optionally showing a typing indicator.
 
@@ -386,7 +386,7 @@ Marks this message as read, optionally showing a typing indicator.
 
 > **react**(`emoji`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/events/base.ts:209
+Defined in: [packages/wapi.js/src/events/base.ts:209](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L209)
 
 Reacts to this message. Pass `""` to remove a reaction.
 
@@ -410,7 +410,7 @@ Reacts to this message. Pass `""` to remove a reaction.
 
 > **reply**(`message`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/events/base.ts:200
+Defined in: [packages/wapi.js/src/events/base.ts:200](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L200)
 
 Sends `message` to the sender as a reply quoting this message.
 
@@ -434,7 +434,7 @@ Sends `message` to the sender as a reply quoting this message.
 
 > **send**(`message`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/events/base.ts:195
+Defined in: [packages/wapi.js/src/events/base.ts:195](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L195)
 
 Sends `message` to the sender, without quoting this message.
 

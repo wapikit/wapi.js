@@ -2,7 +2,7 @@
 
 # Class: CatalogManager
 
-Defined in: packages/wapi.js/src/managers/catalog.ts:235
+Defined in: [packages/wapi.js/src/managers/catalog.ts:235](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L235)
 
 Product catalogs connected to a WhatsApp Business Account, and their products.
 
@@ -12,7 +12,7 @@ Product catalogs connected to a WhatsApp Business Account, and their products.
 
 > **new CatalogManager**(`requester`, `businessAccountId`): `CatalogManager`
 
-Defined in: packages/wapi.js/src/managers/catalog.ts:236
+Defined in: [packages/wapi.js/src/managers/catalog.ts:236](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L236)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: packages/wapi.js/src/managers/catalog.ts:236
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/managers/catalog.ts:238
+Defined in: [packages/wapi.js/src/managers/catalog.ts:238](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L238)
 
 ## Methods
 
@@ -42,7 +42,7 @@ Defined in: packages/wapi.js/src/managers/catalog.ts:238
 
 > **getProduct**(`productId`, `options?`): `Promise`\<[`Product`](../interfaces/Product.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/catalog.ts:285
+Defined in: [packages/wapi.js/src/managers/catalog.ts:285](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L285)
 
 Fetches one product item. `GET /{product-id}`.
 
@@ -66,7 +66,7 @@ Fetches one product item. `GET /{product-id}`.
 
 > **list**(`params?`): `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`Catalog`](../interfaces/Catalog.mdx)\>\>
 
-Defined in: packages/wapi.js/src/managers/catalog.ts:242
+Defined in: [packages/wapi.js/src/managers/catalog.ts:242](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L242)
 
 Lists one page of catalogs (default 100). `GET /{waba-id}/product_catalogs`.
 
@@ -86,7 +86,7 @@ Lists one page of catalogs (default 100). `GET /{waba-id}/product_catalogs`.
 
 > **listAll**(`params?`): `Promise`\<[`Catalog`](../interfaces/Catalog.mdx)[]\>
 
-Defined in: packages/wapi.js/src/managers/catalog.ts:253
+Defined in: [packages/wapi.js/src/managers/catalog.ts:253](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L253)
 
 Lists every catalog (1000 per page by default). `GET /{waba-id}/product_catalogs`.
 
@@ -106,7 +106,7 @@ Lists every catalog (1000 per page by default). `GET /{waba-id}/product_catalogs
 
 > **listAllProducts**(`catalogId`, `params?`): `Promise`\<[`Product`](../interfaces/Product.mdx)[]\>
 
-Defined in: packages/wapi.js/src/managers/catalog.ts:273
+Defined in: [packages/wapi.js/src/managers/catalog.ts:273](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L273)
 
 Lists every product of a catalog (100 per page by default). `GET /{catalog-id}/products`.
 
@@ -130,7 +130,7 @@ Lists every product of a catalog (100 per page by default). `GET /{catalog-id}/p
 
 > **listProducts**(`catalogId`, `params?`): `Promise`\<[`ProductPage`](../interfaces/ProductPage.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/catalog.ts:261
+Defined in: [packages/wapi.js/src/managers/catalog.ts:261](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L261)
 
 Lists one page of a catalog's products (default 100). `GET /{catalog-id}/products`.
 

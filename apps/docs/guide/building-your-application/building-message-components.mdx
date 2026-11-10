@@ -116,13 +116,13 @@ new ButtonInteractionMessage({
 
 ## List
 
-A button that opens a menu with up to ten sections and ten rows in total. Row ids come back in the `ListInteraction` event. Lists only support a text header (`headerText`).
+A button that opens a menu with up to ten sections and ten rows in total. Row ids come back in the `ListInteraction` event. Lists only support a text header (`header` takes a string).
 
 ```ts
 import { ListInteractionMessage } from "@wapijs/wapi.js";
 
 new ListInteractionMessage({
-  headerText: "Help centre",
+  header: "Help centre",
   bodyText: "What do you need help with?",
   buttonText: "Choose a topic",
   footerText: "Support 9am to 6pm",
@@ -170,7 +170,7 @@ new ProductMessage({ catalogId: "1234", productRetailerId: "sku-1", bodyText: "B
 // Up to 30 products in up to 10 sections. A text header is required.
 new ProductListMessage({
   catalogId: "1234",
-  headerText: "Summer sale",
+  header: "Summer sale",
   bodyText: "Picked for you",
   sections: [
     { title: "Shoes", productRetailerIds: ["sku-1", "sku-2"] },

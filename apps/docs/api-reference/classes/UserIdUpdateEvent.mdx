@@ -2,7 +2,7 @@
 
 # Class: UserIdUpdateEvent
 
-Defined in: packages/wapi.js/src/events/business-events.ts:689
+Defined in: [packages/wapi.js/src/events/business-events.ts:690](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L690)
 
 A user's business-scoped user id (BSUID) changed (`user_id_update`).
 
@@ -16,7 +16,7 @@ A user's business-scoped user id (BSUID) changed (`user_id_update`).
 
 > **new UserIdUpdateEvent**(`init`): `UserIdUpdateEvent`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:698
+Defined in: [packages/wapi.js/src/events/business-events.ts:699](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L699)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:698
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:344
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
 
 WhatsApp Business Account id (`entry.id`).
 
@@ -52,7 +52,7 @@ WhatsApp Business Account id (`entry.id`).
 
 > `readonly` `optional` **newUserId?**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:693
+Defined in: [packages/wapi.js/src/events/business-events.ts:694](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L694)
 
 `new_user_id`, falling back to `user_id` when Meta only sends the current id.
 
@@ -62,7 +62,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:693
 
 > `readonly` `optional` **oldUserId?**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:691
+Defined in: [packages/wapi.js/src/events/business-events.ts:692](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L692)
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:691
 
 > `readonly` `optional` **parentUserId?**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:696
+Defined in: [packages/wapi.js/src/events/business-events.ts:697](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L697)
 
 ***
 
@@ -78,7 +78,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:696
 
 > `readonly` **raw**: `unknown`
 
-Defined in: packages/wapi.js/src/events/base.ts:346
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
 
 The untouched `change.value` from the webhook payload.
 
@@ -92,7 +92,7 @@ The untouched `change.value` from the webhook payload.
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -106,7 +106,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > `readonly` `optional` **userId?**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:695
+Defined in: [packages/wapi.js/src/events/business-events.ts:696](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L696)
 
 `user_id` exactly as sent.
 
@@ -116,7 +116,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:695
 
 > `readonly` `optional` **waId?**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:690
+Defined in: [packages/wapi.js/src/events/business-events.ts:691](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L691)
 
 ## Accessors
 
@@ -126,7 +126,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:690
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 

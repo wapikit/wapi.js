@@ -29,13 +29,13 @@ export class TextMessageEvent extends BaseMessageEvent {
 export class ImageMessageEvent extends MediaMessageEvent {
 	readonly caption?: string
 	/** The image as a component (by media id), ready to be forwarded. */
-	readonly image: ImageMessage
+	readonly message: ImageMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.image ?? { id: '' }
 		super(init, media)
 		this.caption = media.caption || undefined
-		this.image = new ImageMessage({ id: media.id, caption: this.caption })
+		this.message = new ImageMessage({ id: media.id, caption: this.caption })
 	}
 }
 
@@ -43,26 +43,26 @@ export class ImageMessageEvent extends MediaMessageEvent {
 export class AudioMessageEvent extends MediaMessageEvent {
 	/** True for a voice note recorded in WhatsApp. */
 	readonly isVoice: boolean
-	readonly audio: AudioMessage
+	readonly message: AudioMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.audio ?? { id: '' }
 		super(init, media)
 		this.isVoice = media.voice ?? false
-		this.audio = new AudioMessage({ id: media.id })
+		this.message = new AudioMessage({ id: media.id })
 	}
 }
 
 /** A video message. */
 export class VideoMessageEvent extends MediaMessageEvent {
 	readonly caption?: string
-	readonly video: VideoMessage
+	readonly message: VideoMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.video ?? { id: '' }
 		super(init, media)
 		this.caption = media.caption || undefined
-		this.video = new VideoMessage({ id: media.id, caption: this.caption })
+		this.message = new VideoMessage({ id: media.id, caption: this.caption })
 	}
 }
 
@@ -70,14 +70,14 @@ export class VideoMessageEvent extends MediaMessageEvent {
 export class DocumentMessageEvent extends MediaMessageEvent {
 	readonly caption?: string
 	readonly filename?: string
-	readonly document: DocumentMessage
+	readonly message: DocumentMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.document ?? { id: '' }
 		super(init, media)
 		this.caption = media.caption || undefined
 		this.filename = media.filename || undefined
-		this.document = new DocumentMessage({
+		this.message = new DocumentMessage({
 			id: media.id,
 			caption: this.caption,
 			filename: this.filename
@@ -88,13 +88,13 @@ export class DocumentMessageEvent extends MediaMessageEvent {
 /** A sticker message. */
 export class StickerMessageEvent extends MediaMessageEvent {
 	readonly isAnimated: boolean
-	readonly sticker: StickerMessage
+	readonly message: StickerMessage
 
 	constructor(init: MessageEventInit) {
 		const media = init.message.sticker ?? { id: '' }
 		super(init, media)
 		this.isAnimated = media.animated ?? false
-		this.sticker = new StickerMessage({ id: media.id })
+		this.message = new StickerMessage({ id: media.id })
 	}
 }
 
@@ -105,7 +105,7 @@ export class LocationMessageEvent extends BaseMessageEvent {
 	readonly name?: string
 	readonly address?: string
 	readonly url?: string
-	readonly location: LocationMessage
+	readonly message: LocationMessage
 
 	constructor(init: MessageEventInit) {
 		super(init)
@@ -115,7 +115,7 @@ export class LocationMessageEvent extends BaseMessageEvent {
 		this.name = location.name || undefined
 		this.address = location.address || undefined
 		this.url = location.url || undefined
-		this.location = new LocationMessage({
+		this.message = new LocationMessage({
 			latitude: this.latitude,
 			longitude: this.longitude,
 			name: this.name,

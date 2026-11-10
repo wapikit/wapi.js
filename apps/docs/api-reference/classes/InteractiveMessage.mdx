@@ -2,7 +2,7 @@
 
 # Abstract Class: InteractiveMessage\<I\>
 
-Defined in: packages/wapi.js/src/components/interactive.ts:123
+Defined in: [packages/wapi.js/src/components/interactive.ts:123](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L123)
 
 Base class of every `interactive` message. Subclasses implement
 [InteractiveMessage.interactive](#interactive), which returns the `interactive`
@@ -35,7 +35,7 @@ object without its `type`.
 
 > `protected` **new InteractiveMessage**\<`I`\>(`interactiveType`): `InteractiveMessage`\<`I`\>
 
-Defined in: packages/wapi.js/src/components/interactive.ts:129
+Defined in: [packages/wapi.js/src/components/interactive.ts:129](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L129)
 
 #### Parameters
 
@@ -57,7 +57,7 @@ Defined in: packages/wapi.js/src/components/interactive.ts:129
 
 > `readonly` **interactiveType**: `I`
 
-Defined in: packages/wapi.js/src/components/interactive.ts:127
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
 `interactive.type`.
 
@@ -67,7 +67,7 @@ Defined in: packages/wapi.js/src/components/interactive.ts:127
 
 > `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
@@ -79,7 +79,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > `protected` **content**(): `object`
 
-Defined in: packages/wapi.js/src/components/interactive.ts:137
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -102,7 +102,7 @@ for example `{ text: { body: "hi" } }`.
 
 > `abstract` `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-Defined in: packages/wapi.js/src/components/interactive.ts:135
+Defined in: [packages/wapi.js/src/components/interactive.ts:135](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L135)
 
 The `interactive` object, without `type`. Undefined keys are dropped.
 
@@ -116,7 +116,7 @@ The `interactive` object, without `type`. Undefined keys are dropped.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

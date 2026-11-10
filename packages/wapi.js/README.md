@@ -134,7 +134,7 @@ new CtaUrlMessage({ bodyText: "Your invoice is ready", displayText: "Open invoic
 
 new ProductListMessage({
   catalogId: "1234",
-  headerText: "Summer sale",
+  header: "Summer sale",
   bodyText: "Picked for you",
   sections: [{ title: "Shoes", productRetailerIds: ["sku-1", "sku-2"] }],
 });

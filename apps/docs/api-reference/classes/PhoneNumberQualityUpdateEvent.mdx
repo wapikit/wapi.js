@@ -2,7 +2,7 @@
 
 # Class: PhoneNumberQualityUpdateEvent
 
-Defined in: packages/wapi.js/src/events/business-events.ts:369
+Defined in: [packages/wapi.js/src/events/business-events.ts:369](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L369)
 
 A phone number's quality or messaging limit changed (`phone_number_quality_update`).
 
@@ -16,7 +16,7 @@ A phone number's quality or messaging limit changed (`phone_number_quality_updat
 
 > **new PhoneNumberQualityUpdateEvent**(`init`): `PhoneNumberQualityUpdateEvent`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:381
+Defined in: [packages/wapi.js/src/events/business-events.ts:381](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L381)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:381
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:344
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
 
 WhatsApp Business Account id (`entry.id`).
 
@@ -52,7 +52,7 @@ WhatsApp Business Account id (`entry.id`).
 
 > `readonly` `optional` **currentLimit?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberQualityUpdateCurrentLimitEnum`](../enumerations/PhoneNumberQualityUpdateCurrentLimitEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:373
+Defined in: [packages/wapi.js/src/events/business-events.ts:373](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L373)
 
 Messaging limit after the change.
 
@@ -62,7 +62,7 @@ Messaging limit after the change.
 
 > `readonly` **displayPhoneNumber**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:370
+Defined in: [packages/wapi.js/src/events/business-events.ts:370](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L370)
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:370
 
 > `readonly` **event**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberQualityUpdateEventEnum`](../enumerations/PhoneNumberQualityUpdateEventEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:371
+Defined in: [packages/wapi.js/src/events/business-events.ts:371](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L371)
 
 ***
 
@@ -78,7 +78,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:371
 
 > `readonly` `optional` **maxDailyConversationPerPhone?**: `number`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:379
+Defined in: [packages/wapi.js/src/events/business-events.ts:379](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L379)
 
 Legacy per-number conversation limit, when included.
 
@@ -88,7 +88,7 @@ Legacy per-number conversation limit, when included.
 
 > `readonly` `optional` **maxDailyConversationsPerBusiness?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberQualityUpdateCurrentLimitEnum`](../enumerations/PhoneNumberQualityUpdateCurrentLimitEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:377
+Defined in: [packages/wapi.js/src/events/business-events.ts:377](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L377)
 
 Business-level messaging limit, when included.
 
@@ -98,7 +98,7 @@ Business-level messaging limit, when included.
 
 > `readonly` `optional` **oldLimit?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberQualityUpdateCurrentLimitEnum`](../enumerations/PhoneNumberQualityUpdateCurrentLimitEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:375
+Defined in: [packages/wapi.js/src/events/business-events.ts:375](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L375)
 
 Messaging limit before the change, when included.
 
@@ -108,7 +108,7 @@ Messaging limit before the change, when included.
 
 > `readonly` **raw**: `unknown`
 
-Defined in: packages/wapi.js/src/events/base.ts:346
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
 
 The untouched `change.value` from the webhook payload.
 
@@ -122,7 +122,7 @@ The untouched `change.value` from the webhook payload.
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -138,7 +138,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 

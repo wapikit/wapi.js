@@ -125,7 +125,7 @@ describe('ButtonInteractionMessage', () => {
 describe('ListInteractionMessage', () => {
 	it('serialises header, body, footer, button and sections', () => {
 		const message = new ListInteractionMessage({
-			headerText: 'Menu',
+			header: 'Menu',
 			bodyText: 'Pick one',
 			footerText: 'Prices incl. VAT',
 			buttonText: 'View',
@@ -354,7 +354,7 @@ describe('ProductListMessage', () => {
 		expect(
 			new ProductListMessage({
 				catalogId: 'cat-1',
-				headerText: 'Summer sale',
+				header: 'Summer sale',
 				bodyText: 'Pick your favourites',
 				footerText: 'While stocks last',
 				sections: [
@@ -388,7 +388,7 @@ describe('ProductListMessage', () => {
 
 	it('limits products to 30 and sections to 10', () => {
 		const ids = (count: number) => Array.from({ length: count }, (_, i) => `sku-${i}`)
-		const base = { catalogId: 'c', headerText: 'h', bodyText: 'b' }
+		const base = { catalogId: 'c', header: 'h', bodyText: 'b' }
 		expect(
 			() =>
 				new ProductListMessage({

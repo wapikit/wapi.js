@@ -2,7 +2,7 @@
 
 # Class: MessageTemplateComponentsUpdateEvent
 
-Defined in: packages/wapi.js/src/events/business-events.ts:319
+Defined in: [packages/wapi.js/src/events/business-events.ts:319](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L319)
 
 A template's components were edited (`message_template_components_update`).
 
@@ -16,7 +16,7 @@ A template's components were edited (`message_template_components_update`).
 
 > **new MessageTemplateComponentsUpdateEvent**(`init`): `MessageTemplateComponentsUpdateEvent`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:329
+Defined in: [packages/wapi.js/src/events/business-events.ts:329](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L329)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:329
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:344
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
 
 WhatsApp Business Account id (`entry.id`).
 
@@ -52,7 +52,7 @@ WhatsApp Business Account id (`entry.id`).
 
 > `readonly` **messageTemplateButtons**: [`MessageTemplateComponentsUpdateButton`](../interfaces/MessageTemplateComponentsUpdateButton.mdx)[]
 
-Defined in: packages/wapi.js/src/events/business-events.ts:327
+Defined in: [packages/wapi.js/src/events/business-events.ts:327](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L327)
 
 URL and phone number buttons.
 
@@ -62,7 +62,7 @@ URL and phone number buttons.
 
 > `readonly` **messageTemplateElement**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:321
+Defined in: [packages/wapi.js/src/events/business-events.ts:321](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L321)
 
 Body text of the template.
 
@@ -72,7 +72,7 @@ Body text of the template.
 
 > `readonly` `optional` **messageTemplateFooter?**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:325
+Defined in: [packages/wapi.js/src/events/business-events.ts:325](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L325)
 
 Footer text, only for templates with a footer.
 
@@ -82,7 +82,7 @@ Footer text, only for templates with a footer.
 
 > `readonly` **messageTemplateId**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:221
+Defined in: [packages/wapi.js/src/events/business-events.ts:221](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L221)
 
 Template id, as a string (Meta sends a number that can exceed 2^53).
 
@@ -96,7 +96,7 @@ Template id, as a string (Meta sends a number that can exceed 2^53).
 
 > `readonly` **messageTemplateLanguage**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:224
+Defined in: [packages/wapi.js/src/events/business-events.ts:224](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L224)
 
 Language code, e.g. `"en_US"`.
 
@@ -110,7 +110,7 @@ Language code, e.g. `"en_US"`.
 
 > `readonly` **messageTemplateName**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:222
+Defined in: [packages/wapi.js/src/events/business-events.ts:222](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L222)
 
 #### Inherited from
 
@@ -122,7 +122,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:222
 
 > `readonly` `optional` **messageTemplateTitle?**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:323
+Defined in: [packages/wapi.js/src/events/business-events.ts:323](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L323)
 
 Header text, only for templates with a text header.
 
@@ -132,7 +132,7 @@ Header text, only for templates with a text header.
 
 > `readonly` **raw**: `unknown`
 
-Defined in: packages/wapi.js/src/events/base.ts:346
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
 
 The untouched `change.value` from the webhook payload.
 
@@ -146,7 +146,7 @@ The untouched `change.value` from the webhook payload.
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -162,7 +162,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 

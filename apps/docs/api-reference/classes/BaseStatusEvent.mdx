@@ -2,7 +2,7 @@
 
 # Abstract Class: BaseStatusEvent
 
-Defined in: packages/wapi.js/src/events/base.ts:275
+Defined in: [packages/wapi.js/src/events/base.ts:275](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L275)
 
 Base class of `sent`, `delivered`, `read`, `failed` and other status events.
 
@@ -25,7 +25,7 @@ Base class of `sent`, `delivered`, `read`, `failed` and other status events.
 
 > **new BaseStatusEvent**(`init`): `BaseStatusEvent`
 
-Defined in: packages/wapi.js/src/events/base.ts:299
+Defined in: [packages/wapi.js/src/events/base.ts:299](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L299)
 
 #### Parameters
 
@@ -47,7 +47,7 @@ Defined in: packages/wapi.js/src/events/base.ts:299
 
 > `readonly` `optional` **bizOpaqueCallbackData?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:286
+Defined in: [packages/wapi.js/src/events/base.ts:286](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L286)
 
 Value passed as `bizOpaqueCallbackData` when sending.
 
@@ -57,7 +57,7 @@ Value passed as `bizOpaqueCallbackData` when sending.
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:294
+Defined in: [packages/wapi.js/src/events/base.ts:294](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L294)
 
 ***
 
@@ -65,7 +65,7 @@ Defined in: packages/wapi.js/src/events/base.ts:294
 
 > `readonly` `optional` **conversation?**: [`StatusConversation`](../interfaces/StatusConversation.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:292
+Defined in: [packages/wapi.js/src/events/base.ts:292](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L292)
 
 ***
 
@@ -73,7 +73,7 @@ Defined in: packages/wapi.js/src/events/base.ts:292
 
 > `readonly` **errors**: [`WebhookEventError`](../interfaces/WebhookEventError.mdx)[]
 
-Defined in: packages/wapi.js/src/events/base.ts:293
+Defined in: [packages/wapi.js/src/events/base.ts:293](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L293)
 
 ***
 
@@ -81,7 +81,7 @@ Defined in: packages/wapi.js/src/events/base.ts:293
 
 > `readonly` **messageId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:277
+Defined in: [packages/wapi.js/src/events/base.ts:277](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L277)
 
 Id of the message this status is about (the id `send()` returned).
 
@@ -91,7 +91,7 @@ Id of the message this status is about (the id `send()` returned).
 
 > `readonly` **phoneNumber**: [`BusinessPhoneNumber`](../interfaces/BusinessPhoneNumber.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:295
+Defined in: [packages/wapi.js/src/events/base.ts:295](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L295)
 
 ***
 
@@ -99,7 +99,7 @@ Defined in: packages/wapi.js/src/events/base.ts:295
 
 > `readonly` `optional` **pricing?**: [`MessagePricing`](../interfaces/MessagePricing.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:291
+Defined in: [packages/wapi.js/src/events/base.ts:291](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L291)
 
 Pricing block, when Meta included one. It can repeat across
 sent/delivered/read for the same message: deduplicate by `messageId`.
@@ -110,7 +110,7 @@ sent/delivered/read for the same message: deduplicate by `messageId`.
 
 > `readonly` **raw**: [`InboundStatus`](../interfaces/InboundStatus.mdx)
 
-Defined in: packages/wapi.js/src/events/base.ts:297
+Defined in: [packages/wapi.js/src/events/base.ts:297](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L297)
 
 The untouched status object from the webhook payload.
 
@@ -120,7 +120,7 @@ The untouched status object from the webhook payload.
 
 > `readonly` **recipientId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:280
+Defined in: [packages/wapi.js/src/events/base.ts:280](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L280)
 
 wa_id the message was sent to.
 
@@ -130,7 +130,7 @@ wa_id the message was sent to.
 
 > `readonly` `optional` **recipientIdentityKeyHash?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:284
+Defined in: [packages/wapi.js/src/events/base.ts:284](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L284)
 
 ***
 
@@ -138,7 +138,7 @@ Defined in: packages/wapi.js/src/events/base.ts:284
 
 > `readonly` `optional` **recipientParentUserId?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:283
+Defined in: [packages/wapi.js/src/events/base.ts:283](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L283)
 
 ***
 
@@ -146,7 +146,7 @@ Defined in: packages/wapi.js/src/events/base.ts:283
 
 > `readonly` `optional` **recipientUserId?**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:282
+Defined in: [packages/wapi.js/src/events/base.ts:282](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L282)
 
 Recipient BSUID.
 
@@ -156,7 +156,7 @@ Recipient BSUID.
 
 > `readonly` **status**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:278
+Defined in: [packages/wapi.js/src/events/base.ts:278](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L278)
 
 ***
 
@@ -164,7 +164,7 @@ Defined in: packages/wapi.js/src/events/base.ts:278
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -180,7 +180,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 
@@ -200,7 +200,7 @@ Defined in: packages/wapi.js/src/events/base.ts:95
 
 > **get** **error**(): [`WebhookEventError`](../interfaces/WebhookEventError.mdx) \| `undefined`
 
-Defined in: packages/wapi.js/src/events/base.ts:336
+Defined in: [packages/wapi.js/src/events/base.ts:336](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L336)
 
 First error, if any. Failed / undelivered statuses always carry one.
 

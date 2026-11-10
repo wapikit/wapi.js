@@ -2,7 +2,7 @@
 
 # Class: ButtonInteractionMessage
 
-Defined in: packages/wapi.js/src/components/button.ts:47
+Defined in: [packages/wapi.js/src/components/button.ts:47](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/button.ts#L47)
 
 An interactive message with up to three quick reply buttons.
 
@@ -30,7 +30,7 @@ new ButtonInteractionMessage({
 
 > **new ButtonInteractionMessage**(`data`): `ButtonInteractionMessage`
 
-Defined in: packages/wapi.js/src/components/button.ts:50
+Defined in: [packages/wapi.js/src/components/button.ts:50](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/button.ts#L50)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: packages/wapi.js/src/components/button.ts:50
 
 > `readonly` **data**: `Readonly`\<[`ButtonInteractionMessageOptions`](../interfaces/ButtonInteractionMessageOptions.mdx)\>
 
-Defined in: packages/wapi.js/src/components/button.ts:48
+Defined in: [packages/wapi.js/src/components/button.ts:48](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/button.ts#L48)
 
 ***
 
@@ -60,7 +60,7 @@ Defined in: packages/wapi.js/src/components/button.ts:48
 
 > `readonly` **interactiveType**: [`Button`](../enumerations/InteractiveMessageTypeEnum.mdx#button)
 
-Defined in: packages/wapi.js/src/components/interactive.ts:127
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
 `interactive.type`.
 
@@ -74,7 +74,7 @@ Defined in: packages/wapi.js/src/components/interactive.ts:127
 
 > `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
@@ -86,7 +86,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > `protected` **content**(): `object`
 
-Defined in: packages/wapi.js/src/components/interactive.ts:137
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -109,7 +109,7 @@ for example `{ text: { body: "hi" } }`.
 
 > `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-Defined in: packages/wapi.js/src/components/button.ts:67
+Defined in: [packages/wapi.js/src/components/button.ts:67](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/button.ts#L67)
 
 The `interactive` object, without `type`. Undefined keys are dropped.
 
@@ -127,7 +127,7 @@ The `interactive` object, without `type`. Undefined keys are dropped.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

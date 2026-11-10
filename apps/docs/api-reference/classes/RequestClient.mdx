@@ -2,7 +2,7 @@
 
 # Class: RequestClient
 
-Defined in: packages/wapi.js/src/internal/request-client.ts:52
+Defined in: [packages/wapi.js/src/internal/request-client.ts:52](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L52)
 
 Low level Graph API client shared by every manager. Safe to share across
 messaging clients; it holds no per-request state.
@@ -13,7 +13,7 @@ messaging clients; it holds no per-request state.
 
 > **new RequestClient**(`options`): `RequestClient`
 
-Defined in: packages/wapi.js/src/internal/request-client.ts:59
+Defined in: [packages/wapi.js/src/internal/request-client.ts:59](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L59)
 
 #### Parameters
 
@@ -31,7 +31,7 @@ Defined in: packages/wapi.js/src/internal/request-client.ts:59
 
 > `readonly` **apiVersion**: `string`
 
-Defined in: packages/wapi.js/src/internal/request-client.ts:53
+Defined in: [packages/wapi.js/src/internal/request-client.ts:53](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L53)
 
 ***
 
@@ -39,7 +39,7 @@ Defined in: packages/wapi.js/src/internal/request-client.ts:53
 
 > `readonly` **baseUrl**: `string`
 
-Defined in: packages/wapi.js/src/internal/request-client.ts:54
+Defined in: [packages/wapi.js/src/internal/request-client.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L54)
 
 ## Methods
 
@@ -47,7 +47,7 @@ Defined in: packages/wapi.js/src/internal/request-client.ts:54
 
 > **buildUrl**(`path`, `query?`, `fields?`): `string`
 
-Defined in: packages/wapi.js/src/internal/request-client.ts:83
+Defined in: [packages/wapi.js/src/internal/request-client.ts:83](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L83)
 
 Builds the full request URL. Query keys are emitted in sorted order.
 
@@ -75,7 +75,7 @@ Builds the full request URL. Query keys are emitted in sorted order.
 
 > **download**(`url`, `options?`): `Promise`\<`Response`\>
 
-Defined in: packages/wapi.js/src/internal/request-client.ts:161
+Defined in: [packages/wapi.js/src/internal/request-client.ts:161](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L161)
 
 Downloads a binary resource (for example a media URL returned by
 `media.getUrl`). Media URLs require the access token as a bearer header.
@@ -106,7 +106,7 @@ Downloads a binary resource (for example a media URL returned by
 
 > **request**\<`T`\>(`request`): `Promise`\<`T`\>
 
-Defined in: packages/wapi.js/src/internal/request-client.ts:105
+Defined in: [packages/wapi.js/src/internal/request-client.ts:105](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L105)
 
 Sends a request and returns the parsed JSON body.
 
@@ -140,7 +140,7 @@ when the request could not be completed or timed out.
 
 > **setAccessToken**(`accessToken`): `void`
 
-Defined in: packages/wapi.js/src/internal/request-client.ts:77
+Defined in: [packages/wapi.js/src/internal/request-client.ts:77](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L77)
 
 Replaces the access token used for subsequent requests (token rotation).
 

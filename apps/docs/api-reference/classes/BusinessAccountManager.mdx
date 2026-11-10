@@ -2,7 +2,7 @@
 
 # Class: BusinessAccountManager
 
-Defined in: packages/wapi.js/src/managers/business.ts:240
+Defined in: [packages/wapi.js/src/managers/business.ts:240](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L240)
 
 WhatsApp Business Account level calls: account details, analytics and
 webhook app subscriptions.
@@ -13,7 +13,7 @@ webhook app subscriptions.
 
 > **new BusinessAccountManager**(`requester`, `businessAccountId`): `BusinessAccountManager`
 
-Defined in: packages/wapi.js/src/managers/business.ts:241
+Defined in: [packages/wapi.js/src/managers/business.ts:241](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L241)
 
 #### Parameters
 
@@ -35,7 +35,7 @@ Defined in: packages/wapi.js/src/managers/business.ts:241
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/managers/business.ts:243
+Defined in: [packages/wapi.js/src/managers/business.ts:243](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L243)
 
 ## Methods
 
@@ -43,7 +43,7 @@ Defined in: packages/wapi.js/src/managers/business.ts:243
 
 > **analytics**(`params`): `Promise`\<[`AnalyticsResponse`](../interfaces/AnalyticsResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/business.ts:260
+Defined in: [packages/wapi.js/src/managers/business.ts:260](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L260)
 
 Fetches sent/delivered message counts. `GET /{waba-id}?fields=analytics...`.
 List filters are rendered as Meta documents them: JSON arrays, `[]` when empty.
@@ -64,7 +64,7 @@ List filters are rendered as Meta documents them: JSON arrays, `[]` when empty.
 
 > **conversationAnalytics**(`params`): `Promise`\<[`ConversationAnalyticsResponse`](../interfaces/ConversationAnalyticsResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/business.ts:283
+Defined in: [packages/wapi.js/src/managers/business.ts:283](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L283)
 
 Fetches conversation counts and cost. `GET /{waba-id}?fields=conversation_analytics...`.
 Filter names and list rendering follow Meta's docs (wapi.go uses singular names and comma lists).
@@ -85,7 +85,7 @@ Filter names and list rendering follow Meta's docs (wapi.go uses singular names 
 
 > **fetch**(`options?`): `Promise`\<[`BusinessAccount`](../interfaces/BusinessAccount.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/business.ts:247
+Defined in: [packages/wapi.js/src/managers/business.ts:247](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L247)
 
 Fetches the WABA's details. `GET /{waba-id}?fields=...`.
 
@@ -105,7 +105,7 @@ Fetches the WABA's details. `GET /{waba-id}?fields=...`.
 
 > **listSubscribedApps**(`options?`): `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`SubscribedApp`](../interfaces/SubscribedApp.mdx)\>\>
 
-Defined in: packages/wapi.js/src/managers/business.ts:360
+Defined in: [packages/wapi.js/src/managers/business.ts:360](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L360)
 
 Lists apps subscribed to this WABA's webhooks. `GET /{waba-id}/subscribed_apps`.
 
@@ -125,7 +125,7 @@ Lists apps subscribed to this WABA's webhooks. `GET /{waba-id}/subscribed_apps`.
 
 > **pricingAnalytics**(`params`): `Promise`\<[`PricingAnalyticsResponse`](../interfaces/PricingAnalyticsResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/business.ts:312
+Defined in: [packages/wapi.js/src/managers/business.ts:312](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L312)
 
 Fetches per-message pricing volume and cost. `GET /{waba-id}?fields=pricing_analytics...`.
 Not in wapi.go; list filters use Meta's documented JSON array form and are
@@ -147,7 +147,7 @@ omitted when not given.
 
 > **subscribeApp**(`params?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/business.ts:341
+Defined in: [packages/wapi.js/src/managers/business.ts:341](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L341)
 
 Subscribes the calling app to this WABA's webhooks (required to receive
 messages). `POST /{waba-id}/subscribed_apps`.
@@ -168,7 +168,7 @@ messages). `POST /{waba-id}/subscribed_apps`.
 
 > **unsubscribeApp**(`options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/business.ts:369
+Defined in: [packages/wapi.js/src/managers/business.ts:369](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L369)
 
 Unsubscribes the calling app from this WABA's webhooks. `DELETE /{waba-id}/subscribed_apps`.
 

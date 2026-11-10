@@ -2,7 +2,7 @@
 
 # Class: LocationRequestMessage
 
-Defined in: packages/wapi.js/src/components/request.ts:18
+Defined in: [packages/wapi.js/src/components/request.ts:18](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L18)
 
 Asks the user to share their location, with a "Send location" button. The
 answer arrives as an inbound location message.
@@ -23,7 +23,7 @@ new LocationRequestMessage({ bodyText: "Where should we deliver?" });
 
 > **new LocationRequestMessage**(`data`): `LocationRequestMessage`
 
-Defined in: packages/wapi.js/src/components/request.ts:21
+Defined in: [packages/wapi.js/src/components/request.ts:21](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L21)
 
 #### Parameters
 
@@ -45,7 +45,7 @@ Defined in: packages/wapi.js/src/components/request.ts:21
 
 > `readonly` **data**: `Readonly`\<[`LocationRequestMessageOptions`](../interfaces/LocationRequestMessageOptions.mdx)\>
 
-Defined in: packages/wapi.js/src/components/request.ts:19
+Defined in: [packages/wapi.js/src/components/request.ts:19](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L19)
 
 ***
 
@@ -53,7 +53,7 @@ Defined in: packages/wapi.js/src/components/request.ts:19
 
 > `readonly` **interactiveType**: [`LocationRequest`](../enumerations/InteractiveMessageTypeEnum.mdx#locationrequest)
 
-Defined in: packages/wapi.js/src/components/interactive.ts:127
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
 `interactive.type`.
 
@@ -67,7 +67,7 @@ Defined in: packages/wapi.js/src/components/interactive.ts:127
 
 > `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
@@ -79,7 +79,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > `protected` **content**(): `object`
 
-Defined in: packages/wapi.js/src/components/interactive.ts:137
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -102,7 +102,7 @@ for example `{ text: { body: "hi" } }`.
 
 > `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-Defined in: packages/wapi.js/src/components/request.ts:27
+Defined in: [packages/wapi.js/src/components/request.ts:27](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L27)
 
 The `interactive` object, without `type`. Undefined keys are dropped.
 
@@ -120,7 +120,7 @@ The `interactive` object, without `type`. Undefined keys are dropped.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

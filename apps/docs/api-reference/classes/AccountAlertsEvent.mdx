@@ -2,7 +2,7 @@
 
 # Class: AccountAlertsEvent
 
-Defined in: packages/wapi.js/src/events/business-events.ts:566
+Defined in: [packages/wapi.js/src/events/business-events.ts:567](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L567)
 
 An alert was raised or resolved on the account or a phone number (`account_alerts`).
 
@@ -16,7 +16,7 @@ An alert was raised or resolved on the account or a phone number (`account_alert
 
 > **new AccountAlertsEvent**(`init`): `AccountAlertsEvent`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:576
+Defined in: [packages/wapi.js/src/events/business-events.ts:577](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L577)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:576
 
 > `readonly` **alertDescription**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:574
+Defined in: [packages/wapi.js/src/events/business-events.ts:575](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L575)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:574
 
 > `readonly` **alertSeverity**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`AccountAlertSeverityEnum`](../enumerations/AccountAlertSeverityEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:570
+Defined in: [packages/wapi.js/src/events/business-events.ts:571](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L571)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:570
 
 > `readonly` **alertStatus**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`AccountAlertStatusEnum`](../enumerations/AccountAlertStatusEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:571
+Defined in: [packages/wapi.js/src/events/business-events.ts:572](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L572)
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:571
 
 > `readonly` **alertType**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:573
+Defined in: [packages/wapi.js/src/events/business-events.ts:574](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L574)
 
 e.g. `OBA_APPROVED`, `INCREASED_CAPABILITIES_ELIGIBILITY_NEED_MORE_INFO`.
 
@@ -72,7 +72,7 @@ e.g. `OBA_APPROVED`, `INCREASED_CAPABILITIES_ELIGIBILITY_NEED_MORE_INFO`.
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:344
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
 
 WhatsApp Business Account id (`entry.id`).
 
@@ -86,7 +86,7 @@ WhatsApp Business Account id (`entry.id`).
 
 > `readonly` **entityId**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:569
+Defined in: [packages/wapi.js/src/events/business-events.ts:570](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L570)
 
 ***
 
@@ -94,7 +94,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:569
 
 > `readonly` **entityType**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:568
+Defined in: [packages/wapi.js/src/events/business-events.ts:569](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L569)
 
 `WABA`, `PHONE_NUMBER`, `BUSINESS`, ...
 
@@ -104,7 +104,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:568
 
 > `readonly` **raw**: `unknown`
 
-Defined in: packages/wapi.js/src/events/base.ts:346
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
 
 The untouched `change.value` from the webhook payload.
 
@@ -118,7 +118,7 @@ The untouched `change.value` from the webhook payload.
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -134,7 +134,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 

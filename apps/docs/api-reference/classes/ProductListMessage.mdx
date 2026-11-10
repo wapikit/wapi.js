@@ -2,7 +2,7 @@
 
 # Class: ProductListMessage
 
-Defined in: packages/wapi.js/src/components/commerce.ts:126
+Defined in: [packages/wapi.js/src/components/commerce.ts:126](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L126)
 
 Multi product message (MPM): shows up to 30 catalog products in sections.
 
@@ -11,7 +11,7 @@ Multi product message (MPM): shows up to 30 catalog products in sections.
 ```ts
 new ProductListMessage({
   catalogId: "123",
-  headerText: "Summer sale",
+  header: "Summer sale",
   bodyText: "Pick your favourites",
   sections: [{ title: "Shoes", productRetailerIds: ["sku-1", "sku-2"] }],
 });
@@ -27,7 +27,7 @@ new ProductListMessage({
 
 > **new ProductListMessage**(`data`): `ProductListMessage`
 
-Defined in: packages/wapi.js/src/components/commerce.ts:129
+Defined in: [packages/wapi.js/src/components/commerce.ts:129](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L129)
 
 #### Parameters
 
@@ -49,7 +49,7 @@ Defined in: packages/wapi.js/src/components/commerce.ts:129
 
 > `readonly` **data**: `Readonly`\<[`ProductListMessageOptions`](../interfaces/ProductListMessageOptions.mdx)\>
 
-Defined in: packages/wapi.js/src/components/commerce.ts:127
+Defined in: [packages/wapi.js/src/components/commerce.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L127)
 
 ***
 
@@ -57,7 +57,7 @@ Defined in: packages/wapi.js/src/components/commerce.ts:127
 
 > `readonly` **interactiveType**: [`ProductList`](../enumerations/InteractiveMessageTypeEnum.mdx#productlist)
 
-Defined in: packages/wapi.js/src/components/interactive.ts:127
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
 `interactive.type`.
 
@@ -71,7 +71,7 @@ Defined in: packages/wapi.js/src/components/interactive.ts:127
 
 > `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
@@ -83,7 +83,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > `protected` **content**(): `object`
 
-Defined in: packages/wapi.js/src/components/interactive.ts:137
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -106,7 +106,7 @@ for example `{ text: { body: "hi" } }`.
 
 > `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-Defined in: packages/wapi.js/src/components/commerce.ts:145
+Defined in: [packages/wapi.js/src/components/commerce.ts:145](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L145)
 
 The `interactive` object, without `type`. Undefined keys are dropped.
 
@@ -124,7 +124,7 @@ The `interactive` object, without `type`. Undefined keys are dropped.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

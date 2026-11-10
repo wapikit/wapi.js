@@ -2,7 +2,7 @@
 
 # Class: MessageTemplateCategoryUpdateEvent
 
-Defined in: packages/wapi.js/src/events/business-events.ts:292
+Defined in: [packages/wapi.js/src/events/business-events.ts:292](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L292)
 
 Meta changed (or will change) a template's category (`template_category_update`).
 
@@ -16,7 +16,7 @@ Meta changed (or will change) a template's category (`template_category_update`)
 
 > **new MessageTemplateCategoryUpdateEvent**(`init`): `MessageTemplateCategoryUpdateEvent`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:298
+Defined in: [packages/wapi.js/src/events/business-events.ts:298](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L298)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:298
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:344
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
 
 WhatsApp Business Account id (`entry.id`).
 
@@ -52,7 +52,7 @@ WhatsApp Business Account id (`entry.id`).
 
 > `readonly` `optional` **correctCategory?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateCategoryEnum`](../enumerations/MessageTemplateCategoryEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:296
+Defined in: [packages/wapi.js/src/events/business-events.ts:296](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L296)
 
 Category Meta determined to be correct, when included.
 
@@ -62,7 +62,7 @@ Category Meta determined to be correct, when included.
 
 > `readonly` **messageTemplateId**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:221
+Defined in: [packages/wapi.js/src/events/business-events.ts:221](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L221)
 
 Template id, as a string (Meta sends a number that can exceed 2^53).
 
@@ -76,7 +76,7 @@ Template id, as a string (Meta sends a number that can exceed 2^53).
 
 > `readonly` **messageTemplateLanguage**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:224
+Defined in: [packages/wapi.js/src/events/business-events.ts:224](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L224)
 
 Language code, e.g. `"en_US"`.
 
@@ -90,7 +90,7 @@ Language code, e.g. `"en_US"`.
 
 > `readonly` **messageTemplateName**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:222
+Defined in: [packages/wapi.js/src/events/business-events.ts:222](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L222)
 
 #### Inherited from
 
@@ -102,7 +102,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:222
 
 > `readonly` `optional` **newCategory?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateCategoryEnum`](../enumerations/MessageTemplateCategoryEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:294
+Defined in: [packages/wapi.js/src/events/business-events.ts:294](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L294)
 
 ***
 
@@ -110,7 +110,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:294
 
 > `readonly` `optional` **previousCategory?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateCategoryEnum`](../enumerations/MessageTemplateCategoryEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:293
+Defined in: [packages/wapi.js/src/events/business-events.ts:293](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L293)
 
 ***
 
@@ -118,7 +118,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:293
 
 > `readonly` **raw**: `unknown`
 
-Defined in: packages/wapi.js/src/events/base.ts:346
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
 
 The untouched `change.value` from the webhook payload.
 
@@ -132,7 +132,7 @@ The untouched `change.value` from the webhook payload.
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -148,7 +148,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 

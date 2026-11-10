@@ -68,7 +68,7 @@ Media events include a ready-made component that references the same media id:
 
 ```ts
 client.on("ImageMessage", async (event) => {
-  await client.message.send({ to: "<support agent>", message: event.image });
+  await client.message.send({ to: "<support agent>", message: event.message });
 });
 ```
 

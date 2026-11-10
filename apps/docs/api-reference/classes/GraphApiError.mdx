@@ -2,7 +2,7 @@
 
 # Class: GraphApiError
 
-Defined in: packages/wapi.js/src/errors.ts:41
+Defined in: [packages/wapi.js/src/errors.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L41)
 
 Thrown when the Graph API answers with a non-2xx status, or with a 2xx body
 that still carries an `error` envelope.
@@ -29,7 +29,7 @@ try {
 
 > **new GraphApiError**(`params`): `GraphApiError`
 
-Defined in: packages/wapi.js/src/errors.ts:57
+Defined in: [packages/wapi.js/src/errors.ts:57](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L57)
 
 #### Parameters
 
@@ -57,7 +57,7 @@ Defined in: packages/wapi.js/src/errors.ts:57
 
 > `readonly` **body**: `string`
 
-Defined in: packages/wapi.js/src/errors.ts:55
+Defined in: [packages/wapi.js/src/errors.ts:55](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L55)
 
 Raw response body. Never dropped, even when it is not JSON.
 
@@ -79,7 +79,7 @@ Defined in: node\_modules/.pnpm/typescript@5.4.5/node\_modules/typescript/lib/li
 
 > `readonly` `optional` **code?**: `number`
 
-Defined in: packages/wapi.js/src/errors.ts:45
+Defined in: [packages/wapi.js/src/errors.ts:45](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L45)
 
 `error.code` from Meta's envelope, when present.
 
@@ -89,7 +89,7 @@ Defined in: packages/wapi.js/src/errors.ts:45
 
 > `readonly` `optional` **details?**: `string`
 
-Defined in: packages/wapi.js/src/errors.ts:53
+Defined in: [packages/wapi.js/src/errors.ts:53](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L53)
 
 `error.error_data.details`, Meta's human readable explanation.
 
@@ -99,7 +99,7 @@ Defined in: packages/wapi.js/src/errors.ts:53
 
 > `readonly` `optional` **fbtraceId?**: `string`
 
-Defined in: packages/wapi.js/src/errors.ts:51
+Defined in: [packages/wapi.js/src/errors.ts:51](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L51)
 
 `error.fbtrace_id`, quote it when contacting Meta support.
 
@@ -145,7 +145,7 @@ Defined in: node\_modules/.pnpm/typescript@5.4.5/node\_modules/typescript/lib/li
 
 > `readonly` **status**: `number`
 
-Defined in: packages/wapi.js/src/errors.ts:43
+Defined in: [packages/wapi.js/src/errors.ts:43](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L43)
 
 HTTP status code of the response.
 
@@ -155,7 +155,7 @@ HTTP status code of the response.
 
 > `readonly` `optional` **subcode?**: `number`
 
-Defined in: packages/wapi.js/src/errors.ts:47
+Defined in: [packages/wapi.js/src/errors.ts:47](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L47)
 
 `error.error_subcode`, when present.
 
@@ -165,7 +165,7 @@ Defined in: packages/wapi.js/src/errors.ts:47
 
 > `readonly` `optional` **type?**: `string`
 
-Defined in: packages/wapi.js/src/errors.ts:49
+Defined in: [packages/wapi.js/src/errors.ts:49](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L49)
 
 `error.type` (for example `OAuthException`), when present.
 
@@ -221,7 +221,7 @@ Defined in: node\_modules/.pnpm/@types+node@20.12.12/node\_modules/@types/node/g
 
 > **get** **isRetryable**(): `boolean`
 
-Defined in: packages/wapi.js/src/errors.ts:79
+Defined in: [packages/wapi.js/src/errors.ts:79](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L79)
 
 Whether retrying may succeed: rate limits (HTTP 429 or Meta throttling
 codes 4, 17, 32, 80007, 130429, 131048, 131056) and transient server errors

@@ -2,7 +2,7 @@
 
 # Class: CatalogMessage
 
-Defined in: packages/wapi.js/src/components/commerce.ts:180
+Defined in: [packages/wapi.js/src/components/commerce.ts:180](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L180)
 
 Catalog message: a "View catalog" button that opens your full catalog.
 
@@ -22,7 +22,7 @@ new CatalogMessage({ bodyText: "Browse our catalog", thumbnailProductRetailerId:
 
 > **new CatalogMessage**(`data`): `CatalogMessage`
 
-Defined in: packages/wapi.js/src/components/commerce.ts:183
+Defined in: [packages/wapi.js/src/components/commerce.ts:183](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L183)
 
 #### Parameters
 
@@ -44,7 +44,7 @@ Defined in: packages/wapi.js/src/components/commerce.ts:183
 
 > `readonly` **data**: `Readonly`\<[`CatalogMessageOptions`](../interfaces/CatalogMessageOptions.mdx)\>
 
-Defined in: packages/wapi.js/src/components/commerce.ts:181
+Defined in: [packages/wapi.js/src/components/commerce.ts:181](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L181)
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: packages/wapi.js/src/components/commerce.ts:181
 
 > `readonly` **interactiveType**: [`Catalog`](../enumerations/InteractiveMessageTypeEnum.mdx#catalog)
 
-Defined in: packages/wapi.js/src/components/interactive.ts:127
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
 `interactive.type`.
 
@@ -66,7 +66,7 @@ Defined in: packages/wapi.js/src/components/interactive.ts:127
 
 > `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
@@ -78,7 +78,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > `protected` **content**(): `object`
 
-Defined in: packages/wapi.js/src/components/interactive.ts:137
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -101,7 +101,7 @@ for example `{ text: { body: "hi" } }`.
 
 > `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-Defined in: packages/wapi.js/src/components/commerce.ts:191
+Defined in: [packages/wapi.js/src/components/commerce.ts:191](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L191)
 
 The `interactive` object, without `type`. Undefined keys are dropped.
 
@@ -119,7 +119,7 @@ The `interactive` object, without `type`. Undefined keys are dropped.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

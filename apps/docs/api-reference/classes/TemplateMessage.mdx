@@ -2,7 +2,7 @@
 
 # Class: TemplateMessage
 
-Defined in: packages/wapi.js/src/components/template.ts:578
+Defined in: [packages/wapi.js/src/components/template.ts:578](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L578)
 
 A template message, the only kind of message that can start a conversation
 (or be sent outside the 24 hour customer service window).
@@ -39,7 +39,7 @@ new TemplateMessage({ name: "login_code", language: "en_US" }).addOtp("123456");
 
 > **new TemplateMessage**(`data`): `TemplateMessage`
 
-Defined in: packages/wapi.js/src/components/template.ts:586
+Defined in: [packages/wapi.js/src/components/template.ts:586](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L586)
 
 #### Parameters
 
@@ -61,7 +61,7 @@ Defined in: packages/wapi.js/src/components/template.ts:586
 
 > `readonly` **data**: `Readonly`\<[`TemplateMessageOptions`](../interfaces/TemplateMessageOptions.mdx)\>
 
-Defined in: packages/wapi.js/src/components/template.ts:579
+Defined in: [packages/wapi.js/src/components/template.ts:579](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L579)
 
 ***
 
@@ -69,7 +69,7 @@ Defined in: packages/wapi.js/src/components/template.ts:579
 
 > `readonly` **type**: [`Template`](../enumerations/MessageTypeEnum.mdx#template)
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
@@ -83,7 +83,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > **get** **components**(): [`TemplateComponentPayload`](../type-aliases/TemplateComponentPayload.mdx)[]
 
-Defined in: packages/wapi.js/src/components/template.ts:710
+Defined in: [packages/wapi.js/src/components/template.ts:710](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L710)
 
 The components that will be sent, in serialisation order.
 
@@ -97,7 +97,7 @@ The components that will be sent, in serialisation order.
 
 > **addBody**(`parameters`): `this`
 
-Defined in: packages/wapi.js/src/components/template.ts:606
+Defined in: [packages/wapi.js/src/components/template.ts:606](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L606)
 
 Sets the body parameters, in order (positional) or by `parameter_name` (named).
 
@@ -117,7 +117,7 @@ Sets the body parameters, in order (positional) or by `parameter_name` (named).
 
 > **addButton**(`button`): `this`
 
-Defined in: packages/wapi.js/src/components/template.ts:620
+Defined in: [packages/wapi.js/src/components/template.ts:620](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L620)
 
 Adds a button component built with [TemplateButton](TemplateButton.mdx). A template has
 at most 10 buttons, and each `index` may be used once.
@@ -138,7 +138,7 @@ at most 10 buttons, and each `index` may be used once.
 
 > **addCarousel**(`cards`): `this`
 
-Defined in: packages/wapi.js/src/components/template.ts:649
+Defined in: [packages/wapi.js/src/components/template.ts:649](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L649)
 
 Sets the cards of a media or product card carousel template (up to 10).
 
@@ -158,7 +158,7 @@ Sets the cards of a media or product card carousel template (up to 10).
 
 > **addComponent**(`component`): `this`
 
-Defined in: packages/wapi.js/src/components/template.ts:679
+Defined in: [packages/wapi.js/src/components/template.ts:679](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L679)
 
 Adds a raw Cloud API component (validated like the typed helpers).
 
@@ -178,7 +178,7 @@ Adds a raw Cloud API component (validated like the typed helpers).
 
 > **addHeader**(`parameter`): `this`
 
-Defined in: packages/wapi.js/src/components/template.ts:595
+Defined in: [packages/wapi.js/src/components/template.ts:595](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L595)
 
 Sets the header parameter (text, image, video, document, location or product).
 
@@ -198,7 +198,7 @@ Sets the header parameter (text, image, video, document, location or product).
 
 > **addLimitedTimeOffer**(`options`): `this`
 
-Defined in: packages/wapi.js/src/components/template.ts:631
+Defined in: [packages/wapi.js/src/components/template.ts:631](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L631)
 
 Sets the expiry of a limited-time offer template (Unix time in milliseconds).
 
@@ -220,7 +220,7 @@ Sets the expiry of a limited-time offer template (Unix time in milliseconds).
 
 > **addOtp**(`code`): `this`
 
-Defined in: packages/wapi.js/src/components/template.ts:672
+Defined in: [packages/wapi.js/src/components/template.ts:672](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L672)
 
 Fills an authentication template: sets the code as the body parameter
 and on the one-time password button (index 0).
@@ -241,7 +241,7 @@ and on the one-time password button (index 0).
 
 > `protected` **content**(): `object`
 
-Defined in: packages/wapi.js/src/components/template.ts:720
+Defined in: [packages/wapi.js/src/components/template.ts:720](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/template.ts#L720)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -264,7 +264,7 @@ for example `{ text: { body: "hi" } }`.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Template`](../enumerations/MessageTypeEnum.mdx#template)\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

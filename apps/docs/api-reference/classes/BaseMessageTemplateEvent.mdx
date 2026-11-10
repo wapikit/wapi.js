@@ -2,7 +2,7 @@
 
 # Abstract Class: BaseMessageTemplateEvent
 
-Defined in: packages/wapi.js/src/events/business-events.ts:219
+Defined in: [packages/wapi.js/src/events/business-events.ts:219](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L219)
 
 Base of the template webhooks: id, name and language of the template.
 
@@ -23,7 +23,7 @@ Base of the template webhooks: id, name and language of the template.
 
 > `protected` **new BaseMessageTemplateEvent**(`init`): `BaseMessageTemplateEvent`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:226
+Defined in: [packages/wapi.js/src/events/business-events.ts:226](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L226)
 
 #### Parameters
 
@@ -45,7 +45,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:226
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:344
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
 
 WhatsApp Business Account id (`entry.id`).
 
@@ -59,7 +59,7 @@ WhatsApp Business Account id (`entry.id`).
 
 > `readonly` **messageTemplateId**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:221
+Defined in: [packages/wapi.js/src/events/business-events.ts:221](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L221)
 
 Template id, as a string (Meta sends a number that can exceed 2^53).
 
@@ -69,7 +69,7 @@ Template id, as a string (Meta sends a number that can exceed 2^53).
 
 > `readonly` **messageTemplateLanguage**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:224
+Defined in: [packages/wapi.js/src/events/business-events.ts:224](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L224)
 
 Language code, e.g. `"en_US"`.
 
@@ -79,7 +79,7 @@ Language code, e.g. `"en_US"`.
 
 > `readonly` **messageTemplateName**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:222
+Defined in: [packages/wapi.js/src/events/business-events.ts:222](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L222)
 
 ***
 
@@ -87,7 +87,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:222
 
 > `readonly` **raw**: `unknown`
 
-Defined in: packages/wapi.js/src/events/base.ts:346
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
 
 The untouched `change.value` from the webhook payload.
 
@@ -101,7 +101,7 @@ The untouched `change.value` from the webhook payload.
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -117,7 +117,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 

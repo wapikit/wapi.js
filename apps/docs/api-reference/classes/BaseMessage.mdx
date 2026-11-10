@@ -2,7 +2,7 @@
 
 # Abstract Class: BaseMessage\<T\>
 
-Defined in: packages/wapi.js/src/components/base.ts:53
+Defined in: [packages/wapi.js/src/components/base.ts:53](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L53)
 
 Base class for every outgoing message component. Subclasses implement
 [BaseMessage.content](#content) (the type specific object); the envelope
@@ -34,7 +34,7 @@ Base class for every outgoing message component. Subclasses implement
 
 > `protected` **new BaseMessage**\<`T`\>(`type`): `BaseMessage`\<`T`\>
 
-Defined in: packages/wapi.js/src/components/base.ts:56
+Defined in: [packages/wapi.js/src/components/base.ts:56](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L56)
 
 #### Parameters
 
@@ -52,7 +52,7 @@ Defined in: packages/wapi.js/src/components/base.ts:56
 
 > `readonly` **type**: `T`
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 ## Methods
 
@@ -60,7 +60,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > `abstract` `protected` **content**(): `Record`\<`string`, `unknown`\>
 
-Defined in: packages/wapi.js/src/components/base.ts:64
+Defined in: [packages/wapi.js/src/components/base.ts:64](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L64)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -75,7 +75,7 @@ for example `{ text: { body: "hi" } }`.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<`T`\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

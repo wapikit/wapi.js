@@ -2,7 +2,7 @@
 
 # Class: TemplateManager
 
-Defined in: packages/wapi.js/src/managers/template.ts:288
+Defined in: [packages/wapi.js/src/managers/template.ts:288](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L288)
 
 Create, edit, delete, fetch and migrate message templates of a WhatsApp
 Business Account.
@@ -13,7 +13,7 @@ Business Account.
 
 > **new TemplateManager**(`requester`, `businessAccountId`): `TemplateManager`
 
-Defined in: packages/wapi.js/src/managers/template.ts:289
+Defined in: [packages/wapi.js/src/managers/template.ts:289](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L289)
 
 #### Parameters
 
@@ -35,7 +35,7 @@ Defined in: packages/wapi.js/src/managers/template.ts:289
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/managers/template.ts:291
+Defined in: [packages/wapi.js/src/managers/template.ts:291](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L291)
 
 ## Methods
 
@@ -43,7 +43,7 @@ Defined in: packages/wapi.js/src/managers/template.ts:291
 
 > **create**(`template`, `options?`): `Promise`\<[`TemplateCreateResponse`](../interfaces/TemplateCreateResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/template.ts:295
+Defined in: [packages/wapi.js/src/managers/template.ts:295](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L295)
 
 Submits a template for review. `POST /{waba-id}/message_templates`.
 
@@ -67,7 +67,7 @@ Submits a template for review. `POST /{waba-id}/message_templates`.
 
 > **delete**(`params`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/template.ts:332
+Defined in: [packages/wapi.js/src/managers/template.ts:332](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L332)
 
 Deletes a template by name (all languages), or one language version by
 name and id. `DELETE /{waba-id}/message_templates?name=..&hsm_id=..`.
@@ -88,7 +88,7 @@ name and id. `DELETE /{waba-id}/message_templates?name=..&hsm_id=..`.
 
 > **get**(`templateId`, `options?`): `Promise`\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/template.ts:347
+Defined in: [packages/wapi.js/src/managers/template.ts:347](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L347)
 
 Fetches one template. `GET /{template-id}`.
 
@@ -112,7 +112,7 @@ Fetches one template. `GET /{template-id}`.
 
 > **list**(`params?`): `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)\>\>
 
-Defined in: packages/wapi.js/src/managers/template.ts:361
+Defined in: [packages/wapi.js/src/managers/template.ts:361](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L361)
 
 Fetches one page of templates (default 100 per page), optionally filtered.
 `GET /{waba-id}/message_templates`.
@@ -133,7 +133,7 @@ Fetches one page of templates (default 100 per page), optionally filtered.
 
 > **listAll**(`params?`): `Promise`\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)[]\>
 
-Defined in: packages/wapi.js/src/managers/template.ts:384
+Defined in: [packages/wapi.js/src/managers/template.ts:384](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L384)
 
 Fetches every template across all pages (1000 per page by default, as in
 wapi.go). `GET /{waba-id}/message_templates`.
@@ -154,7 +154,7 @@ wapi.go). `GET /{waba-id}/message_templates`.
 
 > **migrate**(`params`): `Promise`\<[`TemplateMigrationResponse`](../interfaces/TemplateMigrationResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/template.ts:396
+Defined in: [packages/wapi.js/src/managers/template.ts:396](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L396)
 
 Copies templates from another WABA of the same business into this one.
 `POST /{waba-id}/migrate_message_templates`.
@@ -175,7 +175,7 @@ Copies templates from another WABA of the same business into this one.
 
 > **update**(`templateId`, `updates`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/template.ts:314
+Defined in: [packages/wapi.js/src/managers/template.ts:314](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L314)
 
 Edits a template's components, category or TTL. `POST /{template-id}`.
 

@@ -2,7 +2,7 @@
 
 # Class: WebhookManager
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:41
+Defined in: [packages/wapi.js/src/webhook/manager.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L41)
 
 Receives WhatsApp webhooks. Either let wapi.js run a small server
 (`listen()`), or mount a handler in the server you already have:
@@ -17,7 +17,7 @@ Receives WhatsApp webhooks. Either let wapi.js run a small server
 
 > **new WebhookManager**(`init`): `WebhookManager`
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:48
+Defined in: [packages/wapi.js/src/webhook/manager.ts:48](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L48)
 
 #### Parameters
 
@@ -37,7 +37,7 @@ Defined in: packages/wapi.js/src/webhook/manager.ts:48
 
 > **get** **fetchHandler**(): [`FetchWebhookHandler`](../type-aliases/FetchWebhookHandler.mdx)
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:85
+Defined in: [packages/wapi.js/src/webhook/manager.ts:85](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L85)
 
 `(request: Request, ctx?) => Promise<Response>` for Fetch API runtimes.
 
@@ -53,7 +53,7 @@ Defined in: packages/wapi.js/src/webhook/manager.ts:85
 
 > **get** **listening**(): `boolean`
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:97
+Defined in: [packages/wapi.js/src/webhook/manager.ts:97](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L97)
 
 True while the built-in server is listening.
 
@@ -69,7 +69,7 @@ True while the built-in server is listening.
 
 > **get** **nodeHandler**(): [`NodeWebhookHandler`](../type-aliases/NodeWebhookHandler.mdx)
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:91
+Defined in: [packages/wapi.js/src/webhook/manager.ts:91](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L91)
 
 `(req, res) => Promise<void>` for `node:http`, Express, Fastify, Koa.
 
@@ -83,7 +83,7 @@ Defined in: packages/wapi.js/src/webhook/manager.ts:91
 
 > **close**(`timeoutMs?`): `Promise`\<`void`\>
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:126
+Defined in: [packages/wapi.js/src/webhook/manager.ts:126](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L126)
 
 Stops the built-in server, waiting up to `timeoutMs` for in-flight requests.
 
@@ -103,7 +103,7 @@ Stops the built-in server, waiting up to `timeoutMs` for in-flight requests.
 
 > **dispatch**(`payload`): `Promise`\<`void`\>
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:80
+Defined in: [packages/wapi.js/src/webhook/manager.ts:80](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L80)
 
 Dispatches a payload you already authenticated and parsed (for example
 after pulling it from a queue). Resolves when every listener has settled.
@@ -124,7 +124,7 @@ after pulling it from a queue). Resolves when every listener has settled.
 
 > **handle**(`request`): `Promise`\<[`WebhookResponse`](../interfaces/WebhookResponse.mdx)\>
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:72
+Defined in: [packages/wapi.js/src/webhook/manager.ts:72](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L72)
 
 Handles a framework independent request. Never throws.
 
@@ -144,7 +144,7 @@ Handles a framework independent request. Never throws.
 
 > **listen**(`options?`): `Promise`\<[`WebhookServerAddress`](../interfaces/WebhookServerAddress.mdx)\>
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:105
+Defined in: [packages/wapi.js/src/webhook/manager.ts:105](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L105)
 
 Starts the built-in `node:http` server and emits `Ready`. Options override
 the ones from the client config.

@@ -2,7 +2,7 @@
 
 # Class: ContactRequestMessage
 
-Defined in: packages/wapi.js/src/components/request.ts:51
+Defined in: [packages/wapi.js/src/components/request.ts:51](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L51)
 
 Asks the user to share their contact info (phone number) with the business.
 The button label is controlled by WhatsApp; only the body is yours. The
@@ -24,7 +24,7 @@ new ContactRequestMessage({ bodyText: "Share your number so we can call you back
 
 > **new ContactRequestMessage**(`data`): `ContactRequestMessage`
 
-Defined in: packages/wapi.js/src/components/request.ts:54
+Defined in: [packages/wapi.js/src/components/request.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L54)
 
 #### Parameters
 
@@ -46,7 +46,7 @@ Defined in: packages/wapi.js/src/components/request.ts:54
 
 > `readonly` **data**: `Readonly`\<[`ContactRequestMessageOptions`](../interfaces/ContactRequestMessageOptions.mdx)\>
 
-Defined in: packages/wapi.js/src/components/request.ts:52
+Defined in: [packages/wapi.js/src/components/request.ts:52](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L52)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: packages/wapi.js/src/components/request.ts:52
 
 > `readonly` **interactiveType**: [`ContactRequest`](../enumerations/InteractiveMessageTypeEnum.mdx#contactrequest)
 
-Defined in: packages/wapi.js/src/components/interactive.ts:127
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
 `interactive.type`.
 
@@ -68,7 +68,7 @@ Defined in: packages/wapi.js/src/components/interactive.ts:127
 
 > `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-Defined in: packages/wapi.js/src/components/base.ts:54
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
@@ -80,7 +80,7 @@ Defined in: packages/wapi.js/src/components/base.ts:54
 
 > `protected` **content**(): `object`
 
-Defined in: packages/wapi.js/src/components/interactive.ts:137
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
 Returns the type specific part of the payload, keyed by the message type,
 for example `{ text: { body: "hi" } }`.
@@ -103,7 +103,7 @@ for example `{ text: { body: "hi" } }`.
 
 > `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-Defined in: packages/wapi.js/src/components/request.ts:60
+Defined in: [packages/wapi.js/src/components/request.ts:60](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L60)
 
 The `interactive` object, without `type`. Undefined keys are dropped.
 
@@ -121,7 +121,7 @@ The `interactive` object, without `type`. Undefined keys are dropped.
 
 > **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Defined in: packages/wapi.js/src/components/base.ts:71
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
 
 Builds the Cloud API payload for this message.
 

@@ -2,7 +2,7 @@
 
 # Class: MediaManager
 
-Defined in: packages/wapi.js/src/managers/media.ts:57
+Defined in: [packages/wapi.js/src/managers/media.ts:57](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/media.ts#L57)
 
 Upload, inspect, download and delete media. Obtain it through
 `client.messaging(phoneNumberId).media`.
@@ -13,7 +13,7 @@ Upload, inspect, download and delete media. Obtain it through
 
 > **new MediaManager**(`requester`, `phoneNumberId`): `MediaManager`
 
-Defined in: packages/wapi.js/src/managers/media.ts:58
+Defined in: [packages/wapi.js/src/managers/media.ts:58](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/media.ts#L58)
 
 #### Parameters
 
@@ -37,7 +37,7 @@ Phone number id uploads are made against.
 
 > `readonly` **phoneNumberId**: `string`
 
-Defined in: packages/wapi.js/src/managers/media.ts:61
+Defined in: [packages/wapi.js/src/managers/media.ts:61](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/media.ts#L61)
 
 Phone number id uploads are made against.
 
@@ -47,7 +47,7 @@ Phone number id uploads are made against.
 
 > **delete**(`mediaId`, `options?`): `Promise`\<`void`\>
 
-Defined in: packages/wapi.js/src/managers/media.ts:129
+Defined in: [packages/wapi.js/src/managers/media.ts:129](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/media.ts#L129)
 
 Deletes an uploaded media file.
 
@@ -73,7 +73,7 @@ Deletes an uploaded media file.
 
 > **download**(`mediaIdOrUrl`, `options?`): `Promise`\<\{ `data`: `ArrayBuffer`; `mimeType`: `string`; \}\>
 
-Defined in: packages/wapi.js/src/managers/media.ts:114
+Defined in: [packages/wapi.js/src/managers/media.ts:114](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/media.ts#L114)
 
 Downloads a media file. Accepts a media id or a URL returned by
 [getUrl](#geturl), and returns its bytes and MIME type.
@@ -104,7 +104,7 @@ Downloads a media file. Accepts a media id or a URL returned by
 
 > **getMetadata**(`mediaId`, `options?`): `Promise`\<[`MediaMetadata`](../interfaces/MediaMetadata.mdx)\>
 
-Defined in: packages/wapi.js/src/managers/media.ts:91
+Defined in: [packages/wapi.js/src/managers/media.ts:91](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/media.ts#L91)
 
 Returns the metadata (including a short lived download URL) of a media id.
 
@@ -130,7 +130,7 @@ Returns the metadata (including a short lived download URL) of a media id.
 
 > **getUrl**(`mediaId`, `options?`): `Promise`\<`string`\>
 
-Defined in: packages/wapi.js/src/managers/media.ts:102
+Defined in: [packages/wapi.js/src/managers/media.ts:102](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/media.ts#L102)
 
 Returns the short lived download URL of a media id.
 
@@ -156,7 +156,7 @@ Returns the short lived download URL of a media id.
 
 > **upload**(`params`): `Promise`\<\{ `id`: `string`; \}\>
 
-Defined in: packages/wapi.js/src/managers/media.ts:67
+Defined in: [packages/wapi.js/src/managers/media.ts:67](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/media.ts#L67)
 
 Uploads a file and returns its media id, usable in media messages for 30 days.
 

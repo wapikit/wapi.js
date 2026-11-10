@@ -2,7 +2,7 @@
 
 # Interface: WebhookOptions
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:15
+Defined in: [packages/wapi.js/src/webhook/manager.ts:15](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L15)
 
 Webhook settings of the client.
 
@@ -16,7 +16,7 @@ Webhook settings of the client.
 
 > `optional` **appSecret?**: `string`
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:22
+Defined in: [packages/wapi.js/src/webhook/manager.ts:22](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L22)
 
 Your Meta app secret. When set, every POST must carry a valid
 `X-Hub-Signature-256` or it is rejected with 401. Strongly recommended.
@@ -27,7 +27,7 @@ Your Meta app secret. When set, every POST must carry a valid
 
 > `optional` **host?**: `string`
 
-Defined in: packages/wapi.js/src/webhook/server.ts:13
+Defined in: [packages/wapi.js/src/webhook/server.ts:13](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L13)
 
 Interface to bind. Defaults to all interfaces (as 0.1.x did) so it works
 in containers; use `"127.0.0.1"` behind a reverse proxy or tunnel.
@@ -42,7 +42,7 @@ in containers; use `"127.0.0.1"` behind a reverse proxy or tunnel.
 
 > `optional` **maxBodyBytes?**: `number`
 
-Defined in: packages/wapi.js/src/webhook/server.ts:17
+Defined in: [packages/wapi.js/src/webhook/server.ts:17](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L17)
 
 Maximum accepted body size in bytes. Default 3 MB.
 
@@ -56,7 +56,7 @@ Maximum accepted body size in bytes. Default 3 MB.
 
 > `optional` **path?**: `string`
 
-Defined in: packages/wapi.js/src/webhook/server.ts:15
+Defined in: [packages/wapi.js/src/webhook/server.ts:15](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L15)
 
 Path Meta calls. Default `"/webhook"`.
 
@@ -70,7 +70,7 @@ Path Meta calls. Default `"/webhook"`.
 
 > `optional` **port?**: `number`
 
-Defined in: packages/wapi.js/src/webhook/server.ts:8
+Defined in: [packages/wapi.js/src/webhook/server.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L8)
 
 Port to listen on. `0` picks a free port. Default `8080`.
 
@@ -84,6 +84,6 @@ Port to listen on. `0` picks a free port. Default `8080`.
 
 > **verifyToken**: `string`
 
-Defined in: packages/wapi.js/src/webhook/manager.ts:17
+Defined in: [packages/wapi.js/src/webhook/manager.ts:17](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L17)
 
 The verify token you entered in the Meta app dashboard.

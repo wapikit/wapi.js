@@ -473,7 +473,8 @@ export interface AccountUpdatePartnerClientCertificationInfo {
 /** The WhatsApp Business Account changed: verified, banned, restricted, partner added... (`account_update`). */
 export class AccountUpdateEvent extends BaseBusinessAccountEvent {
 	readonly event: OpenEnum<AccountUpdateEventEnum>
-	readonly phoneNumber?: string
+	/** Display number the update is about (`phone_number`), when Meta includes one. */
+	readonly displayPhoneNumber?: string
 	/** `BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE` only. */
 	readonly country?: string
 	readonly wabaInfo?: AccountUpdateWabaInfo
@@ -492,7 +493,7 @@ export class AccountUpdateEvent extends BaseBusinessAccountEvent {
 		super(init)
 		const value = obj(init.raw)
 		this.event = str(value.event) ?? ''
-		this.phoneNumber = str(value.phone_number)
+		this.displayPhoneNumber = str(value.phone_number)
 		this.country = str(value.country)
 
 		const wabaInfo = optObj(value.waba_info)

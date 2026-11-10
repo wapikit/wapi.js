@@ -41,7 +41,7 @@ export interface ListInteractionMessageOptions {
 	/** One to ten sections, with at most ten rows in total. */
 	sections: ListSection[]
 	/** Text header, up to 60 characters (list messages only support text headers). */
-	headerText?: string
+	header?: string
 	/** Up to 60 characters. */
 	footerText?: string
 }
@@ -52,7 +52,7 @@ export interface ListInteractionMessageOptions {
  * @example
  * ```ts
  * new ListInteractionMessage({
- *   headerText: "Our menu",
+ *   header: "Our menu",
  *   bodyText: "What would you like?",
  *   buttonText: "View menu",
  *   sections: [
@@ -69,7 +69,7 @@ export class ListInteractionMessage extends InteractiveMessage<InteractiveMessag
 		super(InteractiveMessageTypeEnum.List)
 		toBodyPayload(data.bodyText, MessageLimits.listBody)
 		toFooterPayload(data.footerText)
-		if (data.headerText !== undefined) toTextHeaderPayload(data.headerText)
+		if (data.header !== undefined) toTextHeaderPayload(data.header, 'header')
 		assertText(data.buttonText, 'buttonText', MessageLimits.listButtonText)
 		assertCount(data.sections, 'sections', 1, MessageLimits.listSections)
 
@@ -113,7 +113,7 @@ export class ListInteractionMessage extends InteractiveMessage<InteractiveMessag
 		const { data } = this
 		return {
 			header:
-				data.headerText === undefined ? undefined : toTextHeaderPayload(data.headerText),
+				data.header === undefined ? undefined : toTextHeaderPayload(data.header, 'header'),
 			body: toBodyPayload(data.bodyText, MessageLimits.listBody),
 			footer: toFooterPayload(data.footerText),
 			action: {

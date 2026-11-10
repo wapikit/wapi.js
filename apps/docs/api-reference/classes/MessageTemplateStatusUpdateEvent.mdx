@@ -2,7 +2,7 @@
 
 # Class: MessageTemplateStatusUpdateEvent
 
-Defined in: packages/wapi.js/src/events/business-events.ts:236
+Defined in: [packages/wapi.js/src/events/business-events.ts:236](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L236)
 
 A template was approved, rejected, paused, disabled... (`message_template_status_update`).
 
@@ -16,7 +16,7 @@ A template was approved, rejected, paused, disabled... (`message_template_status
 
 > **new MessageTemplateStatusUpdateEvent**(`init`): `MessageTemplateStatusUpdateEvent`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:253
+Defined in: [packages/wapi.js/src/events/business-events.ts:253](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L253)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:253
 
 > `readonly` **businessAccountId**: `string`
 
-Defined in: packages/wapi.js/src/events/base.ts:344
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
 
 WhatsApp Business Account id (`entry.id`).
 
@@ -52,7 +52,7 @@ WhatsApp Business Account id (`entry.id`).
 
 > `readonly` `optional` **disableInfo?**: `object`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:244
+Defined in: [packages/wapi.js/src/events/business-events.ts:244](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L244)
 
 Present when the template is scheduled to be disabled.
 
@@ -68,7 +68,7 @@ Unix seconds when Meta sends a number, otherwise Meta's date string.
 
 > `readonly` **event**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateStatusUpdateEventEnum`](../enumerations/MessageTemplateStatusUpdateEventEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:238
+Defined in: [packages/wapi.js/src/events/business-events.ts:238](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L238)
 
 New status of the template.
 
@@ -78,7 +78,7 @@ New status of the template.
 
 > `readonly` `optional` **messageTemplateCategory?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateCategoryEnum`](../enumerations/MessageTemplateCategoryEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:242
+Defined in: [packages/wapi.js/src/events/business-events.ts:242](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L242)
 
 Category of the template, when Meta includes it.
 
@@ -88,7 +88,7 @@ Category of the template, when Meta includes it.
 
 > `readonly` **messageTemplateId**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:221
+Defined in: [packages/wapi.js/src/events/business-events.ts:221](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L221)
 
 Template id, as a string (Meta sends a number that can exceed 2^53).
 
@@ -102,7 +102,7 @@ Template id, as a string (Meta sends a number that can exceed 2^53).
 
 > `readonly` **messageTemplateLanguage**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:224
+Defined in: [packages/wapi.js/src/events/business-events.ts:224](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L224)
 
 Language code, e.g. `"en_US"`.
 
@@ -116,7 +116,7 @@ Language code, e.g. `"en_US"`.
 
 > `readonly` **messageTemplateName**: `string`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:222
+Defined in: [packages/wapi.js/src/events/business-events.ts:222](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L222)
 
 #### Inherited from
 
@@ -128,7 +128,7 @@ Defined in: packages/wapi.js/src/events/business-events.ts:222
 
 > `readonly` `optional` **otherInfo?**: `object`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:249
+Defined in: [packages/wapi.js/src/events/business-events.ts:249](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L249)
 
 Extra details, e.g. on `PAUSED` / `LOCKED`.
 
@@ -146,7 +146,7 @@ Extra details, e.g. on `PAUSED` / `LOCKED`.
 
 > `readonly` **raw**: `unknown`
 
-Defined in: packages/wapi.js/src/events/base.ts:346
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
 
 The untouched `change.value` from the webhook payload.
 
@@ -160,7 +160,7 @@ The untouched `change.value` from the webhook payload.
 
 > `readonly` `optional` **reason?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateStatusUpdateReasonEnum`](../enumerations/MessageTemplateStatusUpdateReasonEnum.mdx)\>
 
-Defined in: packages/wapi.js/src/events/business-events.ts:240
+Defined in: [packages/wapi.js/src/events/business-events.ts:240](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L240)
 
 Rejection / status reason; `NONE` when there is none.
 
@@ -170,7 +170,7 @@ Rejection / status reason; `NONE` when there is none.
 
 > `readonly` `optional` **rejectionInfo?**: `object`
 
-Defined in: packages/wapi.js/src/events/business-events.ts:251
+Defined in: [packages/wapi.js/src/events/business-events.ts:251](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L251)
 
 Details on `REJECTED`.
 
@@ -188,7 +188,7 @@ Details on `REJECTED`.
 
 > `readonly` **timestamp**: `number`
 
-Defined in: packages/wapi.js/src/events/base.ts:87
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
 Unix timestamp (seconds) at which the event happened.
 
@@ -204,7 +204,7 @@ Unix timestamp (seconds) at which the event happened.
 
 > **get** **date**(): `Date`
 
-Defined in: packages/wapi.js/src/events/base.ts:95
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
 
 `timestamp` as a `Date`.
 

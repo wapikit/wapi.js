@@ -279,7 +279,7 @@ describe('message events', () => {
 		)
 		expect(event?.mediaId).toBe('media-42')
 		expect(event?.caption).toBe('cat')
-		expect(event?.image.toJson({ to: '1' })).toMatchObject({
+		expect(event?.message.toJson({ to: '1' })).toMatchObject({
 			image: { id: 'media-42', caption: 'cat' }
 		})
 	})
