@@ -1,6 +1,5 @@
 /**
- * semantic-release configuration, shared by every published package
- * (run per package through semantic-release-monorepo).
+ * semantic-release configuration, shared by every published package.
  *
  * Channels:
  * - `master` publishes stable versions to the npm `latest` dist-tag.

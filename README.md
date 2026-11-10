@@ -22,7 +22,7 @@ Send every message type, receive webhooks on any server or runtime, and manage t
 ---
 
 > [!IMPORTANT]
-> **wapi.js 0.2 is in beta.** It is a full rewrite that brings wapi.js to parity with [wapi.go](https://github.com/wapikit/wapi.go), the SDK running [WapiKit](https://wapikit.com) in production, and it has **breaking changes**.
+> **wapi.js 0.2 is in beta.** It is a full rewrite that brings wapi.js to parity with its Go sibling [wapi.go](https://github.com/wapikit/wapi.go), and it has **breaking changes**.
 >
 > ```sh
 > npm install @wapijs/wapi.js@beta   # 0.2.0-beta.N

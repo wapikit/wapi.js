@@ -1,8 +1,7 @@
 # Migrating from 0.1.x to 0.2.0 (beta)
 
 `0.2.0` is a ground-up overhaul of `@wapijs/wapi.js` that brings it to parity
-with [wapi.go](https://github.com/wapikit/wapi.go), the Go SDK that runs
-WapiKit in production. It fixes a long list of 0.1.x bugs (see
+with its Go sibling [wapi.go](https://github.com/wapikit/wapi.go). It fixes a long list of 0.1.x bugs (see
 [OVERHAUL.md](./OVERHAUL.md)) and **contains breaking changes**. While the
 package is on 0.x, breaking changes ship as a minor version, as semver allows.
 

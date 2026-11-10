@@ -16,7 +16,7 @@ describe('TextMessage', () => {
 	})
 
 	it('puts preview_url inside the text object', () => {
-		const payload = new TextMessage({ text: 'https://wapikit.com', previewUrl: true }).toJson({
+		const payload = new TextMessage({ text: 'https://example.com', previewUrl: true }).toJson({
 			to
 		})
 		expect(payload).toEqual({
@@ -24,7 +24,7 @@ describe('TextMessage', () => {
 			recipient_type: 'individual',
 			type: 'text',
 			to,
-			text: { body: 'https://wapikit.com', preview_url: true }
+			text: { body: 'https://example.com', preview_url: true }
 		})
 		expect(payload).not.toHaveProperty('preview_url')
 	})

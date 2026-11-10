@@ -20,7 +20,7 @@ export interface TextMessagePayload {
  *
  * @example
  * ```ts
- * new TextMessage({ text: "Hi! See https://wapikit.com", previewUrl: true });
+ * new TextMessage({ text: "Hi! See https://example.com", previewUrl: true });
  * ```
  */
 export class TextMessage extends BaseMessage<MessageTypeEnum.Text> {

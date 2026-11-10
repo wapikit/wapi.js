@@ -1,8 +1,8 @@
 # wapi.js overhaul: audit and TODO (v0.2.0 beta)
 
 This document records the end-to-end audit of `@wapijs/wapi.js` 0.1.x, the
-gap against its production sibling [`wapi.go`](https://github.com/wapikit/wapi.go)
-(v0.8.x, used by WapiKit in production), and the work list for the `0.2.0`
+gap against its Go sibling [`wapi.go`](https://github.com/wapikit/wapi.go)
+(v0.8.x), and the work list for the `0.2.0`
 beta line. Items are checked off as they land on the `beta` branch.
 
 Legend: **[B]** = bug, **[S]** = security, **[P]** = bad library practice,
@@ -146,7 +146,7 @@ phone number name/quality, `security`).
 
 The JS port does **not** copy these.
 
-1. **Business webhook field names.** wapi.go matches `message_template_status`, `message_template_quality`, `phone_number_name`, `phone_number_quality`, `account_review`, `business_capability` and `template_category`, but Meta sends `message_template_status_update`, `message_template_quality_update`, `phone_number_name_update`, `phone_number_quality_update`, `account_review_update`, `business_capability_update` and `template_category_update`. The switch has no `default`, so these events are likely dropped silently in production. wapi.js accepts both spellings.
+1. **Business webhook field names.** wapi.go matches `message_template_status`, `message_template_quality`, `phone_number_name`, `phone_number_quality`, `account_review`, `business_capability` and `template_category`, but Meta sends `message_template_status_update`, `message_template_quality_update`, `phone_number_name_update`, `phone_number_quality_update`, `account_review_update`, `business_capability_update` and `template_category_update`. The switch has no `default`, so these events are likely dropped silently. wapi.js accepts both spellings.
 2. Eight business webhooks are published as `AccountAlertsEventType`; `security` publishes an empty `SecurityEvent{}`.
 3. `account_update.restriction_info` is modelled as one object with a string `expiration`; Meta sends a list with numeric expirations, which fails decoding and drops the change.
 4. Fields parsed but never surfaced: template status `disable_info`/`other_info`/`rejection_info`, template category `correct_category`, phone quality `old_limit`, SMB echo content (`json:"-"`).

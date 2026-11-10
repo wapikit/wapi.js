@@ -43,8 +43,7 @@
     "whatsapp-business-api",
     "whatsapp-bot",
     "whatsapp-chat-bot",
-    "chat-bot",
-    "wapikit"
+    "chat-bot"
   ],
   "author": {
     "name": "Sarthak Jain",
