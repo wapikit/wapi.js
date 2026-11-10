@@ -1,0 +1,147 @@
+[wapi.js](../README.mdx) / AccountAlertsEvent
+
+# Class: AccountAlertsEvent
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:567](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L567)
+
+An alert was raised or resolved on the account or a phone number (`account_alerts`).
+
+## Extends
+
+- [`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new AccountAlertsEvent**(`init`): `AccountAlertsEvent`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:577](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L577)
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`AccountAlertsEvent`
+
+#### Overrides
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`constructor`](BaseBusinessAccountEvent.mdx#constructor)
+
+## Properties
+
+### alertDescription
+
+> `readonly` **alertDescription**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:575](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L575)
+
+***
+
+### alertSeverity
+
+> `readonly` **alertSeverity**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`AccountAlertSeverityEnum`](../enumerations/AccountAlertSeverityEnum.mdx)\>
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:571](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L571)
+
+***
+
+### alertStatus
+
+> `readonly` **alertStatus**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`AccountAlertStatusEnum`](../enumerations/AccountAlertStatusEnum.mdx)\>
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:572](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L572)
+
+***
+
+### alertType
+
+> `readonly` **alertType**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:574](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L574)
+
+e.g. `OBA_APPROVED`, `INCREASED_CAPABILITIES_ELIGIBILITY_NEED_MORE_INFO`.
+
+***
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`businessAccountId`](BaseBusinessAccountEvent.mdx#businessaccountid)
+
+***
+
+### entityId
+
+> `readonly` **entityId**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:570](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L570)
+
+***
+
+### entityType
+
+> `readonly` **entityType**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:569](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L569)
+
+`WABA`, `PHONE_NUMBER`, `BUSINESS`, ...
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`raw`](BaseBusinessAccountEvent.mdx#raw)
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`timestamp`](BaseBusinessAccountEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`date`](BaseBusinessAccountEvent.mdx#date)

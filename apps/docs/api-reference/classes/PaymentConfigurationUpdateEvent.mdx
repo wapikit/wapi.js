@@ -1,0 +1,151 @@
+[wapi.js](../README.mdx) / PaymentConfigurationUpdateEvent
+
+# Class: PaymentConfigurationUpdateEvent
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:608](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L608)
+
+Payment configuration (WhatsApp Pay) was created or changed (`payment_configuration_update`).
+
+## Extends
+
+- [`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new PaymentConfigurationUpdateEvent**(`init`): `PaymentConfigurationUpdateEvent`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:620](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L620)
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`PaymentConfigurationUpdateEvent`
+
+#### Overrides
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`constructor`](BaseBusinessAccountEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`businessAccountId`](BaseBusinessAccountEvent.mdx#businessaccountid)
+
+***
+
+### configurationName
+
+> `readonly` **configurationName**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:609](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L609)
+
+***
+
+### createdTimestamp?
+
+> `readonly` `optional` **createdTimestamp?**: `number`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:616](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L616)
+
+Unix seconds.
+
+***
+
+### providerMid
+
+> `readonly` **providerMid**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:613](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L613)
+
+Merchant id at the provider.
+
+***
+
+### providerName
+
+> `readonly` **providerName**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:611](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L611)
+
+e.g. `razorpay`, `payu`.
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`raw`](BaseBusinessAccountEvent.mdx#raw)
+
+***
+
+### status
+
+> `readonly` **status**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:614](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L614)
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`timestamp`](BaseBusinessAccountEvent.mdx#timestamp)
+
+***
+
+### updatedTimestamp?
+
+> `readonly` `optional` **updatedTimestamp?**: `number`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:618](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L618)
+
+Unix seconds.
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`date`](BaseBusinessAccountEvent.mdx#date)

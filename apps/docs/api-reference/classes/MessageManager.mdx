@@ -1,0 +1,132 @@
+[wapi.js](../README.mdx) / MessageManager
+
+# Class: MessageManager
+
+Defined in: [packages/wapi.js/src/managers/message.ts:65](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L65)
+
+Sends messages from one business phone number. Obtain it through
+`client.messaging(phoneNumberId).message`.
+
+## Constructors
+
+### Constructor
+
+> **new MessageManager**(`requester`, `phoneNumberId`): `MessageManager`
+
+Defined in: [packages/wapi.js/src/managers/message.ts:66](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L66)
+
+#### Parameters
+
+##### requester
+
+[`RequestClient`](RequestClient.mdx)
+
+##### phoneNumberId
+
+`string`
+
+The business phone number id messages are sent from.
+
+#### Returns
+
+`MessageManager`
+
+## Properties
+
+### phoneNumberId
+
+> `readonly` **phoneNumberId**: `string`
+
+Defined in: [packages/wapi.js/src/managers/message.ts:69](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L69)
+
+The business phone number id messages are sent from.
+
+## Methods
+
+### markAsRead()
+
+> **markAsRead**(`messageId`, `options?`): `Promise`\<`void`\>
+
+Defined in: [packages/wapi.js/src/managers/message.ts:98](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L98)
+
+Marks an inbound message as read (blue ticks), optionally showing a
+typing indicator.
+
+#### Parameters
+
+##### messageId
+
+`string`
+
+##### options?
+
+[`MarkAsReadOptions`](../interfaces/MarkAsReadOptions.mdx)
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### reply()
+
+> **reply**(`params`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
+
+Defined in: [packages/wapi.js/src/managers/message.ts:82](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L82)
+
+Sends `message` as a reply quoting `replyToMessageId`.
+
+#### Parameters
+
+##### params
+
+[`SendMessageParams`](../interfaces/SendMessageParams.mdx) & `object`
+
+#### Returns
+
+`Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
+
+***
+
+### send()
+
+> **send**(`params`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
+
+Defined in: [packages/wapi.js/src/managers/message.ts:77](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L77)
+
+Sends a message.
+
+#### Parameters
+
+##### params
+
+[`SendMessageParams`](../interfaces/SendMessageParams.mdx)
+
+#### Returns
+
+`Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
+
+#### Throws
+
+when Meta rejects the request.
+
+***
+
+### sendMarketing()
+
+> **sendMarketing**(`params`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
+
+Defined in: [packages/wapi.js/src/managers/message.ts:90](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L90)
+
+Sends a marketing template through the Marketing Messages Lite API
+(`/marketing_messages`). The WABA must be onboarded to MM Lite.
+
+#### Parameters
+
+##### params
+
+[`SendMessageParams`](../interfaces/SendMessageParams.mdx)
+
+#### Returns
+
+`Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>

@@ -1,0 +1,63 @@
+[wapi.js](../README.mdx) / MessageSendResponse
+
+# Interface: MessageSendResponse
+
+Defined in: [packages/wapi.js/src/managers/message.ts:13](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L13)
+
+Raw Cloud API response to a send call, plus a `messageId` shortcut.
+
+## Properties
+
+### contacts
+
+> **contacts**: `object`[]
+
+Defined in: [packages/wapi.js/src/managers/message.ts:15](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L15)
+
+#### input
+
+> **input**: `string`
+
+#### user\_id?
+
+> `optional` **user\_id?**: `string`
+
+Recipient BSUID when the send targeted a BSUID.
+
+#### wa\_id?
+
+> `optional` **wa\_id?**: `string`
+
+***
+
+### messageId
+
+> **messageId**: `string`
+
+Defined in: [packages/wapi.js/src/managers/message.ts:29](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L29)
+
+`messages[0].id`, the WhatsApp message id (`wamid.*`).
+
+***
+
+### messages
+
+> **messages**: `object`[]
+
+Defined in: [packages/wapi.js/src/managers/message.ts:21](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L21)
+
+#### id
+
+> **id**: `string`
+
+#### message\_status?
+
+> `optional` **message\_status?**: `string` & `Record`\<`never`, `never`\> \| `"accepted"` \| `"held_for_quality_assessment"`
+
+***
+
+### messaging\_product
+
+> **messaging\_product**: `"whatsapp"`
+
+Defined in: [packages/wapi.js/src/managers/message.ts:14](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/message.ts#L14)

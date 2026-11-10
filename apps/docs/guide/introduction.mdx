@@ -8,44 +8,52 @@ title: Introduction
   alt="Hero banner"
 />
 
-## What is Wapi.js ?
+<Info>
+  These docs cover **wapi.js 0.2 (beta)**: `npm install @wapijs/wapi.js@beta`. Coming from 0.1.x? Read the [migration guide](/guide/v0-2/migration).
+</Info>
 
-Wapi.js is a node.js SDK that helps developers to **build whatsapp business API based app** with ease and faster. You can **build chat bots or integrate the SDK with you existing backend** to enable whatsapp based communication in your application.
+## What is wapi.js?
 
-## What problems does it solves ?
+wapi.js is the TypeScript SDK for the WhatsApp Cloud API. Use it to build chat bots, or to add WhatsApp messaging to a backend you already run. It is at parity with [wapi.go](https://github.com/wapikit/wapi.go), its Go sibling.
 
-- Whatsapp business API is a powerful tool to enable communication with your customers. But it is not easy to build a chat bot or integrate the API with your existing backend. 
+```ts
+import { Client, TextMessage } from "@wapijs/wapi.js";
 
-- Wapi.js solves this problem by providing a simple and easy to use SDK that helps you to build chat bots or integrate the API with your existing backend.
+const client = new Client({
+  accessToken: process.env.WHATSAPP_API_ACCESS_TOKEN!,
+  phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
+  webhook: {
+    verifyToken: process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN!,
+    appSecret: process.env.META_APP_SECRET,
+  },
+});
 
-- Wapi.js provides a in-depth abstraction over whatsapp business api and provides a simple and easy to use API to interact with the whatsapp business API.
+client.on("TextMessage", async (event) => {
+  await event.reply(new TextMessage({ text: `You said: ${event.text}` }));
+});
 
-## Features
+await client.webhook.listen({ port: 8080 });
+```
+
+## What you get
 
 <CardGroup cols={2}>
-  <Card
-    title="Listen to incoming notifiations"
-    icon="pen-to-square"
-  >
-    Listen to incoming messages, status updates and other notifications from whatsapp business API.
+  <Card title="Every message type" icon="envelope" href="/guide/building-your-application/building-message-components">
+    Text, media, location, contacts, reactions, buttons, lists, CTA URLs, products, catalogs and templates. Components check WhatsApp's limits before any request is made.
   </Card>
-  <Card
-    title="Send Messages"
-    icon="envelope"
-  >
-    Send all types of messages using smart abstraction layer of components.
+  <Card title="Webhooks on your stack" icon="server" href="/guide/building-your-application/using-your-own-server">
+    A built-in server, or handlers for Express, Fastify, Next.js, Hono, Bun, Deno, Cloudflare Workers and AWS Lambda. Signatures are verified with your app secret.
   </Card>
-   <Card
-    title="Fully Typesafe"
-    icon="shield"
-  >
-    If you use typescript, you will get full typesafe support. Even with Javascript the JsDocs are well documented.
+  <Card title="Typed events and errors" icon="shield" href="/guide/building-your-application/event-handling">
+    Typed events for messages, statuses and business account updates. Failed calls throw a `GraphApiError` with Meta's error code and an `isRetryable` flag.
   </Card>
-   <Card
-    title="Easy to use with abstraction"
-    icon="gear"
-  >
-    You do not need to worry of complex API payload structure anymore. Just use the simple to construct classes and methods.
+  <Card title="Business management" icon="gear" href="/guide/building-your-application/business-management">
+    Manage templates, phone numbers, QR codes, business profiles, catalogs, analytics and webhook subscriptions.
   </Card>
 </CardGroup>
 
+Also included:
+
+- **Multiple numbers.** `client.messaging(phoneNumberId)` sends from any number of your WhatsApp Business Account. Events reply from the number that received the message.
+- **Identity ready.** Events carry business-scoped user ids (BSUID) and usernames, and you can send to `{ userId }`.
+- **Zero runtime dependencies.** ESM and CommonJS builds with full type definitions. Requires Node.js 20+; `fetchHandler` also runs on Bun, Deno and edge runtimes.

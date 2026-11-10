@@ -1,25 +1,24 @@
 import { Client } from '@wapijs/wapi.js'
 import {
+	META_APP_SECRET,
 	WHATSAPP_API_ACCESS_TOKEN,
 	WHATSAPP_BUSINESS_ACCOUNT_ID,
 	WHATSAPP_PHONE_NUMBER_ID,
-	WHATSAPP_WEBHOOK_SECRET
+	WHATSAPP_WEBHOOK_VERIFY_TOKEN
 } from '../constant'
 
-if (
-	!WHATSAPP_API_ACCESS_TOKEN ||
-	!WHATSAPP_BUSINESS_ACCOUNT_ID ||
-	!WHATSAPP_PHONE_NUMBER_ID ||
-	!WHATSAPP_WEBHOOK_SECRET
-) {
+if (!WHATSAPP_API_ACCESS_TOKEN || !WHATSAPP_PHONE_NUMBER_ID || !WHATSAPP_WEBHOOK_VERIFY_TOKEN) {
 	throw new Error('Configs not defined!')
 }
 
 export const whatsappClient = new Client({
-	apiAccessToken: WHATSAPP_API_ACCESS_TOKEN,
+	accessToken: WHATSAPP_API_ACCESS_TOKEN,
 	businessAccountId: WHATSAPP_BUSINESS_ACCOUNT_ID,
 	phoneNumberId: WHATSAPP_PHONE_NUMBER_ID,
-	port: 8080,
-	webhookEndpoint: '/webhook',
-	webhookSecret: WHATSAPP_WEBHOOK_SECRET
+	webhook: {
+		verifyToken: WHATSAPP_WEBHOOK_VERIFY_TOKEN,
+		appSecret: META_APP_SECRET,
+		path: '/webhook',
+		port: 8080
+	}
 })

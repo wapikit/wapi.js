@@ -1,0 +1,38 @@
+[wapi.js](../README.mdx) / isValidWebhookSignature
+
+# Function: isValidWebhookSignature()
+
+> **isValidWebhookSignature**(`appSecret`, `rawBody`, `signatureHeader`): `Promise`\<`boolean`\>
+
+Defined in: [packages/wapi.js/src/webhook/signature.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/signature.ts#L41)
+
+Verifies Meta's `X-Hub-Signature-256` header (`sha256=<hex>`) against the
+HMAC-SHA256 of the **raw** request body keyed with your app secret.
+
+Uses Web Crypto, so it runs on Node.js 20+, Bun, Deno and edge runtimes.
+
+## Parameters
+
+### appSecret
+
+`string`
+
+The Meta app secret (App settings → Basic).
+
+### rawBody
+
+`string` \| `ArrayBuffer` \| `Uint8Array`
+
+The body exactly as received. Re-serialised JSON will not match.
+
+### signatureHeader
+
+`string` \| `null` \| `undefined`
+
+Value of the `X-Hub-Signature-256` header.
+
+## Returns
+
+`Promise`\<`boolean`\>
+
+`true` when the signature is valid.

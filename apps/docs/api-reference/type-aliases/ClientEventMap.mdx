@@ -1,0 +1,59 @@
+[wapi.js](../README.mdx) / ClientEventMap
+
+# Type Alias: ClientEventMap
+
+> **ClientEventMap** = `object`
+
+Defined in: [packages/wapi.js/src/events/index.ts:72](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/index.ts#L72)
+
+Lifecycle events of the client itself.
+
+## Properties
+
+### Error
+
+> **Error**: `Error`
+
+Defined in: [packages/wapi.js/src/events/index.ts:76](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/index.ts#L76)
+
+A listener threw, a webhook change could not be decoded, or the server failed.
+
+***
+
+### Ready
+
+> **Ready**: `object`
+
+Defined in: [packages/wapi.js/src/events/index.ts:74](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/index.ts#L74)
+
+The built-in webhook server is listening.
+
+#### host
+
+> **host**: `string`
+
+#### path
+
+> **path**: `string`
+
+#### port
+
+> **port**: `number`
+
+***
+
+### Warn
+
+> **Warn**: `object`
+
+Defined in: [packages/wapi.js/src/events/index.ts:78](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/index.ts#L78)
+
+Something unexpected but recoverable, e.g. an unknown webhook field.
+
+#### details?
+
+> `optional` **details?**: `Record`\<`string`, `unknown`\>
+
+#### message
+
+> **message**: `string`

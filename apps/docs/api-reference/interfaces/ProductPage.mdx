@@ -1,0 +1,53 @@
+[wapi.js](../README.mdx) / ProductPage
+
+# Interface: ProductPage
+
+Defined in: [packages/wapi.js/src/managers/catalog.ts:226](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L226)
+
+Page of products; `summary.total_count` is the catalog's product count.
+
+## Extends
+
+- [`Paginated`](Paginated.mdx)\<[`Product`](Product.mdx)\>
+
+## Properties
+
+### data
+
+> **data**: [`Product`](Product.mdx)[]
+
+Defined in: [packages/wapi.js/src/managers/pagination.ts:20](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/pagination.ts#L20)
+
+#### Inherited from
+
+[`Paginated`](Paginated.mdx).[`data`](Paginated.mdx#data)
+
+***
+
+### paging?
+
+> `optional` **paging?**: [`Paging`](Paging.mdx)
+
+Defined in: [packages/wapi.js/src/managers/pagination.ts:21](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/pagination.ts#L21)
+
+#### Inherited from
+
+[`Paginated`](Paginated.mdx).[`paging`](Paginated.mdx#paging)
+
+***
+
+### summary?
+
+> `optional` **summary?**: `object`
+
+Defined in: [packages/wapi.js/src/managers/catalog.ts:227](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/catalog.ts#L227)
+
+Present on some edges (for example `summary.total_count`).
+
+#### total\_count?
+
+> `optional` **total\_count?**: `number`
+
+#### Overrides
+
+[`Paginated`](Paginated.mdx).[`summary`](Paginated.mdx#summary)

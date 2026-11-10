@@ -1,0 +1,175 @@
+[wapi.js](../README.mdx) / MessageTemplateComponentsUpdateEvent
+
+# Class: MessageTemplateComponentsUpdateEvent
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:319](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L319)
+
+A template's components were edited (`message_template_components_update`).
+
+## Extends
+
+- [`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new MessageTemplateComponentsUpdateEvent**(`init`): `MessageTemplateComponentsUpdateEvent`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:329](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L329)
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`MessageTemplateComponentsUpdateEvent`
+
+#### Overrides
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`constructor`](BaseMessageTemplateEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`businessAccountId`](BaseMessageTemplateEvent.mdx#businessaccountid)
+
+***
+
+### messageTemplateButtons
+
+> `readonly` **messageTemplateButtons**: [`MessageTemplateComponentsUpdateButton`](../interfaces/MessageTemplateComponentsUpdateButton.mdx)[]
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:327](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L327)
+
+URL and phone number buttons.
+
+***
+
+### messageTemplateElement
+
+> `readonly` **messageTemplateElement**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:321](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L321)
+
+Body text of the template.
+
+***
+
+### messageTemplateFooter?
+
+> `readonly` `optional` **messageTemplateFooter?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:325](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L325)
+
+Footer text, only for templates with a footer.
+
+***
+
+### messageTemplateId
+
+> `readonly` **messageTemplateId**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:221](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L221)
+
+Template id, as a string (Meta sends a number that can exceed 2^53).
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateId`](BaseMessageTemplateEvent.mdx#messagetemplateid)
+
+***
+
+### messageTemplateLanguage
+
+> `readonly` **messageTemplateLanguage**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:224](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L224)
+
+Language code, e.g. `"en_US"`.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateLanguage`](BaseMessageTemplateEvent.mdx#messagetemplatelanguage)
+
+***
+
+### messageTemplateName
+
+> `readonly` **messageTemplateName**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:222](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L222)
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateName`](BaseMessageTemplateEvent.mdx#messagetemplatename)
+
+***
+
+### messageTemplateTitle?
+
+> `readonly` `optional` **messageTemplateTitle?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:323](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L323)
+
+Header text, only for templates with a text header.
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`raw`](BaseMessageTemplateEvent.mdx#raw)
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`timestamp`](BaseMessageTemplateEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`date`](BaseMessageTemplateEvent.mdx#date)

@@ -1,9 +1,19 @@
 {
   "extends": "@wapijs/typescript-config/node.base.json",
-  "include": ["src/", "*.ts", "./.eslintrc.js"],
-  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
     "module": "ESNext",
-    "outDir": "dist/esm"
-  }
+    "moduleResolution": "Bundler",
+    "types": ["node"],
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": false,
+    "noImplicitOverride": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src", "test", "tsup.config.ts", "vitest.config.ts"],
+  "exclude": ["node_modules", "dist"]
 }

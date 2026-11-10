@@ -1,0 +1,43 @@
+[wapi.js](../README.mdx) / RequestVerificationCodeParams
+
+# Interface: RequestVerificationCodeParams
+
+Defined in: [packages/wapi.js/src/managers/phone-number.ts:206](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/phone-number.ts#L206)
+
+Options accepted by every manager method.
+
+## Extends
+
+- [`RequestOptions`](RequestOptions.mdx)
+
+## Properties
+
+### codeMethod
+
+> **codeMethod**: `"SMS"` \| `"VOICE"` \| [`VerifyCodeMethod`](../enumerations/VerifyCodeMethod.mdx)
+
+Defined in: [packages/wapi.js/src/managers/phone-number.ts:207](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/phone-number.ts#L207)
+
+***
+
+### language
+
+> **language**: `string`
+
+Defined in: [packages/wapi.js/src/managers/phone-number.ts:209](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/phone-number.ts#L209)
+
+Language of the SMS / voice message, for example `"en_US"`.
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: [packages/wapi.js/src/managers/business.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L8)
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)

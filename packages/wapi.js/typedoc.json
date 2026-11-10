@@ -1,19 +1,20 @@
 {
-  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
-  "entryPoints": ["./index.ts"],
-  "name": "Wapi.js Docs",
-  "plugin": ["typedoc-plugin-zod", "typedoc-plugin-markdown"],
-  "fileExtension": ".mdx",
-  "mergeReadme": true,
-  "json": "./docs/api.json",
-  "emit": "both",
-  "readme": "none",
-  "out": "../../apps/js.wapikit.com/api-reference",
-  "sourceLinkTemplate": "https://github.com/sarthakjdev/wapi.js/blob/{gitRevision}/{path}#L{line}",
-  "sourceLinkExternal": true,
-  "cname": "javascript.wapikit.com",
-  "hideGenerator": true,
-  "searchInComments": true,
-  "hidePageHeader": true,
-  "excludePrivate": true
+	"$schema": "https://typedoc-plugin-markdown.org/schema.json",
+	"entryPoints": [
+		"./src/index.ts"
+	],
+	"tsconfig": "./tsconfig.json",
+	"name": "wapi.js",
+	"plugin": [
+		"typedoc-plugin-markdown"
+	],
+	"fileExtension": ".mdx",
+	"readme": "none",
+	"out": "../../apps/docs/api-reference",
+	"sourceLinkTemplate": "https://github.com/wapikit/wapi.js/blob/{gitRevision}/{path}#L{line}",
+	"hideGenerator": true,
+	"hidePageHeader": true,
+	"excludePrivate": true,
+	"excludeInternal": true,
+	"gitRevision": "beta"
 }

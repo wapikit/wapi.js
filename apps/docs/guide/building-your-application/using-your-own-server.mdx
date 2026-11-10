@@ -1,0 +1,88 @@
+---
+title: "Using your own server"
+description: "Mount the wapi.js webhook handler in Express, Fastify, Next.js, Hono, Cloudflare Workers, AWS Lambda or anything else."
+---
+
+The built-in server (`client.webhook.listen()`) is the quickest way to start, but you rarely want a second HTTP server next to your app. wapi.js exposes the same webhook logic as handlers you mount in the server you already run.
+
+<Warning>
+  Signature verification needs the **raw** request body. If your framework parses JSON before your handler runs, configure it to keep the raw body for the webhook route, as shown below. With `appSecret` set and no raw body, wapi.js rejects the request with `401` rather than accepting an unverified payload.
+</Warning>
+
+## Express
+
+```ts
+import express from "express";
+
+const app = express();
+app.use("/webhook", express.raw({ type: "application/json" }), client.webhook.nodeHandler);
+app.use(express.json()); // the rest of your API
+app.listen(3000);
+```
+
+## Fastify
+
+```ts
+fastify.addContentTypeParser("application/json", { parseAs: "buffer" }, (_req, body, done) => done(null, body));
+fastify.all("/webhook", (request, reply) => {
+  (request.raw as { body?: unknown }).body = request.body;
+  return client.webhook.nodeHandler(request.raw, reply.raw);
+});
+```
+
+## Koa / Connect / node:http
+
+```ts
+http.createServer((req, res) => {
+  if (req.url?.startsWith("/webhook")) return client.webhook.nodeHandler(req, res);
+  // ...
+});
+```
+
+## Next.js (App Router)
+
+```ts
+// app/api/webhook/route.ts
+import { client } from "@/lib/whatsapp";
+
+export const GET = client.webhook.fetchHandler;
+export const POST = client.webhook.fetchHandler;
+```
+
+## Hono, Bun, Deno, Cloudflare Workers
+
+```ts
+app.all("/webhook", (c) => client.webhook.fetchHandler(c.req.raw, c.executionCtx));
+
+// Bun
+Bun.serve({ fetch: (request) => client.webhook.fetchHandler(request) });
+```
+
+On serverless runtimes the second argument's `waitUntil` keeps your listeners running after the response is sent.
+
+## AWS Lambda, queues and anything else
+
+`client.webhook.handle()` takes a plain object and returns `{ status, body, headers, done }`:
+
+```ts
+export const handler = async (event) => {
+  const response = await client.webhook.handle({
+    method: event.requestContext.http.method,
+    query: event.queryStringParameters,
+    headers: event.headers,
+    rawBody: event.isBase64Encoded ? Buffer.from(event.body, "base64") : event.body,
+  });
+  await response.done;
+  return { statusCode: response.status, body: response.body, headers: response.headers };
+};
+```
+
+If you verify and enqueue payloads elsewhere, call `await client.webhook.dispatch(payload)` in the consumer.
+
+## Verifying signatures yourself
+
+```ts
+import { verifyWebhookSignature } from "@wapijs/wapi.js";
+
+await verifyWebhookSignature(process.env.META_APP_SECRET, rawBody, request.headers["x-hub-signature-256"]);
+```

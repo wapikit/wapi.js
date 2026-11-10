@@ -1,0 +1,39 @@
+[wapi.js](../README.mdx) / TemplateUpdateRequest
+
+# Interface: TemplateUpdateRequest
+
+Defined in: [packages/wapi.js/src/managers/template.ts:211](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L211)
+
+Body of `POST /{template-id}` (edit). Only the given keys change.
+
+## Properties
+
+### category?
+
+> `optional` **category?**: `"AUTHENTICATION"` \| `"MARKETING"` \| `"UTILITY"` \| [`MessageTemplateCategory`](../enumerations/MessageTemplateCategory.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:213](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L213)
+
+***
+
+### components?
+
+> `optional` **components?**: [`TemplateMessageComponent`](TemplateMessageComponent.mdx)[]
+
+Defined in: [packages/wapi.js/src/managers/template.ts:212](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L212)
+
+***
+
+### message\_send\_ttl\_seconds?
+
+> `optional` **message\_send\_ttl\_seconds?**: `number`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:214](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L214)
+
+***
+
+### parameter\_format?
+
+> `optional` **parameter\_format?**: `"POSITIONAL"` \| `"NAMED"` \| [`MessageTemplateParameterFormat`](../enumerations/MessageTemplateParameterFormat.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:215](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L215)

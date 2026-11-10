@@ -1,0 +1,123 @@
+[wapi.js](../README.mdx) / SecurityEvent
+
+# Class: SecurityEvent
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:394](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L394)
+
+Two-step verification PIN changed or a reset was requested (`security`).
+
+## Extends
+
+- [`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new SecurityEvent**(`init`): `SecurityEvent`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:401](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L401)
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`SecurityEvent`
+
+#### Overrides
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`constructor`](BaseBusinessAccountEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`businessAccountId`](BaseBusinessAccountEvent.mdx#businessaccountid)
+
+***
+
+### displayPhoneNumber
+
+> `readonly` **displayPhoneNumber**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:395](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L395)
+
+***
+
+### event
+
+> `readonly` **event**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:397](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L397)
+
+e.g. `PIN_CHANGED`, `PIN_RESET_REQUEST`.
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`raw`](BaseBusinessAccountEvent.mdx#raw)
+
+***
+
+### requester?
+
+> `readonly` `optional` **requester?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:399](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L399)
+
+Who requested the change, when included.
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`timestamp`](BaseBusinessAccountEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`date`](BaseBusinessAccountEvent.mdx#date)

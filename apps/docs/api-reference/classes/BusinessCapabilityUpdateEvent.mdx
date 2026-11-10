@@ -1,0 +1,123 @@
+[wapi.js](../README.mdx) / BusinessCapabilityUpdateEvent
+
+# Class: BusinessCapabilityUpdateEvent
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:591](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L591)
+
+The account's messaging or phone number limits changed (`business_capability_update`).
+
+## Extends
+
+- [`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new BusinessCapabilityUpdateEvent**(`init`): `BusinessCapabilityUpdateEvent`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:598](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L598)
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`BusinessCapabilityUpdateEvent`
+
+#### Overrides
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`constructor`](BaseBusinessAccountEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`businessAccountId`](BaseBusinessAccountEvent.mdx#businessaccountid)
+
+***
+
+### maxDailyConversationPerPhone?
+
+> `readonly` `optional` **maxDailyConversationPerPhone?**: `number`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:593](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L593)
+
+Legacy per-number daily conversation limit.
+
+***
+
+### maxDailyConversationsPerBusiness?
+
+> `readonly` `optional` **maxDailyConversationsPerBusiness?**: `string` \| `number`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:596](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L596)
+
+Business-level messaging limit (a tier name or a number), when included.
+
+***
+
+### maxPhoneNumbersPerBusiness?
+
+> `readonly` `optional` **maxPhoneNumbersPerBusiness?**: `number`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:594](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L594)
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`raw`](BaseBusinessAccountEvent.mdx#raw)
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`timestamp`](BaseBusinessAccountEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`date`](BaseBusinessAccountEvent.mdx#date)

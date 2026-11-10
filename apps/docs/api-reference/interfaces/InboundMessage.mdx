@@ -1,0 +1,345 @@
+[wapi.js](../README.mdx) / InboundMessage
+
+# Interface: InboundMessage
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:115](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L115)
+
+## Properties
+
+### audio?
+
+> `optional` **audio?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:129](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L129)
+
+***
+
+### button?
+
+> `optional` **button?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:142](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L142)
+
+#### payload?
+
+> `optional` **payload?**: `string`
+
+#### text
+
+> **text**: `string`
+
+***
+
+### contacts?
+
+> `optional` **contacts?**: [`InboundContact`](InboundContact.mdx)[]
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:140](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L140)
+
+***
+
+### context?
+
+> `optional` **context?**: [`InboundMessageContext`](InboundMessageContext.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:124](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L124)
+
+***
+
+### document?
+
+> `optional` **document?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:131](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L131)
+
+***
+
+### errors?
+
+> `optional` **errors?**: [`WebhookError`](WebhookError.mdx)[]
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:126](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L126)
+
+***
+
+### from
+
+> **from**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:117](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L117)
+
+***
+
+### from\_parent\_user\_id?
+
+> `optional` **from\_parent\_user\_id?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:120](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L120)
+
+***
+
+### from\_user\_id?
+
+> `optional` **from\_user\_id?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:119](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L119)
+
+Sender BSUID.
+
+***
+
+### group\_id?
+
+> `optional` **group\_id?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:123](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L123)
+
+***
+
+### id
+
+> **id**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:116](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L116)
+
+***
+
+### identity?
+
+> `optional` **identity?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:167](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L167)
+
+#### acknowledged?
+
+> `optional` **acknowledged?**: `boolean`
+
+#### created\_timestamp?
+
+> `optional` **created\_timestamp?**: `number`
+
+#### hash?
+
+> `optional` **hash?**: `string`
+
+***
+
+### image?
+
+> `optional` **image?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:128](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L128)
+
+***
+
+### interactive?
+
+> `optional` **interactive?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:143](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L143)
+
+#### button\_reply?
+
+> `optional` **button\_reply?**: `object`
+
+##### button\_reply.id
+
+> **id**: `string`
+
+##### button\_reply.title
+
+> **title**: `string`
+
+#### list\_reply?
+
+> `optional` **list\_reply?**: `object`
+
+##### list\_reply.description?
+
+> `optional` **description?**: `string`
+
+##### list\_reply.id
+
+> **id**: `string`
+
+##### list\_reply.title
+
+> **title**: `string`
+
+#### nfm\_reply?
+
+> `optional` **nfm\_reply?**: `object`
+
+##### nfm\_reply.body?
+
+> `optional` **body?**: `string`
+
+##### nfm\_reply.name?
+
+> `optional` **name?**: `string`
+
+##### nfm\_reply.response\_json
+
+> **response\_json**: `string`
+
+#### type
+
+> **type**: `string` & `Record`\<`never`, `never`\> \| `"button_reply"` \| `"list_reply"` \| `"nfm_reply"`
+
+***
+
+### location?
+
+> `optional` **location?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:133](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L133)
+
+#### address?
+
+> `optional` **address?**: `string`
+
+#### latitude
+
+> **latitude**: `number`
+
+#### longitude
+
+> **longitude**: `number`
+
+#### name?
+
+> `optional` **name?**: `string`
+
+#### url?
+
+> `optional` **url?**: `string`
+
+***
+
+### order?
+
+> `optional` **order?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:149](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L149)
+
+#### catalog\_id
+
+> **catalog\_id**: `string`
+
+#### product\_items
+
+> **product\_items**: `object`[]
+
+#### text?
+
+> `optional` **text?**: `string`
+
+***
+
+### reaction?
+
+> `optional` **reaction?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:141](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L141)
+
+#### emoji?
+
+> `optional` **emoji?**: `string`
+
+#### message\_id
+
+> **message\_id**: `string`
+
+***
+
+### referral?
+
+> `optional` **referral?**: [`InboundReferral`](InboundReferral.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:125](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L125)
+
+***
+
+### sticker?
+
+> `optional` **sticker?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:132](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L132)
+
+***
+
+### system?
+
+> `optional` **system?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:159](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L159)
+
+#### body?
+
+> `optional` **body?**: `string`
+
+#### customer?
+
+> `optional` **customer?**: `string`
+
+Deprecated by Meta; older payloads only.
+
+#### identity?
+
+> `optional` **identity?**: `string`
+
+#### type?
+
+> `optional` **type?**: `string`
+
+#### wa\_id?
+
+> `optional` **wa\_id?**: `string`
+
+***
+
+### text?
+
+> `optional` **text?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L127)
+
+#### body
+
+> **body**: `string`
+
+***
+
+### timestamp
+
+> **timestamp**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:121](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L121)
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:122](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L122)
+
+***
+
+### unsupported?
+
+> `optional` **unsupported?**: `object`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:172](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L172)
+
+#### type?
+
+> `optional` **type?**: `string`
+
+***
+
+### video?
+
+> `optional` **video?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:130](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L130)

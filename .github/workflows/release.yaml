@@ -2,7 +2,8 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - master # stable releases, npm dist-tag `latest`
+      - beta # prereleases (x.y.z-beta.N), npm dist-tag `beta`
 
 permissions:
   contents: write # because we want our workflow to update the package json of the packages with the latest version number
@@ -27,12 +28,12 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.PAT }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Setup node.js LTS
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
         with:
@@ -66,10 +67,10 @@ jobs:
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
 
+      - name: Test
+        run: pnpm test
+
       - name: Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-          NPM_USERNAME: "sarthakdev"
-          NPM_PASSWORD: ${{ secrets.NPM_PASSWORD }}
-          NPM_EMAIL: "contact.sarthakjain@gmail.com"
         run: pnpm semantic-release

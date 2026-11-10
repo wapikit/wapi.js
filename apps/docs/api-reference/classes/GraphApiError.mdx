@@ -1,0 +1,260 @@
+[wapi.js](../README.mdx) / GraphApiError
+
+# Class: GraphApiError
+
+Defined in: [packages/wapi.js/src/errors.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L41)
+
+Thrown when the Graph API answers with a non-2xx status, or with a 2xx body
+that still carries an `error` envelope.
+
+## Example
+
+```ts
+try {
+  await messaging.message.send({ to, message });
+} catch (error) {
+  if (error instanceof GraphApiError && error.isRetryable) {
+    // back off and retry
+  }
+}
+```
+
+## Extends
+
+- [`WapiError`](WapiError.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new GraphApiError**(`params`): `GraphApiError`
+
+Defined in: [packages/wapi.js/src/errors.ts:57](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L57)
+
+#### Parameters
+
+##### params
+
+###### body
+
+`string`
+
+###### status
+
+`number`
+
+#### Returns
+
+`GraphApiError`
+
+#### Overrides
+
+[`WapiError`](WapiError.mdx).[`constructor`](WapiError.mdx#constructor)
+
+## Properties
+
+### body
+
+> `readonly` **body**: `string`
+
+Defined in: [packages/wapi.js/src/errors.ts:55](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L55)
+
+Raw response body. Never dropped, even when it is not JSON.
+
+***
+
+### cause?
+
+> `optional` **cause?**: `unknown`
+
+Defined in: node\_modules/.pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es2022.error.d.ts:24
+
+#### Inherited from
+
+[`WapiError`](WapiError.mdx).[`cause`](WapiError.mdx#cause)
+
+***
+
+### code?
+
+> `readonly` `optional` **code?**: `number`
+
+Defined in: [packages/wapi.js/src/errors.ts:45](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L45)
+
+`error.code` from Meta's envelope, when present.
+
+***
+
+### details?
+
+> `readonly` `optional` **details?**: `string`
+
+Defined in: [packages/wapi.js/src/errors.ts:53](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L53)
+
+`error.error_data.details`, Meta's human readable explanation.
+
+***
+
+### fbtraceId?
+
+> `readonly` `optional` **fbtraceId?**: `string`
+
+Defined in: [packages/wapi.js/src/errors.ts:51](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L51)
+
+`error.fbtrace_id`, quote it when contacting Meta support.
+
+***
+
+### message
+
+> **message**: `string`
+
+Defined in: node\_modules/.pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:1077
+
+#### Inherited from
+
+[`WapiError`](WapiError.mdx).[`message`](WapiError.mdx#message)
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: node\_modules/.pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:1076
+
+#### Inherited from
+
+[`WapiError`](WapiError.mdx).[`name`](WapiError.mdx#name)
+
+***
+
+### stack?
+
+> `optional` **stack?**: `string`
+
+Defined in: node\_modules/.pnpm/typescript@5.4.5/node\_modules/typescript/lib/lib.es5.d.ts:1078
+
+#### Inherited from
+
+[`WapiError`](WapiError.mdx).[`stack`](WapiError.mdx#stack)
+
+***
+
+### status
+
+> `readonly` **status**: `number`
+
+Defined in: [packages/wapi.js/src/errors.ts:43](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L43)
+
+HTTP status code of the response.
+
+***
+
+### subcode?
+
+> `readonly` `optional` **subcode?**: `number`
+
+Defined in: [packages/wapi.js/src/errors.ts:47](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L47)
+
+`error.error_subcode`, when present.
+
+***
+
+### type?
+
+> `readonly` `optional` **type?**: `string`
+
+Defined in: [packages/wapi.js/src/errors.ts:49](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L49)
+
+`error.type` (for example `OAuthException`), when present.
+
+***
+
+### prepareStackTrace?
+
+> `static` `optional` **prepareStackTrace?**: (`err`, `stackTraces`) => `any`
+
+Defined in: node\_modules/.pnpm/@types+node@20.12.12/node\_modules/@types/node/globals.d.ts:28
+
+Optional override for formatting stack traces
+
+#### Parameters
+
+##### err
+
+`Error`
+
+##### stackTraces
+
+`CallSite`[]
+
+#### Returns
+
+`any`
+
+#### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+#### Inherited from
+
+[`WapiError`](WapiError.mdx).[`prepareStackTrace`](WapiError.mdx#preparestacktrace)
+
+***
+
+### stackTraceLimit
+
+> `static` **stackTraceLimit**: `number`
+
+Defined in: node\_modules/.pnpm/@types+node@20.12.12/node\_modules/@types/node/globals.d.ts:30
+
+#### Inherited from
+
+[`WapiError`](WapiError.mdx).[`stackTraceLimit`](WapiError.mdx#stacktracelimit)
+
+## Accessors
+
+### isRetryable
+
+#### Get Signature
+
+> **get** **isRetryable**(): `boolean`
+
+Defined in: [packages/wapi.js/src/errors.ts:79](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/errors.ts#L79)
+
+Whether retrying may succeed: rate limits (HTTP 429 or Meta throttling
+codes 4, 17, 32, 80007, 130429, 131048, 131056) and transient server errors
+(HTTP 5xx, Meta codes 1, 2, 131000). The caller owns any backoff policy.
+
+##### Returns
+
+`boolean`
+
+## Methods
+
+### captureStackTrace()
+
+> `static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
+
+Defined in: node\_modules/.pnpm/@types+node@20.12.12/node\_modules/@types/node/globals.d.ts:21
+
+Create .stack property on a target object
+
+#### Parameters
+
+##### targetObject
+
+`object`
+
+##### constructorOpt?
+
+`Function`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`WapiError`](WapiError.mdx).[`captureStackTrace`](WapiError.mdx#capturestacktrace)

@@ -1,0 +1,71 @@
+[wapi.js](../README.mdx) / HistoryMessage
+
+# Interface: HistoryMessage
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:802](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L802)
+
+A message from the chat history shared by the WhatsApp Business app.
+
+## Properties
+
+### content?
+
+> `optional` **content?**: `Record`\<`string`, `unknown`\>
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:813](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L813)
+
+The type-specific body (`message[message.type]`).
+
+***
+
+### from
+
+> **from**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:803](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L803)
+
+***
+
+### id
+
+> **id**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:806](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L806)
+
+***
+
+### messageStatus?
+
+> `optional` **messageStatus?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:811](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L811)
+
+`history_context.status`, e.g. `READ`, `DELIVERED`.
+
+***
+
+### timestamp?
+
+> `optional` **timestamp?**: `number`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:808](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L808)
+
+Unix seconds.
+
+***
+
+### to?
+
+> `optional` **to?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:805](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L805)
+
+Only on messages the business sent.
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:809](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L809)

@@ -1,0 +1,161 @@
+[wapi.js](../README.mdx) / WebhookManager
+
+# Class: WebhookManager
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:42](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L42)
+
+Receives WhatsApp webhooks. Either let wapi.js run a small server
+(`listen()`), or mount a handler in the server you already have:
+
+- `fetchHandler` for Next.js, Hono, Bun, Deno, Cloudflare Workers, Vercel
+- `nodeHandler` for `node:http`, Express, Fastify, Koa
+- `handle()` for anything else (AWS Lambda, queues, tests)
+
+## Constructors
+
+### Constructor
+
+> **new WebhookManager**(`init`): `WebhookManager`
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:51](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L51)
+
+#### Parameters
+
+##### init
+
+`WebhookManagerInit`
+
+#### Returns
+
+`WebhookManager`
+
+## Accessors
+
+### fetchHandler
+
+#### Get Signature
+
+> **get** **fetchHandler**(): [`FetchWebhookHandler`](../type-aliases/FetchWebhookHandler.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:88](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L88)
+
+`(request: Request, ctx?) => Promise<Response>` for Fetch API runtimes.
+
+##### Returns
+
+[`FetchWebhookHandler`](../type-aliases/FetchWebhookHandler.mdx)
+
+***
+
+### listening
+
+#### Get Signature
+
+> **get** **listening**(): `boolean`
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:100](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L100)
+
+True while the built-in server is listening.
+
+##### Returns
+
+`boolean`
+
+***
+
+### nodeHandler
+
+#### Get Signature
+
+> **get** **nodeHandler**(): [`NodeWebhookHandler`](../type-aliases/NodeWebhookHandler.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:94](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L94)
+
+`(req, res) => Promise<void>` for `node:http`, Express, Fastify, Koa.
+
+##### Returns
+
+[`NodeWebhookHandler`](../type-aliases/NodeWebhookHandler.mdx)
+
+## Methods
+
+### close()
+
+> **close**(`timeoutMs?`): `Promise`\<`void`\>
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L137)
+
+Stops the built-in server, waiting up to `timeoutMs` for in-flight requests.
+
+#### Parameters
+
+##### timeoutMs?
+
+`number`
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### dispatch()
+
+> **dispatch**(`payload`): `Promise`\<`void`\>
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:83](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L83)
+
+Dispatches a payload you already authenticated and parsed (for example
+after pulling it from a queue). Resolves when every listener has settled.
+
+#### Parameters
+
+##### payload
+
+[`WebhookPayload`](../interfaces/WebhookPayload.mdx)
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### handle()
+
+> **handle**(`request`): `Promise`\<[`WebhookResponse`](../interfaces/WebhookResponse.mdx)\>
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:75](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L75)
+
+Handles a framework independent request. Never throws.
+
+#### Parameters
+
+##### request
+
+[`WebhookRequest`](../interfaces/WebhookRequest.mdx)
+
+#### Returns
+
+`Promise`\<[`WebhookResponse`](../interfaces/WebhookResponse.mdx)\>
+
+***
+
+### listen()
+
+> **listen**(`options?`): `Promise`\<[`WebhookServerAddress`](../interfaces/WebhookServerAddress.mdx)\>
+
+Defined in: [packages/wapi.js/src/webhook/manager.ts:109](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/manager.ts#L109)
+
+Starts the built-in `node:http` server and emits `Ready`. Options override
+the ones from the client config. Calling it again while the server is
+starting or running returns the same address.
+
+#### Parameters
+
+##### options?
+
+[`WebhookServerOptions`](../interfaces/WebhookServerOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`WebhookServerAddress`](../interfaces/WebhookServerAddress.mdx)\>

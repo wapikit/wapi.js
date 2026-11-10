@@ -4,8 +4,8 @@ import { askAi } from './utils/gpt'
 
 async function init() {
 	try {
-		whatsappClient.on('Ready', () => {
-			console.log('Client is ready')
+		whatsappClient.on('Ready', ({ port, path }) => {
+			console.log(`Webhook listening on :${port}${path}`)
 		})
 
 		whatsappClient.on('Error', error => {
@@ -13,16 +13,13 @@ async function init() {
 		})
 
 		whatsappClient.on('TextMessage', async (event: TextMessageEvent) => {
-			const aiResponse = await askAi(event.text.data.text, event.context.from)
-			const response = await event.reply({
-				message: new TextMessage({
-					text: aiResponse
-				})
-			})
-			console.log({ response })
+			await event.markAsRead({ typingIndicator: true })
+			const aiResponse = await askAi(event.text, event.from)
+			const response = await event.reply(new TextMessage({ text: aiResponse }))
+			console.log('Replied', response.messageId)
 		})
 
-		whatsappClient.initiate()
+		await whatsappClient.webhook.listen()
 	} catch (error) {
 		console.error(error)
 		// ! TODO: you may prefer to send a notification to your slack channel or email here

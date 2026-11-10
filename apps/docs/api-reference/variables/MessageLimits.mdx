@@ -1,0 +1,141 @@
+[wapi.js](../README.mdx) / MessageLimits
+
+# Variable: MessageLimits
+
+> `const` **MessageLimits**: `object`
+
+Defined in: [packages/wapi.js/src/components/validation.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/validation.ts#L8)
+
+Limits enforced by the WhatsApp Cloud API on outgoing messages. Components
+validate against these in their constructors so mistakes surface as a
+[ValidationError](../classes/ValidationError.mdx) before a request is made.
+
+## Type Declaration
+
+### carouselCards
+
+> `readonly` **carouselCards**: `10` = `10`
+
+Cards in a template carousel.
+
+### couponCode
+
+> `readonly` **couponCode**: `15` = `15`
+
+Coupon / one-time password code on a copy code or OTP button.
+
+### ctaDisplayText
+
+> `readonly` **ctaDisplayText**: `20` = `20`
+
+`action.parameters.display_text` of a CTA URL message.
+
+### footerText
+
+> `readonly` **footerText**: `60` = `60`
+
+`interactive.footer.text`.
+
+### headerText
+
+> `readonly` **headerText**: `60` = `60`
+
+`interactive.header.text`.
+
+### interactiveBody
+
+> `readonly` **interactiveBody**: `1024` = `1024`
+
+`interactive.body.text` (reply buttons, CTA URL, product, catalog, requests).
+
+### listBody
+
+> `readonly` **listBody**: `4096` = `4096`
+
+`interactive.body.text` of a list message.
+
+### listButtonText
+
+> `readonly` **listButtonText**: `20` = `20`
+
+`action.button` of a list message.
+
+### listRowDescription
+
+> `readonly` **listRowDescription**: `72` = `72`
+
+### listRowId
+
+> `readonly` **listRowId**: `200` = `200`
+
+### listRows
+
+> `readonly` **listRows**: `10` = `10`
+
+Rows across all sections of a list message.
+
+### listRowTitle
+
+> `readonly` **listRowTitle**: `24` = `24`
+
+### listSections
+
+> `readonly` **listSections**: `10` = `10`
+
+### listSectionTitle
+
+> `readonly` **listSectionTitle**: `24` = `24`
+
+### mediaCaption
+
+> `readonly` **mediaCaption**: `1024` = `1024`
+
+`caption` of an image, video or document.
+
+### productItems
+
+> `readonly` **productItems**: `30` = `30`
+
+Products across all sections of a product list message / MPM button.
+
+### productSections
+
+> `readonly` **productSections**: `10` = `10`
+
+Sections of a product list message or multi-product template button.
+
+### productSectionTitle
+
+> `readonly` **productSectionTitle**: `24` = `24`
+
+### replyButtonId
+
+> `readonly` **replyButtonId**: `256` = `256`
+
+### replyButtons
+
+> `readonly` **replyButtons**: `3` = `3`
+
+Number of reply buttons.
+
+### replyButtonTitle
+
+> `readonly` **replyButtonTitle**: `20` = `20`
+
+### templateButtons
+
+> `readonly` **templateButtons**: `10` = `10`
+
+Buttons in a template message (or in one carousel card).
+
+### templateHeaderText
+
+> `readonly` **templateHeaderText**: `60` = `60`
+
+Text parameter of a template header.
+
+### textBody
+
+> `readonly` **textBody**: `4096` = `4096`
+
+`text.body` of a text message.

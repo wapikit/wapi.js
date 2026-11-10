@@ -1,0 +1,45 @@
+[wapi.js](../README.mdx) / MigrateTemplatesParams
+
+# Interface: MigrateTemplatesParams
+
+Defined in: [packages/wapi.js/src/managers/template.ts:253](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L253)
+
+Parameters of [TemplateManager.migrate](../classes/TemplateManager.mdx#migrate).
+
+## Extends
+
+- [`RequestOptions`](RequestOptions.mdx)
+
+## Properties
+
+### pageNumber?
+
+> `optional` **pageNumber?**: `number`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:257](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L257)
+
+Page of source templates to migrate (500 per page), starting at 0.
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: [packages/wapi.js/src/managers/business.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L8)
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)
+
+***
+
+### sourceWabaId
+
+> **sourceWabaId**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:255](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L255)
+
+WABA to copy templates from. Both WABAs must belong to the same business.

@@ -1,0 +1,185 @@
+[wapi.js](../README.mdx) / AccountUpdateEvent
+
+# Class: AccountUpdateEvent
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:474](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L474)
+
+The WhatsApp Business Account changed: verified, banned, restricted, partner added... (`account_update`).
+
+## Extends
+
+- [`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new AccountUpdateEvent**(`init`): `AccountUpdateEvent`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:492](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L492)
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`AccountUpdateEvent`
+
+#### Overrides
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`constructor`](BaseBusinessAccountEvent.mdx#constructor)
+
+## Properties
+
+### authInternationalRateEligibility?
+
+> `readonly` `optional` **authInternationalRateEligibility?**: [`AccountUpdateAuthInternationalRateEligibility`](../interfaces/AccountUpdateAuthInternationalRateEligibility.mdx)
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:484](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L484)
+
+`AUTH_INTL_PRICE_ELIGIBILITY_UPDATE` only.
+
+***
+
+### banInfo?
+
+> `readonly` `optional` **banInfo?**: [`AccountUpdateBanInfo`](../interfaces/AccountUpdateBanInfo.mdx)
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:486](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L486)
+
+`DISABLED_UPDATE` only.
+
+***
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`businessAccountId`](BaseBusinessAccountEvent.mdx#businessaccountid)
+
+***
+
+### country?
+
+> `readonly` `optional` **country?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:479](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L479)
+
+`BUSINESS_PRIMARY_LOCATION_COUNTRY_UPDATE` only.
+
+***
+
+### displayPhoneNumber?
+
+> `readonly` `optional` **displayPhoneNumber?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:477](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L477)
+
+Display number the update is about (`phone_number`), when Meta includes one.
+
+***
+
+### event
+
+> `readonly` **event**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`AccountUpdateEventEnum`](../enumerations/AccountUpdateEventEnum.mdx)\>
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:475](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L475)
+
+***
+
+### partnerClientCertificationInfo?
+
+> `readonly` `optional` **partnerClientCertificationInfo?**: [`AccountUpdatePartnerClientCertificationInfo`](../interfaces/AccountUpdatePartnerClientCertificationInfo.mdx)
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:490](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L490)
+
+`PARTNER_CLIENT_CERTIFICATION_STATUS_UPDATE` only.
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`raw`](BaseBusinessAccountEvent.mdx#raw)
+
+***
+
+### restrictionInfo?
+
+> `readonly` `optional` **restrictionInfo?**: [`AccountUpdateRestrictionInfo`](../interfaces/AccountUpdateRestrictionInfo.mdx)[]
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:488](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L488)
+
+`ACCOUNT_RESTRICTION` only. Meta sends a list; a single object is accepted too.
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`timestamp`](BaseBusinessAccountEvent.mdx#timestamp)
+
+***
+
+### violationInfo?
+
+> `readonly` `optional` **violationInfo?**: `object`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:482](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L482)
+
+`ACCOUNT_VIOLATION` only.
+
+#### violationType?
+
+> `optional` **violationType?**: `string`
+
+***
+
+### wabaInfo?
+
+> `readonly` `optional` **wabaInfo?**: [`AccountUpdateWabaInfo`](../interfaces/AccountUpdateWabaInfo.mdx)
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:480](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L480)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`date`](BaseBusinessAccountEvent.mdx#date)

@@ -1,0 +1,137 @@
+[wapi.js](../README.mdx) / ListAllTemplatesParams
+
+# Interface: ListAllTemplatesParams
+
+Defined in: [packages/wapi.js/src/managers/template.ts:239](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L239)
+
+Parameters of [TemplateManager.listAll](../classes/TemplateManager.mdx#listall).
+
+## Extends
+
+- `Omit`\<[`ListTemplatesParams`](ListTemplatesParams.mdx), `"after"` \| `"before"`\>
+
+## Properties
+
+### category?
+
+> `optional` **category?**: `"AUTHENTICATION"` \| `"MARKETING"` \| `"UTILITY"` \| [`MessageTemplateCategory`](../enumerations/MessageTemplateCategory.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:229](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L229)
+
+#### Inherited from
+
+[`ListTemplatesParams`](ListTemplatesParams.mdx).[`category`](ListTemplatesParams.mdx#category)
+
+***
+
+### content?
+
+> `optional` **content?**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:232](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L232)
+
+Matches template body content.
+
+#### Inherited from
+
+[`ListTemplatesParams`](ListTemplatesParams.mdx).[`content`](ListTemplatesParams.mdx#content)
+
+***
+
+### language?
+
+> `optional` **language?**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:230](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L230)
+
+#### Inherited from
+
+[`ListTemplatesParams`](ListTemplatesParams.mdx).[`language`](ListTemplatesParams.mdx#language)
+
+***
+
+### limit?
+
+> `optional` **limit?**: `number`
+
+Defined in: [packages/wapi.js/src/managers/pagination.ts:4](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/pagination.ts#L4)
+
+Page size. Each manager documents its default.
+
+#### Inherited from
+
+[`PaginationInput`](PaginationInput.mdx).[`limit`](PaginationInput.mdx#limit)
+
+***
+
+### maxItems?
+
+> `optional` **maxItems?**: `number`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:241](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L241)
+
+Stop after this many templates.
+
+***
+
+### name?
+
+> `optional` **name?**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:227](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L227)
+
+#### Inherited from
+
+[`ListTemplatesParams`](ListTemplatesParams.mdx).[`name`](ListTemplatesParams.mdx#name)
+
+***
+
+### nameOrContent?
+
+> `optional` **nameOrContent?**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:234](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L234)
+
+Matches name or body content.
+
+#### Inherited from
+
+[`ListTemplatesParams`](ListTemplatesParams.mdx).[`nameOrContent`](ListTemplatesParams.mdx#nameorcontent)
+
+***
+
+### qualityScore?
+
+> `optional` **qualityScore?**: `"GREEN"` \| `"YELLOW"` \| `"RED"` \| `"UNKNOWN"` \| [`TemplateQualityScoreValue`](../enumerations/TemplateQualityScoreValue.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:235](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L235)
+
+#### Inherited from
+
+[`ListTemplatesParams`](ListTemplatesParams.mdx).[`qualityScore`](ListTemplatesParams.mdx#qualityscore)
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: [packages/wapi.js/src/managers/business.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L8)
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)
+
+***
+
+### status?
+
+> `optional` **status?**: `"APPROVED"` \| `"ARCHIVED"` \| `"DELETED"` \| `"DISABLED"` \| `"IN_APPEAL"` \| `"LIMIT_EXCEEDED"` \| `"PAUSED"` \| `"PENDING"` \| `"PENDING_DELETION"` \| `"REJECTED"` \| [`MessageTemplateStatus`](../enumerations/MessageTemplateStatus.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:228](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L228)
+
+#### Inherited from
+
+[`ListTemplatesParams`](ListTemplatesParams.mdx).[`status`](ListTemplatesParams.mdx#status)

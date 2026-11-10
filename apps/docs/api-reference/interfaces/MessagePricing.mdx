@@ -1,0 +1,45 @@
+[wapi.js](../README.mdx) / MessagePricing
+
+# Interface: MessagePricing
+
+Defined in: [packages/wapi.js/src/events/base.ts:250](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L250)
+
+Meta's pricing block on a status update.
+
+## Properties
+
+### billable
+
+> **billable**: `boolean`
+
+Defined in: [packages/wapi.js/src/events/base.ts:251](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L251)
+
+***
+
+### category?
+
+> `optional` **category?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:255](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L255)
+
+`"marketing"`, `"utility"`, `"authentication"`, `"service"`, ...
+
+***
+
+### pricingModel?
+
+> `optional` **pricingModel?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:253](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L253)
+
+`"CBP"` (conversation based) or `"PMP"` (per message).
+
+***
+
+### type?
+
+> `optional` **type?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:257](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L257)
+
+PMP only: `"regular"`, `"free_customer_service"`, `"free_entry_point"`.

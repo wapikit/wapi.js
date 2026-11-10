@@ -1,283 +1,150 @@
-[Wapi.js Docs](../README.mdx) / ButtonInteractionMessage
+[wapi.js](../README.mdx) / ButtonInteractionMessage
 
 # Class: ButtonInteractionMessage
 
-Represents a button interaction message.
+Defined in: [packages/wapi.js/src/components/button.ts:47](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/button.ts#L47)
 
-## Implements
+An interactive message with up to three quick reply buttons.
+
+## Example
+
+```ts
+new ButtonInteractionMessage({
+  header: "Order #42",
+  bodyText: "Did your order arrive?",
+  footerText: "Reply within 24h",
+  buttons: [
+    { id: "yes", title: "Yes" },
+    { id: "no", title: "No" },
+  ],
+});
+```
 
 ## Extends
 
-- [`InteractiveMessage`](InteractiveMessage.mdx)
-
-## Implements
-
-- [`ButtonInteractionMessageInterface`](../interfaces/ButtonInteractionMessageInterface.mdx)
+- [`InteractiveMessage`](InteractiveMessage.mdx)\<[`Button`](../enumerations/InteractiveMessageTypeEnum.mdx#button)\>
 
 ## Constructors
 
-### new ButtonInteractionMessage()
+### Constructor
 
-> **new ButtonInteractionMessage**(`params`): [`ButtonInteractionMessage`](ButtonInteractionMessage.mdx)
+> **new ButtonInteractionMessage**(`data`): `ButtonInteractionMessage`
 
-Creates an instance of ButtonInteractionMessage.
+Defined in: [packages/wapi.js/src/components/button.ts:50](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/button.ts#L50)
 
 #### Parameters
 
-• **params**
+##### data
 
-The parameters for creating the button interaction message.
-
-• **params.bodyText**: `string`
-
-The body text of the message.
-
-• **params.buttons**: `object`[]
-
-The buttons of the message.
-
-• **params.footerText?**: `string`
-
-The footer text of the message.
+[`ButtonInteractionMessageOptions`](../interfaces/ButtonInteractionMessageOptions.mdx)
 
 #### Returns
 
-[`ButtonInteractionMessage`](ButtonInteractionMessage.mdx)
+`ButtonInteractionMessage`
 
 #### Overrides
 
-[`InteractiveMessage`](InteractiveMessage.mdx).[`constructor`](InteractiveMessage.mdx#constructors)
-
-#### Memberof
-
-ButtonInteractionMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/interaction/index.ts:84](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/interaction/index.ts#L84)
+[`InteractiveMessage`](InteractiveMessage.mdx).[`constructor`](InteractiveMessage.mdx#constructor)
 
 ## Properties
 
 ### data
 
-> **data**: `object`
+> `readonly` **data**: `Readonly`\<[`ButtonInteractionMessageOptions`](../interfaces/ButtonInteractionMessageOptions.mdx)\>
 
-#### buttons
-
-> **buttons**: `object`[]
-
-#### Implementation of
-
-[`ButtonInteractionMessageInterface`](../interfaces/ButtonInteractionMessageInterface.mdx).[`data`](../interfaces/ButtonInteractionMessageInterface.mdx#data)
-
-#### Source
-
-[packages/wapi.js/src/structures/interaction/index.ts:71](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/interaction/index.ts#L71)
+Defined in: [packages/wapi.js/src/components/button.ts:48](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/button.ts#L48)
 
 ***
 
-### interactiveMessageData
+### interactiveType
 
-> `readonly` **interactiveMessageData**: `object`
+> `readonly` **interactiveType**: [`Button`](../enumerations/InteractiveMessageTypeEnum.mdx#button)
 
-#### bodyText
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
-> **bodyText**: `string`
-
-#### footerText?
-
-> `optional` **footerText**: `string`
-
-#### header?
-
-> `optional` **header**: `object` \| `object` \| `object` \| `object`
-
-#### type
-
-> **type**: [`InteractiveMessageTypeEnum`](../enumerations/InteractiveMessageTypeEnum.mdx)
-
-#### Implementation of
-
-[`ButtonInteractionMessageInterface`](../interfaces/ButtonInteractionMessageInterface.mdx).[`interactiveMessageData`](../interfaces/ButtonInteractionMessageInterface.mdx#interactivemessagedata)
+`interactive.type`.
 
 #### Inherited from
 
-[`InteractiveMessage`](InteractiveMessage.mdx).[`interactiveMessageData`](InteractiveMessage.mdx#interactivemessagedata)
-
-#### Source
-
-[packages/wapi.js/src/structures/interaction/index.ts:31](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/interaction/index.ts#L31)
-
-***
-
-### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-The messaging product.
-
-#### Implementation of
-
-[`ButtonInteractionMessageInterface`](../interfaces/ButtonInteractionMessageInterface.mdx).[`messaging_product`](../interfaces/ButtonInteractionMessageInterface.mdx#messaging_product)
-
-#### Inherited from
-
-[`InteractiveMessage`](InteractiveMessage.mdx).[`messaging_product`](InteractiveMessage.mdx#messaging_product)
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:17](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L17)
-
-***
-
-### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-The recipient type.
-
-#### Implementation of
-
-[`ButtonInteractionMessageInterface`](../interfaces/ButtonInteractionMessageInterface.mdx).[`recipient_type`](../interfaces/ButtonInteractionMessageInterface.mdx#recipient_type)
-
-#### Inherited from
-
-[`InteractiveMessage`](InteractiveMessage.mdx).[`recipient_type`](InteractiveMessage.mdx#recipient_type)
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:18](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L18)
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactiveType`](InteractiveMessage.mdx#interactivetype)
 
 ***
 
 ### type
 
-> **type**: `MessageTypeEnum`
+> `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-The type of the message.
-
-#### Implementation of
-
-[`ButtonInteractionMessageInterface`](../interfaces/ButtonInteractionMessageInterface.mdx).[`type`](../interfaces/ButtonInteractionMessageInterface.mdx#type-1)
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
-[`InteractiveMessage`](InteractiveMessage.mdx).[`type`](InteractiveMessage.mdx#type-1)
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:16](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L16)
+[`InteractiveMessage`](InteractiveMessage.mdx).[`type`](InteractiveMessage.mdx#type)
 
 ## Methods
 
-### addFooter()
+### content()
 
-> **addFooter**(`footerText`): `void`
+> `protected` **content**(): `object`
 
-Adds a footer to the message.
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
-#### Parameters
-
-• **footerText**: `string`
-
-The footer text to be added.
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
 
 #### Returns
 
-`void`
+`object`
 
-#### Source
+##### interactive
 
-[packages/wapi.js/src/structures/interaction/index.ts:108](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/interaction/index.ts#L108)
-
-***
-
-### addHeader()
-
-> **addHeader**(): `void`
-
-Adds a header to the message.
-
-#### Returns
-
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/interaction/index.ts:102](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/interaction/index.ts#L102)
-
-***
-
-### parseConstructorPayload()
-
-> `protected` **parseConstructorPayload**(`schema`, `payload`): `any`
-
-Parses the constructor payload using the provided schema.
-
-#### Parameters
-
-• **schema**: `ZodType`\<`any`, `ZodTypeDef`, `any`\>
-
-The Zod schema used for parsing the payload.
-
-• **payload**: `any`
-
-The payload to be parsed.
-
-#### Returns
-
-`any`
-
-The parsed data.
+> **interactive**: [`InteractivePayloadBase`](../interfaces/InteractivePayloadBase.mdx)\<[`Button`](../enumerations/InteractiveMessageTypeEnum.mdx#button)\> & `Record`\<`string`, `unknown`\>
 
 #### Inherited from
 
-[`InteractiveMessage`](InteractiveMessage.mdx).[`parseConstructorPayload`](InteractiveMessage.mdx#parseconstructorpayload)
+[`InteractiveMessage`](InteractiveMessage.mdx).[`content`](InteractiveMessage.mdx#content)
 
-#### Throws
+***
 
-An error if the parsing fails.
+### interactive()
 
-#### Source
+> `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-[packages/wapi.js/src/structures/message/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L42)
+Defined in: [packages/wapi.js/src/components/button.ts:67](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/button.ts#L67)
+
+The `interactive` object, without `type`. Undefined keys are dropped.
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+#### Overrides
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactive`](InteractiveMessage.mdx#interactive)
 
 ***
 
 ### toJson()
 
-> **toJson**(`params`): `object` & `object`
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Converts the message to JSON format.
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
+
+Builds the Cloud API payload for this message.
 
 #### Parameters
 
-• **params**
+##### options
 
-The parameters for converting the message to JSON.
-
-• **params.replyToMessageId?**: `string`
-
-The ID of the message to reply to.
-
-• **params.to**: `string`
-
-The recipient of the message.
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
 
 #### Returns
 
-`object` & `object`
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-The JSON representation of the message.
+#### Throws
 
-#### Overrides
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
 
 [`InteractiveMessage`](InteractiveMessage.mdx).[`toJson`](InteractiveMessage.mdx#tojson)
-
-#### Memberof
-
-ButtonInteractionMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/interaction/index.ts:120](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/interaction/index.ts#L120)

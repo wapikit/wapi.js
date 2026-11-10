@@ -1,0 +1,77 @@
+[wapi.js](../README.mdx) / WebhookHandler
+
+# Class: WebhookHandler
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:101](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L101)
+
+Processes WhatsApp webhook requests: subscription verification (`GET`) and
+event notifications (`POST`).
+
+Behaviour, matching wapi.go:
+- `GET` answers `hub.challenge` when `hub.mode` is `subscribe` and the token
+  matches, `403` otherwise.
+- `POST` with `appSecret` set rejects a missing or wrong signature with `401`.
+- Invalid JSON gets `400`. Once a payload is accepted the answer is always
+  `200`: a change or message that cannot be decoded is skipped and reported
+  through the `Error` event, so Meta does not retry (and re-deliver) the
+  whole batch.
+
+## Constructors
+
+### Constructor
+
+> **new WebhookHandler**(`options`): `WebhookHandler`
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:104](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L104)
+
+#### Parameters
+
+##### options
+
+`WebhookHandlerOptions`
+
+#### Returns
+
+`WebhookHandler`
+
+## Methods
+
+### dispatch()
+
+> **dispatch**(`payload`): `Promise`\<`void`\>
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:183](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L183)
+
+Dispatches an already authenticated and parsed payload. Useful when the
+request is verified elsewhere (for example a queue worker). Resolves when
+every listener has settled.
+
+#### Parameters
+
+##### payload
+
+[`WebhookPayload`](../interfaces/WebhookPayload.mdx)
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### handle()
+
+> **handle**(`request`): `Promise`\<[`WebhookResponse`](../interfaces/WebhookResponse.mdx)\>
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:107](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L107)
+
+Handles one request. Never throws.
+
+#### Parameters
+
+##### request
+
+[`WebhookRequest`](../interfaces/WebhookRequest.mdx)
+
+#### Returns
+
+`Promise`\<[`WebhookResponse`](../interfaces/WebhookResponse.mdx)\>

@@ -1,0 +1,26 @@
+[wapi.js](../README.mdx) / WebhookPayload
+
+# Interface: WebhookPayload
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L8)
+
+TypeScript shapes of the WhatsApp Cloud API webhook payload. They are
+deliberately permissive (most fields optional): Meta adds fields over time
+and the webhook must keep working when it does. Nothing here is validated at
+runtime beyond what the dispatcher needs.
+
+## Properties
+
+### entry
+
+> **entry**: [`WebhookEntry`](WebhookEntry.mdx)[]
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:10](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L10)
+
+***
+
+### object
+
+> **object**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:9](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L9)

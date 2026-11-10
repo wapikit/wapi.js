@@ -1,0 +1,131 @@
+[wapi.js](../README.mdx) / SmbMessageEchoesEvent
+
+# Class: SmbMessageEchoesEvent
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:780](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L780)
+
+Messages sent from the WhatsApp Business app, echoed to the API (`smb_message_echoes`).
+
+## Extends
+
+- [`BaseSmbEvent`](BaseSmbEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new SmbMessageEchoesEvent**(`init`): `SmbMessageEchoesEvent`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:783](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L783)
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`SmbMessageEchoesEvent`
+
+#### Overrides
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`constructor`](BaseSmbEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`businessAccountId`](BaseSmbEvent.mdx#businessaccountid)
+
+***
+
+### messageEchoes
+
+> `readonly` **messageEchoes**: [`SmbMessageEcho`](../interfaces/SmbMessageEcho.mdx)[]
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:781](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L781)
+
+***
+
+### messagingProduct
+
+> `readonly` **messagingProduct**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:717](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L717)
+
+Always `"whatsapp"`.
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`messagingProduct`](BaseSmbEvent.mdx#messagingproduct)
+
+***
+
+### phoneNumber
+
+> `readonly` **phoneNumber**: [`BusinessPhoneNumber`](../interfaces/BusinessPhoneNumber.mdx)
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:719](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L719)
+
+Business phone number the webhook is about.
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`phoneNumber`](BaseSmbEvent.mdx#phonenumber)
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`raw`](BaseSmbEvent.mdx#raw)
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`timestamp`](BaseSmbEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`date`](BaseSmbEvent.mdx#date)

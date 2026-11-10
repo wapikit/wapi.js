@@ -1,0 +1,81 @@
+[wapi.js](../README.mdx) / TemplateCreateRequest
+
+# Interface: TemplateCreateRequest
+
+Defined in: [packages/wapi.js/src/managers/template.ts:190](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L190)
+
+Body of `POST /{waba-id}/message_templates`.
+
+## Properties
+
+### allow\_category\_change?
+
+> `optional` **allow\_category\_change?**: `boolean`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:195](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L195)
+
+***
+
+### category
+
+> **category**: `"AUTHENTICATION"` \| `"MARKETING"` \| `"UTILITY"` \| [`MessageTemplateCategory`](../enumerations/MessageTemplateCategory.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:193](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L193)
+
+***
+
+### components
+
+> **components**: [`TemplateMessageComponent`](TemplateMessageComponent.mdx)[]
+
+Defined in: [packages/wapi.js/src/managers/template.ts:194](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L194)
+
+***
+
+### language
+
+> **language**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:192](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L192)
+
+***
+
+### library\_template\_button\_inputs?
+
+> `optional` **library\_template\_button\_inputs?**: [`TemplateMessageComponentButton`](TemplateMessageComponentButton.mdx)[]
+
+Defined in: [packages/wapi.js/src/managers/template.ts:200](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L200)
+
+***
+
+### library\_template\_name?
+
+> `optional` **library\_template\_name?**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:199](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L199)
+
+Create from a Template Library template.
+
+***
+
+### message\_send\_ttl\_seconds?
+
+> `optional` **message\_send\_ttl\_seconds?**: `number`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:197](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L197)
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:191](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L191)
+
+***
+
+### parameter\_format?
+
+> `optional` **parameter\_format?**: `"POSITIONAL"` \| `"NAMED"` \| [`MessageTemplateParameterFormat`](../enumerations/MessageTemplateParameterFormat.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:196](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L196)

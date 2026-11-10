@@ -1,0 +1,224 @@
+---
+title: Business Management
+description: "Manage templates, phone numbers, catalogs, analytics and webhook subscriptions of your WhatsApp Business Account."
+---
+
+The managers on this page work at the WhatsApp Business Account (WABA) level. They need `businessAccountId` in the client config, and a token with the `whatsapp_business_management` permission.
+
+```ts
+const client = new Client({
+  accessToken: process.env.WHATSAPP_API_ACCESS_TOKEN!,
+  businessAccountId: process.env.WHATSAPP_BUSINESS_ACCOUNT_ID,
+});
+```
+
+| Manager | |
+|---|---|
+| `client.templates` | Create, edit, list, delete and migrate message templates |
+| `client.phoneNumbers` | Registration, verification, two-step PIN, QR codes, usernames, business profile |
+| `client.catalogs` | Product catalogs and their products |
+| `client.business` | Account details, analytics, webhook app subscriptions |
+
+Accessing one without `businessAccountId` throws a `TypeError`. Failed calls throw a [`GraphApiError`](/guide/building-your-application/sending-messages#handling-errors). Every method takes an optional `signal` to cancel the request.
+
+## Templates
+
+```ts
+import { MessageTemplateCategory } from "@wapijs/wapi.js";
+
+// Submit a template for review
+const created = await client.templates.create({
+  name: "order_shipped",
+  language: "en_US",
+  category: MessageTemplateCategory.Utility, // or "UTILITY"
+  components: [
+    { type: "BODY", text: "Hi {{1}}, your order {{2}} has shipped.", example: { body_text: [["Jane", "#1042"]] } },
+    { type: "BUTTONS", buttons: [{ type: "URL", text: "Track", url: "https://example.com/t/{{1}}", example: ["1042"] }] },
+  ],
+});
+created.id; // template id
+created.status; // "PENDING", "APPROVED", ...
+
+// Read
+const template = await client.templates.get(created.id);
+const { data, paging } = await client.templates.list({ status: "APPROVED", language: "en_US", limit: 50 });
+const all = await client.templates.listAll({ category: "MARKETING" });
+
+// Edit components, category or TTL
+await client.templates.update(created.id, { message_send_ttl_seconds: 3600 });
+
+// Delete every language of a template, or one language version by id
+await client.templates.delete({ name: "order_shipped" });
+await client.templates.delete({ name: "order_shipped", id: created.id });
+
+// Copy templates from another WABA of the same business
+const result = await client.templates.migrate({ sourceWabaId: "<other waba id>" });
+```
+
+`list()` filters by `name`, `status`, `category`, `language`, `content`, `nameOrContent` and `qualityScore`. The template status, quality and category webhooks arrive as [business account events](/guide/building-your-application/event-handling#business-account-events), for example `MessageTemplateStatusUpdate` when a template is approved or rejected.
+
+To send an approved template, use [`TemplateMessage`](/guide/building-your-application/building-message-components#templates).
+
+## Phone numbers
+
+```ts
+// List numbers of the WABA (LIVE numbers by default; { sandbox: true } for test numbers)
+const { data: numbers } = await client.phoneNumbers.list();
+const number = await client.phoneNumbers.get(phoneNumberId);
+number.display_phone_number;
+number.quality_rating;
+
+// Add and verify a number
+const { id } = await client.phoneNumbers.create({ countryCode: "1", phoneNumber: "5550001111", verifiedName: "Example Inc" });
+await client.phoneNumbers.requestVerificationCode(id, { codeMethod: "SMS", language: "en_US" });
+await client.phoneNumbers.verifyCode(id, "123456");
+
+// Register it for the Cloud API with a 6-digit two-step PIN
+await client.phoneNumbers.register(id, "246810");
+await client.phoneNumbers.setTwoStepVerificationPin(id, "135790");
+await client.phoneNumbers.deregister(id);
+```
+
+### Business profile and username
+
+```ts
+const profile = await client.phoneNumbers.getBusinessProfile(phoneNumberId); // undefined when there is none
+await client.phoneNumbers.updateBusinessProfile(phoneNumberId, {
+  about: "We reply within an hour",
+  email: "support@example.com",
+  websites: ["https://example.com"], // at most 2
+});
+
+const { username } = await client.phoneNumbers.getUsername(phoneNumberId);
+await client.phoneNumbers.setUsername(phoneNumberId, "examplestore");
+await client.phoneNumbers.deleteUsername(phoneNumberId);
+```
+
+### QR codes and short links
+
+```ts
+const qr = await client.phoneNumbers.createQrCode(phoneNumberId, { prefilledMessage: "Hi! I'd like to order", imageFormat: "PNG" });
+qr.code;
+qr.deep_link_url; // https://wa.me/message/...
+qr.qr_image_url;
+
+const { data: codes } = await client.phoneNumbers.listQrCodes(phoneNumberId, { imageFormat: "SVG" });
+await client.phoneNumbers.getQrCode(phoneNumberId, qr.code);
+await client.phoneNumbers.updateQrCode(phoneNumberId, qr.code, { prefilledMessage: "Hi! I need help" });
+await client.phoneNumbers.deleteQrCode(phoneNumberId, qr.code);
+```
+
+## Catalogs
+
+```ts
+const { data: catalogs } = await client.catalogs.list();
+const allCatalogs = await client.catalogs.listAll();
+
+const page = await client.catalogs.listProducts(catalogs[0].id, { limit: 25 });
+page.summary?.total_count; // number of products in the catalog
+
+const products = await client.catalogs.listAllProducts(catalogs[0].id);
+const product = await client.catalogs.getProduct(products[0].id);
+product.retailer_id; // use it as productRetailerId in ProductMessage
+```
+
+Send products with [`ProductMessage`, `ProductListMessage` and `CatalogMessage`](/guide/building-your-application/building-message-components#commerce).
+
+## Business account and analytics
+
+```ts
+const account = await client.business.fetch();
+account.name;
+account.account_review_status;
+account.message_template_namespace;
+```
+
+Times are a `Date` or a Unix timestamp in **seconds**.
+
+```ts
+const end = new Date();
+const start = new Date(end.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+// Sent and delivered message counts
+const messages = await client.business.analytics({ start, end, granularity: "DAY" });
+
+// Conversation counts and cost
+const conversations = await client.business.conversationAnalytics({
+  start,
+  end,
+  granularity: "DAILY",
+  dimensions: ["CONVERSATION_CATEGORY", "COUNTRY"],
+});
+
+// Per-message pricing volume and cost
+const pricing = await client.business.pricingAnalytics({
+  start,
+  end,
+  granularity: "DAILY",
+  metricTypes: ["COST", "VOLUME"],
+  pricingCategories: ["MARKETING", "UTILITY"],
+});
+```
+
+<Note>
+  `analytics()` uses `HALF_HOUR`, `DAY` or `MONTH` (`AnalyticsGranularity`), while `conversationAnalytics()` and `pricingAnalytics()` use `HALF_HOUR`, `DAILY` or `MONTHLY` (`ConversationAnalyticsGranularity`). These are Meta's names; the SDK passes them through unchanged.
+</Note>
+
+## Webhook subscriptions
+
+Your app only receives webhooks for a WABA it is subscribed to. Subscribe once, for example in a setup script:
+
+```ts
+await client.business.subscribeApp();
+
+// Or send this WABA's webhooks to a different URL than the app's callback URL
+await client.business.subscribeApp({
+  overrideCallbackUri: "https://example.com/webhooks/acme",
+  verifyToken: process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN!,
+});
+
+const { data: apps } = await client.business.listSubscribedApps();
+await client.business.unsubscribeApp();
+```
+
+## Pagination
+
+Every list call takes `{ limit, after, before }` and returns one page as `{ data, paging }`:
+
+```ts
+let page = await client.templates.list({ limit: 100 });
+while (true) {
+  for (const template of page.data) console.log(template.name);
+  const after = page.paging?.cursors?.after;
+  if (!page.paging?.next || !after) break;
+  page = await client.templates.list({ limit: 100, after });
+}
+```
+
+You rarely need to write that loop. `listAll()`, `listAllProducts()` and the standalone `iterateAll()` / `collectAll()` helpers follow the cursors for you:
+
+```ts
+import { iterateAll, collectAll } from "@wapijs/wapi.js";
+
+// Everything in one array (stop early with maxItems)
+const templates = await client.templates.listAll({ status: "APPROVED", maxItems: 500 });
+
+// Stream items without loading every page into memory
+for await (const template of iterateAll((page) => client.templates.list({ ...page, status: "APPROVED" }))) {
+  if (template.quality_score?.score === "RED") console.warn(template.name);
+}
+
+// Works for any list call
+const numbers = await collectAll((page) => client.phoneNumbers.list(page), { limit: 50 });
+```
+
+## Anything else
+
+`client.requester` gives raw, authenticated access to any Graph API endpoint wapi.js does not wrap yet. Errors are thrown as `GraphApiError`, the same as everywhere else.
+
+```ts
+const flows = await client.requester.request<{ data: { id: string; name: string }[] }>({
+  method: "GET",
+  path: `${process.env.WHATSAPP_BUSINESS_ACCOUNT_ID}/flows`,
+});
+```

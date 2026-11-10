@@ -1,423 +1,191 @@
-[Wapi.js Docs](../README.mdx) / Contact
+[wapi.js](../README.mdx) / Contact
 
 # Class: Contact
 
-Represents a contact.
+Defined in: [packages/wapi.js/src/components/contact.ts:158](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L158)
+
+Builds a [WhatsappContact](../interfaces/WhatsappContact.mdx) from camelCase input.
+
+## Example
+
+```ts
+const contact = new Contact({ formattedName: "Jane Doe", firstName: "Jane" })
+  .addPhone({ phone: "+1 555 000 1111", waId: "15550001111", type: "CELL" })
+  .addEmail({ email: "jane@example.com", type: "WORK" })
+  .setOrg({ company: "Acme" });
+new ContactMessage({ contacts: [contact] });
+```
 
 ## Constructors
 
-### new Contact()
+### Constructor
 
-> **new Contact**(`params`): [`Contact`](Contact.mdx)
+> **new Contact**(`data`): `Contact`
 
-Creates a new Contact instance.
+Defined in: [packages/wapi.js/src/components/contact.ts:167](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L167)
 
 #### Parameters
 
-• **params**
+##### data
 
-The parameters for creating a Contact instance.
-
-• **params.name**
-
-The name of the contact.
-
-• **params.name.first\_name?**: `string`= `undefined`
-
-• **params.name.formatted\_name**: `string`= `undefined`
-
-• **params.name.last\_name?**: `string`= `undefined`
-
-• **params.name.middle\_name?**: `string`= `undefined`
-
-• **params.name.prefix?**: `string`= `undefined`
-
-• **params.name.suffix?**: `string`= `undefined`
+[`ContactOptions`](../interfaces/ContactOptions.mdx)
 
 #### Returns
 
-[`Contact`](Contact.mdx)
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:34](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L34)
+`Contact`
 
 ## Properties
 
-### addresses?
+### data
 
-> `optional` **addresses**: `object`[]
+> `readonly` **data**: `Readonly`\<[`ContactOptions`](../interfaces/ContactOptions.mdx)\>
 
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:20](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L20)
-
-***
-
-### birthday?
-
-> `optional` **birthday**: `string`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:24](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L24)
-
-***
-
-### emails?
-
-> `optional` **emails**: `object`[]
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:22](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L22)
-
-***
-
-### name
-
-> **name**: `object`
-
-#### first\_name?
-
-> `optional` **first\_name**: `string`
-
-#### formatted\_name
-
-> **formatted\_name**: `string`
-
-#### last\_name?
-
-> `optional` **last\_name**: `string`
-
-#### middle\_name?
-
-> `optional` **middle\_name**: `string`
-
-#### prefix?
-
-> `optional` **prefix**: `string`
-
-#### suffix?
-
-> `optional` **suffix**: `string`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:26](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L26)
-
-***
-
-### org?
-
-> `optional` **org**: `object`
-
-#### company?
-
-> `optional` **company**: `string`
-
-#### department?
-
-> `optional` **department**: `string`
-
-#### title?
-
-> `optional` **title**: `string`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:25](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L25)
-
-***
-
-### phones?
-
-> `optional` **phones**: `object`[]
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:23](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L23)
-
-***
-
-### urls?
-
-> `optional` **urls**: `object`[]
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:21](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L21)
+Defined in: [packages/wapi.js/src/components/contact.ts:159](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L159)
 
 ## Methods
 
 ### addAddress()
 
-> **addAddress**(`address`): `void`
+> **addAddress**(`address`): `this`
 
-Adds an address to the contact.
+Defined in: [packages/wapi.js/src/components/contact.ts:205](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L205)
+
+Adds a postal address.
 
 #### Parameters
 
-• **address**
+##### address
 
-The address to add to the contact.
-
-• **address.city?**: `string`= `undefined`
-
-• **address.country?**: `string`= `undefined`
-
-• **address.country\_code?**: `string`= `undefined`
-
-• **address.state?**: `string`= `undefined`
-
-• **address.street?**: `string`= `undefined`
-
-• **address.type**: `"HOME"` \| `"WORK"`= `undefined`
+[`ContactAddressOptions`](../interfaces/ContactAddressOptions.mdx)
 
 #### Returns
 
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:90](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L90)
+`this`
 
 ***
 
 ### addEmail()
 
-> **addEmail**(`email`): `void`
+> **addEmail**(`email`): `this`
 
-Adds an email to the contact.
+Defined in: [packages/wapi.js/src/components/contact.ts:191](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L191)
+
+Adds an email address.
 
 #### Parameters
 
-• **email**
+##### email
 
-The email to add to the contact.
-
-• **email.email?**: `string`= `undefined`
-
-• **email.type**: `"HOME"` \| `"WORK"`= `undefined`
+[`ContactEmailOptions`](../interfaces/ContactEmailOptions.mdx)
 
 #### Returns
 
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:106](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L106)
+`this`
 
 ***
 
 ### addPhone()
 
-> **addPhone**(`phone`): `void`
+> **addPhone**(`phone`): `this`
 
-Adds a phone number to the contact.
+Defined in: [packages/wapi.js/src/components/contact.ts:179](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L179)
+
+Adds a phone number. At least one of `phone` or `waId` is required.
 
 #### Parameters
 
-• **phone**
+##### phone
 
-The phone number to add to the contact.
-
-• **phone.phone?**: `string`= `undefined`
-
-• **phone.type?**: `"HOME"` \| `"WORK"` \| `"CELL"` \| `"MAIN"` \| `"IPHONE"`= `undefined`
-
-• **phone.wa\_id?**: `string`= `undefined`
+[`ContactPhoneOptions`](../interfaces/ContactPhoneOptions.mdx)
 
 #### Returns
 
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:114](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L114)
+`this`
 
 ***
 
 ### addUrl()
 
-> **addUrl**(`url`): `void`
+> **addUrl**(`url`): `this`
 
-Adds a URL to the contact.
+Defined in: [packages/wapi.js/src/components/contact.ts:198](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L198)
+
+Adds a URL.
 
 #### Parameters
 
-• **url**
+##### url
 
-The URL to add to the contact.
-
-• **url.type**: `"HOME"` \| `"WORK"`= `undefined`
-
-• **url.url**: `string`= `undefined`
+[`ContactUrlOptions`](../interfaces/ContactUrlOptions.mdx)
 
 #### Returns
 
-`void`
+`this`
 
-#### Source
+***
 
-[packages/wapi.js/src/structures/contact/index.ts:98](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L98)
+### build()
+
+> **build**(): [`WhatsappContact`](../interfaces/WhatsappContact.mdx)
+
+Defined in: [packages/wapi.js/src/components/contact.ts:239](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L239)
+
+Returns the Cloud API contact object.
+
+#### Returns
+
+[`WhatsappContact`](../interfaces/WhatsappContact.mdx)
 
 ***
 
 ### setBirthday()
 
-> **setBirthday**(`date`): `void`
+> **setBirthday**(`date`): `this`
 
-Sets the birthday of the contact.
+Defined in: [packages/wapi.js/src/components/contact.ts:232](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L232)
 
-#### Parameters
-
-• **date**: `string`
-
-The birthday of the contact.
-
-#### Returns
-
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:122](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L122)
-
-***
-
-### setFirstName()
-
-> **setFirstName**(`firstName`): `void`
-
-Sets the first name of the contact.
+Sets the birthday, formatted as `YYYY-MM-DD`.
 
 #### Parameters
 
-• **firstName**: `string`
+##### date
 
-The first name of the contact.
-
-#### Returns
-
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:50](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L50)
-
-***
-
-### setLastName()
-
-> **setLastName**(`lastName`): `void`
-
-Sets the last name of the contact.
-
-#### Parameters
-
-• **lastName**: `string`
-
-The last name of the contact.
+`string`
 
 #### Returns
 
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L42)
-
-***
-
-### setMiddleName()
-
-> **setMiddleName**(`middleName`): `void`
-
-Sets the middle name of the contact.
-
-#### Parameters
-
-• **middleName**: `string`
-
-The middle name of the contact.
-
-#### Returns
-
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:58](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L58)
-
-***
-
-### setNamePrefix()
-
-> **setNamePrefix**(`prefix`): `void`
-
-Sets the prefix of the contact's name.
-
-#### Parameters
-
-• **prefix**: `string`
-
-The prefix of the contact's name.
-
-#### Returns
-
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:74](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L74)
-
-***
-
-### setNameSuffix()
-
-> **setNameSuffix**(`suffix`): `void`
-
-Sets the suffix of the contact's name.
-
-#### Parameters
-
-• **suffix**: `string`
-
-The suffix of the contact's name.
-
-#### Returns
-
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/contact/index.ts:66](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L66)
+`this`
 
 ***
 
 ### setOrg()
 
-> **setOrg**(`org`): `void`
+> **setOrg**(`org`): `this`
 
-Sets the organization of the contact.
+Defined in: [packages/wapi.js/src/components/contact.ts:221](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L221)
+
+Sets (replaces) the organisation.
 
 #### Parameters
 
-• **org**
+##### org
 
-The organization of the contact.
-
-• **org.company?**: `string`= `undefined`
-
-• **org.department?**: `string`= `undefined`
-
-• **org.title?**: `string`= `undefined`
+[`ContactOrgOptions`](../interfaces/ContactOrgOptions.mdx)
 
 #### Returns
 
-`void`
+`this`
 
-#### Source
+***
 
-[packages/wapi.js/src/structures/contact/index.ts:82](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/contact/index.ts#L82)
+### toJSON()
+
+> **toJSON**(): [`WhatsappContact`](../interfaces/WhatsappContact.mdx)
+
+Defined in: [packages/wapi.js/src/components/contact.ts:260](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/contact.ts#L260)
+
+Same as [Contact.build](#build); lets `JSON.stringify` serialise a contact.
+
+#### Returns
+
+[`WhatsappContact`](../interfaces/WhatsappContact.mdx)

@@ -3,83 +3,155 @@ title: Handle Events
 description: Learn how to handle events using the Wapi.js SDK
 ---
 
-Wapi.js SDK implements Node.js native EventEmitter class to implment event handling.
+The client emits a typed event for every webhook notification. Register listeners with `client.on()`, then start receiving webhooks with [`client.webhook.listen()`](/guide/building-your-application/creating-wapi-client#receiving-webhooks) or [your own server](/guide/building-your-application/using-your-own-server).
 
+```ts
+client.on("TextMessage", async (event) => {
+  console.log(event.from, event.senderName, event.text);
+  await event.reply(new TextMessage({ text: "Got it!" }));
+});
 
-## Listen to Events: 
+client.on("MessageDelivered", (event) => console.log("delivered", event.messageId));
 
-You can listen to events using the `on` method available on the [client](api-reference/classes/Client) class. Here is an example of how you can listen to incoming messages and reply/react to them:
-
-```typescript
-// assuming you have already initiated the client,
-
-
-whatsappClient.on('Ready', async () => {
-        console.log("Client is ready to receive messages.")
-})
-
-whatsappClient.on('Error', async error => {
-        console.errpr("An error occured.", error)
-})
-
-whatsappClient.on('TextMessage', async message => {
-        await message.reply({
-            message: new TextMessage({
-                text: 'This is a reply.'
-            })
-        })
-})
-
-whatsappClient.on('AudioMessage', async message => {
-        await message.reply({
-            message: new TextMessage({
-                text: 'This is a reply.'
-            })
-        })
-})
-
-// and so on for other message types...
-
+client.on("Error", (error) => console.error(error));
 ```
 
+## Listeners
 
-## Exposed Events
+- Listeners may be `async`. All listeners for an event run concurrently.
+- A listener that throws or rejects never breaks the webhook request. The error is emitted as an `Error` event (or logged, if there is no `Error` listener).
+- `client.on()` returns a function that removes the listener. `client.once()`, `client.off()` and `client.removeAllListeners()` work as you would expect.
 
-The SDK supports the following events out of the box to make it easy to handle both the user and system events: 
+```ts
+const stop = client.on("TextMessage", handler);
+stop(); // unsubscribe
+```
 
-<Note>There is no messaging or system event handling differences in the SDK, here they are just bifurcated for the educational puposes.</Note>
+<Note>
+  Meta gets its `200` as soon as the payload is accepted, and your listeners run afterwards. On serverless runtimes, pass `waitUntil` or await `response.done` so the runtime isn't frozen before they finish. See [Using your own server](/guide/building-your-application/using-your-own-server).
+</Note>
 
-### Messaging Events:
+## Message events
 
-- [Text Message Event](/api-reference/classes/TextMessageEvent)
-- [Image Message Event](/api-reference/classes/ImageMessageEvent)
-- [Video Message Event](/api-reference/classes/VideoMessageEvent)
-- [Audio Message Event](/api-reference/classes/AudioMessageEvent)
-- [Document Message Event](/api-reference/classes/DocumentMessageEvent)
-- [Location Message Event](/api-reference/classes/LocationMessageEvent)
-- [Contact Message Event](/api-reference/classes/ContactMessageEvent)
-- [Reaction Message Event](/api-reference/classes/ReactionMessageEvent)
-- [Sticker Event](/api-reference/classes/StickerMessageEvent)
-- [Quick Reply Button Interaction Event](api-reference/interfaces/QuickReplyButtonInteractionEvent)
-- [Ad Interaction Event](/api-reference/classes/AdInteractionEvent)
-- [Product Inquiry Event](/api-reference/classes/ProductInquiryEvent)
-- [Reply Button Interaction Event](/api-reference/classes/ReplyButtonInteractionEvent)
-- [List Interaction Event](/api-reference/classes/ListInteractionEvent)
+Every message event has:
 
-<Card title="Important" icon="code" iconType="duotone" color="#ca8b04">
-  Each of the events mentioned above has a couple of utility methods available like `reply`, `react` etc. which can be used to reply or react to the incoming messages.
-</Card>
+| Field | |
+|---|---|
+| `messageId` | WhatsApp message id (`wamid.*`) |
+| `from` | Sender phone number / wa_id (may be empty for BSUID-only senders) |
+| `fromUserId`, `fromParentUserId` | Sender business-scoped user id (BSUID) and parent BSUID |
+| `senderName`, `username` | Profile name and WhatsApp username, when Meta includes them |
+| `timestamp`, `date` | Unix seconds, and the same as a `Date` |
+| `context` | `{ repliedToMessageId, repliedToFrom, forwarded, frequentlyForwarded }` |
+| `referral` | Click-to-WhatsApp ad details, when the message came from an ad |
+| `phoneNumber` | `{ id, displayPhoneNumber }` of the business number that received it |
+| `businessAccountId` | The receiving WhatsApp Business Account |
+| `messaging` | Messaging client of the receiving number |
+| `raw` | The untouched message object from the payload |
 
+And the helpers `reply()`, `send()`, `react()` and `markAsRead()`. See [Replying and reacting](/guide/building-your-application/replying-and-reacting).
 
-### System Events
+| Event | Extra fields |
+|---|---|
+| `TextMessage` | `text`, `message` (a `TextMessage` component) |
+| `ImageMessage` | `mediaId`, `mimeType`, `sha256`, `caption`, `image`, `download()`, `getUrl()` |
+| `VideoMessage` | same as image, with `video` |
+| `AudioMessage` | media fields, `isVoice`, `audio` |
+| `DocumentMessage` | media fields, `caption`, `filename`, `document` |
+| `StickerMessage` | media fields, `isAnimated`, `sticker` |
+| `LocationMessage` | `latitude`, `longitude`, `name`, `address`, `url`, `location` |
+| `ContactsMessage` | `contacts` (raw cards), `message` (a `ContactMessage` component) |
+| `Reaction` | `reactedToMessageId`, `emoji`, `isRemoved` |
+| `ReplyButtonInteraction` | `buttonId`, `title` |
+| `ListInteraction` | `listId`, `title`, `description` |
+| `QuickReplyButtonInteraction` | `buttonText`, `buttonPayload` (template quick reply buttons) |
+| `FlowCompletion` | `flowName`, `body`, `responseJson`, `response` (parsed JSON) |
+| `OrderReceived` | `catalogId`, `text`, `productItems` |
+| `ProductInquiry` | `text`, `catalogId`, `productRetailerId` (a text sent from a product's "Message business" button) |
+| `AdInteraction` | `text`, `adSource` |
+| `CustomerNumberChanged` | `oldWaId`, `newWaId`, `changeDescription` |
+| `CustomerIdentityChanged` | `acknowledged`, `hash`, `createdTimestamp`, `changeDescription` |
+| `UnsupportedMessage` | `messageType`, `unsupportedType`, `errors` |
 
-- Client Ready Event
-- Client Error Event
-- [Message Delivered Event](/api-reference/classes/MessageDeliveredEvent)
-- [Message Read Event](/api-reference/classes/MessageReadEvent)
-- [Message Sent Event](/api-reference/classes/MessageSentEvent)
-- [Message Failed Event](/api-reference/classes/MessageReceivedEvent)
-- [Message Undelivered Event](/api-reference/classes/MessageUndeliveredEvent)
-- [Customer Identity Changed Event](/api-reference/classes/CustomerIdentityChangedEvent)
-- [Customer Number Changed Event](/api-reference/classes/CustomerNumberChangedEvent)
+<Note>
+  `AdInteraction` is emitted **in addition to** the regular event, for any message that came from a Click-to-WhatsApp ad, so a text bot keeps working and you can track ad attribution separately. A text with a product reference is emitted as `ProductInquiry` instead of `TextMessage`.
+</Note>
 
+```ts
+client.on("ReplyButtonInteraction", async (event) => {
+  if (event.buttonId === "morning") await event.reply(new TextMessage({ text: "See you in the morning" }));
+});
+
+client.on("ImageMessage", async (event) => {
+  const { data, mimeType } = await event.download();
+});
+
+client.on("FlowCompletion", (event) => {
+  const answers = event.response as { email?: string };
+});
+```
+
+## Status events
+
+Status updates for messages you sent. Each has `messageId` (the id `send()` returned), `status`, `recipientId`, `recipientUserId`, `bizOpaqueCallbackData`, `pricing`, `conversation`, `errors` / `error`, `phoneNumber`, `businessAccountId`, `timestamp` and `raw`.
+
+| Event | |
+|---|---|
+| `MessageStatus` | Every status, including ones without a dedicated event |
+| `MessageSent` | Sent (one grey tick) |
+| `MessageDelivered` | Delivered to the device |
+| `MessageRead` | Read (blue ticks) |
+| `MessageFailed` | Could not be sent; see `error` / `failReason` |
+| `MessageUndelivered` | Not delivered (`undelivered`, or `failed` with error 130472); see `undeliveredReason` |
+
+`MessageStatus` fires first, followed by the dedicated event.
+
+```ts
+client.on("MessageFailed", (event) => {
+  console.error(event.messageId, event.error?.code, event.failReason);
+});
+
+client.on("MessageStatus", (event) => {
+  if (event.pricing?.billable) billing.record(event.messageId, event.pricing.category);
+});
+```
+
+<Tip>The same pricing block can arrive on sent, delivered and read for one message. Deduplicate by `messageId` before you count costs.</Tip>
+
+## Business account events
+
+Account-level notifications. Each has `businessAccountId`, `timestamp` and `raw`. They have no reply helpers. To receive them, subscribe your app to the matching webhook field in the Meta dashboard (for example `message_template_status_update`).
+
+| Group | Events |
+|---|---|
+| Templates | `MessageTemplateStatusUpdate`, `MessageTemplateQualityUpdate`, `MessageTemplateCategoryUpdate`, `MessageTemplateComponentsUpdate` |
+| Phone numbers | `PhoneNumberNameUpdate`, `PhoneNumberQualityUpdate`, `BusinessUsernameUpdate` |
+| Account | `AccountUpdate`, `AccountReviewUpdate`, `AccountAlerts`, `BusinessCapabilityUpdate`, `Security`, `PaymentConfigurationUpdate` |
+| Users | `UserPreferences` (for example marketing opt-outs), `UserIdUpdate` (BSUID changes) |
+| Coexistence (WhatsApp Business app) | `SmbAppStateSync`, `SmbMessageEchoes`, `History` |
+
+```ts
+client.on("MessageTemplateStatusUpdate", (event) => {
+  console.log(event.messageTemplateName, event.messageTemplateLanguage, event.event, event.reason);
+});
+
+client.on("PhoneNumberQualityUpdate", (event) => {
+  console.warn(event.displayPhoneNumber, event.event, event.currentLimit);
+});
+```
+
+## Client events
+
+| Event | Payload |
+|---|---|
+| `Ready` | `{ host, port, path }` when the built-in server starts listening |
+| `Error` | An `Error`: a listener threw, a webhook change could not be decoded, or the server failed |
+| `Warn` | `{ message, details }`: something unexpected but recoverable, such as an unhandled webhook field |
+
+```ts
+client.on("Ready", ({ port, path }) => console.log(`Listening on :${port}${path}`));
+client.on("Error", (error) => console.error(error));
+client.on("Warn", ({ message, details }) => console.warn(message, details));
+```
+
+Without `Error` or `Warn` listeners, these go to the client's `logger` (warnings and errors are written to `console` by default).

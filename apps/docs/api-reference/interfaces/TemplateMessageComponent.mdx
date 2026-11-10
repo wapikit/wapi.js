@@ -1,0 +1,83 @@
+[wapi.js](../README.mdx) / TemplateMessageComponent
+
+# Interface: TemplateMessageComponent
+
+Defined in: [packages/wapi.js/src/managers/template.ts:149](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L149)
+
+A template component, as returned by and sent to the Graph API.
+
+## Properties
+
+### add\_security\_recommendation?
+
+> `optional` **add\_security\_recommendation?**: `boolean`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:158](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L158)
+
+Authentication templates: adds the "do not share this code" disclaimer.
+
+***
+
+### buttons?
+
+> `optional` **buttons?**: [`TemplateMessageComponentButton`](TemplateMessageComponentButton.mdx)[]
+
+Defined in: [packages/wapi.js/src/managers/template.ts:154](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L154)
+
+***
+
+### cards?
+
+> `optional` **cards?**: [`TemplateMessageComponentCard`](TemplateMessageComponentCard.mdx)[]
+
+Defined in: [packages/wapi.js/src/managers/template.ts:155](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L155)
+
+***
+
+### code\_expiration\_minutes?
+
+> `optional` **code\_expiration\_minutes?**: `number`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:160](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L160)
+
+Authentication templates: adds the code expiry footer.
+
+***
+
+### example?
+
+> `optional` **example?**: [`TemplateMessageComponentExample`](TemplateMessageComponentExample.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:153](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L153)
+
+***
+
+### format?
+
+> `optional` **format?**: `"TEXT"` \| `"IMAGE"` \| `"DOCUMENT"` \| `"PRODUCT"` \| `"VIDEO"` \| `"LOCATION"` \| [`MessageTemplateComponentFormat`](../enumerations/MessageTemplateComponentFormat.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:151](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L151)
+
+***
+
+### limited\_time\_offer?
+
+> `optional` **limited\_time\_offer?**: [`TemplateMessageLimitedTimeOffer`](TemplateMessageLimitedTimeOffer.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:156](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L156)
+
+***
+
+### text?
+
+> `optional` **text?**: `string`
+
+Defined in: [packages/wapi.js/src/managers/template.ts:152](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L152)
+
+***
+
+### type
+
+> **type**: `"GREETING"` \| `"HEADER"` \| `"BODY"` \| `"FOOTER"` \| `"BUTTONS"` \| `"CAROUSEL"` \| `"LIMITED_TIME_OFFER"` \| [`MessageTemplateComponentType`](../enumerations/MessageTemplateComponentType.mdx)
+
+Defined in: [packages/wapi.js/src/managers/template.ts:150](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/template.ts#L150)

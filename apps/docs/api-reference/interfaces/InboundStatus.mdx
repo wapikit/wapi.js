@@ -1,0 +1,111 @@
+[wapi.js](../README.mdx) / InboundStatus
+
+# Interface: InboundStatus
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:188](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L188)
+
+## Properties
+
+### biz\_opaque\_callback\_data?
+
+> `optional` **biz\_opaque\_callback\_data?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:206](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L206)
+
+***
+
+### conversation?
+
+> `optional` **conversation?**: [`InboundConversation`](InboundConversation.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:207](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L207)
+
+***
+
+### errors?
+
+> `optional` **errors?**: [`WebhookError`](WebhookError.mdx)[]
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:209](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L209)
+
+***
+
+### id
+
+> **id**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:189](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L189)
+
+***
+
+### pricing?
+
+> `optional` **pricing?**: [`InboundPricing`](InboundPricing.mdx)
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:208](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L208)
+
+***
+
+### recipient\_id
+
+> **recipient\_id**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:199](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L199)
+
+***
+
+### recipient\_identity\_key\_hash?
+
+> `optional` **recipient\_identity\_key\_hash?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:205](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L205)
+
+***
+
+### recipient\_parent\_user\_id?
+
+> `optional` **recipient\_parent\_user\_id?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:202](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L202)
+
+***
+
+### recipient\_participant\_id?
+
+> `optional` **recipient\_participant\_id?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:204](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L204)
+
+***
+
+### recipient\_type?
+
+> `optional` **recipient\_type?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:203](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L203)
+
+***
+
+### recipient\_user\_id?
+
+> `optional` **recipient\_user\_id?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:201](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L201)
+
+Recipient BSUID.
+
+***
+
+### status
+
+> **status**: `string` & `Record`\<`never`, `never`\> \| `"read"` \| `"sent"` \| `"delivered"` \| `"failed"` \| `"deleted"` \| `"warning"`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:190](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L190)
+
+***
+
+### timestamp
+
+> **timestamp**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/payload.ts:198](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/payload.ts#L198)

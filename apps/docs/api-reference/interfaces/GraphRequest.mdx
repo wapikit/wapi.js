@@ -1,0 +1,75 @@
+[wapi.js](../README.mdx) / GraphRequest
+
+# Interface: GraphRequest
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:40](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L40)
+
+## Properties
+
+### body?
+
+> `optional` **body?**: `unknown`
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:47](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L47)
+
+JSON body; serialised with `JSON.stringify`.
+
+***
+
+### fields?
+
+> `optional` **fields?**: (`string` \| [`GraphField`](GraphField.mdx))[]
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:45](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L45)
+
+***
+
+### method
+
+> **method**: [`HttpMethod`](../type-aliases/HttpMethod.mdx)
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:41](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L41)
+
+***
+
+### path
+
+> **path**: `string`
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:43](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L43)
+
+Path below the API version, without a leading slash, e.g. `"123/messages"`.
+
+***
+
+### query?
+
+> `optional` **query?**: `Record`\<`string`, `string` \| `number` \| `boolean` \| `undefined`\>
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:44](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L44)
+
+***
+
+### rawBody?
+
+> `optional` **rawBody?**: `BodyInit`
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:49](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L49)
+
+Raw body (for example `FormData` for uploads). Takes precedence over `body`.
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:51](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L51)
+
+***
+
+### timeoutMs?
+
+> `optional` **timeoutMs?**: `number`
+
+Defined in: [packages/wapi.js/src/internal/request-client.ts:50](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/internal/request-client.ts#L50)

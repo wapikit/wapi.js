@@ -1,0 +1,69 @@
+[wapi.js](../README.mdx) / AnalyticsParams
+
+# Interface: AnalyticsParams
+
+Defined in: [packages/wapi.js/src/managers/business.ts:135](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L135)
+
+Options accepted by every manager method.
+
+## Extends
+
+- [`RequestOptions`](RequestOptions.mdx)
+
+## Properties
+
+### countryCodes?
+
+> `optional` **countryCodes?**: `string`[]
+
+Defined in: [packages/wapi.js/src/managers/business.ts:142](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L142)
+
+ISO country codes to include. Empty or omitted means all.
+
+***
+
+### end
+
+> **end**: [`Timestamp`](../type-aliases/Timestamp.mdx)
+
+Defined in: [packages/wapi.js/src/managers/business.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L137)
+
+***
+
+### granularity
+
+> **granularity**: `"HALF_HOUR"` \| `"DAY"` \| `"MONTH"` \| [`AnalyticsGranularity`](../enumerations/AnalyticsGranularity.mdx)
+
+Defined in: [packages/wapi.js/src/managers/business.ts:138](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L138)
+
+***
+
+### phoneNumbers?
+
+> `optional` **phoneNumbers?**: `string`[]
+
+Defined in: [packages/wapi.js/src/managers/business.ts:140](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L140)
+
+Display phone numbers to include. Empty or omitted means all.
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: [packages/wapi.js/src/managers/business.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L8)
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)
+
+***
+
+### start
+
+> **start**: [`Timestamp`](../type-aliases/Timestamp.mdx)
+
+Defined in: [packages/wapi.js/src/managers/business.ts:136](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L136)

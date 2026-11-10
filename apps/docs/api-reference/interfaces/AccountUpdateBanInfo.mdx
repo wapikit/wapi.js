@@ -1,0 +1,25 @@
+[wapi.js](../README.mdx) / AccountUpdateBanInfo
+
+# Interface: AccountUpdateBanInfo
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:453](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L453)
+
+`ban_info` of an `account_update` webhook (`DISABLED_UPDATE`).
+
+## Properties
+
+### wabaBanDate?
+
+> `optional` **wabaBanDate?**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:456](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L456)
+
+***
+
+### wabaBanState
+
+> **wabaBanState**: `string`[]
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:455](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L455)
+
+e.g. `["SCHEDULE_FOR_DISABLE"]`, `["DISABLE"]`, `["REINSTATE"]`.

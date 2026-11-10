@@ -2,53 +2,69 @@
 title: 'Setting up Wapi.js Application Development Environment'
 ---
 
+## Scaffold a bot
 
-## Initiating a Wapi.js project
-
-### Chat bot
-
-The first step to build a wapi.js based chat bot is to create a new node.js project. You can quickly setup a new project using the utility NPM package provided with the wapi.js SDK only, run the following command in your terminal to setup the project: 
+`create-wapi-app` creates a ready-to-run bot (TypeScript or JavaScript) with a configured client, a `.env.example` and a text echo handler:
 
 ```bash
-pnpm create-wapi-app my-whatsapp-bot
+npm create wapi-app my-whatsapp-bot
 ```
 
-<Check>Once you run this command, you would be asked a couple of questions like the name of the project and whether you want to use typescript or javascript for this project. Once you answer them, you project will start to setup and once done. You can navigate to the project directory and start building your chat bot.</Check>
+The CLI asks for the directory name and the language. To skip the prompts, pass `--typescript` or `--javascript`, `--package-manager <npm|pnpm|yarn>`, and `--no-install` if you don't want it to install dependencies.
 
-### Other use cases
+Then:
 
+```bash
+cd my-whatsapp-bot
+cp .env.example .env   # fill in your token, ids, verify token and app secret
+npm start              # builds and starts the webhook server on PORT (default 8080)
+```
 
-- You are a developer and want to integrate the whatsapp business API with your existing backend.
-- You are a solution partner or a tech partner with WhatsApp and want to access the WhatsApp business API to build a solution for your clients.
-
-To do so, you can install the wapi.js SDK using the following command:
+## Add wapi.js to an existing project
 
 <Tabs>
+  <Tab title="npm">
+    ```bash
+    npm install @wapijs/wapi.js@beta
+    ```
+  </Tab>
   <Tab title="pnpm">
     ```bash
-    pnpm add @wapijs/wapi.js
+    pnpm add @wapijs/wapi.js@beta
     ```
   </Tab>
   <Tab title="yarn">
-  ```bash
-    yarn add @wapijs/wapi.js
-    ```
-  </Tab>
-  <Tab title="npm">
-  ```bash
-    npm install @wapi/wapi.js
+    ```bash
+    yarn add @wapijs/wapi.js@beta
     ```
   </Tab>
 </Tabs>
 
-### You may also consider the following best pratices of developing a Node.js Application: 
+<Note>
+  The `@beta` tag installs 0.2. Without it, npm installs 0.1.x, which has a different API.
+</Note>
 
-- Setting up a Linter.
-- Setting up a formatter.
-- Setting up proper scripts in package.json.
-- Using a version control system like Git and setting up workflows for Github Actions for sanity build and lint checks.
-- Using consistent naming conventions.
-- Using environment variables for sensitive information.
+The package has no runtime dependencies and ships ESM and CommonJS builds with type definitions:
 
-<Note> Process to building the application [docs](/guide/building-your-application), for further assistance.</Note>
+```ts
+import { Client } from "@wapijs/wapi.js"; // ESM
+const { Client } = require("@wapijs/wapi.js"); // CommonJS
+```
 
+## Environment variables
+
+Keep credentials out of your code. These are the names used throughout these docs:
+
+```bash
+WHATSAPP_API_ACCESS_TOKEN=
+WHATSAPP_PHONE_NUMBER_ID=
+WHATSAPP_BUSINESS_ACCOUNT_ID=
+# Any string. Enter the same value as the verify token in the Meta dashboard.
+WHATSAPP_WEBHOOK_VERIFY_TOKEN=
+# App settings → Basic → App secret. Used to verify webhook signatures.
+META_APP_SECRET=
+```
+
+<Note>Projects created with `create-wapi-app` name the token variable `WHATSAPP_API_ACCESS_TOKEN`. Any name works, as long as you pass the value to `accessToken`.</Note>
+
+Next: [create the client](/guide/building-your-application/creating-wapi-client).

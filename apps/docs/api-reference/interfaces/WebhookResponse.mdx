@@ -1,0 +1,43 @@
+[wapi.js](../README.mdx) / WebhookResponse
+
+# Interface: WebhookResponse
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:36](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L36)
+
+What to answer Meta with.
+
+## Properties
+
+### body
+
+> **body**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:38](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L38)
+
+***
+
+### done
+
+> **done**: `Promise`\<`void`\>
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:45](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L45)
+
+Settles when every event listener triggered by this request has settled
+(never rejects). Pass it to `waitUntil` on serverless runtimes so the
+runtime is not frozen before your handlers finish.
+
+***
+
+### headers
+
+> **headers**: `Record`\<`string`, `string`\>
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:39](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L39)
+
+***
+
+### status
+
+> **status**: `number`
+
+Defined in: [packages/wapi.js/src/webhook/handler.ts:37](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/handler.ts#L37)

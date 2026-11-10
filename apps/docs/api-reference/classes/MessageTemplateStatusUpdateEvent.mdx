@@ -1,0 +1,217 @@
+[wapi.js](../README.mdx) / MessageTemplateStatusUpdateEvent
+
+# Class: MessageTemplateStatusUpdateEvent
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:236](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L236)
+
+A template was approved, rejected, paused, disabled... (`message_template_status_update`).
+
+## Extends
+
+- [`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new MessageTemplateStatusUpdateEvent**(`init`): `MessageTemplateStatusUpdateEvent`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:253](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L253)
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`MessageTemplateStatusUpdateEvent`
+
+#### Overrides
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`constructor`](BaseMessageTemplateEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:344](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L344)
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`businessAccountId`](BaseMessageTemplateEvent.mdx#businessaccountid)
+
+***
+
+### disableInfo?
+
+> `readonly` `optional` **disableInfo?**: `object`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:244](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L244)
+
+Present when the template is scheduled to be disabled.
+
+#### disableDate?
+
+> `optional` **disableDate?**: `string` \| `number`
+
+Unix seconds when Meta sends a number, otherwise Meta's date string.
+
+***
+
+### event
+
+> `readonly` **event**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateStatusUpdateEventEnum`](../enumerations/MessageTemplateStatusUpdateEventEnum.mdx)\>
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:238](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L238)
+
+New status of the template.
+
+***
+
+### messageTemplateCategory?
+
+> `readonly` `optional` **messageTemplateCategory?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateCategoryEnum`](../enumerations/MessageTemplateCategoryEnum.mdx)\>
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:242](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L242)
+
+Category of the template, when Meta includes it.
+
+***
+
+### messageTemplateId
+
+> `readonly` **messageTemplateId**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:221](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L221)
+
+Template id, as a string (Meta sends a number that can exceed 2^53).
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateId`](BaseMessageTemplateEvent.mdx#messagetemplateid)
+
+***
+
+### messageTemplateLanguage
+
+> `readonly` **messageTemplateLanguage**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:224](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L224)
+
+Language code, e.g. `"en_US"`.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateLanguage`](BaseMessageTemplateEvent.mdx#messagetemplatelanguage)
+
+***
+
+### messageTemplateName
+
+> `readonly` **messageTemplateName**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:222](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L222)
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateName`](BaseMessageTemplateEvent.mdx#messagetemplatename)
+
+***
+
+### otherInfo?
+
+> `readonly` `optional` **otherInfo?**: `object`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:249](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L249)
+
+Extra details, e.g. on `PAUSED` / `LOCKED`.
+
+#### description?
+
+> `optional` **description?**: `string`
+
+#### title?
+
+> `optional` **title?**: `string`
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: [packages/wapi.js/src/events/base.ts:346](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L346)
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`raw`](BaseMessageTemplateEvent.mdx#raw)
+
+***
+
+### reason?
+
+> `readonly` `optional` **reason?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateStatusUpdateReasonEnum`](../enumerations/MessageTemplateStatusUpdateReasonEnum.mdx)\>
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:240](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L240)
+
+Rejection / status reason; `NONE` when there is none.
+
+***
+
+### rejectionInfo?
+
+> `readonly` `optional` **rejectionInfo?**: `object`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:251](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L251)
+
+Details on `REJECTED`.
+
+#### reason?
+
+> `optional` **reason?**: `string`
+
+#### recommendation?
+
+> `optional` **recommendation?**: `string`
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`timestamp`](BaseMessageTemplateEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`date`](BaseMessageTemplateEvent.mdx#date)

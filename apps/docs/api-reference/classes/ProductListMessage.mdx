@@ -1,317 +1,147 @@
-[Wapi.js Docs](../README.mdx) / ProductListMessage
+[wapi.js](../README.mdx) / ProductListMessage
 
 # Class: ProductListMessage
 
-Represents a product list interaction message.
+Defined in: [packages/wapi.js/src/components/commerce.ts:126](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L126)
 
-## Implements
+Multi product message (MPM): shows up to 30 catalog products in sections.
+
+## Example
+
+```ts
+new ProductListMessage({
+  catalogId: "123",
+  header: "Summer sale",
+  bodyText: "Pick your favourites",
+  sections: [{ title: "Shoes", productRetailerIds: ["sku-1", "sku-2"] }],
+});
+```
 
 ## Extends
 
-- [`InteractiveMessage`](InteractiveMessage.mdx)
-
-## Implements
-
-- [`ProductListMessageInterface`](../interfaces/ProductListMessageInterface.mdx)
+- [`InteractiveMessage`](InteractiveMessage.mdx)\<[`ProductList`](../enumerations/InteractiveMessageTypeEnum.mdx#productlist)\>
 
 ## Constructors
 
-### new ProductListMessage()
+### Constructor
 
-> **new ProductListMessage**(`params`): [`ProductListMessage`](ProductListMessage.mdx)
+> **new ProductListMessage**(`data`): `ProductListMessage`
 
-Creates an instance of ProductListInteractionMessage.
+Defined in: [packages/wapi.js/src/components/commerce.ts:129](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L129)
 
 #### Parameters
 
-• **params**
+##### data
 
-The parameters for creating the product list interaction message.
-
-• **params.bodyText**: `string`
-
-The body text of the message.
-
-• **params.buttonText**: `string`
-
-The button text of the message.
-
-• **params.catalogId**: `string`
-
-The catalog ID of the product.
-
-• **params.footerText?**: `string`
-
-The footer text of the message.
-
-• **params.header**: `object` \| `object` \| `object` \| `object`
-
-The header of the message.
-
-• **params.productRetailerId**: `string`
-
-The product retailer ID of the product.
-
-• **params.sections**: [`ProductListSection`](ProductListSection.mdx)[]
-
-The sections of the product list.
+[`ProductListMessageOptions`](../interfaces/ProductListMessageOptions.mdx)
 
 #### Returns
 
-[`ProductListMessage`](ProductListMessage.mdx)
+`ProductListMessage`
 
 #### Overrides
 
-[`InteractiveMessage`](InteractiveMessage.mdx).[`constructor`](InteractiveMessage.mdx#constructors)
-
-#### Memberof
-
-ProductListInteractionMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/multi-product/index.ts:78](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/multi-product/index.ts#L78)
+[`InteractiveMessage`](InteractiveMessage.mdx).[`constructor`](InteractiveMessage.mdx#constructor)
 
 ## Properties
 
 ### data
 
-> **data**: `object`
+> `readonly` **data**: `Readonly`\<[`ProductListMessageOptions`](../interfaces/ProductListMessageOptions.mdx)\>
 
-#### catalogId
-
-> **catalogId**: `string`
-
-#### productRetailerId
-
-> **productRetailerId**: `string`
-
-#### sections
-
-> **sections**: [`ProductListSection`](ProductListSection.mdx)[]
-
-#### Implementation of
-
-[`ProductListMessageInterface`](../interfaces/ProductListMessageInterface.mdx).[`data`](../interfaces/ProductListMessageInterface.mdx#data)
-
-#### Source
-
-[packages/wapi.js/src/structures/multi-product/index.ts:59](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/multi-product/index.ts#L59)
+Defined in: [packages/wapi.js/src/components/commerce.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L127)
 
 ***
 
-### interactiveMessageData
+### interactiveType
 
-> `readonly` **interactiveMessageData**: `object`
+> `readonly` **interactiveType**: [`ProductList`](../enumerations/InteractiveMessageTypeEnum.mdx#productlist)
 
-#### bodyText
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
 
-> **bodyText**: `string`
-
-#### footerText?
-
-> `optional` **footerText**: `string`
-
-#### header?
-
-> `optional` **header**: `object` \| `object` \| `object` \| `object`
-
-#### type
-
-> **type**: [`InteractiveMessageTypeEnum`](../enumerations/InteractiveMessageTypeEnum.mdx)
-
-#### Implementation of
-
-[`ProductListMessageInterface`](../interfaces/ProductListMessageInterface.mdx).[`interactiveMessageData`](../interfaces/ProductListMessageInterface.mdx#interactivemessagedata)
+`interactive.type`.
 
 #### Inherited from
 
-[`InteractiveMessage`](InteractiveMessage.mdx).[`interactiveMessageData`](InteractiveMessage.mdx#interactivemessagedata)
-
-#### Source
-
-[packages/wapi.js/src/structures/interaction/index.ts:31](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/interaction/index.ts#L31)
-
-***
-
-### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-The messaging product.
-
-#### Implementation of
-
-[`ProductListMessageInterface`](../interfaces/ProductListMessageInterface.mdx).[`messaging_product`](../interfaces/ProductListMessageInterface.mdx#messaging_product)
-
-#### Inherited from
-
-[`InteractiveMessage`](InteractiveMessage.mdx).[`messaging_product`](InteractiveMessage.mdx#messaging_product)
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:17](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L17)
-
-***
-
-### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-The recipient type.
-
-#### Implementation of
-
-[`ProductListMessageInterface`](../interfaces/ProductListMessageInterface.mdx).[`recipient_type`](../interfaces/ProductListMessageInterface.mdx#recipient_type)
-
-#### Inherited from
-
-[`InteractiveMessage`](InteractiveMessage.mdx).[`recipient_type`](InteractiveMessage.mdx#recipient_type)
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:18](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L18)
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactiveType`](InteractiveMessage.mdx#interactivetype)
 
 ***
 
 ### type
 
-> **type**: `MessageTypeEnum`
+> `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
 
-The type of the message.
-
-#### Implementation of
-
-[`ProductListMessageInterface`](../interfaces/ProductListMessageInterface.mdx).[`type`](../interfaces/ProductListMessageInterface.mdx#type-1)
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
 
 #### Inherited from
 
-[`InteractiveMessage`](InteractiveMessage.mdx).[`type`](InteractiveMessage.mdx#type-1)
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:16](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L16)
+[`InteractiveMessage`](InteractiveMessage.mdx).[`type`](InteractiveMessage.mdx#type)
 
 ## Methods
 
-### addFooter()
+### content()
 
-> **addFooter**(`footerText`): `void`
+> `protected` **content**(): `object`
 
-Adds a footer to the message.
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
 
-#### Parameters
-
-• **footerText**: `string`
-
-The footer text to be added.
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
 
 #### Returns
 
-`void`
+`object`
 
-#### Source
+##### interactive
 
-[packages/wapi.js/src/structures/multi-product/index.ts:111](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/multi-product/index.ts#L111)
-
-***
-
-### addSection()
-
-> **addSection**(`section`): `void`
-
-Adds a section to the message.
-
-#### Parameters
-
-• **section**: [`ProductListSection`](ProductListSection.mdx)
-
-The section to be added.
-
-#### Returns
-
-`void`
-
-#### Implementation of
-
-[`ProductListMessageInterface`](../interfaces/ProductListMessageInterface.mdx).[`addSection`](../interfaces/ProductListMessageInterface.mdx#addsection)
-
-#### Source
-
-[packages/wapi.js/src/structures/multi-product/index.ts:103](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/multi-product/index.ts#L103)
-
-***
-
-### parseConstructorPayload()
-
-> `protected` **parseConstructorPayload**(`schema`, `payload`): `any`
-
-Parses the constructor payload using the provided schema.
-
-#### Parameters
-
-• **schema**: `ZodType`\<`any`, `ZodTypeDef`, `any`\>
-
-The Zod schema used for parsing the payload.
-
-• **payload**: `any`
-
-The payload to be parsed.
-
-#### Returns
-
-`any`
-
-The parsed data.
+> **interactive**: [`InteractivePayloadBase`](../interfaces/InteractivePayloadBase.mdx)\<[`ProductList`](../enumerations/InteractiveMessageTypeEnum.mdx#productlist)\> & `Record`\<`string`, `unknown`\>
 
 #### Inherited from
 
-[`InteractiveMessage`](InteractiveMessage.mdx).[`parseConstructorPayload`](InteractiveMessage.mdx#parseconstructorpayload)
+[`InteractiveMessage`](InteractiveMessage.mdx).[`content`](InteractiveMessage.mdx#content)
 
-#### Throws
+***
 
-An error if the parsing fails.
+### interactive()
 
-#### Source
+> `protected` **interactive**(): `Record`\<`string`, `unknown`\>
 
-[packages/wapi.js/src/structures/message/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L42)
+Defined in: [packages/wapi.js/src/components/commerce.ts:145](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/commerce.ts#L145)
+
+The `interactive` object, without `type`. Undefined keys are dropped.
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+#### Overrides
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactive`](InteractiveMessage.mdx#interactive)
 
 ***
 
 ### toJson()
 
-> **toJson**(`params`): `object` & `object`
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-Converts the message to JSON format.
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
+
+Builds the Cloud API payload for this message.
 
 #### Parameters
 
-• **params**
+##### options
 
-The parameters for converting the message to JSON.
-
-• **params.replyToMessageId?**: `string`
-
-The ID of the message to reply to.
-
-• **params.to**: `string`
-
-The recipient of the message.
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
 
 #### Returns
 
-`object` & `object`
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
 
-The JSON representation of the message.
+#### Throws
 
-#### Overrides
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
 
 [`InteractiveMessage`](InteractiveMessage.mdx).[`toJson`](InteractiveMessage.mdx#tojson)
-
-#### Memberof
-
-ProductListInteractionMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/multi-product/index.ts:123](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/multi-product/index.ts#L123)

@@ -1,0 +1,143 @@
+[wapi.js](../README.mdx) / LocationRequestMessage
+
+# Class: LocationRequestMessage
+
+Defined in: [packages/wapi.js/src/components/request.ts:18](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L18)
+
+Asks the user to share their location, with a "Send location" button. The
+answer arrives as an inbound location message.
+
+## Example
+
+```ts
+new LocationRequestMessage({ bodyText: "Where should we deliver?" });
+```
+
+## Extends
+
+- [`InteractiveMessage`](InteractiveMessage.mdx)\<[`LocationRequest`](../enumerations/InteractiveMessageTypeEnum.mdx#locationrequest)\>
+
+## Constructors
+
+### Constructor
+
+> **new LocationRequestMessage**(`data`): `LocationRequestMessage`
+
+Defined in: [packages/wapi.js/src/components/request.ts:21](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L21)
+
+#### Parameters
+
+##### data
+
+[`LocationRequestMessageOptions`](../interfaces/LocationRequestMessageOptions.mdx)
+
+#### Returns
+
+`LocationRequestMessage`
+
+#### Overrides
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`constructor`](InteractiveMessage.mdx#constructor)
+
+## Properties
+
+### data
+
+> `readonly` **data**: `Readonly`\<[`LocationRequestMessageOptions`](../interfaces/LocationRequestMessageOptions.mdx)\>
+
+Defined in: [packages/wapi.js/src/components/request.ts:19](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L19)
+
+***
+
+### interactiveType
+
+> `readonly` **interactiveType**: [`LocationRequest`](../enumerations/InteractiveMessageTypeEnum.mdx#locationrequest)
+
+Defined in: [packages/wapi.js/src/components/interactive.ts:127](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L127)
+
+`interactive.type`.
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactiveType`](InteractiveMessage.mdx#interactivetype)
+
+***
+
+### type
+
+> `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
+
+Defined in: [packages/wapi.js/src/components/base.ts:54](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L54)
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`type`](InteractiveMessage.mdx#type)
+
+## Methods
+
+### content()
+
+> `protected` **content**(): `object`
+
+Defined in: [packages/wapi.js/src/components/interactive.ts:137](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/interactive.ts#L137)
+
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
+
+#### Returns
+
+`object`
+
+##### interactive
+
+> **interactive**: [`InteractivePayloadBase`](../interfaces/InteractivePayloadBase.mdx)\<[`LocationRequest`](../enumerations/InteractiveMessageTypeEnum.mdx#locationrequest)\> & `Record`\<`string`, `unknown`\>
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`content`](InteractiveMessage.mdx#content)
+
+***
+
+### interactive()
+
+> `protected` **interactive**(): `Record`\<`string`, `unknown`\>
+
+Defined in: [packages/wapi.js/src/components/request.ts:27](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/request.ts#L27)
+
+The `interactive` object, without `type`. Undefined keys are dropped.
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+#### Overrides
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactive`](InteractiveMessage.mdx#interactive)
+
+***
+
+### toJson()
+
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
+
+Defined in: [packages/wapi.js/src/components/base.ts:71](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/components/base.ts#L71)
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`toJson`](InteractiveMessage.mdx#tojson)

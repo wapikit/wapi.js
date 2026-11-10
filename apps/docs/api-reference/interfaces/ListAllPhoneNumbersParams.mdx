@@ -1,0 +1,60 @@
+[wapi.js](../README.mdx) / ListAllPhoneNumbersParams
+
+# Interface: ListAllPhoneNumbersParams
+
+Defined in: [packages/wapi.js/src/managers/phone-number.ts:193](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/phone-number.ts#L193)
+
+## Extends
+
+- `Omit`\<[`ListPhoneNumbersParams`](ListPhoneNumbersParams.mdx), `"after"` \| `"before"`\>
+
+## Properties
+
+### limit?
+
+> `optional` **limit?**: `number`
+
+Defined in: [packages/wapi.js/src/managers/pagination.ts:4](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/pagination.ts#L4)
+
+Page size. Each manager documents its default.
+
+#### Inherited from
+
+[`PaginationInput`](PaginationInput.mdx).[`limit`](PaginationInput.mdx#limit)
+
+***
+
+### maxItems?
+
+> `optional` **maxItems?**: `number`
+
+Defined in: [packages/wapi.js/src/managers/phone-number.ts:195](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/phone-number.ts#L195)
+
+***
+
+### sandbox?
+
+> `optional` **sandbox?**: `boolean`
+
+Defined in: [packages/wapi.js/src/managers/phone-number.ts:190](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/phone-number.ts#L190)
+
+`true` lists only SANDBOX numbers. Default (`false`): only LIVE numbers,
+matching wapi.go, which always filters on `account_mode = LIVE`.
+
+#### Inherited from
+
+[`ListPhoneNumbersParams`](ListPhoneNumbersParams.mdx).[`sandbox`](ListPhoneNumbersParams.mdx#sandbox)
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: [packages/wapi.js/src/managers/business.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/business.ts#L8)
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)

@@ -3,71 +3,96 @@ title: Replying and Reacting to messages
 description: Learn how to reply and react to messages using the Wapi.js SDK
 ---
 
+Every [message event](/guide/building-your-application/event-handling#message-events) has four helpers. They always act **from the business number that received the message**, and they address the sender by phone number, or by BSUID when the sender has no visible number.
 
-## Replying to Messages
+| Helper | |
+|---|---|
+| `event.reply(message)` | Sends `message` to the sender, quoting this message |
+| `event.send(message)` | Sends `message` to the sender without quoting |
+| `event.react(emoji)` | Reacts to this message; `""` removes the reaction |
+| `event.markAsRead({ typingIndicator? })` | Blue ticks, optionally with a typing indicator |
 
-You can reply to a messsage via event listerner handler. 
+`reply`, `send` and `react` resolve with the same response as [`send()`](/guide/building-your-application/sending-messages) (including `messageId`), and throw a `GraphApiError` when Meta rejects the request.
 
-```typescript
+## Replying
 
-// assuming you already have initiated the client,
-// you can do the following to reply to incoming messages
+```ts
+import { TextMessage, ButtonInteractionMessage } from "@wapijs/wapi.js";
 
-whatsappClient.on('TextMessage', async message => {
-		await message.reply({
-			message: new TextMessage({
-				text: 'This is a reply.'
-			})
-		})
-})
+client.on("TextMessage", async (event) => {
+  await event.markAsRead({ typingIndicator: true });
 
-// in the similar way, any incoming message event, 
-// which is not a System event can be replied back to.
+  if (event.text.toLowerCase() === "hi") {
+    await event.reply(new TextMessage({ text: `Hello ${event.senderName ?? "there"}!` }));
+    return;
+  }
+
+  await event.send(
+    new ButtonInteractionMessage({
+      bodyText: "How can we help?",
+      buttons: [
+        { id: "order", title: "My order" },
+        { id: "agent", title: "Talk to us" },
+      ],
+    }),
+  );
+});
 ```
 
+Any component works with `reply()` and `send()`: media, lists, templates and so on.
 
-## Reacting to Messages
+## Reacting
 
-There are mainly two ways you can react to a message:
-
-### Via Incoming Message Event
-
-You can listen to incoming messages and reply to them using the `on` method available on the [client](api-reference/classes/Client) event. Here is an example of how you can listen to incoming messages and react to them:
-
-```typescript
-
-// assuming you already have initiated the client,
-// you can do the following to reply to incoming messages
-
-whatsappClient.on('TextMessage', async message => {
-        await message.react({
-            emoji: '😄'
-        })
-})
-
-// in the similar way, any incoming message event, 
-// which is not a System event can be replied back to.
+```ts
+client.on("ImageMessage", async (event) => {
+  await event.react("👀");
+  // ...process the image...
+  await event.react("✅"); // replaces the previous reaction
+});
 ```
 
+To react outside a listener, send a `ReactionMessage`:
 
-### Via Sending a Reaction message
+```ts
+import { ReactionMessage } from "@wapijs/wapi.js";
 
-You can also send a message of type  `Reaction` to a message. Here is an example of how you can send a reaction a message:
+await client.message.send({
+  to: "15550001111",
+  message: new ReactionMessage({ messageId: "wamid.HBgL...", emoji: "👍" }),
+});
+```
 
-```typescript
+## Replying later
 
-// assuming you already have initiated the client,
+To answer after the listener has returned (for example, from a job queue), keep the ids you need and send through the right number:
 
-const replyMessageComponent = new ReplyMessage({
-    message: new TextMessage({
-        text: 'This is a reply.'
-    })
-})
+```ts
+client.on("TextMessage", async (event) => {
+  await queue.add({
+    phoneNumberId: event.phoneNumber.id,
+    to: event.from || { userId: event.fromUserId! },
+    messageId: event.messageId,
+  });
+});
 
-// send a reaction message
-await whatsappClient.message.send({
-    message: replyMessageComponent,
-    phoneNumber: '1234567890',
-})
+// in the worker
+await client.messaging(job.phoneNumberId).message.send({
+  to: job.to,
+  replyToMessageId: job.messageId,
+  message: new TextMessage({ text: "Your report is ready" }),
+});
+```
 
+<Note>Outside the 24-hour customer service window, WhatsApp only accepts [template messages](/guide/building-your-application/building-message-components#templates). A free-form reply then fails with a `GraphApiError` (code `131047`).</Note>
+
+## Who sent it, and what it replies to
+
+```ts
+client.on("TextMessage", (event) => {
+  event.from; // sender's phone number / wa_id
+  event.fromUserId; // sender's BSUID, when Meta includes it
+  event.context.repliedToMessageId; // the message the user quoted, if any
+  event.context.forwarded;
+  event.messaging.phoneNumberId; // the business number that received it
+});
 ```

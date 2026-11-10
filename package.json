@@ -37,7 +37,7 @@
     "url": "git+https://github.com/wapikit/wapi.js.git"
   },
   "bugs": {
-    "url": "https://github.com/wapijs/wapi.js/issues"
+    "url": "https://github.com/wapikit/wapi.js/issues"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",

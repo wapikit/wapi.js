@@ -1,301 +1,431 @@
-[Wapi.js Docs](../README.mdx) / ListInteractionEvent
+[wapi.js](../README.mdx) / ListInteractionEvent
 
 # Class: ListInteractionEvent
 
-Represents a list interaction event.
+Defined in: [packages/wapi.js/src/events/message-events.ts:265](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L265)
 
-## Implements
+The user picked a row of an interactive list message.
 
 ## Extends
 
-- [`InteractionEvent`](InteractionEvent.mdx)
-
-## Implements
-
-- [`ListInteractionMessageEventInterface`](../interfaces/ListInteractionMessageEventInterface.mdx)
+- [`BaseMessageEvent`](BaseMessageEvent.mdx)
 
 ## Constructors
 
-### new ListInteractionEvent()
+### Constructor
 
-> **new ListInteractionEvent**(`params`): [`ListInteractionEvent`](ListInteractionEvent.mdx)
+> **new ListInteractionEvent**(`init`): `ListInteractionEvent`
 
-Creates a new instance of ListInteractionEvent.
+Defined in: [packages/wapi.js/src/events/message-events.ts:271](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L271)
 
 #### Parameters
 
-• **params**
+##### init
 
-The parameters for creating the ListInteractionEvent.
-
-• **params.client**: [`Client`](Client.mdx)
-
-The client object.
-
-• **params.data**
-
-The data object.
-
-• **params.data.description**: `string`
-
-• **params.data.from**: `string`
-
-• **params.data.isForwarded**: `boolean`
-
-• **params.data.listId**: `string`
-
-• **params.data.messageId**: `string`
-
-• **params.data.timestamp**: `string`
-
-• **params.data.title**: `string`
+`MessageEventInit`
 
 #### Returns
 
-[`ListInteractionEvent`](ListInteractionEvent.mdx)
+`ListInteractionEvent`
 
 #### Overrides
 
-[`InteractionEvent`](InteractionEvent.mdx).[`constructor`](InteractionEvent.mdx#constructors)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/interaction/index.ts:79](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/interaction/index.ts#L79)
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`constructor`](BaseMessageEvent.mdx#constructor)
 
 ## Properties
 
-### client
+### businessAccountId
 
-> **client**: [`Client`](Client.mdx)
+> `readonly` **businessAccountId**: `string`
 
-The client instance associated with the event.
+Defined in: [packages/wapi.js/src/events/base.ts:140](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L140)
 
-#### Implementation of
-
-[`ListInteractionMessageEventInterface`](../interfaces/ListInteractionMessageEventInterface.mdx).[`client`](../interfaces/ListInteractionMessageEventInterface.mdx#client)
+WhatsApp Business Account the message was delivered to.
 
 #### Inherited from
 
-[`InteractionEvent`](InteractionEvent.mdx).[`client`](InteractionEvent.mdx#client)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/base/index.ts:20](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L20)
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`businessAccountId`](BaseMessageEvent.mdx#businessaccountid)
 
 ***
 
 ### context
 
-> **context**: [`MessageContext`](../type-aliases/MessageContext.mdx)
+> `readonly` **context**: [`MessageContext`](../interfaces/MessageContext.mdx)
 
-The context of the message.
-
-#### Implementation of
-
-[`ListInteractionMessageEventInterface`](../interfaces/ListInteractionMessageEventInterface.mdx).[`context`](../interfaces/ListInteractionMessageEventInterface.mdx#context)
+Defined in: [packages/wapi.js/src/events/base.ts:143](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L143)
 
 #### Inherited from
 
-[`InteractionEvent`](InteractionEvent.mdx).[`context`](InteractionEvent.mdx#context)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/base/index.ts:37](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L37)
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`context`](BaseMessageEvent.mdx#context)
 
 ***
 
-### description
+### description?
 
-> **description**: `string`
+> `readonly` `optional` **description?**: `string`
 
-#### Implementation of
+Defined in: [packages/wapi.js/src/events/message-events.ts:269](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L269)
 
-[`ListInteractionMessageEventInterface`](../interfaces/ListInteractionMessageEventInterface.mdx).[`description`](../interfaces/ListInteractionMessageEventInterface.mdx#description)
+***
 
-#### Source
+### from
 
-[packages/wapi.js/src/webhook/events/interaction/index.ts:64](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/interaction/index.ts#L64)
+> `readonly` **from**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:124](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L124)
+
+Sender wa_id / phone number. May be empty for BSUID-only senders.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`from`](BaseMessageEvent.mdx#from)
+
+***
+
+### fromParentUserId?
+
+> `readonly` `optional` **fromParentUserId?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:128](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L128)
+
+Sender parent BSUID (`from_parent_user_id`).
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`fromParentUserId`](BaseMessageEvent.mdx#fromparentuserid)
+
+***
+
+### fromUserId?
+
+> `readonly` `optional` **fromUserId?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:126](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L126)
+
+Sender BSUID (`from_user_id`), when Meta includes it.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`fromUserId`](BaseMessageEvent.mdx#fromuserid)
+
+***
+
+### groupId?
+
+> `readonly` `optional` **groupId?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:149](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L149)
+
+Group id, for messages received in a group.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`groupId`](BaseMessageEvent.mdx#groupid)
 
 ***
 
 ### isForwarded
 
-> **isForwarded**: `boolean`
+> `readonly` **isForwarded**: `boolean`
+
+Defined in: [packages/wapi.js/src/events/base.ts:145](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L145)
+
+Shortcut for `context.forwarded`.
 
 #### Inherited from
 
-[`InteractionEvent`](InteractionEvent.mdx).[`isForwarded`](InteractionEvent.mdx#isforwarded)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/base/index.ts:39](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L39)
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`isForwarded`](BaseMessageEvent.mdx#isforwarded)
 
 ***
 
 ### listId
 
-> **listId**: `string`
+> `readonly` **listId**: `string`
 
-#### Implementation of
+Defined in: [packages/wapi.js/src/events/message-events.ts:267](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L267)
 
-[`ListInteractionMessageEventInterface`](../interfaces/ListInteractionMessageEventInterface.mdx).[`listId`](../interfaces/ListInteractionMessageEventInterface.mdx#listid)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/interaction/index.ts:63](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/interaction/index.ts#L63)
+Id of the selected row.
 
 ***
 
 ### messageId
 
-> **messageId**: `string`
+> `readonly` **messageId**: `string`
 
-The ID of the message.
+Defined in: [packages/wapi.js/src/events/base.ts:122](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L122)
 
-#### Implementation of
-
-[`ListInteractionMessageEventInterface`](../interfaces/ListInteractionMessageEventInterface.mdx).[`messageId`](../interfaces/ListInteractionMessageEventInterface.mdx#messageid)
+WhatsApp message id (`wamid.*`).
 
 #### Inherited from
 
-[`InteractionEvent`](InteractionEvent.mdx).[`messageId`](InteractionEvent.mdx#messageid)
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`messageId`](BaseMessageEvent.mdx#messageid)
 
-#### Source
+***
 
-[packages/wapi.js/src/webhook/events/base/index.ts:36](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L36)
+### parentUserId?
+
+> `readonly` `optional` **parentUserId?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:136](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L136)
+
+Parent BSUID from the contacts block.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`parentUserId`](BaseMessageEvent.mdx#parentuserid)
+
+***
+
+### phoneNumber
+
+> `readonly` **phoneNumber**: [`BusinessPhoneNumber`](../interfaces/BusinessPhoneNumber.mdx)
+
+Defined in: [packages/wapi.js/src/events/base.ts:142](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L142)
+
+Business phone number the message was delivered to.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`phoneNumber`](BaseMessageEvent.mdx#phonenumber)
+
+***
+
+### raw
+
+> `readonly` **raw**: [`InboundMessage`](../interfaces/InboundMessage.mdx)
+
+Defined in: [packages/wapi.js/src/events/base.ts:151](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L151)
+
+The untouched message object from the webhook payload.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`raw`](BaseMessageEvent.mdx#raw)
+
+***
+
+### referral?
+
+> `readonly` `optional` **referral?**: [`AdReferral`](../interfaces/AdReferral.mdx)
+
+Defined in: [packages/wapi.js/src/events/base.ts:147](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L147)
+
+Click-to-WhatsApp ad referral, when the message came from an ad.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`referral`](BaseMessageEvent.mdx#referral)
+
+***
+
+### senderName?
+
+> `readonly` `optional` **senderName?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:130](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L130)
+
+Profile name of the sender.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`senderName`](BaseMessageEvent.mdx#sendername)
 
 ***
 
 ### timestamp
 
-> **timestamp**: `number`
+> `readonly` **timestamp**: `number`
 
-The timestamp of the message.
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
-#### Implementation of
-
-[`ListInteractionMessageEventInterface`](../interfaces/ListInteractionMessageEventInterface.mdx).[`timestamp`](../interfaces/ListInteractionMessageEventInterface.mdx#timestamp)
+Unix timestamp (seconds) at which the event happened.
 
 #### Inherited from
 
-[`InteractionEvent`](InteractionEvent.mdx).[`timestamp`](InteractionEvent.mdx#timestamp)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/base/index.ts:38](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L38)
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`timestamp`](BaseMessageEvent.mdx#timestamp)
 
 ***
 
 ### title
 
-> **title**: `string`
+> `readonly` **title**: `string`
 
-#### Implementation of
-
-[`ListInteractionMessageEventInterface`](../interfaces/ListInteractionMessageEventInterface.mdx).[`title`](../interfaces/ListInteractionMessageEventInterface.mdx#title)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/interaction/index.ts:62](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/interaction/index.ts#L62)
-
-## Methods
-
-### react()
-
-> **react**(`params`): `Promise`\<`object` \| `object`\>
-
-Reacts to the message with an emoji.
-
-#### Parameters
-
-• **params**
-
-The parameters for the reaction.
-
-• **params.emoji**: `string`
-
-The emoji to react with.
-
-• **params.phoneNumber**: `string`
-
-The phone number of the sender.
-
-#### Returns
-
-`Promise`\<`object` \| `object`\>
-
-- A promise that resolves with the reaction response.
-
-#### Inherited from
-
-[`InteractionEvent`](InteractionEvent.mdx).[`react`](InteractionEvent.mdx#react)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/base/index.ts:100](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L100)
+Defined in: [packages/wapi.js/src/events/message-events.ts:268](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/message-events.ts#L268)
 
 ***
 
-### read()
+### userId?
 
-> **read**(): `Promise`\<`object` \| `object` \| `object` \| `object` \| `object`\>
+> `readonly` `optional` **userId?**: `string`
 
-Marks the message as read.
+Defined in: [packages/wapi.js/src/events/base.ts:134](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L134)
 
-#### Returns
-
-`Promise`\<`object` \| `object` \| `object` \| `object` \| `object`\>
-
-- A promise that resolves with the read response.
+BSUID from the contacts block.
 
 #### Inherited from
 
-[`InteractionEvent`](InteractionEvent.mdx).[`read`](InteractionEvent.mdx#read)
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`userId`](BaseMessageEvent.mdx#userid)
 
-#### Memberof
+***
 
-MessageEvent
+### username?
 
-#### Source
+> `readonly` `optional` **username?**: `string`
 
-[packages/wapi.js/src/webhook/events/base/index.ts:121](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L121)
+Defined in: [packages/wapi.js/src/events/base.ts:138](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L138)
+
+WhatsApp username of the sender, when Meta surfaces it.
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`username`](BaseMessageEvent.mdx#username)
+
+***
+
+### waId?
+
+> `readonly` `optional` **waId?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:132](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L132)
+
+wa_id from the contacts block (equals `from` for phone-known contacts).
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`waId`](BaseMessageEvent.mdx#waid)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`date`](BaseMessageEvent.mdx#date)
+
+***
+
+### messaging
+
+#### Get Signature
+
+> **get** **messaging**(): [`MessagingClient`](MessagingClient.mdx)
+
+Defined in: [packages/wapi.js/src/events/base.ts:183](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L183)
+
+Messaging client of the business number that received this message.
+
+##### Returns
+
+[`MessagingClient`](MessagingClient.mdx)
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`messaging`](BaseMessageEvent.mdx#messaging)
+
+## Methods
+
+### markAsRead()
+
+> **markAsRead**(`options?`): `Promise`\<`void`\>
+
+Defined in: [packages/wapi.js/src/events/base.ts:217](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L217)
+
+Marks this message as read, optionally showing a typing indicator.
+
+#### Parameters
+
+##### options?
+
+[`MarkAsReadOptions`](../interfaces/MarkAsReadOptions.mdx)
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`markAsRead`](BaseMessageEvent.mdx#markasread)
+
+***
+
+### react()
+
+> **react**(`emoji`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
+
+Defined in: [packages/wapi.js/src/events/base.ts:209](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L209)
+
+Reacts to this message. Pass `""` to remove a reaction.
+
+#### Parameters
+
+##### emoji
+
+`string`
+
+#### Returns
+
+`Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`react`](BaseMessageEvent.mdx#react)
 
 ***
 
 ### reply()
 
-> **reply**\<`T`\>(`props`): `Promise`\<`object` \| `object`\>
+> **reply**(`message`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
 
-Sends a reply to the message.
+Defined in: [packages/wapi.js/src/events/base.ts:200](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L200)
 
-#### Type parameters
-
-• **T** *extends* `BaseMessage`\<`string`\>
+Sends `message` to the sender as a reply quoting this message.
 
 #### Parameters
 
-• **props**
+##### message
 
-The properties for the reply.
-
-• **props.message**: `T`
-
-The message to send as a reply.
+[`BaseMessage`](BaseMessage.mdx)
 
 #### Returns
 
-`Promise`\<`object` \| `object`\>
-
-- A promise that resolves when the reply is sent.
+`Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
 
 #### Inherited from
 
-[`InteractionEvent`](InteractionEvent.mdx).[`reply`](InteractionEvent.mdx#reply)
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`reply`](BaseMessageEvent.mdx#reply)
 
-#### Throws
+***
 
-- If the context message ID is not found.
+### send()
 
-#### Source
+> **send**(`message`): `Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
 
-[packages/wapi.js/src/webhook/events/base/index.ts:75](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L75)
+Defined in: [packages/wapi.js/src/events/base.ts:195](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L195)
+
+Sends `message` to the sender, without quoting this message.
+
+#### Parameters
+
+##### message
+
+[`BaseMessage`](BaseMessage.mdx)
+
+#### Returns
+
+`Promise`\<[`MessageSendResponse`](../interfaces/MessageSendResponse.mdx)\>
+
+#### Inherited from
+
+[`BaseMessageEvent`](BaseMessageEvent.mdx).[`send`](BaseMessageEvent.mdx#send)

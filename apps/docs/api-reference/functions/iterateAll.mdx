@@ -1,0 +1,44 @@
+[wapi.js](../README.mdx) / iterateAll
+
+# Function: iterateAll()
+
+> **iterateAll**\<`T`\>(`fetchPage`, `options?`): `AsyncGenerator`\<`T`, `void`, `undefined`\>
+
+Defined in: [packages/wapi.js/src/managers/pagination.ts:49](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/managers/pagination.ts#L49)
+
+Iterates over every item of a paginated edge, following `paging.cursors.after`
+until Meta stops returning a `next` link.
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### fetchPage
+
+(`input`) => `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<`T`\>\>
+
+### options?
+
+#### limit?
+
+`number`
+
+#### maxItems?
+
+`number`
+
+## Returns
+
+`AsyncGenerator`\<`T`, `void`, `undefined`\>
+
+## Example
+
+```ts
+for await (const template of iterateAll((page) => client.templates.list(page))) {
+  console.log(template.name);
+}
+```

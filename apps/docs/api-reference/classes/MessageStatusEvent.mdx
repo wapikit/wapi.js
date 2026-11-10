@@ -1,0 +1,256 @@
+[wapi.js](../README.mdx) / MessageStatusEvent
+
+# Class: MessageStatusEvent
+
+Defined in: [packages/wapi.js/src/events/status-events.ts:4](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/status-events.ts#L4)
+
+Any status update. Emitted as `MessageStatus` for every status, including ones without a dedicated event.
+
+## Extends
+
+- [`BaseStatusEvent`](BaseStatusEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new MessageStatusEvent**(`init`): `MessageStatusEvent`
+
+Defined in: [packages/wapi.js/src/events/base.ts:299](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L299)
+
+#### Parameters
+
+##### init
+
+`StatusEventInit`
+
+#### Returns
+
+`MessageStatusEvent`
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`constructor`](BaseStatusEvent.mdx#constructor)
+
+## Properties
+
+### bizOpaqueCallbackData?
+
+> `readonly` `optional` **bizOpaqueCallbackData?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:286](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L286)
+
+Value passed as `bizOpaqueCallbackData` when sending.
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`bizOpaqueCallbackData`](BaseStatusEvent.mdx#bizopaquecallbackdata)
+
+***
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:294](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L294)
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`businessAccountId`](BaseStatusEvent.mdx#businessaccountid)
+
+***
+
+### conversation?
+
+> `readonly` `optional` **conversation?**: [`StatusConversation`](../interfaces/StatusConversation.mdx)
+
+Defined in: [packages/wapi.js/src/events/base.ts:292](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L292)
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`conversation`](BaseStatusEvent.mdx#conversation)
+
+***
+
+### errors
+
+> `readonly` **errors**: [`WebhookEventError`](../interfaces/WebhookEventError.mdx)[]
+
+Defined in: [packages/wapi.js/src/events/base.ts:293](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L293)
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`errors`](BaseStatusEvent.mdx#errors)
+
+***
+
+### messageId
+
+> `readonly` **messageId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:277](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L277)
+
+Id of the message this status is about (the id `send()` returned).
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`messageId`](BaseStatusEvent.mdx#messageid)
+
+***
+
+### phoneNumber
+
+> `readonly` **phoneNumber**: [`BusinessPhoneNumber`](../interfaces/BusinessPhoneNumber.mdx)
+
+Defined in: [packages/wapi.js/src/events/base.ts:295](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L295)
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`phoneNumber`](BaseStatusEvent.mdx#phonenumber)
+
+***
+
+### pricing?
+
+> `readonly` `optional` **pricing?**: [`MessagePricing`](../interfaces/MessagePricing.mdx)
+
+Defined in: [packages/wapi.js/src/events/base.ts:291](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L291)
+
+Pricing block, when Meta included one. It can repeat across
+sent/delivered/read for the same message: deduplicate by `messageId`.
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`pricing`](BaseStatusEvent.mdx#pricing)
+
+***
+
+### raw
+
+> `readonly` **raw**: [`InboundStatus`](../interfaces/InboundStatus.mdx)
+
+Defined in: [packages/wapi.js/src/events/base.ts:297](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L297)
+
+The untouched status object from the webhook payload.
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`raw`](BaseStatusEvent.mdx#raw)
+
+***
+
+### recipientId
+
+> `readonly` **recipientId**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:280](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L280)
+
+wa_id the message was sent to.
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`recipientId`](BaseStatusEvent.mdx#recipientid)
+
+***
+
+### recipientIdentityKeyHash?
+
+> `readonly` `optional` **recipientIdentityKeyHash?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:284](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L284)
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`recipientIdentityKeyHash`](BaseStatusEvent.mdx#recipientidentitykeyhash)
+
+***
+
+### recipientParentUserId?
+
+> `readonly` `optional` **recipientParentUserId?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:283](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L283)
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`recipientParentUserId`](BaseStatusEvent.mdx#recipientparentuserid)
+
+***
+
+### recipientUserId?
+
+> `readonly` `optional` **recipientUserId?**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:282](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L282)
+
+Recipient BSUID.
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`recipientUserId`](BaseStatusEvent.mdx#recipientuserid)
+
+***
+
+### status
+
+> `readonly` **status**: `string`
+
+Defined in: [packages/wapi.js/src/events/base.ts:278](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L278)
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`status`](BaseStatusEvent.mdx#status)
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`timestamp`](BaseStatusEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`date`](BaseStatusEvent.mdx#date)
+
+***
+
+### error
+
+#### Get Signature
+
+> **get** **error**(): [`WebhookEventError`](../interfaces/WebhookEventError.mdx) \| `undefined`
+
+Defined in: [packages/wapi.js/src/events/base.ts:336](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L336)
+
+First error, if any. Failed / undelivered statuses always carry one.
+
+##### Returns
+
+[`WebhookEventError`](../interfaces/WebhookEventError.mdx) \| `undefined`
+
+#### Inherited from
+
+[`BaseStatusEvent`](BaseStatusEvent.mdx).[`error`](BaseStatusEvent.mdx#error)

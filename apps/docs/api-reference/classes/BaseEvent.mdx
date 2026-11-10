@@ -1,52 +1,57 @@
-[Wapi.js Docs](../README.mdx) / BaseEvent
+[wapi.js](../README.mdx) / BaseEvent
 
-# Class: BaseEvent
+# Abstract Class: BaseEvent
 
-Represents the base event for webhook events.
+Defined in: [packages/wapi.js/src/events/base.ts:85](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L85)
 
-## Implements
+Fields shared by every webhook event.
 
 ## Extended by
 
-- [`MessageEvent`](MessageEvent.mdx)
-- [`StatusUpdateEvent`](StatusUpdateEvent.mdx)
-
-## Implements
-
-- [`BaseEventInterface`](../interfaces/BaseEventInterface.mdx)
+- [`BaseMessageEvent`](BaseMessageEvent.mdx)
+- [`BaseStatusEvent`](BaseStatusEvent.mdx)
+- [`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx)
 
 ## Constructors
 
-### new BaseEvent()
+### Constructor
 
-> **new BaseEvent**(`params`): [`BaseEvent`](BaseEvent.mdx)
+> `protected` **new BaseEvent**(`timestamp`): `BaseEvent`
+
+Defined in: [packages/wapi.js/src/events/base.ts:89](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L89)
 
 #### Parameters
 
-• **params**
+##### timestamp
 
-• **params.client**: [`Client`](Client.mdx)
+`string` \| `number` \| `undefined`
 
 #### Returns
 
-[`BaseEvent`](BaseEvent.mdx)
-
-#### Source
-
-[packages/wapi.js/src/webhook/events/base/index.ts:21](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L21)
+`BaseEvent`
 
 ## Properties
 
-### client
+### timestamp
 
-> **client**: [`Client`](Client.mdx)
+> `readonly` **timestamp**: `number`
 
-The client instance associated with the event.
+Defined in: [packages/wapi.js/src/events/base.ts:87](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L87)
 
-#### Implementation of
+Unix timestamp (seconds) at which the event happened.
 
-[`BaseEventInterface`](../interfaces/BaseEventInterface.mdx).[`client`](../interfaces/BaseEventInterface.mdx#client)
+## Accessors
 
-#### Source
+### date
 
-[packages/wapi.js/src/webhook/events/base/index.ts:20](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/webhook/events/base/index.ts#L20)
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: [packages/wapi.js/src/events/base.ts:95](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/base.ts#L95)
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`

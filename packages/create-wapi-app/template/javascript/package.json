@@ -7,17 +7,19 @@
 	"scripts": {
 		"lint": "prettier --check . && eslint --ext .js,.mjs,.cjs --format=pretty src",
 		"format": "prettier --write . && eslint --ext .js,.mjs,.cjs --fix --format=pretty src",
-		"start": "node --require dotenv/config src/index.js"
+		"start": "node src/index.js"
 	},
 	"dependencies": {
-		"@wapijs/wapi.js": "^0.0.1",
+		"@wapijs/wapi.js": "beta",
 		"dotenv": "^16.3.1"
 	},
 	"devDependencies": {
 		"eslint": "^8.53.0",
 		"eslint-config-neon": "^0.1.57",
 		"eslint-formatter-pretty": "^5.0.0",
-		"prettier": "^3.1.0",
-		"zod": "^3.22.4"
+		"prettier": "^3.1.0"
+	},
+	"engines": {
+		"node": ">=20"
 	}
 }

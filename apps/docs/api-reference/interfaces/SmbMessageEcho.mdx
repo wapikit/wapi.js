@@ -1,0 +1,65 @@
+[wapi.js](../README.mdx) / SmbMessageEcho
+
+# Interface: SmbMessageEcho
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:765](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L765)
+
+A message the business sent from the WhatsApp Business app.
+
+## Properties
+
+### content?
+
+> `optional` **content?**: `Record`\<`string`, `unknown`\>
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:776](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L776)
+
+The type-specific body (`echo[echo.type]`), e.g. `{ body: "hi" }` for text.
+
+***
+
+### from
+
+> **from**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:767](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L767)
+
+Business phone number.
+
+***
+
+### id
+
+> **id**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:770](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L770)
+
+***
+
+### timestamp?
+
+> `optional` **timestamp?**: `number`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:772](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L772)
+
+Unix seconds.
+
+***
+
+### to
+
+> **to**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:769](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L769)
+
+Customer wa_id.
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: [packages/wapi.js/src/events/business-events.ts:774](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/events/business-events.ts#L774)
+
+Message type, e.g. `text`, `image`.

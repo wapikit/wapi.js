@@ -1,0 +1,53 @@
+[wapi.js](../README.mdx) / WebhookServerOptions
+
+# Interface: WebhookServerOptions
+
+Defined in: [packages/wapi.js/src/webhook/server.ts:6](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L6)
+
+Options of the optional built-in webhook server.
+
+## Extended by
+
+- [`WebhookOptions`](WebhookOptions.mdx)
+
+## Properties
+
+### host?
+
+> `optional` **host?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/server.ts:13](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L13)
+
+Interface to bind. Defaults to all interfaces (as 0.1.x did) so it works
+in containers; use `"127.0.0.1"` behind a reverse proxy or tunnel.
+
+***
+
+### maxBodyBytes?
+
+> `optional` **maxBodyBytes?**: `number`
+
+Defined in: [packages/wapi.js/src/webhook/server.ts:20](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L20)
+
+Maximum accepted body size in bytes; larger requests get `413`. Default
+3 MB. Applies to the built-in server and to `nodeHandler` / `fetchHandler`.
+
+***
+
+### path?
+
+> `optional` **path?**: `string`
+
+Defined in: [packages/wapi.js/src/webhook/server.ts:15](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L15)
+
+Path Meta calls. Default `"/webhook"`.
+
+***
+
+### port?
+
+> `optional` **port?**: `number`
+
+Defined in: [packages/wapi.js/src/webhook/server.ts:8](https://github.com/wapikit/wapi.js/blob/beta/packages/wapi.js/src/webhook/server.ts#L8)
+
+Port to listen on. `0` picks a free port. Default `8080`.
