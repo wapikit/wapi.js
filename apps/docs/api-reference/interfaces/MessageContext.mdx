@@ -1,0 +1,43 @@
+[wapi.js](../README.mdx) / MessageContext
+
+# Interface: MessageContext
+
+Defined in: packages/wapi.js/src/events/base.ts:21
+
+Reply / forward context of an inbound message.
+
+## Properties
+
+### forwarded
+
+> **forwarded**: `boolean`
+
+Defined in: packages/wapi.js/src/events/base.ts:26
+
+***
+
+### frequentlyForwarded
+
+> **frequentlyForwarded**: `boolean`
+
+Defined in: packages/wapi.js/src/events/base.ts:27
+
+***
+
+### repliedToFrom?
+
+> `optional` **repliedToFrom?**: `string`
+
+Defined in: packages/wapi.js/src/events/base.ts:25
+
+Sender of the quoted message.
+
+***
+
+### repliedToMessageId?
+
+> `optional` **repliedToMessageId?**: `string`
+
+Defined in: packages/wapi.js/src/events/base.ts:23
+
+Id of the message this one quotes, when it is a reply.

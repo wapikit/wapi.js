@@ -2,16 +2,15 @@
 title: Scope of Wapi.js SDK
 ---
 
-## Current Status
+## Current status (0.2 beta)
 
 <Card>
-  Currently, Wapi.js SDK support building almost all the type of message compoennt and sending them to customers. Listening to incoming event notification including user triggered and system generated events.
+  wapi.js covers the WhatsApp Cloud API end to end: every outgoing message type (including templates, interactive, location request and commerce messages), every inbound message, status and business-account webhook, media, and the Business Management API (templates, phone numbers, catalogs, analytics, webhook app subscriptions). It is at parity with [wapi.go](https://github.com/wapikit/wapi.go).
 </Card>
 
-## Upcoming Features
+## Upcoming features
 
-- Support for WhatsApp Business Account Management API
-- Support for [Interactive Address Message](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/address-messages)
-- Support for WhatsApp Paymnent API
-- Support for WhatsApp Order Mangement
-- Support for [Interactive Location Message](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-messages/location-request-messages)
+- [Interactive address messages](https://developers.facebook.com/docs/whatsapp/cloud-api/messages/address-messages)
+- WhatsApp Payments API
+- WhatsApp Flows management (creating and publishing flows; receiving flow replies is already supported)
+- Calling API

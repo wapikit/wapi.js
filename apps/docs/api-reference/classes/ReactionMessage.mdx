@@ -1,247 +1,110 @@
-[Wapi.js Docs](../README.mdx) / ReactionMessage
+[wapi.js](../README.mdx) / ReactionMessage
 
 # Class: ReactionMessage
 
-Represents a reaction message.
+Defined in: packages/wapi.js/src/components/reaction.ts:26
 
-## Implements
+Reacts to a message with an emoji. Send `emoji: ""` to remove the reaction.
+
+## Example
+
+```ts
+new ReactionMessage({ messageId: "wamid.HBgL...", emoji: "👍" });
+```
 
 ## Extends
 
-- `BaseMessage`\<`MessageTypeEnum.Reaction`\>
-
-## Implements
-
-- [`ReactionMessageInterface`](../interfaces/ReactionMessageInterface.mdx)
+- [`BaseMessage`](BaseMessage.mdx)\<[`Reaction`](../enumerations/MessageTypeEnum.mdx#reaction)\>
 
 ## Constructors
 
-### new ReactionMessage()
+### Constructor
 
-> **new ReactionMessage**(`params`): [`ReactionMessage`](ReactionMessage.mdx)
+> **new ReactionMessage**(`data`): `ReactionMessage`
 
-Creates a new instance of ReactionMessage.
+Defined in: packages/wapi.js/src/components/reaction.ts:29
 
 #### Parameters
 
-• **params**
+##### data
 
-The parameters for creating the reaction message.
-
-• **params.emoji**: `string`
-
-The emoji to use as a reaction.
-
-• **params.messageId**: `string`
-
-The ID of the message to react to.
+[`ReactionMessageOptions`](../interfaces/ReactionMessageOptions.mdx)
 
 #### Returns
 
-[`ReactionMessage`](ReactionMessage.mdx)
+`ReactionMessage`
 
 #### Overrides
 
-`BaseMessage<MessageTypeEnum.Reaction>.constructor`
-
-#### Memberof
-
-ReactionMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/reaction/index.ts:30](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/reaction/index.ts#L30)
+[`BaseMessage`](BaseMessage.mdx).[`constructor`](BaseMessage.mdx#constructor)
 
 ## Properties
 
 ### data
 
-> **data**: `object`
+> `readonly` **data**: `Readonly`\<[`ReactionMessageOptions`](../interfaces/ReactionMessageOptions.mdx)\>
 
-#### emoji
-
-> **emoji**: `string`
-
-#### messageId
-
-> **messageId**: `string`
-
-#### Implementation of
-
-[`ReactionMessageInterface`](../interfaces/ReactionMessageInterface.mdx).[`data`](../interfaces/ReactionMessageInterface.mdx#data)
-
-#### Source
-
-[packages/wapi.js/src/structures/reaction/index.ts:17](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/reaction/index.ts#L17)
-
-***
-
-### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-The messaging product.
-
-#### Implementation of
-
-[`ReactionMessageInterface`](../interfaces/ReactionMessageInterface.mdx).[`messaging_product`](../interfaces/ReactionMessageInterface.mdx#messaging_product)
-
-#### Inherited from
-
-`BaseMessage.messaging_product`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:17](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L17)
-
-***
-
-### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-The recipient type.
-
-#### Implementation of
-
-[`ReactionMessageInterface`](../interfaces/ReactionMessageInterface.mdx).[`recipient_type`](../interfaces/ReactionMessageInterface.mdx#recipient_type)
-
-#### Inherited from
-
-`BaseMessage.recipient_type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:18](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L18)
+Defined in: packages/wapi.js/src/components/reaction.ts:27
 
 ***
 
 ### type
 
-> **type**: `MessageTypeEnum`
+> `readonly` **type**: [`Reaction`](../enumerations/MessageTypeEnum.mdx#reaction)
 
-The type of the message.
-
-#### Implementation of
-
-[`ReactionMessageInterface`](../interfaces/ReactionMessageInterface.mdx).[`type`](../interfaces/ReactionMessageInterface.mdx#type)
+Defined in: packages/wapi.js/src/components/base.ts:54
 
 #### Inherited from
 
-`BaseMessage.type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:16](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L16)
+[`BaseMessage`](BaseMessage.mdx).[`type`](BaseMessage.mdx#type)
 
 ## Methods
 
-### parseConstructorPayload()
+### content()
 
-> `protected` **parseConstructorPayload**(`schema`, `payload`): `any`
+> `protected` **content**(): `object`
 
-Parses the constructor payload using the provided schema.
+Defined in: packages/wapi.js/src/components/reaction.ts:36
 
-#### Parameters
-
-• **schema**: `ZodType`\<`any`, `ZodTypeDef`, `any`\>
-
-The Zod schema used for parsing the payload.
-
-• **payload**: `any`
-
-The payload to be parsed.
-
-#### Returns
-
-`any`
-
-The parsed data.
-
-#### Inherited from
-
-`BaseMessage.parseConstructorPayload`
-
-#### Throws
-
-An error if the parsing fails.
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L42)
-
-***
-
-### toJson()
-
-> **toJson**(`params`): `object`
-
-Converts the reaction message to a JSON object.
-
-#### Parameters
-
-• **params**
-
-The parameters for converting the reaction message to JSON.
-
-• **params.to**: `string`
-
-The recipient of the reaction message.
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
 
 #### Returns
 
 `object`
 
-- The JSON representation of the reaction message.
-
-##### biz\_opaque\_callback\_data?
-
-> `optional` **biz\_opaque\_callback\_data**: `string`
-
-##### context?
-
-> `optional` **context**: `object`
-
-##### context.message\_id
-
-> **message\_id**: `string`
-
-##### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
 ##### reaction
 
-> **reaction**: `object` = `ReactionDataPayloadSchemaType`
-
-##### reaction.emoji
-
-> **emoji**: `string`
-
-##### reaction.message\_id
-
-> **message\_id**: `string`
-
-##### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-##### to
-
-> **to**: `string`
-
-##### type
-
-> **type**: `Reaction`
+> **reaction**: [`ReactionMessagePayload`](../interfaces/ReactionMessagePayload.mdx)
 
 #### Overrides
 
-`BaseMessage.toJson`
+[`BaseMessage`](BaseMessage.mdx).[`content`](BaseMessage.mdx#content)
 
-#### Memberof
+***
 
-ReactionMessage
+### toJson()
 
-#### Source
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Reaction`](../enumerations/MessageTypeEnum.mdx#reaction)\>
 
-[packages/wapi.js/src/structures/reaction/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/reaction/index.ts#L42)
+Defined in: packages/wapi.js/src/components/base.ts:71
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Reaction`](../enumerations/MessageTypeEnum.mdx#reaction)\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
+
+[`BaseMessage`](BaseMessage.mdx).[`toJson`](BaseMessage.mdx#tojson)

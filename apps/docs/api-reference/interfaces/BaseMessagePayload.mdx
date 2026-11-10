@@ -1,0 +1,73 @@
+[wapi.js](../README.mdx) / BaseMessagePayload
+
+# Interface: BaseMessagePayload\<T\>
+
+Defined in: packages/wapi.js/src/components/base.ts:34
+
+Fields shared by every outgoing message payload.
+
+## Type Parameters
+
+### T
+
+`T` *extends* [`MessageTypeEnum`](../enumerations/MessageTypeEnum.mdx) = [`MessageTypeEnum`](../enumerations/MessageTypeEnum.mdx)
+
+## Properties
+
+### biz\_opaque\_callback\_data?
+
+> `optional` **biz\_opaque\_callback\_data?**: `string`
+
+Defined in: packages/wapi.js/src/components/base.ts:41
+
+***
+
+### context?
+
+> `optional` **context?**: `object`
+
+Defined in: packages/wapi.js/src/components/base.ts:40
+
+#### message\_id
+
+> **message\_id**: `string`
+
+***
+
+### messaging\_product
+
+> **messaging\_product**: `"whatsapp"`
+
+Defined in: packages/wapi.js/src/components/base.ts:35
+
+***
+
+### recipient?
+
+> `optional` **recipient?**: `string`
+
+Defined in: packages/wapi.js/src/components/base.ts:39
+
+***
+
+### recipient\_type
+
+> **recipient\_type**: `"individual"`
+
+Defined in: packages/wapi.js/src/components/base.ts:36
+
+***
+
+### to?
+
+> `optional` **to?**: `string`
+
+Defined in: packages/wapi.js/src/components/base.ts:38
+
+***
+
+### type
+
+> **type**: `T`
+
+Defined in: packages/wapi.js/src/components/base.ts:37

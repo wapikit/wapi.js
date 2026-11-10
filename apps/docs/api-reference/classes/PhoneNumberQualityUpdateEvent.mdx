@@ -1,0 +1,151 @@
+[wapi.js](../README.mdx) / PhoneNumberQualityUpdateEvent
+
+# Class: PhoneNumberQualityUpdateEvent
+
+Defined in: packages/wapi.js/src/events/business-events.ts:369
+
+A phone number's quality or messaging limit changed (`phone_number_quality_update`).
+
+## Extends
+
+- [`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new PhoneNumberQualityUpdateEvent**(`init`): `PhoneNumberQualityUpdateEvent`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:381
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`PhoneNumberQualityUpdateEvent`
+
+#### Overrides
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`constructor`](BaseBusinessAccountEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: packages/wapi.js/src/events/base.ts:344
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`businessAccountId`](BaseBusinessAccountEvent.mdx#businessaccountid)
+
+***
+
+### currentLimit?
+
+> `readonly` `optional` **currentLimit?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberQualityUpdateCurrentLimitEnum`](../enumerations/PhoneNumberQualityUpdateCurrentLimitEnum.mdx)\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:373
+
+Messaging limit after the change.
+
+***
+
+### displayPhoneNumber
+
+> `readonly` **displayPhoneNumber**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:370
+
+***
+
+### event
+
+> `readonly` **event**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberQualityUpdateEventEnum`](../enumerations/PhoneNumberQualityUpdateEventEnum.mdx)\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:371
+
+***
+
+### maxDailyConversationPerPhone?
+
+> `readonly` `optional` **maxDailyConversationPerPhone?**: `number`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:379
+
+Legacy per-number conversation limit, when included.
+
+***
+
+### maxDailyConversationsPerBusiness?
+
+> `readonly` `optional` **maxDailyConversationsPerBusiness?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberQualityUpdateCurrentLimitEnum`](../enumerations/PhoneNumberQualityUpdateCurrentLimitEnum.mdx)\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:377
+
+Business-level messaging limit, when included.
+
+***
+
+### oldLimit?
+
+> `readonly` `optional` **oldLimit?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberQualityUpdateCurrentLimitEnum`](../enumerations/PhoneNumberQualityUpdateCurrentLimitEnum.mdx)\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:375
+
+Messaging limit before the change, when included.
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: packages/wapi.js/src/events/base.ts:346
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`raw`](BaseBusinessAccountEvent.mdx#raw)
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: packages/wapi.js/src/events/base.ts:87
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`timestamp`](BaseBusinessAccountEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: packages/wapi.js/src/events/base.ts:95
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`date`](BaseBusinessAccountEvent.mdx#date)

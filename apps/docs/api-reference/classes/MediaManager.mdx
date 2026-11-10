@@ -1,0 +1,171 @@
+[wapi.js](../README.mdx) / MediaManager
+
+# Class: MediaManager
+
+Defined in: packages/wapi.js/src/managers/media.ts:57
+
+Upload, inspect, download and delete media. Obtain it through
+`client.messaging(phoneNumberId).media`.
+
+## Constructors
+
+### Constructor
+
+> **new MediaManager**(`requester`, `phoneNumberId`): `MediaManager`
+
+Defined in: packages/wapi.js/src/managers/media.ts:58
+
+#### Parameters
+
+##### requester
+
+[`RequestClient`](RequestClient.mdx)
+
+##### phoneNumberId
+
+`string`
+
+Phone number id uploads are made against.
+
+#### Returns
+
+`MediaManager`
+
+## Properties
+
+### phoneNumberId
+
+> `readonly` **phoneNumberId**: `string`
+
+Defined in: packages/wapi.js/src/managers/media.ts:61
+
+Phone number id uploads are made against.
+
+## Methods
+
+### delete()
+
+> **delete**(`mediaId`, `options?`): `Promise`\<`void`\>
+
+Defined in: packages/wapi.js/src/managers/media.ts:129
+
+Deletes an uploaded media file.
+
+#### Parameters
+
+##### mediaId
+
+`string`
+
+##### options?
+
+###### signal?
+
+`AbortSignal`
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### download()
+
+> **download**(`mediaIdOrUrl`, `options?`): `Promise`\<\{ `data`: `ArrayBuffer`; `mimeType`: `string`; \}\>
+
+Defined in: packages/wapi.js/src/managers/media.ts:114
+
+Downloads a media file. Accepts a media id or a URL returned by
+[getUrl](#geturl), and returns its bytes and MIME type.
+
+#### Parameters
+
+##### mediaIdOrUrl
+
+`string`
+
+##### options?
+
+###### signal?
+
+`AbortSignal`
+
+###### timeoutMs?
+
+`number`
+
+#### Returns
+
+`Promise`\<\{ `data`: `ArrayBuffer`; `mimeType`: `string`; \}\>
+
+***
+
+### getMetadata()
+
+> **getMetadata**(`mediaId`, `options?`): `Promise`\<[`MediaMetadata`](../interfaces/MediaMetadata.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/media.ts:91
+
+Returns the metadata (including a short lived download URL) of a media id.
+
+#### Parameters
+
+##### mediaId
+
+`string`
+
+##### options?
+
+###### signal?
+
+`AbortSignal`
+
+#### Returns
+
+`Promise`\<[`MediaMetadata`](../interfaces/MediaMetadata.mdx)\>
+
+***
+
+### getUrl()
+
+> **getUrl**(`mediaId`, `options?`): `Promise`\<`string`\>
+
+Defined in: packages/wapi.js/src/managers/media.ts:102
+
+Returns the short lived download URL of a media id.
+
+#### Parameters
+
+##### mediaId
+
+`string`
+
+##### options?
+
+###### signal?
+
+`AbortSignal`
+
+#### Returns
+
+`Promise`\<`string`\>
+
+***
+
+### upload()
+
+> **upload**(`params`): `Promise`\<\{ `id`: `string`; \}\>
+
+Defined in: packages/wapi.js/src/managers/media.ts:67
+
+Uploads a file and returns its media id, usable in media messages for 30 days.
+
+#### Parameters
+
+##### params
+
+[`UploadMediaParams`](../interfaces/UploadMediaParams.mdx)
+
+#### Returns
+
+`Promise`\<\{ `id`: `string`; \}\>

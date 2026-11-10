@@ -3,268 +3,255 @@ title: Building Message Components
 description: Build message components with ease using the Wapi.js SDK
 ---
 
-Wapi.js SDK provides a simaple and easy to use classes architecture to build message components. You can build message component of following types using the Wapi.js SDK:
+Every outgoing message is a component class. Build one, then pass it to [`send()`](/guide/building-your-application/sending-messages) or to an event's [`reply()`](/guide/building-your-application/replying-and-reacting).
 
-- [Text Message](#text-message)
-- [Image Message](#image-message)
-- [Video Message](#video-message)
-- [Audio Message](#audio-message)
-- [Document Message](#document-message)
-- [Location Message](#location-message)
-- [Contact Message](#contact-message)
-- [Reply Message](#reply-message)
-- [Reaction Message](#reaction-message)
-- [List Message](#list-message)
-- [QuickReply ButtonMessage](#quickreply-buttonmessage)
-- [Button Message](#button-message)
-- [Product Message](#product-message)
-- [Product List Message](#product-list-message)
+```ts
+import { TextMessage } from "@wapijs/wapi.js";
 
-<Note>In all the media messages which includes image, document, audio, video and sticker, either we will have to use the Id of media, or a publicly accessible hosted media Url.</Note>
-
-<Tip> With the rapidly changing whatsapp business platform features and offerings, we try our best to be in sync with the new features provided by the API. If you think we are missing upon any of the available type of message support. You can open a github issue [here](https://github.com/sarthakjdev/wapi.js/issues) or direclty [contact](/guide/contact) the maintainer of the project.</Tip>
-
-### Text Message
-
-Text message is the most basic message component that you can send to a user. You can create a text message using the following code:
-
-```typescript
-
-import { TextMessage } from '@wapijs/wapi.js'
-
-const textMessage = new TextMessage({
-    text: 'Please say "hello" to proceed.'
-})
-
+const message = new TextMessage({ text: "Hello 👋" });
+await client.message.send({ to: "15550001111", message });
 ```
 
-### Image Message
+Components check WhatsApp's limits (lengths, counts, unique ids) in the constructor. Invalid input throws a `ValidationError` before any request is made:
 
-Image message is a message component that you can use to send images to a user. You can create a image message using the following code:
+```ts
+import { ButtonInteractionMessage, MessageLimits, ValidationError } from "@wapijs/wapi.js";
 
-```typescript
+try {
+  new ButtonInteractionMessage({ bodyText: "Pick one", buttons: [{ id: "a", title: "This title is far too long" }] });
+} catch (error) {
+  if (error instanceof ValidationError) console.error(error.message); // `buttons[0].title` must be at most 20 characters, got 26
+}
 
-import { ImageMessage } from '@wapijs/wapi.js'
-
-const imageMessage = new ImageMessage({
-    link: 'https://example.com/image.jpg',
-    caption: 'This is a caption for the image.'
-})
+MessageLimits.replyButtonTitle; // 20
 ```
 
-### Video Message
+<Tip>Missing a message type? [Open an issue](https://github.com/wapikit/wapi.js/issues) or [contact](/guide/contact) the maintainer.</Tip>
 
-Video message is a message component that you can use to send videos to a user. You can create a video message using the following code:
+## Text
 
-```typescript
-
-import { VideoMessage } from '@wapijs/wapi.js'
-
-const videoMessage = new VideoMessage({
-	link: 'https://example.com/video.mp4',
-	caption: 'This is a caption for the video.'
-})
-
+```ts
+new TextMessage({
+  text: "Your order has shipped: https://example.com/track/1042", // up to 4096 characters
+  previewUrl: true, // render a link preview
+});
 ```
 
-### Audio Message
+## Media
 
-Audio message is a message component that you can use to send audio files to a user. You can create a audio message using the following code:
+Image, video, audio, document and sticker messages take **either** a media `id` (from [`media.upload()`](/guide/building-your-application/handling-media)) **or** a public HTTPS `link`, never both.
 
-```typescript
+```ts
+import { ImageMessage, VideoMessage, AudioMessage, DocumentMessage, StickerMessage } from "@wapijs/wapi.js";
 
-import { AudioMessage } from '@wapijs/wapi.js'
-
-const audioMessage = new AudioMessage({
-	link: 'https://example.com/audio.mp3',
-})
+new ImageMessage({ link: "https://example.com/menu.png", caption: "Today's menu" });
+new VideoMessage({ id: uploadedVideoId, caption: "How it works" });
+new AudioMessage({ link: "https://example.com/note.mp3" }); // no caption
+new DocumentMessage({ id: uploadedPdfId, filename: "invoice.pdf", caption: "Your invoice" });
+new StickerMessage({ id: uploadedWebpId }); // no caption
 ```
 
-### Document Message
+Captions are limited to 1024 characters. Set `filename` on documents, including the extension; without it WhatsApp shows a generic name.
 
-Document message is a message component that you can use to send documents to a user. You can create a document message using the following code:
+## Location
 
-```typescript
-import { DocumentMessage } from '@wapijs/wapi.js'
+```ts
+import { LocationMessage, LocationRequestMessage } from "@wapijs/wapi.js";
 
-const documentMessage = new DocumentMessage({
-	link: 'https://example.com/image.jpg',
-	caption: 'This is a caption for the image.'
-})
+new LocationMessage({ latitude: 12.9716, longitude: 77.5946, name: "Office", address: "MG Road, Bengaluru" });
 
+// Asks the user to share their location. The answer arrives as a LocationMessage event.
+new LocationRequestMessage({ bodyText: "Share your location so we can find the nearest store" });
 ```
 
-### Location Message
+## Contacts
 
-Location message is a message component that you can use to send location to a user. You can create a location message using the following code:
+Build cards with the `Contact` builder, or pass raw Cloud API contact objects.
 
-```typescript
-import { LocationMessage } from '@wapijs/wapi.js'
+```ts
+import { Contact, ContactMessage, ContactRequestMessage } from "@wapijs/wapi.js";
 
-const locationMessage = new LocationMessage({
-	latitude: 37.7749,
-	longitude: -122.4194,
-	name: 'San Francisco',
-	address: 'San Francisco, CA, USA'
-})
+const jane = new Contact({ formattedName: "Jane Doe", firstName: "Jane", lastName: "Doe" })
+  .addPhone({ phone: "+1 555 000 1111", waId: "15550001111", type: "WORK" })
+  .addEmail({ email: "jane@example.com", type: "WORK" })
+  .addUrl({ url: "https://example.com", type: "WORK" })
+  .addAddress({ street: "1 Main St", city: "San Francisco", countryCode: "US", type: "WORK" })
+  .setOrg({ company: "Example Inc", title: "Support" })
+  .setBirthday("1990-04-12"); // YYYY-MM-DD
+
+new ContactMessage({ contacts: [jane] });
+
+// Asks the user to share their phone number. The button label is set by WhatsApp.
+new ContactRequestMessage({ bodyText: "Share your number so we can call you back" });
 ```
 
-### Contact Message
+## Reaction
 
-Contact message is a message component that you can use to send contact details to a user. You can create a contact message using the following code:
+```ts
+import { ReactionMessage } from "@wapijs/wapi.js";
 
-<Info>In order to build a contact message, you need to use multiple classes provided to build, multiple components ofq the contact message. Now this has been done for ease of use and to provide a more structured way to build the contact message.</Info>
-
-```typescript
-import { Contact, ContactMessage } from '@wapijs/wapi.js'
-
-const contact = new Contact({
-		name: {
-			last_name: 'Doe',
-			formatted_name: 'John Doe'
-		}
-	})
-
-    // optional
-	contact.addAddress({
-		city: 'San Francisco',
-		country: 'USA',
-		street: '123 Main Street',
-		type: 'HOME',
-		country_code: 'US',
-		state: 'CA'
-	})
-
-    // optional
-	contact.addEmail({
-		type: 'HOME',
-		email: 'sathak@softlancer.co'
-	})
-
-    // optional
-	contact.addPhone({
-		type: 'CELL',
-		phone: '+1234567890'
-	})
-
-    // optional
-	contact.addUrl({
-		type: 'HOME',
-		url: 'https://softlancer.co'
-	})
-
-	const contactMessage = new ContactMessage({
-		contacts: [contact]
-	})
-
-    // add contact to the existing contact message
-	contactMessage.addContact(anotherContact)
-
+new ReactionMessage({ messageId: "wamid.HBgL...", emoji: "🎉" });
+new ReactionMessage({ messageId: "wamid.HBgL...", emoji: "" }); // removes the reaction
 ```
 
-### Reaction Message
+To react to an incoming message, `event.react("🎉")` is shorter.
 
-Reaction message is a message component that you can use to send a reaction to a message. You can create a reaction message using the following code:
+## Reply buttons
 
-```typescript
-import { ReactionMessage } from '@wapijs/wapi.js'
-const reactionMessage = new ReactionMessage({
-		reaction: '✅',
-		messageId: 'message-id'
-	})
+Up to three buttons. Each `id` (up to 256 characters) must be unique and comes back in the `ReplyButtonInteraction` event. Titles are up to 20 characters.
+
+```ts
+import { ButtonInteractionMessage } from "@wapijs/wapi.js";
+
+new ButtonInteractionMessage({
+  header: "Order #1042", // text, or { type: "image", image: { link } }, video or document
+  bodyText: "Confirm your delivery slot",
+  footerText: "Reply within 24h",
+  buttons: [
+    { id: "morning", title: "Morning" },
+    { id: "evening", title: "Evening" },
+  ],
+});
 ```
 
-### List Message
+## List
 
-List message is a message component that you can use to send a list of items to a user. You can create a list message using the following code:
+A button that opens a menu with up to ten sections and ten rows in total. Row ids come back in the `ListInteraction` event. Lists only support a text header (`headerText`).
 
-```typescript
-import { ListInteractionMessage } from '@wapijs/wapi.js'
+```ts
+import { ListInteractionMessage } from "@wapijs/wapi.js";
 
-const listMessage = new ListInteractionMessage({
-		bodyText: 'Welcome to Wapi.js',
-		buttonText: 'Ask questions',
-		footerText: 'Beta version',
-		sections: [
-			{
-				rows: [
-					{
-						description: 'row description',
-						id: `row-1`,
-						title: `row title`
-					}
-				],
-				title: 'section title'
-			}
-		]
-	})
+new ListInteractionMessage({
+  headerText: "Help centre",
+  bodyText: "What do you need help with?",
+  buttonText: "Choose a topic",
+  footerText: "Support 9am to 6pm",
+  sections: [
+    {
+      title: "Orders",
+      rows: [
+        { id: "track", title: "Track my order", description: "Where is my parcel?" },
+        { id: "return", title: "Return an item" },
+      ],
+    },
+    { title: "Account", rows: [{ id: "reset", title: "Reset password" }] },
+  ],
+});
 ```
 
-### Button Interactive Message
+Section titles are required when there is more than one section.
 
-Button message is a message component that you can use to send a button to a user. You can create a button message using the following code:
+## Call-to-action URL
 
-```typescript
-import { ButtonInteractionMessage } from '@wapijs/wapi.js'
-const buttonMessage = new ButtonInteractionMessage({
-		bodyText: 'Welcome to Wapi.js',
-		buttons: [{
-			id: 'I am a button',
-			title: 'Click me'
-		}],
-		footerText: 'Beta version'
-})
+A button that opens a URL, so long links don't clutter the body text.
+
+```ts
+import { CtaUrlMessage } from "@wapijs/wapi.js";
+
+new CtaUrlMessage({
+  bodyText: "Your invoice is ready",
+  displayText: "Open invoice", // up to 20 characters
+  url: "https://example.com/i/1042",
+  header: "Invoice #1042",
+  footerText: "Thanks for your order",
+});
 ```
 
-### Product Message
+## Commerce
 
-Product message is a message component that you can use to send a product to a user. You can create a product message using the following code:
+These need a catalog connected to your WhatsApp Business Account. Products are referenced by their retailer id (SKU).
 
-```typescript
-import { ProductMessage } from '@wapijs/wapi.js'
-const productMessage = new ProductMessage({
-	bodyText: 'Hii, I am a product.',
-	buttonText: 'Buy',
-	catalogId: '123',
-	productRetailerId: '123',
-	footerText: 'Beta version',
-})
+```ts
+import { ProductMessage, ProductListMessage, CatalogMessage } from "@wapijs/wapi.js";
+
+// One product. No header.
+new ProductMessage({ catalogId: "1234", productRetailerId: "sku-1", bodyText: "Back in stock!" });
+
+// Up to 30 products in up to 10 sections. A text header is required.
+new ProductListMessage({
+  catalogId: "1234",
+  headerText: "Summer sale",
+  bodyText: "Picked for you",
+  sections: [
+    { title: "Shoes", productRetailerIds: ["sku-1", "sku-2"] },
+    { title: "Bags", productRetailerIds: ["sku-9"] },
+  ],
+});
+
+// A "View catalog" button that opens the whole catalog.
+new CatalogMessage({ bodyText: "Browse our catalog", thumbnailProductRetailerId: "sku-1" });
 ```
 
-### Product List Message
+## Templates
 
-Product List message is a message component that you can use to send a list of products to a user. You can create a product list message using the following code:
+Templates are the only messages you can send outside the 24-hour customer service window. The template must be approved first: create it in WhatsApp Manager or with [`client.templates.create()`](/guide/building-your-application/business-management#templates).
 
-```typescript
-import { ProductListMessage, ProductListSection, Product, HeaderTypeEnum } from '@wapijs/wapi.js'
-const productListMessage = new ProductListMessage({
-		bodyText: 'Welcome to Wapi.js',
-		buttonText: 'Buy',
-		footerText: 'Beta version',
-		catalogId: '123',
-		productRetailerId: '123',
-		header: {
-			text: 'Products',
-			type: HeaderTypeEnum.Text
-		},
-		sections: [
-			new ProductListSection([new Product('123')], 'Section 1'),
-		]
-	})
+```ts
+import { TemplateMessage, TemplateParameter, TemplateButton, LanguageEnum } from "@wapijs/wapi.js";
 
-	const section = new ProductListSection([], 'Section 2')
-
-	section.addProduct(new Product('123'))
-
-	productListMessage.addSection(section)
+const message = new TemplateMessage({ name: "order_update", language: LanguageEnum.EnglishUS })
+  .addHeader(TemplateParameter.image({ link: "https://example.com/parcel.png" }))
+  .addBody([
+    TemplateParameter.text("Jane", { name: "first_name" }), // named parameter {{first_name}}
+    TemplateParameter.text("#1042", { name: "order_id" }),
+  ])
+  .addButton(TemplateButton.url({ index: 0, text: "orders/1042" })) // fills the URL suffix {{1}}
+  .addButton(TemplateButton.quickReply({ index: 1, payload: "stop_updates" }));
 ```
 
-### Temaplate Message
+For positional templates (`{{1}}`, `{{2}}`), leave out `name` and pass the parameters in order. Mixing named and positional parameters in one body throws a `ValidationError`. `language` accepts a `LanguageEnum` value or any language code string, such as `"en_US"`.
 
-Template message is a message component that you can use to send a template to a user. You can create a template message using the following code:
+`addHeader()` and `addBody()` set (replace) the header and body. `addButton()` adds one button; each `index` can be used once. You only need to send buttons with dynamic content; static buttons from the template are added by WhatsApp.
 
-<Note>You need to get your template approved before sending a template message to users. You can check the template message approval documentation [here](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines/).</Note>
+### Parameters
 
-```typescript
+```ts
+TemplateParameter.text("Jane");
+TemplateParameter.currency({ fallbackValue: "$10.99", code: "USD", amount1000: 10990 });
+TemplateParameter.dateTime({ fallbackValue: "March 3, 2026" });
+TemplateParameter.image({ link: "https://example.com/banner.png" }); // header
+TemplateParameter.video({ id: uploadedVideoId }); // header
+TemplateParameter.document({ link: "https://example.com/terms.pdf", filename: "terms.pdf" }); // header
+TemplateParameter.location({ latitude: 12.97, longitude: 77.59, name: "Store" }); // header
+TemplateParameter.product({ catalogId: "1234", productRetailerId: "sku-1" }); // header
 ```
 
+### Buttons
+
+```ts
+TemplateButton.quickReply({ index: 0, payload: "unsubscribe" });
+TemplateButton.url({ index: 1, text: "orders/1042" });
+TemplateButton.copyCode({ index: 2, couponCode: "SAVE20" }); // up to 15 characters
+TemplateButton.otp({ code: "482913" }); // index defaults to 0
+TemplateButton.catalog({ index: 0, thumbnailProductRetailerId: "sku-1" });
+TemplateButton.multiProduct({ index: 0, thumbnailProductRetailerId: "sku-1", sections: [{ title: "New", productRetailerIds: ["sku-1", "sku-2"] }] });
+TemplateButton.flow({ index: 0, flowToken: "token", flowActionData: { step: "start" } });
+```
+
+### Authentication, limited-time offers and carousels
+
+```ts
+// Authentication template: sets the code as the body parameter and on the OTP button
+new TemplateMessage({ name: "login_code", language: "en_US" }).addOtp("482913");
+
+// Limited-time offer: expiry as Unix time in milliseconds
+new TemplateMessage({ name: "flash_sale", language: "en_US" })
+  .addLimitedTimeOffer({ expirationTimeMs: Date.now() + 24 * 60 * 60 * 1000 })
+  .addButton(TemplateButton.copyCode({ index: 0, couponCode: "FLASH50" }));
+
+// Media card carousel: up to 10 cards; a card's position is its index
+new TemplateMessage({ name: "new_arrivals", language: "en_US" })
+  .addBody([TemplateParameter.text("Jane")])
+  .addCarousel([
+    {
+      header: TemplateParameter.image({ link: "https://example.com/1.png" }),
+      buttons: [TemplateButton.url({ index: 0, text: "p/1" })],
+    },
+    {
+      header: TemplateParameter.image({ link: "https://example.com/2.png" }),
+      buttons: [TemplateButton.url({ index: 0, text: "p/2" })],
+    },
+  ]);
+```
+
+For anything the helpers don't cover, `addComponent()` takes a raw Cloud API component and validates it like the helpers do.

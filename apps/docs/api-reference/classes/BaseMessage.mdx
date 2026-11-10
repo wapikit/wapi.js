@@ -1,0 +1,94 @@
+[wapi.js](../README.mdx) / BaseMessage
+
+# Abstract Class: BaseMessage\<T\>
+
+Defined in: packages/wapi.js/src/components/base.ts:53
+
+Base class for every outgoing message component. Subclasses implement
+[BaseMessage.content](#content) (the type specific object); the envelope
+(`to`/`recipient`, `context`, ...) is shared.
+
+## Extended by
+
+- [`TextMessage`](TextMessage.mdx)
+- [`ReactionMessage`](ReactionMessage.mdx)
+- [`ContactMessage`](ContactMessage.mdx)
+- [`TemplateMessage`](TemplateMessage.mdx)
+- [`ImageMessage`](ImageMessage.mdx)
+- [`VideoMessage`](VideoMessage.mdx)
+- [`AudioMessage`](AudioMessage.mdx)
+- [`StickerMessage`](StickerMessage.mdx)
+- [`DocumentMessage`](DocumentMessage.mdx)
+- [`LocationMessage`](LocationMessage.mdx)
+- [`InteractiveMessage`](InteractiveMessage.mdx)
+
+## Type Parameters
+
+### T
+
+`T` *extends* [`MessageTypeEnum`](../enumerations/MessageTypeEnum.mdx) = [`MessageTypeEnum`](../enumerations/MessageTypeEnum.mdx)
+
+## Constructors
+
+### Constructor
+
+> `protected` **new BaseMessage**\<`T`\>(`type`): `BaseMessage`\<`T`\>
+
+Defined in: packages/wapi.js/src/components/base.ts:56
+
+#### Parameters
+
+##### type
+
+`T`
+
+#### Returns
+
+`BaseMessage`\<`T`\>
+
+## Properties
+
+### type
+
+> `readonly` **type**: `T`
+
+Defined in: packages/wapi.js/src/components/base.ts:54
+
+## Methods
+
+### content()
+
+> `abstract` `protected` **content**(): `Record`\<`string`, `unknown`\>
+
+Defined in: packages/wapi.js/src/components/base.ts:64
+
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+***
+
+### toJson()
+
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<`T`\>
+
+Defined in: packages/wapi.js/src/components/base.ts:71
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<`T`\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.

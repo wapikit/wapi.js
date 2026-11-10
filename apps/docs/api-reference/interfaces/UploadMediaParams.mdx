@@ -1,0 +1,51 @@
+[wapi.js](../README.mdx) / UploadMediaParams
+
+# Interface: UploadMediaParams
+
+Defined in: packages/wapi.js/src/managers/media.ts:42
+
+## Properties
+
+### file
+
+> **file**: `Blob` \| `ArrayBuffer` \| `Uint8Array`
+
+Defined in: packages/wapi.js/src/managers/media.ts:44
+
+File contents.
+
+***
+
+### filename?
+
+> `optional` **filename?**: `string`
+
+Defined in: packages/wapi.js/src/managers/media.ts:48
+
+File name sent in the multipart part. Defaults to `"file"`.
+
+***
+
+### mimeType
+
+> **mimeType**: `string`
+
+Defined in: packages/wapi.js/src/managers/media.ts:46
+
+MIME type, for example `"image/png"`.
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: packages/wapi.js/src/managers/media.ts:50
+
+***
+
+### timeoutMs?
+
+> `optional` **timeoutMs?**: `number`
+
+Defined in: packages/wapi.js/src/managers/media.ts:49

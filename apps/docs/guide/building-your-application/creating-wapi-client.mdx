@@ -1,48 +1,62 @@
 ---
-title: Initiating the Wapi.js SDK
+title: Creating the client
 ---
 
+One `Client` covers a whole WhatsApp Business Account: every phone number in it, its templates, catalogs and webhooks.
 
-Wapi.js SDK provides a single client utility per phone number basis, this means you can create a client with your Whatsapp Business Account regisytered phone numnber and you whatsapp business account id.
+<Tip>Need the token, ids and app secret? Follow the [WhatsApp API setup guide](/guide/whatsapp-api-setup/understanding-whatsapp-business-platform) first.</Tip>
 
-### Creating a client
+```ts
+import { Client } from "@wapijs/wapi.js";
 
-To create a client, you need to provide the following details:
-
-- **Phone number**: The phone number of the whatsapp business account
-- **Whatsapp Business Account ID**: The whatsapp business account id of the whatsapp business account
-- **Whatsapp Business Account Token**: The whatsapp business account token of the whatsapp business account
-
-
-<Tip>Now, to get the above details do checkout our guide on how to setup the whatsapp api to start building your application [here](/guide/whatsapp-api-setup)</Tip>
-
-```typescript
-
-// creating a wapi.js client
-
-import { Client } from '@wapijs/wapi.js'
-
-export const whatsappClient = new Client({
-	apiAccessToken: <WHATSAPP_API_ACCESS_TOKEN>,
-	businessAccountId: WHATSAPP_BUSINESS_ACCOUNT_ID,
-	phoneNumberId: WHATSAPP_PHONE_NUMBER_ID,
-	port: 8080, // the port you want your webhook to be exposed on
-	webhookEndpoint: '/webhook', // the endpoint where the webhook will be exposed
-	webhookSecret: WHATSAPP_WEBHOOK_SECRET // the secret key for the webhook, this would later be added to the whatsapp business account to verify the integrity of the webhook.
-})
-
+export const client = new Client({
+  accessToken: process.env.WHATSAPP_API_ACCESS_TOKEN!,
+  businessAccountId: process.env.WHATSAPP_BUSINESS_ACCOUNT_ID, // templates, phone numbers, catalogs
+  phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID, // default number for client.message
+  webhook: {
+    verifyToken: process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN!, // the token you enter in the Meta dashboard
+    appSecret: process.env.META_APP_SECRET, // verifies X-Hub-Signature-256 (recommended)
+  },
+});
 ```
 
-### Initiating the client
+## Sending from several numbers
 
-To initiate the client, you need to call the `initiate` method on the client instance. This method ensures that your webhook server is up and running and listening to the incoming event from the whatsapp business platform.
+```ts
+const support = client.messaging("<support phone number id>");
+const sales = client.messaging("<sales phone number id>");
 
-<Warning>This method must be called at the very end of the application flow logic, which ensures that all the event listeners the application intend to listen to must be attached before initiating the client.</Warning>
-
-```typescript
-
-// assuming you have already instantiated the client from the above guide
-
-whatsappClient.initiate()
-
+await sales.message.send({ to: "15550001111", message });
 ```
+
+Events always reply from the number the message was received on (`event.messaging`).
+
+## Receiving webhooks
+
+Register listeners, then start the built-in server:
+
+```ts
+client.on("TextMessage", async (event) => {
+  await event.reply(new TextMessage({ text: "Hello!" }));
+});
+
+await client.webhook.listen({ port: 8080, path: "/webhook" });
+```
+
+Or mount the handler in your own server: see [Using your own server](/guide/building-your-application/using-your-own-server).
+
+## Options
+
+| Option | Default | |
+|---|---|---|
+| `accessToken` | required | System user token |
+| `phoneNumberId` | — | Default number for `client.message` / `client.media` |
+| `businessAccountId` | — | Needed for templates, phone numbers, catalogs, business |
+| `apiVersion` | `"v20.0"` | Graph API version |
+| `graphBaseUrl` | `"https://graph.facebook.com"` | Override for tests |
+| `fetch` | `globalThis.fetch` | Custom fetch |
+| `timeoutMs` | `60000` | Per request timeout |
+| `logger` | warn/error to console | Any `{ debug, info, warn, error }` logger |
+| `webhook.verifyToken` | — | Required to receive webhooks |
+| `webhook.appSecret` | — | Enables signature verification |
+| `webhook.port` / `host` / `path` | `8080` / all interfaces / `/webhook` | Built-in server |

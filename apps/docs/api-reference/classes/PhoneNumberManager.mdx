@@ -1,0 +1,518 @@
+[wapi.js](../README.mdx) / PhoneNumberManager
+
+# Class: PhoneNumberManager
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:289
+
+Phone numbers of a WhatsApp Business Account and per-number settings:
+registration, verification, two-step PIN, QR codes, username and business
+profile.
+
+## Constructors
+
+### Constructor
+
+> **new PhoneNumberManager**(`requester`, `businessAccountId`): `PhoneNumberManager`
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:290
+
+#### Parameters
+
+##### requester
+
+[`RequestClient`](RequestClient.mdx)
+
+##### businessAccountId
+
+`string`
+
+#### Returns
+
+`PhoneNumberManager`
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:292
+
+## Methods
+
+### create()
+
+> **create**(`params`): `Promise`\<\{ `id`: `string`; \}\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:333
+
+Adds a phone number to the WABA. `POST /{waba-id}/phone_numbers`.
+
+#### Parameters
+
+##### params
+
+[`CreatePhoneNumberParams`](../interfaces/CreatePhoneNumberParams.mdx)
+
+#### Returns
+
+`Promise`\<\{ `id`: `string`; \}\>
+
+***
+
+### createQrCode()
+
+> **createQrCode**(`phoneNumberId`, `params`): `Promise`\<[`QrCode`](../interfaces/QrCode.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:438
+
+Creates a QR code with a prefilled message. `POST /{phone-number-id}/message_qrdls`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### params
+
+[`CreateQrCodeParams`](../interfaces/CreateQrCodeParams.mdx)
+
+#### Returns
+
+`Promise`\<[`QrCode`](../interfaces/QrCode.mdx)\>
+
+***
+
+### deleteQrCode()
+
+> **deleteQrCode**(`phoneNumberId`, `code`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:504
+
+Deletes a QR code. `DELETE /{phone-number-id}/message_qrdls/{code}`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### code
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### deleteUsername()
+
+> **deleteUsername**(`phoneNumberId`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:545
+
+Removes the business username. `DELETE /{phone-number-id}/username`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### deregister()
+
+> **deregister**(`phoneNumberId`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:412
+
+Deregisters the number from the Cloud API. `POST /{phone-number-id}/deregister`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### get()
+
+> **get**(`phoneNumberId`, `options?`): `Promise`\<[`PhoneNumber`](../interfaces/PhoneNumber.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:322
+
+Fetches one phone number. `GET /{phone-number-id}`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`PhoneNumber`](../interfaces/PhoneNumber.mdx)\>
+
+***
+
+### getBusinessProfile()
+
+> **getBusinessProfile**(`phoneNumberId`, `options?`): `Promise`\<[`BusinessProfile`](../interfaces/BusinessProfile.mdx) \| `undefined`\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:561
+
+Fetches the number's business profile, or `undefined` when Meta returns
+none. `GET /{phone-number-id}/whatsapp_business_profile`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`BusinessProfile`](../interfaces/BusinessProfile.mdx) \| `undefined`\>
+
+***
+
+### getQrCode()
+
+> **getQrCode**(`phoneNumberId`, `code`, `params?`): `Promise`\<[`QrCode`](../interfaces/QrCode.mdx) \| `undefined`\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:470
+
+Fetches one QR code, or `undefined` when Meta returns none.
+`GET /{phone-number-id}/message_qrdls/{code}`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### code
+
+`string`
+
+##### params?
+
+[`QrCodeReadParams`](../interfaces/QrCodeReadParams.mdx)
+
+#### Returns
+
+`Promise`\<[`QrCode`](../interfaces/QrCode.mdx) \| `undefined`\>
+
+***
+
+### getUsername()
+
+> **getUsername**(`phoneNumberId`, `options?`): `Promise`\<[`BusinessUsername`](../interfaces/BusinessUsername.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:519
+
+Fetches the number's business username. `GET /{phone-number-id}/username`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`BusinessUsername`](../interfaces/BusinessUsername.mdx)\>
+
+***
+
+### list()
+
+> **list**(`params?`): `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`PhoneNumber`](../interfaces/PhoneNumber.mdx)\>\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:296
+
+Lists one page of the WABA's phone numbers. `GET /{waba-id}/phone_numbers`.
+
+#### Parameters
+
+##### params?
+
+[`ListPhoneNumbersParams`](../interfaces/ListPhoneNumbersParams.mdx)
+
+#### Returns
+
+`Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`PhoneNumber`](../interfaces/PhoneNumber.mdx)\>\>
+
+***
+
+### listAll()
+
+> **listAll**(`params?`): `Promise`\<[`PhoneNumber`](../interfaces/PhoneNumber.mdx)[]\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:313
+
+Lists every phone number across all pages. `GET /{waba-id}/phone_numbers`.
+
+#### Parameters
+
+##### params?
+
+[`ListAllPhoneNumbersParams`](../interfaces/ListAllPhoneNumbersParams.mdx)
+
+#### Returns
+
+`Promise`\<[`PhoneNumber`](../interfaces/PhoneNumber.mdx)[]\>
+
+***
+
+### listQrCodes()
+
+> **listQrCodes**(`phoneNumberId`, `params?`): `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`QrCode`](../interfaces/QrCode.mdx)\>\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:453
+
+Lists the number's QR codes. `GET /{phone-number-id}/message_qrdls`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### params?
+
+[`QrCodeReadParams`](../interfaces/QrCodeReadParams.mdx)
+
+#### Returns
+
+`Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`QrCode`](../interfaces/QrCode.mdx)\>\>
+
+***
+
+### register()
+
+> **register**(`phoneNumberId`, `pin`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:385
+
+Registers the number for the Cloud API, setting (or reusing) its six digit
+two-step PIN. `POST /{phone-number-id}/register`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### pin
+
+`string`
+
+##### options?
+
+[`RegisterParams`](../interfaces/RegisterParams.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### requestVerificationCode()
+
+> **requestVerificationCode**(`phoneNumberId`, `params`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:350
+
+Sends a verification code by SMS or voice. `POST /{phone-number-id}/request_code`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### params
+
+[`RequestVerificationCodeParams`](../interfaces/RequestVerificationCodeParams.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### setTwoStepVerificationPin()
+
+> **setTwoStepVerificationPin**(`phoneNumberId`, `pin`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:422
+
+Sets or changes the six digit two-step verification PIN. `POST /{phone-number-id}`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### pin
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### setUsername()
+
+> **setUsername**(`phoneNumberId`, `username`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:529
+
+Sets or changes the business username. `POST /{phone-number-id}/username`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### username
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### updateBusinessProfile()
+
+> **updateBusinessProfile**(`phoneNumberId`, `profile`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:576
+
+Updates the number's business profile. `POST /{phone-number-id}/whatsapp_business_profile`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### profile
+
+[`BusinessProfileUpdate`](../interfaces/BusinessProfileUpdate.mdx)
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### updateQrCode()
+
+> **updateQrCode**(`phoneNumberId`, `code`, `params`): `Promise`\<[`QrCode`](../interfaces/QrCode.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:487
+
+Changes a QR code's prefilled message. `POST /{phone-number-id}/message_qrdls`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### code
+
+`string`
+
+##### params
+
+[`UpdateQrCodeParams`](../interfaces/UpdateQrCodeParams.mdx)
+
+#### Returns
+
+`Promise`\<[`QrCode`](../interfaces/QrCode.mdx)\>
+
+***
+
+### verifyCode()
+
+> **verifyCode**(`phoneNumberId`, `code`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:366
+
+Verifies the code received by SMS or voice. `POST /{phone-number-id}/verify_code`.
+
+#### Parameters
+
+##### phoneNumberId
+
+`string`
+
+##### code
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>

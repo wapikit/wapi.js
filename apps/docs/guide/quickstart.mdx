@@ -1,79 +1,93 @@
 ---
 title: Quick Start Guide
-description: 'Welcome to the home of your new documentation'
+description: "Get a WhatsApp bot answering messages in a few minutes."
 ---
 
-## 
+You need Node.js 20 or later, plus a Meta app with WhatsApp set up. If you don't have the app yet, follow [WhatsApp API setup](/guide/whatsapp-api-setup/understanding-whatsapp-business-platform) first. You will need:
 
+- an access token
+- the phone number id (and the WhatsApp Business Account id if you manage templates, numbers or catalogs)
+- a verify token: any string you choose and also enter in the Meta dashboard
+- your app secret, found under *App settings → Basic*
 
-<CardGroup cols={2}>
-  <Card
-    title="Listen to events"
-    icon="palette"
-    href="/guide/building-your-application/event-handling"
-  >
-    Checkout the available events and how to listen to them
-  </Card>
-  <Card
-    title="API Reference"
-    icon="code"
-    href="/api-reference"
-  >
-	Checkout the typescript code API reference documentation here.
-  </Card>
-  <Card
-    title="Build Message Components"
-    icon="screwdriver-wrench"
-    href="/guide/building-your-application/building-message-components"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://github.com/sarthakjdev/wapi.js/tree/master/packages/example-chat-bot"
-  >
-    Check out a example chat bot here
-  </Card>
-</CardGroup>
+## 1. Create a project
 
-
-
-## Initiating a Wapi.js project
-
-### Chat bot
-
-The first step to build a wapi.js based chat bot is to create a new node.js project. You can quickly setup a new project using the utility NPM package provided with the wapi.js SDK only, run the following command in your terminal to setup the project: 
+To scaffold a bot:
 
 ```bash
-pnpm create-wapi-app my-whatsapp-bot
+npm create wapi-app my-whatsapp-bot
 ```
 
-<Check>Once you run this command, you would be asked a couple of questions like the name of the project and whether you want to use typescript or javascript for this project. Once you answer them, you project will start to setup and once done. You can navigate to the project directory and start building your chat bot.</Check>
-
-### Other use cases
-
-
-- You are a developer and want to integrate the whatsapp business API with your existing backend.
-- You are a solution partner or a tech partner with WhatsApp and want to access the WhatsApp business API to build a solution for your clients.
-
-To do so, you can install the wapi.js SDK using the following command:
+Or add the SDK to an existing project:
 
 <Tabs>
+  <Tab title="npm">
+    ```bash
+    npm install @wapijs/wapi.js@beta
+    ```
+  </Tab>
   <Tab title="pnpm">
     ```bash
-    pnpm add @wapijs/wapi.js
+    pnpm add @wapijs/wapi.js@beta
     ```
   </Tab>
   <Tab title="yarn">
-  ```bash
-    yarn add @wapijs/wapi.js
-    ```
-  </Tab>
-  <Tab title="npm">
-  ```bash
-    npm install @wapi/wapi.js
+    ```bash
+    yarn add @wapijs/wapi.js@beta
     ```
   </Tab>
 </Tabs>
 
+## 2. Write the bot
+
+```ts
+// src/index.ts
+import { Client, TextMessage } from "@wapijs/wapi.js";
+
+const client = new Client({
+  accessToken: process.env.WHATSAPP_API_ACCESS_TOKEN!,
+  phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
+  businessAccountId: process.env.WHATSAPP_BUSINESS_ACCOUNT_ID,
+  webhook: {
+    verifyToken: process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN!, // what you type in the Meta dashboard
+    appSecret: process.env.META_APP_SECRET, // App settings → Basic → App secret
+  },
+});
+
+client.on("TextMessage", async (event) => {
+  await event.markAsRead({ typingIndicator: true });
+  await event.reply(new TextMessage({ text: `You said: ${event.text}` }));
+});
+
+client.on("Error", (error) => console.error(error));
+
+const { port, path } = await client.webhook.listen({ port: 8080, path: "/webhook" });
+console.log(`Webhook ready on :${port}${path}`);
+```
+
+## 3. Connect the webhook
+
+1. Expose port 8080 to the internet. For local development a tunnel is enough: `cloudflared tunnel --url http://localhost:8080`.
+2. In the Meta app dashboard, set the callback URL to `https://<your-domain>/webhook` and the verify token to the same `WHATSAPP_WEBHOOK_VERIFY_TOKEN`.
+3. Subscribe to the `messages` webhook field.
+
+[Configuring the webhook](/guide/whatsapp-api-setup/configuring-webhook) walks through each step.
+
+Message your business number from WhatsApp. The bot should answer.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Build message components" icon="screwdriver-wrench" href="/guide/building-your-application/building-message-components">
+    Buttons, lists, media, templates and more.
+  </Card>
+  <Card title="Handle events" icon="bolt" href="/guide/building-your-application/event-handling">
+    Every event the client emits, including delivery statuses.
+  </Card>
+  <Card title="Use your own server" icon="server" href="/guide/building-your-application/using-your-own-server">
+    Mount the webhook in Express, Next.js, Hono, Lambda and more.
+  </Card>
+  <Card title="Example bot" icon="stars" href="https://github.com/wapikit/wapi.js/tree/beta/apps/example-chat-bot">
+    An FAQ bot built with lists and replies.
+  </Card>
+</CardGroup>

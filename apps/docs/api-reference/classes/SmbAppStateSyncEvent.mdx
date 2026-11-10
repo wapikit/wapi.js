@@ -1,0 +1,131 @@
+[wapi.js](../README.mdx) / SmbAppStateSyncEvent
+
+# Class: SmbAppStateSyncEvent
+
+Defined in: packages/wapi.js/src/events/business-events.ts:740
+
+Contacts were added / removed in the WhatsApp Business app (`smb_app_state_sync`).
+
+## Extends
+
+- [`BaseSmbEvent`](BaseSmbEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new SmbAppStateSyncEvent**(`init`): `SmbAppStateSyncEvent`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:743
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`SmbAppStateSyncEvent`
+
+#### Overrides
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`constructor`](BaseSmbEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: packages/wapi.js/src/events/base.ts:344
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`businessAccountId`](BaseSmbEvent.mdx#businessaccountid)
+
+***
+
+### messagingProduct
+
+> `readonly` **messagingProduct**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:716
+
+Always `"whatsapp"`.
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`messagingProduct`](BaseSmbEvent.mdx#messagingproduct)
+
+***
+
+### phoneNumber
+
+> `readonly` **phoneNumber**: [`BusinessPhoneNumber`](../interfaces/BusinessPhoneNumber.mdx)
+
+Defined in: packages/wapi.js/src/events/business-events.ts:718
+
+Business phone number the webhook is about.
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`phoneNumber`](BaseSmbEvent.mdx#phonenumber)
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: packages/wapi.js/src/events/base.ts:346
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`raw`](BaseSmbEvent.mdx#raw)
+
+***
+
+### stateSync
+
+> `readonly` **stateSync**: [`SmbStateSyncItem`](../interfaces/SmbStateSyncItem.mdx)[]
+
+Defined in: packages/wapi.js/src/events/business-events.ts:741
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: packages/wapi.js/src/events/base.ts:87
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`timestamp`](BaseSmbEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: packages/wapi.js/src/events/base.ts:95
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseSmbEvent`](BaseSmbEvent.mdx).[`date`](BaseSmbEvent.mdx#date)

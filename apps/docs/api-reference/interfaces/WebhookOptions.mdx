@@ -1,0 +1,89 @@
+[wapi.js](../README.mdx) / WebhookOptions
+
+# Interface: WebhookOptions
+
+Defined in: packages/wapi.js/src/webhook/manager.ts:15
+
+Webhook settings of the client.
+
+## Extends
+
+- [`WebhookServerOptions`](WebhookServerOptions.mdx)
+
+## Properties
+
+### appSecret?
+
+> `optional` **appSecret?**: `string`
+
+Defined in: packages/wapi.js/src/webhook/manager.ts:22
+
+Your Meta app secret. When set, every POST must carry a valid
+`X-Hub-Signature-256` or it is rejected with 401. Strongly recommended.
+
+***
+
+### host?
+
+> `optional` **host?**: `string`
+
+Defined in: packages/wapi.js/src/webhook/server.ts:13
+
+Interface to bind. Defaults to all interfaces (as 0.1.x did) so it works
+in containers; use `"127.0.0.1"` behind a reverse proxy or tunnel.
+
+#### Inherited from
+
+[`WebhookServerOptions`](WebhookServerOptions.mdx).[`host`](WebhookServerOptions.mdx#host)
+
+***
+
+### maxBodyBytes?
+
+> `optional` **maxBodyBytes?**: `number`
+
+Defined in: packages/wapi.js/src/webhook/server.ts:17
+
+Maximum accepted body size in bytes. Default 3 MB.
+
+#### Inherited from
+
+[`WebhookServerOptions`](WebhookServerOptions.mdx).[`maxBodyBytes`](WebhookServerOptions.mdx#maxbodybytes)
+
+***
+
+### path?
+
+> `optional` **path?**: `string`
+
+Defined in: packages/wapi.js/src/webhook/server.ts:15
+
+Path Meta calls. Default `"/webhook"`.
+
+#### Inherited from
+
+[`WebhookServerOptions`](WebhookServerOptions.mdx).[`path`](WebhookServerOptions.mdx#path)
+
+***
+
+### port?
+
+> `optional` **port?**: `number`
+
+Defined in: packages/wapi.js/src/webhook/server.ts:8
+
+Port to listen on. `0` picks a free port. Default `8080`.
+
+#### Inherited from
+
+[`WebhookServerOptions`](WebhookServerOptions.mdx).[`port`](WebhookServerOptions.mdx#port)
+
+***
+
+### verifyToken
+
+> **verifyToken**: `string`
+
+Defined in: packages/wapi.js/src/webhook/manager.ts:17
+
+The verify token you entered in the Meta app dashboard.

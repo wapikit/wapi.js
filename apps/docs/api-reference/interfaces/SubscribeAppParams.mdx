@@ -1,0 +1,45 @@
+[wapi.js](../README.mdx) / SubscribeAppParams
+
+# Interface: SubscribeAppParams
+
+Defined in: packages/wapi.js/src/managers/business.ts:229
+
+Options accepted by every manager method.
+
+## Extends
+
+- [`RequestOptions`](RequestOptions.mdx)
+
+## Properties
+
+### overrideCallbackUri?
+
+> `optional` **overrideCallbackUri?**: `string`
+
+Defined in: packages/wapi.js/src/managers/business.ts:231
+
+Per-WABA webhook URL that overrides the app's callback URL.
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: packages/wapi.js/src/managers/business.ts:8
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)
+
+***
+
+### verifyToken?
+
+> `optional` **verifyToken?**: `string`
+
+Defined in: packages/wapi.js/src/managers/business.ts:233
+
+Verify token for `overrideCallbackUri`. Required with it.

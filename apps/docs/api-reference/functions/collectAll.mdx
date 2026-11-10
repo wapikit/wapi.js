@@ -1,0 +1,35 @@
+[wapi.js](../README.mdx) / collectAll
+
+# Function: collectAll()
+
+> **collectAll**\<`T`\>(`fetchPage`, `options?`): `Promise`\<`T`[]\>
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:70
+
+Collects [iterateAll](iterateAll.mdx) into an array.
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### fetchPage
+
+(`input`) => `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<`T`\>\>
+
+### options?
+
+#### limit?
+
+`number`
+
+#### maxItems?
+
+`number`
+
+## Returns
+
+`Promise`\<`T`[]\>

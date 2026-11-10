@@ -1,0 +1,49 @@
+---
+title: "wapi.js 0.2 beta"
+description: "A rewrite of wapi.js at parity with wapi.go. What is new, what breaks, and how to try it."
+---
+
+<Info>
+  **Status: beta.** Install it with `npm install @wapijs/wapi.js@beta`. The stable line stays on `0.1.x` (`npm install @wapijs/wapi.js`) until 0.2.0 is promoted.
+</Info>
+
+wapi.js 0.2 is a ground-up overhaul that brings the JavaScript SDK to parity with [wapi.go](https://github.com/wapikit/wapi.go), the Go SDK that runs [WapiKit](https://wapikit.com) in production. Every bug fixed in wapi.go over the last year is fixed here too, and the API now covers far more of the Cloud API.
+
+## Does it break my code?
+
+**Yes.** 0.2 changes the client config, how errors are returned and the shape of events. Most bots migrate in under an hour; the [migration guide](/guide/v0-2/migration) lists every change with before/after code. While wapi.js is on 0.x, breaking changes ship as a minor version (0.1 → 0.2), as semver allows.
+
+## What is new
+
+- **Bring your own server.** Webhook handlers for Express, Fastify, Koa, `node:http`, Next.js, Hono, Bun, Deno, Cloudflare Workers and AWS Lambda. The built-in server is still there and no longer pulls in Express.
+- **Webhook signature verification** (`X-Hub-Signature-256`) with `webhook.appSecret`.
+- **Resilient webhook handling.** One malformed change no longer fails the whole request (which made Meta retry and re-deliver the batch); throwing listeners are isolated.
+- **Typed errors** (`GraphApiError` with code, subcode, details, `fbtraceId`, `isRetryable`) and request timeouts.
+- **Multiple phone numbers** with `client.messaging(phoneNumberId)`; events reply from the number they were received on.
+- **Complete message components**: templates with parameters (named params, carousels, LTO, copy code, OTP), CTA URL, location request, product, product list and catalog messages.
+- **Status events with message id, pricing and conversation** for delivery tracking and billing.
+- **Business management**: templates, phone numbers, QR codes, business profile, usernames, catalogs, analytics, webhook app subscriptions.
+- **Business webhooks**: template status, quality and category updates, phone number quality, account updates and alerts, user preferences, and more.
+- **BSUID and username** identity fields, and sending to `{ userId }`.
+- **Zero runtime dependencies**, proper ESM + CommonJS builds, Node.js 20+.
+
+## Bugs fixed from 0.1.x
+
+- Video messages never emitted an event.
+- Received locations had the latitude as longitude.
+- Received images and videos referenced the message id instead of the media id.
+- Status events had no message id; failed statuses without errors were dropped.
+- Template messages could not be sent with parameters.
+- Replies on multi-number accounts went out from the wrong number.
+
+The full audit is in [OVERHAUL.md](https://github.com/wapikit/wapi.js/blob/beta/OVERHAUL.md).
+
+## Timeline
+
+1. **Now:** `0.2.0-beta.N` releases from the `beta` branch on the npm `beta` tag. APIs may still change between betas; each change is called out in the release notes.
+2. **Release candidate:** once the beta has run in real bots without API changes.
+3. **0.2.0 stable:** `beta` is merged into `master` and published as `latest`. 0.1.x then only gets critical fixes.
+
+## Feedback
+
+Please try the beta and [open an issue](https://github.com/wapikit/wapi.js/issues/new/choose) for anything that breaks or feels wrong, or ask in the [community Slack](https://join.slack.com/t/wapikit/shared_invite/zt-2kl7eg29s-4DfP9lFwojQg_yCcyW_w6Q).

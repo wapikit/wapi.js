@@ -11,3 +11,17 @@ Initially as long as your app is in development mode, you will be able to get a 
 In order to get your permanent access token, you need to get your WhatsApp Business Account verified. Once your account is verified, you will be able to get the permanent access token from the same place where you got the temporary access token.
 
 **You can checkout the offical WhatsApp documentation on how to get a permanent access token [here](https://developers.facebook.com/docs/whatsapp/business-management-api/get-started#1--acquire-an-access-token-using-a-system-user-or-facebook-login)**
+
+## Using the token in wapi.js
+
+Pass the token as `accessToken`. For production, use a system user token with the `whatsapp_business_messaging` permission, plus `whatsapp_business_management` if you use templates, phone numbers, catalogs or the other [business management](/guide/building-your-application/business-management) APIs.
+
+```ts
+const client = new Client({
+  accessToken: process.env.WHATSAPP_API_ACCESS_TOKEN!,
+  phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
+  businessAccountId: process.env.WHATSAPP_BUSINESS_ACCOUNT_ID,
+});
+```
+
+To rotate the token without restarting, call `client.setAccessToken(newToken)`. Every later request uses the new token.

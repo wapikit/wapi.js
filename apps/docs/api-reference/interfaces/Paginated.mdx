@@ -1,0 +1,43 @@
+[wapi.js](../README.mdx) / Paginated
+
+# Interface: Paginated\<T\>
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:19
+
+One page of a Graph API edge.
+
+## Extended by
+
+- [`ProductPage`](ProductPage.mdx)
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Properties
+
+### data
+
+> **data**: `T`[]
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:20
+
+***
+
+### paging?
+
+> `optional` **paging?**: [`Paging`](Paging.mdx)
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:21
+
+***
+
+### summary?
+
+> `optional` **summary?**: `Record`\<`string`, `unknown`\>
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:23
+
+Present on some edges (for example `summary.total_count`).

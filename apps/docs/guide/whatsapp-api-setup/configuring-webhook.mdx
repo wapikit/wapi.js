@@ -3,93 +3,130 @@ title: Configuring Webhook
 description: Learn how to configure the webhook for your Whatsapp Business Account
 ---
 
+WhatsApp sends incoming messages and status updates to a public HTTPS URL you register in your Meta app. This page covers the two secrets involved, getting a public URL during local development, and registering the URL with Meta.
 
-To receive messages from your customers, you need to configure a webhook for your Whatsapp Business Account. The webhook is a URL that you provide to Whatsapp to send messages to your application.
+## Verify token vs app secret
 
+You need two different values. They are easy to mix up:
 
-## Configuring Webhook for local development setup
+| | `webhook.verifyToken` | `webhook.appSecret` |
+|---|---|---|
+| What it is | Any string **you choose** | Meta's secret for your app |
+| Where it comes from | You type it into the dashboard (*WhatsApp → Configuration → Verify token*) | *App settings → Basic → App secret* |
+| What it does | Meta sends it once, when you click **Verify and save**. wapi.js answers the `GET` challenge only if it matches. | Meta signs every webhook `POST` with it (`X-Hub-Signature-256`). wapi.js checks the signature and rejects forged requests with `401`. |
+| Required | Yes, to receive webhooks | No, but strongly recommended |
 
+```ts
+const client = new Client({
+  accessToken: process.env.WHATSAPP_API_ACCESS_TOKEN!,
+  phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
+  webhook: {
+    verifyToken: process.env.WHATSAPP_WEBHOOK_VERIFY_TOKEN!,
+    appSecret: process.env.META_APP_SECRET,
+    path: "/webhook", // default
+    port: 8080, // default, built-in server only
+  },
+});
 
-### Getting a public URL for your local development setup
-
-<Note>You may sometimes face an error on the whatsapp webhook management dashboard saying that the URL is malicious in case when you are using NGROK, in that case you must go ahead with using cloudflare tunnel.</Note>
-
-- [Using NGROK](#ngrok)
-- [Using Cloudflare Tunnel](#cloudflare-tunnel)
-
-
-#### NGROK
-
-If you are developing your application locally, you can use [ngrok](https://ngrok.com/) to expose your local server to the internet.
-
-To use ngrok, follow these steps:
-
-1. Download and install ngrok from [here](https://ngrok.com/download).
-2. Run the following command in your terminal to expose your local server to the internet:
-
-```bash
-ngrok http http://localhost:<your-application-port>
-```
-3. You will see something like this in your terminal:
-  <Frame>
-    <img src="/assets/configure-webhook/1.png" />
-  </Frame>
-
-<Note>Make sure to replace `<your-application-port>` with the port number on which your application is running.</Note>
-
-
-####  Cloudflare Tunnel
-
-To use cloudflare tunnel, follow these steps:
-
-1. Download and install cloudflare tunnel from [here](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation).
-2. Run the following command in your terminal to expose your local server to the internet:
-
-```bash
-cloudflared tunnel --url http://localhost:<your-application-port>
+await client.webhook.listen();
 ```
 
-3. You will see something like this in your terminal:
+<Note>In 0.1.x the verify token was called `webhookSecret`. It is now `webhook.verifyToken`; `appSecret` is new.</Note>
+
+### Signature verification
+
+When `appSecret` is set, wapi.js computes an HMAC-SHA256 of the **raw** request body and compares it with the `X-Hub-Signature-256` header in constant time:
+
+- A missing or wrong signature gets `401` and no events are emitted.
+- If the raw body is not available (for example, `express.json()` already parsed it), the request also gets `401`. wapi.js never accepts a payload it could not verify. See [Using your own server](/guide/building-your-application/using-your-own-server) to keep the raw body.
+- Without `appSecret`, requests are accepted and wapi.js logs a single warning.
+
+## Public URL for local development
+
+Meta can only call a public HTTPS URL. While you develop locally, a tunnel forwards one to your machine.
+
+<Note>Meta's dashboard sometimes rejects ngrok URLs as malicious. If that happens, use a Cloudflare Tunnel.</Note>
+
+### Cloudflare Tunnel
+
+1. [Install `cloudflared`](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation).
+2. Start the tunnel to your webhook port:
+
+```bash
+cloudflared tunnel --url http://localhost:8080
+```
+
+3. Copy the `https://<random>.trycloudflare.com` URL it prints:
   <Frame>
     <img src="/assets/configure-webhook/cloudlfare.png" />
   </Frame>
 
-<Note>Make sure to replace `<your-application-port>` with the port number on which your application is running.</Note>
+### ngrok
 
+1. [Install ngrok](https://ngrok.com/download).
+2. Start the tunnel:
 
-### Submitting URL to whatsapp business platform
+```bash
+ngrok http http://localhost:8080
+```
 
-Follow the steps below to submit your webhook URL to the Whatsapp Business Platform and enable incoming events routing to your local development setup:
+3. Copy the `https://` forwarding URL:
+  <Frame>
+    <img src="/assets/configure-webhook/1.png" />
+  </Frame>
 
+<Tip>The built-in server listens on all interfaces by default. Behind a tunnel or reverse proxy you can bind it to localhost only with `client.webhook.listen({ host: "127.0.0.1" })`.</Tip>
+
+Your callback URL is the tunnel URL plus the webhook path, for example `https://<random>.trycloudflare.com/webhook`.
+
+## Registering the URL with Meta
 
 <Steps>
     <Step>
-        <Accordion title="Visit Your App Dashboard">
-            <Note>Visit your application dashboard via [Meta Developer Portal](https://developers.facebook.com/apps)</Note>
+        <Accordion title="Open your app dashboard">
+            Open your app in the [Meta Developer Portal](https://developers.facebook.com/apps).
         </Accordion>
     </Step>
     <Step>
-        <Accordion title="Subscribe to the webhook object for your app">
+        <Accordion title="Open the WhatsApp webhook configuration">
             <Frame>
                 <img src="/assets/configure-webhook/2.png" />
             </Frame>
         </Accordion>
     </Step>
     <Step>
-        <Accordion title="Add the public URL and webhook secret.">
-            <Note>Webhook secret is the same string which you have used in your Wapi.go Application Client.</Note>
-           
+        <Accordion title="Enter the callback URL and verify token">
+            Use your public URL including the path (`/webhook` by default), and the same string you passed as `webhook.verifyToken`.
             <Frame>
                 <img src="/assets/configure-webhook/3.png" />
             </Frame>
         </Accordion>
     </Step>
     <Step>
-        <Note>Make sure your [Wapi.js local application](/guide/building-your-application/creating-wapi-client) is up and running before proceeding with verify and save process.</Note>
-        <Accordion title="Click Verify and Save">
+        <Note>Your app must be running and reachable (`await client.webhook.listen()` or your own server) before you click verify.</Note>
+        <Accordion title="Click Verify and save">
             <Frame>
                 <img src="/assets/configure-webhook/4.png" />
             </Frame>
          </Accordion>
     </Step>
+    <Step>
+        <Accordion title="Subscribe to webhook fields">
+            Subscribe to `messages` to receive inbound messages and delivery statuses. To receive [business account events](/guide/building-your-application/event-handling#business-account-events), also subscribe to fields such as `message_template_status_update`, `phone_number_quality_update` and `account_update`.
+        </Accordion>
+    </Step>
 </Steps>
+
+<Tip>
+  If verification succeeds but no messages arrive, your app may not be subscribed to the WhatsApp Business Account. Subscribe it once with `await client.business.subscribeApp()` (requires `businessAccountId`). See [Business management](/guide/building-your-application/business-management#webhook-subscriptions).
+</Tip>
+
+## What wapi.js answers
+
+| Request | Response |
+|---|---|
+| `GET` with `hub.mode=subscribe` and the right token | `200` + `hub.challenge` |
+| `GET` with anything else | `403` |
+| `POST` with a missing or wrong signature (`appSecret` set) | `401` |
+| `POST` with invalid JSON | `400` |
+| `POST` accepted | `200`, even if one change inside could not be decoded (it is reported through the `Error` event) so Meta does not re-deliver the whole batch |

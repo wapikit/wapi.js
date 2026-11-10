@@ -1,0 +1,43 @@
+[wapi.js](../README.mdx) / PaginationInput
+
+# Interface: PaginationInput
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:2
+
+Cursor pagination input accepted by every list call.
+
+## Extended by
+
+- [`ListTemplatesParams`](ListTemplatesParams.mdx)
+- [`ListPhoneNumbersParams`](ListPhoneNumbersParams.mdx)
+- [`CatalogPageParams`](CatalogPageParams.mdx)
+
+## Properties
+
+### after?
+
+> `optional` **after?**: `string`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:6
+
+Cursor from `paging.cursors.after` of the previous page.
+
+***
+
+### before?
+
+> `optional` **before?**: `string`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:8
+
+Cursor from `paging.cursors.before` of the previous page.
+
+***
+
+### limit?
+
+> `optional` **limit?**: `number`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:4
+
+Page size. Each manager documents its default.

@@ -1,0 +1,128 @@
+[wapi.js](../README.mdx) / ListTemplatesParams
+
+# Interface: ListTemplatesParams
+
+Defined in: packages/wapi.js/src/managers/template.ts:226
+
+Filters and pagination for [TemplateManager.list](../classes/TemplateManager.mdx#list).
+
+## Extends
+
+- [`PaginationInput`](PaginationInput.mdx)
+- [`RequestOptions`](RequestOptions.mdx)
+
+## Properties
+
+### after?
+
+> `optional` **after?**: `string`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:6
+
+Cursor from `paging.cursors.after` of the previous page.
+
+#### Inherited from
+
+[`PaginationInput`](PaginationInput.mdx).[`after`](PaginationInput.mdx#after)
+
+***
+
+### before?
+
+> `optional` **before?**: `string`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:8
+
+Cursor from `paging.cursors.before` of the previous page.
+
+#### Inherited from
+
+[`PaginationInput`](PaginationInput.mdx).[`before`](PaginationInput.mdx#before)
+
+***
+
+### category?
+
+> `optional` **category?**: `"AUTHENTICATION"` \| `"MARKETING"` \| `"UTILITY"` \| [`MessageTemplateCategory`](../enumerations/MessageTemplateCategory.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:229
+
+***
+
+### content?
+
+> `optional` **content?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:232
+
+Matches template body content.
+
+***
+
+### language?
+
+> `optional` **language?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:230
+
+***
+
+### limit?
+
+> `optional` **limit?**: `number`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:4
+
+Page size. Each manager documents its default.
+
+#### Inherited from
+
+[`PaginationInput`](PaginationInput.mdx).[`limit`](PaginationInput.mdx#limit)
+
+***
+
+### name?
+
+> `optional` **name?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:227
+
+***
+
+### nameOrContent?
+
+> `optional` **nameOrContent?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:234
+
+Matches name or body content.
+
+***
+
+### qualityScore?
+
+> `optional` **qualityScore?**: `"GREEN"` \| `"YELLOW"` \| `"RED"` \| `"UNKNOWN"` \| [`TemplateQualityScoreValue`](../enumerations/TemplateQualityScoreValue.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:235
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: packages/wapi.js/src/managers/business.ts:8
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)
+
+***
+
+### status?
+
+> `optional` **status?**: `"APPROVED"` \| `"ARCHIVED"` \| `"DELETED"` \| `"DISABLED"` \| `"IN_APPEAL"` \| `"LIMIT_EXCEEDED"` \| `"PAUSED"` \| `"PENDING"` \| `"PENDING_DELETION"` \| `"REJECTED"` \| [`MessageTemplateStatus`](../enumerations/MessageTemplateStatus.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:228

@@ -1,0 +1,147 @@
+[wapi.js](../README.mdx) / CtaUrlMessage
+
+# Class: CtaUrlMessage
+
+Defined in: packages/wapi.js/src/components/cta-url.ts:38
+
+An interactive call-to-action message: a button that opens a URL, so long
+links don't clutter the body text.
+
+## Example
+
+```ts
+new CtaUrlMessage({
+  bodyText: "Track your parcel",
+  displayText: "Track",
+  url: "https://example.com/track/42",
+});
+```
+
+## Extends
+
+- [`InteractiveMessage`](InteractiveMessage.mdx)\<[`CtaUrl`](../enumerations/InteractiveMessageTypeEnum.mdx#ctaurl)\>
+
+## Constructors
+
+### Constructor
+
+> **new CtaUrlMessage**(`data`): `CtaUrlMessage`
+
+Defined in: packages/wapi.js/src/components/cta-url.ts:41
+
+#### Parameters
+
+##### data
+
+[`CtaUrlMessageOptions`](../interfaces/CtaUrlMessageOptions.mdx)
+
+#### Returns
+
+`CtaUrlMessage`
+
+#### Overrides
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`constructor`](InteractiveMessage.mdx#constructor)
+
+## Properties
+
+### data
+
+> `readonly` **data**: `Readonly`\<[`CtaUrlMessageOptions`](../interfaces/CtaUrlMessageOptions.mdx)\>
+
+Defined in: packages/wapi.js/src/components/cta-url.ts:39
+
+***
+
+### interactiveType
+
+> `readonly` **interactiveType**: [`CtaUrl`](../enumerations/InteractiveMessageTypeEnum.mdx#ctaurl)
+
+Defined in: packages/wapi.js/src/components/interactive.ts:127
+
+`interactive.type`.
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactiveType`](InteractiveMessage.mdx#interactivetype)
+
+***
+
+### type
+
+> `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
+
+Defined in: packages/wapi.js/src/components/base.ts:54
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`type`](InteractiveMessage.mdx#type)
+
+## Methods
+
+### content()
+
+> `protected` **content**(): `object`
+
+Defined in: packages/wapi.js/src/components/interactive.ts:137
+
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
+
+#### Returns
+
+`object`
+
+##### interactive
+
+> **interactive**: [`InteractivePayloadBase`](../interfaces/InteractivePayloadBase.mdx)\<[`CtaUrl`](../enumerations/InteractiveMessageTypeEnum.mdx#ctaurl)\> & `Record`\<`string`, `unknown`\>
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`content`](InteractiveMessage.mdx#content)
+
+***
+
+### interactive()
+
+> `protected` **interactive**(): `Record`\<`string`, `unknown`\>
+
+Defined in: packages/wapi.js/src/components/cta-url.ts:51
+
+The `interactive` object, without `type`. Undefined keys are dropped.
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+#### Overrides
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactive`](InteractiveMessage.mdx#interactive)
+
+***
+
+### toJson()
+
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
+
+Defined in: packages/wapi.js/src/components/base.ts:71
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`toJson`](InteractiveMessage.mdx#tojson)

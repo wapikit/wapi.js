@@ -1,0 +1,52 @@
+[wapi.js](../README.mdx) / WebhookServerOptions
+
+# Interface: WebhookServerOptions
+
+Defined in: packages/wapi.js/src/webhook/server.ts:6
+
+Options of the optional built-in webhook server.
+
+## Extended by
+
+- [`WebhookOptions`](WebhookOptions.mdx)
+
+## Properties
+
+### host?
+
+> `optional` **host?**: `string`
+
+Defined in: packages/wapi.js/src/webhook/server.ts:13
+
+Interface to bind. Defaults to all interfaces (as 0.1.x did) so it works
+in containers; use `"127.0.0.1"` behind a reverse proxy or tunnel.
+
+***
+
+### maxBodyBytes?
+
+> `optional` **maxBodyBytes?**: `number`
+
+Defined in: packages/wapi.js/src/webhook/server.ts:17
+
+Maximum accepted body size in bytes. Default 3 MB.
+
+***
+
+### path?
+
+> `optional` **path?**: `string`
+
+Defined in: packages/wapi.js/src/webhook/server.ts:15
+
+Path Meta calls. Default `"/webhook"`.
+
+***
+
+### port?
+
+> `optional` **port?**: `number`
+
+Defined in: packages/wapi.js/src/webhook/server.ts:8
+
+Port to listen on. `0` picks a free port. Default `8080`.

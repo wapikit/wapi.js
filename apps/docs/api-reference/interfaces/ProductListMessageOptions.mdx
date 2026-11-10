@@ -1,0 +1,57 @@
+[wapi.js](../README.mdx) / ProductListMessageOptions
+
+# Interface: ProductListMessageOptions
+
+Defined in: packages/wapi.js/src/components/commerce.ts:100
+
+Input of [ProductListMessage](../classes/ProductListMessage.mdx).
+
+## Properties
+
+### bodyText
+
+> **bodyText**: `string`
+
+Defined in: packages/wapi.js/src/components/commerce.ts:106
+
+Up to 1024 characters.
+
+***
+
+### catalogId
+
+> **catalogId**: `string`
+
+Defined in: packages/wapi.js/src/components/commerce.ts:102
+
+Id of the catalog connected to the WhatsApp Business Account.
+
+***
+
+### footerText?
+
+> `optional` **footerText?**: `string`
+
+Defined in: packages/wapi.js/src/components/commerce.ts:108
+
+Up to 60 characters.
+
+***
+
+### headerText
+
+> **headerText**: `string`
+
+Defined in: packages/wapi.js/src/components/commerce.ts:104
+
+Text header, up to 60 characters. Required for product lists.
+
+***
+
+### sections
+
+> **sections**: [`ProductSection`](ProductSection.mdx)[]
+
+Defined in: packages/wapi.js/src/components/commerce.ts:110
+
+One to ten sections with at most 30 products in total.

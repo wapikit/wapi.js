@@ -1,0 +1,57 @@
+[wapi.js](../README.mdx) / SmbStateSyncItem
+
+# Interface: SmbStateSyncItem
+
+Defined in: packages/wapi.js/src/events/business-events.ts:729
+
+One contact change synced from the WhatsApp Business app.
+
+## Properties
+
+### action
+
+> **action**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:734
+
+e.g. `add`, `remove`.
+
+***
+
+### contact?
+
+> `optional` **contact?**: `object`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:732
+
+#### firstName?
+
+> `optional` **firstName?**: `string`
+
+#### fullName?
+
+> `optional` **fullName?**: `string`
+
+#### phoneNumber?
+
+> `optional` **phoneNumber?**: `string`
+
+***
+
+### timestamp?
+
+> `optional` **timestamp?**: `number`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:736
+
+Unix seconds (`metadata.timestamp`).
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:731
+
+e.g. `contact`.

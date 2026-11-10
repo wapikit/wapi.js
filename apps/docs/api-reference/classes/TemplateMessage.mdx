@@ -1,263 +1,287 @@
-[Wapi.js Docs](../README.mdx) / TemplateMessage
+[wapi.js](../README.mdx) / TemplateMessage
 
 # Class: TemplateMessage
 
-Represents a template message.
+Defined in: packages/wapi.js/src/components/template.ts:578
+
+A template message, the only kind of message that can start a conversation
+(or be sent outside the 24 hour customer service window).
+
+Add the components whose variables you fill in; components without
+variables come from the approved template. `addHeader`, `addBody`,
+`addLimitedTimeOffer` and `addCarousel` replace an earlier call; buttons are
+kept per index. Components are serialised in the order header, body,
+limited-time offer, carousel, buttons.
+
+## Example
+
+```ts
+const message = new TemplateMessage({ name: "order_update", language: LanguageEnum.EnglishUS })
+  .addHeader(TemplateParameter.image({ link: "https://example.com/parcel.png" }))
+  .addBody([
+    TemplateParameter.text("Jane", { name: "first_name" }),
+    TemplateParameter.text("#42", { name: "order_id" }),
+  ])
+  .addButton(TemplateButton.url({ index: 0, text: "orders/42" }))
+  .addButton(TemplateButton.quickReply({ index: 1, payload: "stop" }));
+
+// Authentication template: code in the body and on the copy-code button.
+new TemplateMessage({ name: "login_code", language: "en_US" }).addOtp("123456");
+```
 
 ## Extends
 
-- `BaseMessage`\<`MessageTypeEnum.Template`\>
-
-## Implements
-
-- [`TemplateMessageInterface`](../interfaces/TemplateMessageInterface.mdx)
+- [`BaseMessage`](BaseMessage.mdx)\<[`Template`](../enumerations/MessageTypeEnum.mdx#template)\>
 
 ## Constructors
 
-### new TemplateMessage()
+### Constructor
 
-> **new TemplateMessage**(`params`): [`TemplateMessage`](TemplateMessage.mdx)
+> **new TemplateMessage**(`data`): `TemplateMessage`
+
+Defined in: packages/wapi.js/src/components/template.ts:586
 
 #### Parameters
 
-• **params**
+##### data
 
-The template message data.
-
-• **params.language**: `LanguageEnum`
-
-• **params.templateName**: `string`
+[`TemplateMessageOptions`](../interfaces/TemplateMessageOptions.mdx)
 
 #### Returns
 
-[`TemplateMessage`](TemplateMessage.mdx)
+`TemplateMessage`
 
 #### Overrides
 
-`BaseMessage<MessageTypeEnum.Template>.constructor`
-
-#### Memberof
-
-TemplateMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/template/index.ts:115](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/template/index.ts#L115)
+[`BaseMessage`](BaseMessage.mdx).[`constructor`](BaseMessage.mdx#constructor)
 
 ## Properties
 
 ### data
 
-> **data**: `object`
+> `readonly` **data**: `Readonly`\<[`TemplateMessageOptions`](../interfaces/TemplateMessageOptions.mdx)\>
 
-#### language
-
-> **language**: `LanguageEnum`
-
-#### templateName
-
-> **templateName**: `string`
-
-#### Implementation of
-
-[`TemplateMessageInterface`](../interfaces/TemplateMessageInterface.mdx).[`data`](../interfaces/TemplateMessageInterface.mdx#data)
-
-#### Source
-
-[packages/wapi.js/src/structures/template/index.ts:105](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/template/index.ts#L105)
-
-***
-
-### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-The messaging product.
-
-#### Implementation of
-
-[`TemplateMessageInterface`](../interfaces/TemplateMessageInterface.mdx).[`messaging_product`](../interfaces/TemplateMessageInterface.mdx#messaging_product)
-
-#### Inherited from
-
-`BaseMessage.messaging_product`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:17](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L17)
-
-***
-
-### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-The recipient type.
-
-#### Implementation of
-
-[`TemplateMessageInterface`](../interfaces/TemplateMessageInterface.mdx).[`recipient_type`](../interfaces/TemplateMessageInterface.mdx#recipient_type)
-
-#### Inherited from
-
-`BaseMessage.recipient_type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:18](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L18)
+Defined in: packages/wapi.js/src/components/template.ts:579
 
 ***
 
 ### type
 
-> **type**: `MessageTypeEnum`
+> `readonly` **type**: [`Template`](../enumerations/MessageTypeEnum.mdx#template)
 
-The type of the message.
-
-#### Implementation of
-
-[`TemplateMessageInterface`](../interfaces/TemplateMessageInterface.mdx).[`type`](../interfaces/TemplateMessageInterface.mdx#type)
+Defined in: packages/wapi.js/src/components/base.ts:54
 
 #### Inherited from
 
-`BaseMessage.type`
+[`BaseMessage`](BaseMessage.mdx).[`type`](BaseMessage.mdx#type)
 
-#### Source
+## Accessors
 
-[packages/wapi.js/src/structures/message/index.ts:16](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L16)
+### components
+
+#### Get Signature
+
+> **get** **components**(): [`TemplateComponentPayload`](../type-aliases/TemplateComponentPayload.mdx)[]
+
+Defined in: packages/wapi.js/src/components/template.ts:710
+
+The components that will be sent, in serialisation order.
+
+##### Returns
+
+[`TemplateComponentPayload`](../type-aliases/TemplateComponentPayload.mdx)[]
 
 ## Methods
 
+### addBody()
+
+> **addBody**(`parameters`): `this`
+
+Defined in: packages/wapi.js/src/components/template.ts:606
+
+Sets the body parameters, in order (positional) or by `parameter_name` (named).
+
+#### Parameters
+
+##### parameters
+
+[`TemplateParameterPayload`](../type-aliases/TemplateParameterPayload.mdx)[]
+
+#### Returns
+
+`this`
+
+***
+
+### addButton()
+
+> **addButton**(`button`): `this`
+
+Defined in: packages/wapi.js/src/components/template.ts:620
+
+Adds a button component built with [TemplateButton](TemplateButton.mdx). A template has
+at most 10 buttons, and each `index` may be used once.
+
+#### Parameters
+
+##### button
+
+[`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+#### Returns
+
+`this`
+
+***
+
+### addCarousel()
+
+> **addCarousel**(`cards`): `this`
+
+Defined in: packages/wapi.js/src/components/template.ts:649
+
+Sets the cards of a media or product card carousel template (up to 10).
+
+#### Parameters
+
+##### cards
+
+[`TemplateCarouselCard`](../interfaces/TemplateCarouselCard.mdx)[]
+
+#### Returns
+
+`this`
+
+***
+
 ### addComponent()
 
-> **addComponent**(): `void`
+> **addComponent**(`component`): `this`
 
-Adds a component to the template message.
+Defined in: packages/wapi.js/src/components/template.ts:679
 
-#### Returns
-
-`void`
-
-#### Source
-
-[packages/wapi.js/src/structures/template/index.ts:126](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/template/index.ts#L126)
-
-***
-
-### parseConstructorPayload()
-
-> `protected` **parseConstructorPayload**(`schema`, `payload`): `any`
-
-Parses the constructor payload using the provided schema.
+Adds a raw Cloud API component (validated like the typed helpers).
 
 #### Parameters
 
-• **schema**: `ZodType`\<`any`, `ZodTypeDef`, `any`\>
+##### component
 
-The Zod schema used for parsing the payload.
-
-• **payload**: `any`
-
-The payload to be parsed.
+[`TemplateComponentPayload`](../type-aliases/TemplateComponentPayload.mdx)
 
 #### Returns
 
-`any`
-
-The parsed data.
-
-#### Inherited from
-
-`BaseMessage.parseConstructorPayload`
-
-#### Throws
-
-An error if the parsing fails.
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L42)
+`this`
 
 ***
 
-### toJson()
+### addHeader()
 
-> **toJson**(`params`): `object`
+> **addHeader**(`parameter`): `this`
 
-Converts the template message to a JSON object.
+Defined in: packages/wapi.js/src/components/template.ts:595
+
+Sets the header parameter (text, image, video, document, location or product).
 
 #### Parameters
 
-• **params**
+##### parameter
 
-The parameters for the JSON object.
+[`TemplateParameterPayload`](../type-aliases/TemplateParameterPayload.mdx)
 
-• **params.replyToMessageId?**: `string`
+#### Returns
 
-• **params.to**: `string`
+`this`
+
+***
+
+### addLimitedTimeOffer()
+
+> **addLimitedTimeOffer**(`options`): `this`
+
+Defined in: packages/wapi.js/src/components/template.ts:631
+
+Sets the expiry of a limited-time offer template (Unix time in milliseconds).
+
+#### Parameters
+
+##### options
+
+###### expirationTimeMs
+
+`number`
+
+#### Returns
+
+`this`
+
+***
+
+### addOtp()
+
+> **addOtp**(`code`): `this`
+
+Defined in: packages/wapi.js/src/components/template.ts:672
+
+Fills an authentication template: sets the code as the body parameter
+and on the one-time password button (index 0).
+
+#### Parameters
+
+##### code
+
+`string`
+
+#### Returns
+
+`this`
+
+***
+
+### content()
+
+> `protected` **content**(): `object`
+
+Defined in: packages/wapi.js/src/components/template.ts:720
+
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
 
 #### Returns
 
 `object`
 
-The JSON object representing the template message.
-
-##### biz\_opaque\_callback\_data?
-
-> `optional` **biz\_opaque\_callback\_data**: `string`
-
-##### context?
-
-> `optional` **context**: `object`
-
-##### context.message\_id
-
-> **message\_id**: `string`
-
-##### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-##### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
 ##### template
 
-> **template**: `object`
-
-##### template.components?
-
-> `optional` **components**: (`object` \| `object` \| `object`)[]
-
-##### template.language
-
-> **language**: `object`
-
-##### template.language.code
-
-> **code**: `LanguageEnum`
-
-##### template.language.policy
-
-> **policy**: `"deterministic"`
-
-##### template.name
-
-> **name**: `string`
-
-##### to
-
-> **to**: `string`
-
-##### type
-
-> **type**: `Template`
+> **template**: [`TemplateMessagePayload`](../interfaces/TemplateMessagePayload.mdx)
 
 #### Overrides
 
-`BaseMessage.toJson`
+[`BaseMessage`](BaseMessage.mdx).[`content`](BaseMessage.mdx#content)
 
-#### Source
+***
 
-[packages/wapi.js/src/structures/template/index.ts:135](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/template/index.ts#L135)
+### toJson()
+
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Template`](../enumerations/MessageTypeEnum.mdx#template)\>
+
+Defined in: packages/wapi.js/src/components/base.ts:71
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Template`](../enumerations/MessageTypeEnum.mdx#template)\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
+
+[`BaseMessage`](BaseMessage.mdx).[`toJson`](BaseMessage.mdx#tojson)

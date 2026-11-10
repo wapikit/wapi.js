@@ -1,70 +1,79 @@
 {
   "name": "@wapijs/wapi.js",
   "version": "0.1.1",
-  "description": "a typescript based client SDK to build whatsapp cloud api based chat bots",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/cjs/index.js",
+  "description": "TypeScript SDK for the WhatsApp Cloud API: send every message type, receive webhooks on any server, manage templates, phone numbers and catalogs.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.cts",
   "exports": {
     ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js",
-      "default": "./dist/cjs/index.js"
-    }
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "watch": "concurrently -n esm,cjs \"pnpm tsc -p tsconfig.json --watch\" \"pnpm tsc -p tsconfig-cjs.json --watch\"  ",
+    "build": "tsup",
+    "watch": "tsup --watch",
     "clean": "rm -rf ./dist",
-    "build:cjs": "pnpm tsc -p tsconfig-cjs.json --pretty",
-    "build:esm": "pnpm tsc -p tsconfig.json --pretty",
-    "build": "pnpm run clean && concurrently -n esm,cjs \"pnpm run build:esm\" \"pnpm run build:cjs\"",
-    "lint": "pnpm eslint . --max-warnings=20",
-    "pretty": "pnpm prettier --write \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src test --max-warnings=0",
+    "pretty": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "clean-install": "rm -rf ./node_modules && pnpm install --frozen-lockfile",
-    "doc:gen": "pnpm build && api-extractor run --local && pnpm typedoc ./index.ts && rm -rf ./docs && pnpm npx tsx ./update-mint-config.ts"
+    "doc:gen": "typedoc"
   },
   "keywords": [
     "whatsapp",
     "whatsapp-cloud-api",
+    "whatsapp-business-api",
+    "whatsapp-bot",
     "whatsapp-chat-bot",
     "chat-bot",
-    "whatsapp-bot"
+    "wapikit"
   ],
   "author": {
-    "name": "Sarthak",
-    "email": "sarthak@softlancer.co",
+    "name": "Sarthak Jain",
     "url": "https://sarthakjdev.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sarthakjdev/wapi.js.git",
+    "url": "git+https://github.com/wapikit/wapi.js.git",
     "directory": "packages/wapi.js"
   },
   "bugs": {
-    "url": "https://www.github.com/sarthakjdev/wapi.js/issues"
+    "url": "https://github.com/wapikit/wapi.js/issues"
   },
   "homepage": "https://javascript.wapikit.com",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/express": "^4.17.18",
+    "@types/node": "^20.5.9",
     "@wapijs/eslint-config": "workspace:*",
     "@wapijs/prettier-config": "workspace:*",
     "@wapijs/typescript-config": "workspace:*",
-    "concurrently": "^8.2.1",
-    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
-    "typedoc-plugin-markdown": "^4.0.3",
-    "typedoc-plugin-zod": "^1.1.2",
-    "typescript": "5.4.5"
+    "tsup": "^8.3.5",
+    "typedoc": "^0.28.14",
+    "typedoc-plugin-markdown": "^4.2.10",
+    "typescript": "5.4.5",
+    "vitest": "^2.1.8"
   },
-  "dependencies": {
-    "@microsoft/api-extractor": "^7.43.1",
-    "express": "^4.18.2",
-    "zod": "^3.22.2"
-  },
-  "packageManager": "pnpm@9.1.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "publishConfig": {
     "access": "public",

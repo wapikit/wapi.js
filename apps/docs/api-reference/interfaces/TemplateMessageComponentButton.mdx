@@ -1,0 +1,141 @@
+[wapi.js](../README.mdx) / TemplateMessageComponentButton
+
+# Interface: TemplateMessageComponentButton
+
+Defined in: packages/wapi.js/src/managers/template.ts:114
+
+A template button, as returned by and sent to the Graph API.
+
+## Properties
+
+### autofill\_text?
+
+> `optional` **autofill\_text?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:124
+
+***
+
+### example?
+
+> `optional` **example?**: `string`[]
+
+Defined in: packages/wapi.js/src/managers/template.ts:122
+
+URL variable or coupon code examples.
+
+***
+
+### flow\_action?
+
+> `optional` **flow\_action?**: `"navigate"` \| `"data_exchange"`
+
+Defined in: packages/wapi.js/src/managers/template.ts:132
+
+***
+
+### flow\_id?
+
+> `optional` **flow\_id?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:129
+
+***
+
+### flow\_json?
+
+> `optional` **flow\_json?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:131
+
+***
+
+### flow\_name?
+
+> `optional` **flow\_name?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:130
+
+***
+
+### navigate\_screen?
+
+> `optional` **navigate\_screen?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:133
+
+***
+
+### otp\_type?
+
+> `optional` **otp\_type?**: `"COPY_CODE"` \| `"ONE_TAP"` \| `"ZERO_TAP"` \| [`TemplateOtpType`](../enumerations/TemplateOtpType.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:123
+
+***
+
+### package\_name?
+
+> `optional` **package\_name?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:125
+
+***
+
+### phone\_number?
+
+> `optional` **phone\_number?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:118
+
+Required for `PHONE_NUMBER`.
+
+***
+
+### signature\_hash?
+
+> `optional` **signature\_hash?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:126
+
+***
+
+### supported\_apps?
+
+> `optional` **supported\_apps?**: [`TemplateOtpSupportedApp`](TemplateOtpSupportedApp.mdx)[]
+
+Defined in: packages/wapi.js/src/managers/template.ts:127
+
+***
+
+### text?
+
+> `optional` **text?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:116
+
+***
+
+### type
+
+> **type**: `"OTP"` \| `"QUICK_REPLY"` \| `"URL"` \| `"PHONE_NUMBER"` \| `"COPY_CODE"` \| `"FLOW"` \| `"CATALOG"` \| `"MPM"` \| `"SPM"` \| `"REQUEST_CONTACT_INFO"` \| [`TemplateMessageButtonType`](../enumerations/TemplateMessageButtonType.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:115
+
+***
+
+### url?
+
+> `optional` **url?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:120
+
+Required for `URL`.
+
+***
+
+### zero\_tap\_terms\_accepted?
+
+> `optional` **zero\_tap\_terms\_accepted?**: `boolean`
+
+Defined in: packages/wapi.js/src/managers/template.ts:128

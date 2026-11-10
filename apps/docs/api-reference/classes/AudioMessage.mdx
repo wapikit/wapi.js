@@ -1,227 +1,104 @@
-[Wapi.js Docs](../README.mdx) / AudioMessage
+[wapi.js](../README.mdx) / AudioMessage
 
 # Class: AudioMessage
 
-Represents an audio message.
+Defined in: packages/wapi.js/src/components/media.ts:119
 
-## Implements
+An audio message. Audio messages cannot carry a caption.
 
 ## Extends
 
-- `BaseMessage`\<`MessageTypeEnum.Audio`\>
-
-## Implements
-
-- [`AudioMessageInterface`](../interfaces/AudioMessageInterface.mdx)
+- [`BaseMessage`](BaseMessage.mdx)\<[`Audio`](../enumerations/MessageTypeEnum.mdx#audio)\>
 
 ## Constructors
 
-### new AudioMessage()
+### Constructor
 
-> **new AudioMessage**(`params`): [`AudioMessage`](AudioMessage.mdx)
+> **new AudioMessage**(`data`): `AudioMessage`
 
-Creates a new instance of the AudioMessage class.
+Defined in: packages/wapi.js/src/components/media.ts:122
 
 #### Parameters
 
-• **params**: `object` \| `object`
+##### data
 
-The parameters to initialize the audio message.
+[`MediaSource`](../type-aliases/MediaSource.mdx)
 
 #### Returns
 
-[`AudioMessage`](AudioMessage.mdx)
+`AudioMessage`
 
 #### Overrides
 
-`BaseMessage<MessageTypeEnum.Audio>.constructor`
-
-#### Memberof
-
-AudioMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/media/index.ts:48](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/media/index.ts#L48)
+[`BaseMessage`](BaseMessage.mdx).[`constructor`](BaseMessage.mdx#constructor)
 
 ## Properties
 
 ### data
 
-> **data**: `object` \| `object`
+> `readonly` **data**: `Readonly`\<[`MediaSource`](../type-aliases/MediaSource.mdx)\>
 
-#### Implementation of
-
-[`AudioMessageInterface`](../interfaces/AudioMessageInterface.mdx).[`data`](../interfaces/AudioMessageInterface.mdx#data)
-
-#### Source
-
-[packages/wapi.js/src/structures/media/index.ts:35](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/media/index.ts#L35)
-
-***
-
-### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-The messaging product.
-
-#### Implementation of
-
-[`AudioMessageInterface`](../interfaces/AudioMessageInterface.mdx).[`messaging_product`](../interfaces/AudioMessageInterface.mdx#messaging_product)
-
-#### Inherited from
-
-`BaseMessage.messaging_product`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:17](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L17)
-
-***
-
-### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-The recipient type.
-
-#### Implementation of
-
-[`AudioMessageInterface`](../interfaces/AudioMessageInterface.mdx).[`recipient_type`](../interfaces/AudioMessageInterface.mdx#recipient_type)
-
-#### Inherited from
-
-`BaseMessage.recipient_type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:18](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L18)
+Defined in: packages/wapi.js/src/components/media.ts:120
 
 ***
 
 ### type
 
-> **type**: `MessageTypeEnum`
+> `readonly` **type**: [`Audio`](../enumerations/MessageTypeEnum.mdx#audio)
 
-The type of the message.
-
-#### Implementation of
-
-[`AudioMessageInterface`](../interfaces/AudioMessageInterface.mdx).[`type`](../interfaces/AudioMessageInterface.mdx#type)
+Defined in: packages/wapi.js/src/components/base.ts:54
 
 #### Inherited from
 
-`BaseMessage.type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:16](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L16)
+[`BaseMessage`](BaseMessage.mdx).[`type`](BaseMessage.mdx#type)
 
 ## Methods
 
-### parseConstructorPayload()
+### content()
 
-> `protected` **parseConstructorPayload**(`schema`, `payload`): `any`
+> `protected` **content**(): `object`
 
-Parses the constructor payload using the provided schema.
+Defined in: packages/wapi.js/src/components/media.ts:128
 
-#### Parameters
-
-• **schema**: `ZodType`\<`any`, `ZodTypeDef`, `any`\>
-
-The Zod schema used for parsing the payload.
-
-• **payload**: `any`
-
-The payload to be parsed.
-
-#### Returns
-
-`any`
-
-The parsed data.
-
-#### Inherited from
-
-`BaseMessage.parseConstructorPayload`
-
-#### Throws
-
-An error if the parsing fails.
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L42)
-
-***
-
-### toJson()
-
-> **toJson**(`params`): `object`
-
-Converts the audio message to the WhatsApp Cloud API payload.
-
-#### Parameters
-
-• **params**
-
-The parameters for the WhatsApp Cloud API payload.
-
-• **params.replyToMessageId?**: `string`
-
-The ID of the message being replied to.
-
-• **params.to**: `string`
-
-The recipient of the message.
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
 
 #### Returns
 
 `object`
 
-- The WhatsApp Cloud API payload for the audio message.
-
 ##### audio
 
-> **audio**: `object` \| `object`
-
-##### biz\_opaque\_callback\_data?
-
-> `optional` **biz\_opaque\_callback\_data**: `string`
-
-##### context?
-
-> `optional` **context**: `object`
-
-##### context.message\_id
-
-> **message\_id**: `string`
-
-##### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-##### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-##### to
-
-> **to**: `string`
-
-##### type
-
-> **type**: `Audio`
+> **audio**: [`MediaSourcePayload`](../type-aliases/MediaSourcePayload.mdx)
 
 #### Overrides
 
-`BaseMessage.toJson`
+[`BaseMessage`](BaseMessage.mdx).[`content`](BaseMessage.mdx#content)
 
-#### Memberof
+***
 
-AudioMessage
+### toJson()
 
-#### Source
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Audio`](../enumerations/MessageTypeEnum.mdx#audio)\>
 
-[packages/wapi.js/src/structures/media/index.ts:67](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/media/index.ts#L67)
+Defined in: packages/wapi.js/src/components/base.ts:71
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Audio`](../enumerations/MessageTypeEnum.mdx#audio)\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
+
+[`BaseMessage`](BaseMessage.mdx).[`toJson`](BaseMessage.mdx#tojson)

@@ -1,0 +1,127 @@
+[wapi.js](../README.mdx) / MessageTemplate
+
+# Interface: MessageTemplate
+
+Defined in: packages/wapi.js/src/managers/template.ts:171
+
+A message template node (`GET /{template-id}`).
+
+## Properties
+
+### category
+
+> **category**: `"AUTHENTICATION"` \| `"MARKETING"` \| `"UTILITY"` \| [`MessageTemplateCategory`](../enumerations/MessageTemplateCategory.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:176
+
+***
+
+### components?
+
+> `optional` **components?**: [`TemplateMessageComponent`](TemplateMessageComponent.mdx)[]
+
+Defined in: packages/wapi.js/src/managers/template.ts:178
+
+***
+
+### correct\_category?
+
+> `optional` **correct\_category?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:180
+
+***
+
+### cta\_url\_link\_tracking\_opted\_out?
+
+> `optional` **cta\_url\_link\_tracking\_opted\_out?**: `boolean`
+
+Defined in: packages/wapi.js/src/managers/template.ts:182
+
+***
+
+### id
+
+> **id**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:172
+
+***
+
+### language
+
+> **language**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:174
+
+***
+
+### library\_template\_name?
+
+> `optional` **library\_template\_name?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:183
+
+***
+
+### message\_send\_ttl\_seconds?
+
+> `optional` **message\_send\_ttl\_seconds?**: `number`
+
+Defined in: packages/wapi.js/src/managers/template.ts:184
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:173
+
+***
+
+### parameter\_format?
+
+> `optional` **parameter\_format?**: `"POSITIONAL"` \| `"NAMED"` \| [`MessageTemplateParameterFormat`](../enumerations/MessageTemplateParameterFormat.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:179
+
+***
+
+### previous\_category?
+
+> `optional` **previous\_category?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:181
+
+***
+
+### quality\_score?
+
+> `optional` **quality\_score?**: [`TemplateMessageQualityScore`](TemplateMessageQualityScore.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:185
+
+***
+
+### rejected\_reason?
+
+> `optional` **rejected\_reason?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:186
+
+***
+
+### status
+
+> **status**: `"APPROVED"` \| `"ARCHIVED"` \| `"DELETED"` \| `"DISABLED"` \| `"IN_APPEAL"` \| `"LIMIT_EXCEEDED"` \| `"PAUSED"` \| `"PENDING"` \| `"PENDING_DELETION"` \| `"REJECTED"` \| [`MessageTemplateStatus`](../enumerations/MessageTemplateStatus.mdx)
+
+Defined in: packages/wapi.js/src/managers/template.ts:175
+
+***
+
+### sub\_category?
+
+> `optional` **sub\_category?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:177

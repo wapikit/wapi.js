@@ -3,26 +3,83 @@ title: Handling Media
 description: Learn how to handle media messages using the Wapi.js SDK
 ---
 
+The media manager uploads, inspects, downloads and deletes media for one phone number. Use `client.media` for the default number, or `client.messaging(phoneNumberId).media` for another.
 
-Officially Whatsapp supports uploading of media via API, getting Media Url from media Id and deleting the media. But the SDK as of now only supports the two features: 
+| Method | Returns |
+|---|---|
+| `upload({ file, mimeType, filename? })` | `{ id }`: a media id, usable in messages for 30 days |
+| `getUrl(mediaId)` | A short-lived (5 minute) download URL |
+| `getMetadata(mediaId)` | `{ url, mime_type, sha256, file_size, id }` |
+| `download(mediaIdOrUrl)` | `{ data: ArrayBuffer, mimeType }` |
+| `delete(mediaId)` | Resolves when the media is deleted |
 
-- [Getting media Url from media Id](#getting-media-url-from-media-id)
-- [Deleting the media](#deleting-media)
+## Uploading and sending
 
+```ts
+import { readFile } from "node:fs/promises";
+import { DocumentMessage, MediaTypeEnum } from "@wapijs/wapi.js";
 
-## Getting media Url from media Id
+const { id } = await client.media.upload({
+  file: await readFile("menu.pdf"), // Blob, ArrayBuffer or Uint8Array (Buffer works)
+  mimeType: MediaTypeEnum.PDF, // or a string such as "application/pdf"
+  filename: "menu.pdf",
+});
 
-You can get the media Url from media Id using the `getMediaUrl` method available on the [client](api-reference/classes/Client) class media manager. Here is an example of how you can get the media Url:
-
-```typescript
-	await whatsappClient.media.getUrl('mediaId')
+await client.message.send({
+  to: "15550001111",
+  message: new DocumentMessage({ id, filename: "menu.pdf" }),
+});
 ```
 
+Uploads have a 5 minute timeout by default; pass `timeoutMs` to change it. If the file is already at a public HTTPS URL, you can skip the upload and send `{ link }` instead of `{ id }`.
+
+<Note>Uploads are made against a phone number id. Upload through the messaging client of the number you will send from.</Note>
+
+## Downloading received media
+
+Image, video, audio, document and sticker events have `mediaId`, `mimeType` and `sha256`, plus two helpers that use the number that received the message:
+
+```ts
+import { writeFile } from "node:fs/promises";
+
+client.on("DocumentMessage", async (event) => {
+  const { data, mimeType } = await event.download();
+  await writeFile(event.filename ?? `${event.mediaId}.bin`, new Uint8Array(data));
+});
+
+client.on("ImageMessage", async (event) => {
+  const url = await event.getUrl(); // short-lived; download it with the access token
+});
+```
+
+Outside a listener, use the media manager:
+
+```ts
+const metadata = await client.media.getMetadata(mediaId); // { url, mime_type, sha256, file_size, id }
+const url = await client.media.getUrl(mediaId);
+const { data, mimeType } = await client.media.download(mediaId); // or download(url)
+```
+
+<Warning>Media URLs expire after about 5 minutes and need your access token. `download()` sends the token for you; a plain `fetch(url)` without the `Authorization` header fails.</Warning>
+
+## Forwarding received media
+
+Media events include a ready-made component that references the same media id:
+
+```ts
+client.on("ImageMessage", async (event) => {
+  await client.message.send({ to: "<support agent>", message: event.image });
+});
+```
+
+`VideoMessage`, `AudioMessage`, `DocumentMessage` and `StickerMessage` events have `video`, `audio`, `document` and `sticker` the same way.
 
 ## Deleting media
 
-You can delete a media using the `deleteMedia` method available on the [client](api-reference/classes/Client) class media manager. Here is an example of how you can delete the media:
-
-```typescript
-	await whatsappClient.media.delete('mediaId')
+```ts
+await client.media.delete(mediaId);
 ```
+
+## Supported types
+
+`MediaTypeEnum` lists the MIME types the Cloud API accepts: AAC, AMR, MP3, MP4 audio and OGG audio; plain text, PDF, Word, Excel and PowerPoint documents; JPEG and PNG images; WebP stickers; MP4 and 3GPP video.

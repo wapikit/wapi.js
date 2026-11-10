@@ -1,35 +1,210 @@
-[Wapi.js Docs](../README.mdx) / TemplateParameter
+[wapi.js](../README.mdx) / TemplateParameter
 
-# Class: TemplateParameter
+# Abstract Class: TemplateParameter
 
-Represents a parameter for a template message.
+Defined in: packages/wapi.js/src/components/template.ts:194
+
+Factories for template header and body parameters. Each returns the
+Cloud API parameter object.
+
+## Example
+
+```ts
+TemplateParameter.text("Jane", { name: "first_name" });
+TemplateParameter.currency({ fallbackValue: "$10.99", code: "USD", amount1000: 10990 });
+TemplateParameter.image({ link: "https://example.com/banner.png" });
+```
 
 ## Constructors
 
-### new TemplateParameter()
+### Constructor
 
-> **new TemplateParameter**(`params`): [`TemplateParameter`](TemplateParameter.mdx)
-
-#### Parameters
-
-• **params**: `object` \| `object` \| `object` \| `object` \| `object` \| `object`
-
-The parameter data.
+> **new TemplateParameter**(): `TemplateParameter`
 
 #### Returns
 
-[`TemplateParameter`](TemplateParameter.mdx)
+`TemplateParameter`
 
-#### Source
+## Methods
 
-[packages/wapi.js/src/structures/template/index.ts:26](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/template/index.ts#L26)
+### currency()
 
-## Properties
+> `static` **currency**(`options`): [`TemplateCurrencyParameterPayload`](../interfaces/TemplateCurrencyParameterPayload.mdx)
 
-### parameterData
+Defined in: packages/wapi.js/src/components/template.ts:203
 
-> **parameterData**: `object` \| `object` \| `object` \| `object` \| `object` \| `object`
+A localised currency amount. `amount1000` is the amount multiplied by 1000.
 
-#### Source
+#### Parameters
 
-[packages/wapi.js/src/structures/template/index.ts:20](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/template/index.ts#L20)
+##### options
+
+`object` & [`NamedParameterOptions`](../interfaces/NamedParameterOptions.mdx)
+
+#### Returns
+
+[`TemplateCurrencyParameterPayload`](../interfaces/TemplateCurrencyParameterPayload.mdx)
+
+***
+
+### dateTime()
+
+> `static` **dateTime**(`options`): [`TemplateDateTimeParameterPayload`](../interfaces/TemplateDateTimeParameterPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:225
+
+A date / time. WhatsApp shows `fallbackValue` as is.
+
+#### Parameters
+
+##### options
+
+`object` & [`NamedParameterOptions`](../interfaces/NamedParameterOptions.mdx)
+
+#### Returns
+
+[`TemplateDateTimeParameterPayload`](../interfaces/TemplateDateTimeParameterPayload.mdx)
+
+***
+
+### document()
+
+> `static` **document**(`source`): [`TemplateDocumentParameterPayload`](../interfaces/TemplateDocumentParameterPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:248
+
+A document header.
+
+#### Parameters
+
+##### source
+
+[`MediaSource`](../type-aliases/MediaSource.mdx) & `object`
+
+#### Returns
+
+[`TemplateDocumentParameterPayload`](../interfaces/TemplateDocumentParameterPayload.mdx)
+
+***
+
+### image()
+
+> `static` **image**(`source`): [`TemplateImageParameterPayload`](../interfaces/TemplateImageParameterPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:238
+
+An image header.
+
+#### Parameters
+
+##### source
+
+[`MediaSource`](../type-aliases/MediaSource.mdx)
+
+#### Returns
+
+[`TemplateImageParameterPayload`](../interfaces/TemplateImageParameterPayload.mdx)
+
+***
+
+### location()
+
+> `static` **location**(`options`): [`TemplateLocationParameterPayload`](../interfaces/TemplateLocationParameterPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:260
+
+A location header.
+
+#### Parameters
+
+##### options
+
+###### address?
+
+`string`
+
+###### latitude
+
+`number`
+
+###### longitude
+
+`number`
+
+###### name?
+
+`string`
+
+#### Returns
+
+[`TemplateLocationParameterPayload`](../interfaces/TemplateLocationParameterPayload.mdx)
+
+***
+
+### product()
+
+> `static` **product**(`options`): [`TemplateProductParameterPayload`](../interfaces/TemplateProductParameterPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:281
+
+A catalog product (single product templates and product card carousels).
+
+#### Parameters
+
+##### options
+
+###### catalogId
+
+`string`
+
+###### productRetailerId
+
+`string`
+
+#### Returns
+
+[`TemplateProductParameterPayload`](../interfaces/TemplateProductParameterPayload.mdx)
+
+***
+
+### text()
+
+> `static` **text**(`text`, `options?`): [`TemplateTextParameterPayload`](../interfaces/TemplateTextParameterPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:196
+
+A text parameter.
+
+#### Parameters
+
+##### text
+
+`string`
+
+##### options?
+
+[`NamedParameterOptions`](../interfaces/NamedParameterOptions.mdx) = `{}`
+
+#### Returns
+
+[`TemplateTextParameterPayload`](../interfaces/TemplateTextParameterPayload.mdx)
+
+***
+
+### video()
+
+> `static` **video**(`source`): [`TemplateVideoParameterPayload`](../interfaces/TemplateVideoParameterPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:243
+
+A video header.
+
+#### Parameters
+
+##### source
+
+[`MediaSource`](../type-aliases/MediaSource.mdx)
+
+#### Returns
+
+[`TemplateVideoParameterPayload`](../interfaces/TemplateVideoParameterPayload.mdx)

@@ -1,0 +1,149 @@
+[wapi.js](../README.mdx) / CatalogManager
+
+# Class: CatalogManager
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:235
+
+Product catalogs connected to a WhatsApp Business Account, and their products.
+
+## Constructors
+
+### Constructor
+
+> **new CatalogManager**(`requester`, `businessAccountId`): `CatalogManager`
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:236
+
+#### Parameters
+
+##### requester
+
+[`RequestClient`](RequestClient.mdx)
+
+##### businessAccountId
+
+`string`
+
+#### Returns
+
+`CatalogManager`
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:238
+
+## Methods
+
+### getProduct()
+
+> **getProduct**(`productId`, `options?`): `Promise`\<[`Product`](../interfaces/Product.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:285
+
+Fetches one product item. `GET /{product-id}`.
+
+#### Parameters
+
+##### productId
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`Product`](../interfaces/Product.mdx)\>
+
+***
+
+### list()
+
+> **list**(`params?`): `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`Catalog`](../interfaces/Catalog.mdx)\>\>
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:242
+
+Lists one page of catalogs (default 100). `GET /{waba-id}/product_catalogs`.
+
+#### Parameters
+
+##### params?
+
+[`CatalogPageParams`](../interfaces/CatalogPageParams.mdx)
+
+#### Returns
+
+`Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`Catalog`](../interfaces/Catalog.mdx)\>\>
+
+***
+
+### listAll()
+
+> **listAll**(`params?`): `Promise`\<[`Catalog`](../interfaces/Catalog.mdx)[]\>
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:253
+
+Lists every catalog (1000 per page by default). `GET /{waba-id}/product_catalogs`.
+
+#### Parameters
+
+##### params?
+
+[`ListAllCatalogItemsParams`](../interfaces/ListAllCatalogItemsParams.mdx)
+
+#### Returns
+
+`Promise`\<[`Catalog`](../interfaces/Catalog.mdx)[]\>
+
+***
+
+### listAllProducts()
+
+> **listAllProducts**(`catalogId`, `params?`): `Promise`\<[`Product`](../interfaces/Product.mdx)[]\>
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:273
+
+Lists every product of a catalog (100 per page by default). `GET /{catalog-id}/products`.
+
+#### Parameters
+
+##### catalogId
+
+`string`
+
+##### params?
+
+[`ListAllCatalogItemsParams`](../interfaces/ListAllCatalogItemsParams.mdx)
+
+#### Returns
+
+`Promise`\<[`Product`](../interfaces/Product.mdx)[]\>
+
+***
+
+### listProducts()
+
+> **listProducts**(`catalogId`, `params?`): `Promise`\<[`ProductPage`](../interfaces/ProductPage.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:261
+
+Lists one page of a catalog's products (default 100). `GET /{catalog-id}/products`.
+
+#### Parameters
+
+##### catalogId
+
+`string`
+
+##### params?
+
+[`CatalogPageParams`](../interfaces/CatalogPageParams.mdx)
+
+#### Returns
+
+`Promise`\<[`ProductPage`](../interfaces/ProductPage.mdx)\>

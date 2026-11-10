@@ -1,0 +1,68 @@
+[wapi.js](../README.mdx) / CatalogPageParams
+
+# Interface: CatalogPageParams
+
+Defined in: packages/wapi.js/src/managers/catalog.ts:216
+
+Cursor pagination input accepted by every list call.
+
+## Extends
+
+- [`PaginationInput`](PaginationInput.mdx)
+- [`RequestOptions`](RequestOptions.mdx)
+
+## Properties
+
+### after?
+
+> `optional` **after?**: `string`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:6
+
+Cursor from `paging.cursors.after` of the previous page.
+
+#### Inherited from
+
+[`PaginationInput`](PaginationInput.mdx).[`after`](PaginationInput.mdx#after)
+
+***
+
+### before?
+
+> `optional` **before?**: `string`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:8
+
+Cursor from `paging.cursors.before` of the previous page.
+
+#### Inherited from
+
+[`PaginationInput`](PaginationInput.mdx).[`before`](PaginationInput.mdx#before)
+
+***
+
+### limit?
+
+> `optional` **limit?**: `number`
+
+Defined in: packages/wapi.js/src/managers/pagination.ts:4
+
+Page size. Each manager documents its default.
+
+#### Inherited from
+
+[`PaginationInput`](PaginationInput.mdx).[`limit`](PaginationInput.mdx#limit)
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: packages/wapi.js/src/managers/business.ts:8
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)

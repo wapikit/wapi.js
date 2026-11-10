@@ -1,9 +1,9 @@
 import { whatsappClient } from './utils/client'
 import { ListInteractionMessage, TextMessage } from '@wapijs/wapi.js'
 
-function init() {
-	whatsappClient.on('Ready', () => {
-		console.log('Client is ready')
+async function init() {
+	whatsappClient.on('Ready', ({ port, path }) => {
+		console.log(`Webhook listening on :${port}${path}`)
 	})
 
 	const faq = {
@@ -48,11 +48,11 @@ function init() {
 		'Help & Support': [
 			{
 				question: 'Is wapi.js free and open-source?',
-				answer: "Yes, it's completely free and open-source under the AGPL 3.0 License."
+				answer: "Yes, it's completely free and open-source under the Apache 2.0 License."
 			},
 			{
 				question: 'Where can I get help or support for wapi.js?',
-				answer: 'Create an issue on our GitHub repository: https://github.com/sarthakjdev/wapi.js/issues.'
+				answer: 'Create an issue on our GitHub repository: https://github.com/wapikit/wapi.js/issues.'
 			}
 		]
 	}
@@ -80,28 +80,18 @@ function init() {
 		console.log('Error', error.message)
 	})
 
-	whatsappClient.on('TextMessage', async message => {
-		console.log('Text Message')
-		if (message.text.data.text.toLowerCase() === 'hello') {
-			const response = await message.client.message.send({
-				message: listMessage,
-				phoneNumber: message.context.from
-			})
-			console.log({ response })
+	whatsappClient.on('TextMessage', async event => {
+		if (event.text.trim().toLowerCase() === 'hello') {
+			const response = await event.send(listMessage)
+			console.log('Sent list message', response.messageId)
 		} else {
-			await message.reply({
-				message: new TextMessage({
-					text: 'Please say "hello" to proceed.'
-				})
-			})
+			await event.reply(new TextMessage({ text: 'Please say "hello" to proceed.' }))
 		}
 	})
 
-	whatsappClient.on('ListInteraction', async message => {
-		console.log('List Interaction', message)
-
+	whatsappClient.on('ListInteraction', async event => {
 		// it would be something like : section-1-question-1
-		const messageListId = message.listId
+		const messageListId = event.listId
 
 		const sectionIndex = parseInt(messageListId.split('-')[1]) - 1
 		const questionIndex = parseInt(messageListId.split('-')[3]) - 1
@@ -109,14 +99,10 @@ function init() {
 		// @ts-ignore
 		const answerToReply = faq[Object.keys(faq)[sectionIndex]][questionIndex].answer
 
-		await message.reply({
-			message: new TextMessage({
-				text: answerToReply
-			})
-		})
+		await event.reply(new TextMessage({ text: answerToReply }))
 	})
 
-	whatsappClient.initiate()
+	await whatsappClient.webhook.listen()
 }
 
-init()
+init().catch(error => console.error(error))

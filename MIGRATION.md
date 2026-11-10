@@ -1,0 +1,154 @@
+# Migrating from 0.1.x to 0.2.0 (beta)
+
+`0.2.0` is a ground-up overhaul of `@wapijs/wapi.js` that brings it to parity
+with [wapi.go](https://github.com/wapikit/wapi.go), the Go SDK that runs
+WapiKit in production. It fixes a long list of 0.1.x bugs (see
+[OVERHAUL.md](./OVERHAUL.md)) and **contains breaking changes**. While the
+package is on 0.x, breaking changes ship as a minor version, as semver allows.
+
+```sh
+npm install @wapijs/wapi.js@beta
+```
+
+`npm install @wapijs/wapi.js` keeps installing 0.1.x until 0.2.0 is promoted
+to stable.
+
+## At a glance
+
+| 0.1.x | 0.2.0 |
+|---|---|
+| `new Client({ apiAccessToken, phoneNumberId, businessAccountId, webhookSecret, webhookEndpoint, port })` | `new Client({ accessToken, phoneNumberId, businessAccountId, webhook: { verifyToken, appSecret, path, port } })` |
+| `client.initiate()` | `await client.webhook.listen()` (`initiate()` still works, deprecated) |
+| Express bundled and always started | No Express. Built-in `node:http` server **or** `client.webhook.nodeHandler` / `fetchHandler` in your own server |
+| No webhook signature check | Set `webhook.appSecret` → forged requests get `401` |
+| `client.message.send({ message, phoneNumber })` | `client.message.send({ message, to })` (`to` also accepts `{ userId }` for BSUIDs) |
+| Send errors returned as `{ status: "error", error }` | Send errors are **thrown** as `GraphApiError` |
+| Send result `{ status: "success", data: { messageId, ... } }` | Raw Cloud API response plus `messageId` |
+| One phone number per client | `client.messaging(phoneNumberId)` per number; `client.message` uses the default |
+| `event.reply({ message })` | `event.reply(message)` |
+| `event.react({ emoji, phoneNumber })` | `event.react(emoji)` |
+| `event.read()` | `event.markAsRead({ typingIndicator? })` |
+| `event.context.from` | `event.from` (sender), `event.context.repliedToMessageId` (quoted message) |
+| `event.text.data.text` (TextMessage) | `event.text` (string); the component is `event.message` |
+| `event.client` | `event.messaging` (the messaging client of the receiving number) |
+| `client.on("Ready", () => {})` | `Ready` now receives `{ host, port, path }` |
+| Status events had no message id | `event.messageId`, `recipientId`, `pricing`, `conversation`, `errors`, `bizOpaqueCallbackData` |
+| `media.getUrl(id)` returned the metadata object | `media.getUrl(id)` returns the URL string; `media.getMetadata(id)` returns the object |
+| `updateAccessToken = token` (setter) | `client.setAccessToken(token)` |
+| `zod` and `express` runtime dependencies | Zero runtime dependencies |
+| Node.js 18 | Node.js 20+ (or Bun, Deno, edge runtimes for `fetchHandler`) |
+
+## 1. Creating the client
+
+```ts
+// 0.1.x
+const client = new Client({
+  apiAccessToken: process.env.WHATSAPP_API_ACCESS_TOKEN,
+  businessAccountId: process.env.WHATSAPP_BUSINESS_ACCOUNT_ID,
+  phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
+  port: 8080,
+  webhookEndpoint: "/webhook",
+  webhookSecret: process.env.WHATSAPP_WEBHOOK_SECRET,
+});
+client.initiate();
+
+// 0.2.0
+const client = new Client({
+  accessToken: process.env.WHATSAPP_API_ACCESS_TOKEN!,
+  businessAccountId: process.env.WHATSAPP_BUSINESS_ACCOUNT_ID,
+  phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
+  webhook: {
+    verifyToken: process.env.WHATSAPP_WEBHOOK_SECRET!, // was `webhookSecret`
+    appSecret: process.env.META_APP_SECRET, // new, recommended
+    path: "/webhook",
+    port: 8080,
+  },
+});
+await client.webhook.listen();
+```
+
+`webhookSecret` in 0.1.x was the **verify token** you type in the Meta
+dashboard. It is now `webhook.verifyToken`. `webhook.appSecret` is different:
+it is the app secret from *App settings → Basic* and is used to verify
+`X-Hub-Signature-256`.
+
+## 2. Using your own server
+
+0.1.x always started Express on its own port. 0.2.0 lets you mount the
+webhook anywhere:
+
+```ts
+// Express: keep the raw body so the signature can be verified
+app.use("/webhook", express.raw({ type: "application/json" }), client.webhook.nodeHandler);
+
+// Next.js App Router (app/api/webhook/route.ts)
+export const GET = client.webhook.fetchHandler;
+export const POST = client.webhook.fetchHandler;
+
+// Hono / Bun / Cloudflare Workers
+app.all("/webhook", (c) => client.webhook.fetchHandler(c.req.raw, c.executionCtx));
+```
+
+## 3. Sending messages
+
+```ts
+// 0.1.x
+const response = await client.message.send({ message, phoneNumber: "15550001111" });
+if (response.status === "error") console.error(response.error);
+
+// 0.2.0
+try {
+  const { messageId } = await client.message.send({ message, to: "15550001111" });
+} catch (error) {
+  if (error instanceof GraphApiError) console.error(error.code, error.details, error.isRetryable);
+}
+```
+
+Send from another number with `client.messaging("<phone number id>").message.send(...)`.
+
+## 4. Handling events
+
+```ts
+// 0.1.x
+client.on("TextMessage", async (event) => {
+  if (event.text.data.text === "hi") {
+    await event.reply({ message: new TextMessage({ text: "hello" }) });
+  }
+  await event.react({ emoji: "👍", phoneNumber: event.context.from });
+});
+
+// 0.2.0
+client.on("TextMessage", async (event) => {
+  if (event.text === "hi") await event.reply(new TextMessage({ text: "hello" }));
+  await event.react("👍");
+  await event.markAsRead({ typingIndicator: true });
+});
+```
+
+Listeners may be `async`. A listener that throws or rejects no longer breaks
+the webhook request; the error is emitted as `Error`.
+
+### Renamed and new events
+
+| 0.1.x | 0.2.0 |
+|---|---|
+| `UnknownEvent` | `UnsupportedMessage` |
+| `CustomerNumberChanged`, `CustomerIdentityChanged` | same names, now carry the sender identity and receiving number |
+| `AdInteraction` (instead of `TextMessage`) | `AdInteraction` is emitted **in addition to** the regular event, for any message type |
+| — | `MessageStatus` (every status), `FlowCompletion`, `Warn` |
+| — | Business account events: `MessageTemplateStatusUpdate`, `MessageTemplateQualityUpdate`, `PhoneNumberQualityUpdate`, `AccountUpdate`, ... (see the README) |
+
+## 5. Message components
+
+All components moved off Zod and validate with WhatsApp's real limits; invalid
+input throws `ValidationError` when the component is built. `toJson()` now takes
+`{ to }` **or** `{ recipient }` (BSUID). See the README for every component.
+
+## Bugs fixed that may change behaviour
+
+- `VideoMessage` events are emitted (0.1.x compared against `"Video"` and never matched).
+- `LocationMessage.longitude` is the longitude (0.1.x copied the latitude).
+- Image/video event components reference the **media** id (0.1.x used the message id).
+- `failed` statuses without an `errors` array are emitted.
+- A malformed change no longer fails the whole webhook with `500`; it is skipped, reported through `Error`, and the request still gets `200` so Meta does not re-deliver the batch.
+- Template messages actually serialise their components.

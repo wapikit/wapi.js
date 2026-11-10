@@ -1,0 +1,198 @@
+[wapi.js](../README.mdx) / TemplateManager
+
+# Class: TemplateManager
+
+Defined in: packages/wapi.js/src/managers/template.ts:288
+
+Create, edit, delete, fetch and migrate message templates of a WhatsApp
+Business Account.
+
+## Constructors
+
+### Constructor
+
+> **new TemplateManager**(`requester`, `businessAccountId`): `TemplateManager`
+
+Defined in: packages/wapi.js/src/managers/template.ts:289
+
+#### Parameters
+
+##### requester
+
+[`RequestClient`](RequestClient.mdx)
+
+##### businessAccountId
+
+`string`
+
+#### Returns
+
+`TemplateManager`
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:291
+
+## Methods
+
+### create()
+
+> **create**(`template`, `options?`): `Promise`\<[`TemplateCreateResponse`](../interfaces/TemplateCreateResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/template.ts:295
+
+Submits a template for review. `POST /{waba-id}/message_templates`.
+
+#### Parameters
+
+##### template
+
+[`TemplateCreateRequest`](../interfaces/TemplateCreateRequest.mdx)
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`TemplateCreateResponse`](../interfaces/TemplateCreateResponse.mdx)\>
+
+***
+
+### delete()
+
+> **delete**(`params`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/template.ts:332
+
+Deletes a template by name (all languages), or one language version by
+name and id. `DELETE /{waba-id}/message_templates?name=..&hsm_id=..`.
+
+#### Parameters
+
+##### params
+
+[`DeleteTemplateParams`](../interfaces/DeleteTemplateParams.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### get()
+
+> **get**(`templateId`, `options?`): `Promise`\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/template.ts:347
+
+Fetches one template. `GET /{template-id}`.
+
+#### Parameters
+
+##### templateId
+
+`string`
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)\>
+
+***
+
+### list()
+
+> **list**(`params?`): `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)\>\>
+
+Defined in: packages/wapi.js/src/managers/template.ts:361
+
+Fetches one page of templates (default 100 per page), optionally filtered.
+`GET /{waba-id}/message_templates`.
+
+#### Parameters
+
+##### params?
+
+[`ListTemplatesParams`](../interfaces/ListTemplatesParams.mdx)
+
+#### Returns
+
+`Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)\>\>
+
+***
+
+### listAll()
+
+> **listAll**(`params?`): `Promise`\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)[]\>
+
+Defined in: packages/wapi.js/src/managers/template.ts:384
+
+Fetches every template across all pages (1000 per page by default, as in
+wapi.go). `GET /{waba-id}/message_templates`.
+
+#### Parameters
+
+##### params?
+
+[`ListAllTemplatesParams`](../interfaces/ListAllTemplatesParams.mdx)
+
+#### Returns
+
+`Promise`\<[`MessageTemplate`](../interfaces/MessageTemplate.mdx)[]\>
+
+***
+
+### migrate()
+
+> **migrate**(`params`): `Promise`\<[`TemplateMigrationResponse`](../interfaces/TemplateMigrationResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/template.ts:396
+
+Copies templates from another WABA of the same business into this one.
+`POST /{waba-id}/migrate_message_templates`.
+
+#### Parameters
+
+##### params
+
+[`MigrateTemplatesParams`](../interfaces/MigrateTemplatesParams.mdx)
+
+#### Returns
+
+`Promise`\<[`TemplateMigrationResponse`](../interfaces/TemplateMigrationResponse.mdx)\>
+
+***
+
+### update()
+
+> **update**(`templateId`, `updates`, `options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/template.ts:314
+
+Edits a template's components, category or TTL. `POST /{template-id}`.
+
+#### Parameters
+
+##### templateId
+
+`string`
+
+##### updates
+
+[`TemplateUpdateRequest`](../interfaces/TemplateUpdateRequest.mdx)
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>

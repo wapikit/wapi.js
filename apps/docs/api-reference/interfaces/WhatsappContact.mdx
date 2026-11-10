@@ -1,0 +1,66 @@
+[wapi.js](../README.mdx) / WhatsappContact
+
+# Interface: WhatsappContact
+
+Defined in: packages/wapi.js/src/components/contact.ts:66
+
+A contact card exactly as the Cloud API sends and receives it (snake_case).
+Inbound `contacts` webhooks carry the same shape.
+
+## Properties
+
+### addresses?
+
+> `optional` **addresses?**: [`WhatsappContactAddress`](WhatsappContactAddress.mdx)[]
+
+Defined in: packages/wapi.js/src/components/contact.ts:71
+
+***
+
+### birthday?
+
+> `optional` **birthday?**: `string`
+
+Defined in: packages/wapi.js/src/components/contact.ts:74
+
+`YYYY-MM-DD`.
+
+***
+
+### emails?
+
+> `optional` **emails?**: [`WhatsappContactEmail`](WhatsappContactEmail.mdx)[]
+
+Defined in: packages/wapi.js/src/components/contact.ts:69
+
+***
+
+### name
+
+> **name**: [`WhatsappContactName`](WhatsappContactName.mdx)
+
+Defined in: packages/wapi.js/src/components/contact.ts:67
+
+***
+
+### org?
+
+> `optional` **org?**: [`WhatsappContactOrg`](WhatsappContactOrg.mdx)
+
+Defined in: packages/wapi.js/src/components/contact.ts:72
+
+***
+
+### phones?
+
+> `optional` **phones?**: [`WhatsappContactPhone`](WhatsappContactPhone.mdx)[]
+
+Defined in: packages/wapi.js/src/components/contact.ts:68
+
+***
+
+### urls?
+
+> `optional` **urls?**: [`WhatsappContactUrl`](WhatsappContactUrl.mdx)[]
+
+Defined in: packages/wapi.js/src/components/contact.ts:70

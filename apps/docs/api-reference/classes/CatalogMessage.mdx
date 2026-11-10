@@ -1,0 +1,142 @@
+[wapi.js](../README.mdx) / CatalogMessage
+
+# Class: CatalogMessage
+
+Defined in: packages/wapi.js/src/components/commerce.ts:180
+
+Catalog message: a "View catalog" button that opens your full catalog.
+
+## Example
+
+```ts
+new CatalogMessage({ bodyText: "Browse our catalog", thumbnailProductRetailerId: "sku-1" });
+```
+
+## Extends
+
+- [`InteractiveMessage`](InteractiveMessage.mdx)\<[`Catalog`](../enumerations/InteractiveMessageTypeEnum.mdx#catalog)\>
+
+## Constructors
+
+### Constructor
+
+> **new CatalogMessage**(`data`): `CatalogMessage`
+
+Defined in: packages/wapi.js/src/components/commerce.ts:183
+
+#### Parameters
+
+##### data
+
+[`CatalogMessageOptions`](../interfaces/CatalogMessageOptions.mdx)
+
+#### Returns
+
+`CatalogMessage`
+
+#### Overrides
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`constructor`](InteractiveMessage.mdx#constructor)
+
+## Properties
+
+### data
+
+> `readonly` **data**: `Readonly`\<[`CatalogMessageOptions`](../interfaces/CatalogMessageOptions.mdx)\>
+
+Defined in: packages/wapi.js/src/components/commerce.ts:181
+
+***
+
+### interactiveType
+
+> `readonly` **interactiveType**: [`Catalog`](../enumerations/InteractiveMessageTypeEnum.mdx#catalog)
+
+Defined in: packages/wapi.js/src/components/interactive.ts:127
+
+`interactive.type`.
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactiveType`](InteractiveMessage.mdx#interactivetype)
+
+***
+
+### type
+
+> `readonly` **type**: [`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)
+
+Defined in: packages/wapi.js/src/components/base.ts:54
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`type`](InteractiveMessage.mdx#type)
+
+## Methods
+
+### content()
+
+> `protected` **content**(): `object`
+
+Defined in: packages/wapi.js/src/components/interactive.ts:137
+
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
+
+#### Returns
+
+`object`
+
+##### interactive
+
+> **interactive**: [`InteractivePayloadBase`](../interfaces/InteractivePayloadBase.mdx)\<[`Catalog`](../enumerations/InteractiveMessageTypeEnum.mdx#catalog)\> & `Record`\<`string`, `unknown`\>
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`content`](InteractiveMessage.mdx#content)
+
+***
+
+### interactive()
+
+> `protected` **interactive**(): `Record`\<`string`, `unknown`\>
+
+Defined in: packages/wapi.js/src/components/commerce.ts:191
+
+The `interactive` object, without `type`. Undefined keys are dropped.
+
+#### Returns
+
+`Record`\<`string`, `unknown`\>
+
+#### Overrides
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`interactive`](InteractiveMessage.mdx#interactive)
+
+***
+
+### toJson()
+
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
+
+Defined in: packages/wapi.js/src/components/base.ts:71
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Interactive`](../enumerations/MessageTypeEnum.mdx#interactive)\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
+
+[`InteractiveMessage`](InteractiveMessage.mdx).[`toJson`](InteractiveMessage.mdx#tojson)

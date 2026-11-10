@@ -1,0 +1,35 @@
+[wapi.js](../README.mdx) / QrCodeReadParams
+
+# Interface: QrCodeReadParams
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:232
+
+Options accepted by every manager method.
+
+## Extends
+
+- [`RequestOptions`](RequestOptions.mdx)
+
+## Properties
+
+### imageFormat?
+
+> `optional` **imageFormat?**: `"PNG"` \| `"SVG"` \| [`QrImageFormat`](../enumerations/QrImageFormat.mdx)
+
+Defined in: packages/wapi.js/src/managers/phone-number.ts:234
+
+Also return `qr_image_url` in this format.
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: packages/wapi.js/src/managers/business.ts:8
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)

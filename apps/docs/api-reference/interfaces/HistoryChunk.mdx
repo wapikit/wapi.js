@@ -1,0 +1,51 @@
+[wapi.js](../README.mdx) / HistoryChunk
+
+# Interface: HistoryChunk
+
+Defined in: packages/wapi.js/src/events/business-events.ts:823
+
+One chunk of the chat history sync.
+
+## Properties
+
+### chunkOrder?
+
+> `optional` **chunkOrder?**: `number`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:825
+
+***
+
+### errors
+
+> **errors**: [`WebhookEventError`](WebhookEventError.mdx)[]
+
+Defined in: packages/wapi.js/src/events/business-events.ts:830
+
+Set instead of threads when the history could not be shared (e.g. declined by the business).
+
+***
+
+### phase?
+
+> `optional` **phase?**: `number`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:824
+
+***
+
+### progress?
+
+> `optional` **progress?**: `number`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:827
+
+Percentage, 0-100.
+
+***
+
+### threads
+
+> **threads**: [`HistoryThread`](HistoryThread.mdx)[]
+
+Defined in: packages/wapi.js/src/events/business-events.ts:828

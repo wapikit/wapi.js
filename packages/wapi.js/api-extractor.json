@@ -1,7 +1,0 @@
-{
-  "extends": "../../api-extractor.json",
-  "mainEntryPointFilePath": "<projectFolder>/dist/esm/index.d.ts",
-  "docModel": {
-    "projectFolderUrl": "https://github.com/sarthakjdev/wapi.js/tree/master/packages/wapi.js"
-  }
-}

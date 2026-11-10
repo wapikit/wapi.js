@@ -1,227 +1,114 @@
-[Wapi.js Docs](../README.mdx) / DocumentMessage
+[wapi.js](../README.mdx) / DocumentMessage
 
 # Class: DocumentMessage
 
-Represents a document message.
+Defined in: packages/wapi.js/src/components/media.ts:160
 
-## Implements
+A document message (PDF, Office files, plain text, ...).
+
+## Example
+
+```ts
+new DocumentMessage({
+  link: "https://example.com/invoice-42.pdf",
+  filename: "invoice-42.pdf",
+  caption: "Your invoice",
+});
+```
 
 ## Extends
 
-- `BaseMessage`\<`MessageTypeEnum.Document`\>
-
-## Implements
-
-- [`DocumentMessageInterface`](../interfaces/DocumentMessageInterface.mdx)
+- [`BaseMessage`](BaseMessage.mdx)\<[`Document`](../enumerations/MessageTypeEnum.mdx#document)\>
 
 ## Constructors
 
-### new DocumentMessage()
+### Constructor
 
-> **new DocumentMessage**(`params`): [`DocumentMessage`](DocumentMessage.mdx)
+> **new DocumentMessage**(`data`): `DocumentMessage`
 
-Creates a new instance of the DocumentMessage class.
+Defined in: packages/wapi.js/src/components/media.ts:163
 
 #### Parameters
 
-• **params**: `object` \| `object`
+##### data
 
-The parameters to initialize the document message.
+[`DocumentMessageOptions`](../type-aliases/DocumentMessageOptions.mdx)
 
 #### Returns
 
-[`DocumentMessage`](DocumentMessage.mdx)
+`DocumentMessage`
 
 #### Overrides
 
-`BaseMessage<MessageTypeEnum.Document>.constructor`
-
-#### Memberof
-
-DocumentMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/media/index.ts:301](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/media/index.ts#L301)
+[`BaseMessage`](BaseMessage.mdx).[`constructor`](BaseMessage.mdx#constructor)
 
 ## Properties
 
 ### data
 
-> **data**: `object` \| `object`
+> `readonly` **data**: `Readonly`\<[`DocumentMessageOptions`](../type-aliases/DocumentMessageOptions.mdx)\>
 
-#### Implementation of
-
-[`DocumentMessageInterface`](../interfaces/DocumentMessageInterface.mdx).[`data`](../interfaces/DocumentMessageInterface.mdx#data)
-
-#### Source
-
-[packages/wapi.js/src/structures/media/index.ts:290](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/media/index.ts#L290)
-
-***
-
-### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-The messaging product.
-
-#### Implementation of
-
-[`DocumentMessageInterface`](../interfaces/DocumentMessageInterface.mdx).[`messaging_product`](../interfaces/DocumentMessageInterface.mdx#messaging_product)
-
-#### Inherited from
-
-`BaseMessage.messaging_product`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:17](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L17)
-
-***
-
-### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-The recipient type.
-
-#### Implementation of
-
-[`DocumentMessageInterface`](../interfaces/DocumentMessageInterface.mdx).[`recipient_type`](../interfaces/DocumentMessageInterface.mdx#recipient_type)
-
-#### Inherited from
-
-`BaseMessage.recipient_type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:18](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L18)
+Defined in: packages/wapi.js/src/components/media.ts:161
 
 ***
 
 ### type
 
-> **type**: `MessageTypeEnum`
+> `readonly` **type**: [`Document`](../enumerations/MessageTypeEnum.mdx#document)
 
-The type of the message.
-
-#### Implementation of
-
-[`DocumentMessageInterface`](../interfaces/DocumentMessageInterface.mdx).[`type`](../interfaces/DocumentMessageInterface.mdx#type)
+Defined in: packages/wapi.js/src/components/base.ts:54
 
 #### Inherited from
 
-`BaseMessage.type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:16](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L16)
+[`BaseMessage`](BaseMessage.mdx).[`type`](BaseMessage.mdx#type)
 
 ## Methods
 
-### parseConstructorPayload()
+### content()
 
-> `protected` **parseConstructorPayload**(`schema`, `payload`): `any`
+> `protected` **content**(): `object`
 
-Parses the constructor payload using the provided schema.
+Defined in: packages/wapi.js/src/components/media.ts:171
 
-#### Parameters
-
-• **schema**: `ZodType`\<`any`, `ZodTypeDef`, `any`\>
-
-The Zod schema used for parsing the payload.
-
-• **payload**: `any`
-
-The payload to be parsed.
-
-#### Returns
-
-`any`
-
-The parsed data.
-
-#### Inherited from
-
-`BaseMessage.parseConstructorPayload`
-
-#### Throws
-
-An error if the parsing fails.
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L42)
-
-***
-
-### toJson()
-
-> **toJson**(`params`): `object`
-
-Converts the document message to the WhatsApp Cloud API payload.
-
-#### Parameters
-
-• **params**
-
-The parameters for the WhatsApp Cloud API payload.
-
-• **params.replyToMessageId?**: `string`
-
-The ID of the message being replied to.
-
-• **params.to**: `string`
-
-The recipient of the message.
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
 
 #### Returns
 
 `object`
 
-- The WhatsApp Cloud API payload for the document message.
-
-##### biz\_opaque\_callback\_data?
-
-> `optional` **biz\_opaque\_callback\_data**: `string`
-
-##### context?
-
-> `optional` **context**: `object`
-
-##### context.message\_id
-
-> **message\_id**: `string`
-
 ##### document
 
-> **document**: `object` \| `object`
-
-##### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-##### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-##### to
-
-> **to**: `string`
-
-##### type
-
-> **type**: `Document`
+> **document**: [`DocumentMediaPayload`](../type-aliases/DocumentMediaPayload.mdx)
 
 #### Overrides
 
-`BaseMessage.toJson`
+[`BaseMessage`](BaseMessage.mdx).[`content`](BaseMessage.mdx#content)
 
-#### Memberof
+***
 
-DocumentMessage
+### toJson()
 
-#### Source
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Document`](../enumerations/MessageTypeEnum.mdx#document)\>
 
-[packages/wapi.js/src/structures/media/index.ts:319](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/media/index.ts#L319)
+Defined in: packages/wapi.js/src/components/base.ts:71
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Document`](../enumerations/MessageTypeEnum.mdx#document)\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
+
+[`BaseMessage`](BaseMessage.mdx).[`toJson`](BaseMessage.mdx#tojson)

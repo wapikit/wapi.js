@@ -1,0 +1,183 @@
+[wapi.js](../README.mdx) / BusinessAccountManager
+
+# Class: BusinessAccountManager
+
+Defined in: packages/wapi.js/src/managers/business.ts:240
+
+WhatsApp Business Account level calls: account details, analytics and
+webhook app subscriptions.
+
+## Constructors
+
+### Constructor
+
+> **new BusinessAccountManager**(`requester`, `businessAccountId`): `BusinessAccountManager`
+
+Defined in: packages/wapi.js/src/managers/business.ts:241
+
+#### Parameters
+
+##### requester
+
+[`RequestClient`](RequestClient.mdx)
+
+##### businessAccountId
+
+`string`
+
+#### Returns
+
+`BusinessAccountManager`
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: packages/wapi.js/src/managers/business.ts:243
+
+## Methods
+
+### analytics()
+
+> **analytics**(`params`): `Promise`\<[`AnalyticsResponse`](../interfaces/AnalyticsResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/business.ts:260
+
+Fetches sent/delivered message counts. `GET /{waba-id}?fields=analytics...`.
+List filters are rendered as Meta documents them: JSON arrays, `[]` when empty.
+
+#### Parameters
+
+##### params
+
+[`AnalyticsParams`](../interfaces/AnalyticsParams.mdx)
+
+#### Returns
+
+`Promise`\<[`AnalyticsResponse`](../interfaces/AnalyticsResponse.mdx)\>
+
+***
+
+### conversationAnalytics()
+
+> **conversationAnalytics**(`params`): `Promise`\<[`ConversationAnalyticsResponse`](../interfaces/ConversationAnalyticsResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/business.ts:283
+
+Fetches conversation counts and cost. `GET /{waba-id}?fields=conversation_analytics...`.
+Filter names and list rendering follow Meta's docs (wapi.go uses singular names and comma lists).
+
+#### Parameters
+
+##### params
+
+[`ConversationAnalyticsParams`](../interfaces/ConversationAnalyticsParams.mdx)
+
+#### Returns
+
+`Promise`\<[`ConversationAnalyticsResponse`](../interfaces/ConversationAnalyticsResponse.mdx)\>
+
+***
+
+### fetch()
+
+> **fetch**(`options?`): `Promise`\<[`BusinessAccount`](../interfaces/BusinessAccount.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/business.ts:247
+
+Fetches the WABA's details. `GET /{waba-id}?fields=...`.
+
+#### Parameters
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`BusinessAccount`](../interfaces/BusinessAccount.mdx)\>
+
+***
+
+### listSubscribedApps()
+
+> **listSubscribedApps**(`options?`): `Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`SubscribedApp`](../interfaces/SubscribedApp.mdx)\>\>
+
+Defined in: packages/wapi.js/src/managers/business.ts:360
+
+Lists apps subscribed to this WABA's webhooks. `GET /{waba-id}/subscribed_apps`.
+
+#### Parameters
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`Paginated`](../interfaces/Paginated.mdx)\<[`SubscribedApp`](../interfaces/SubscribedApp.mdx)\>\>
+
+***
+
+### pricingAnalytics()
+
+> **pricingAnalytics**(`params`): `Promise`\<[`PricingAnalyticsResponse`](../interfaces/PricingAnalyticsResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/business.ts:312
+
+Fetches per-message pricing volume and cost. `GET /{waba-id}?fields=pricing_analytics...`.
+Not in wapi.go; list filters use Meta's documented JSON array form and are
+omitted when not given.
+
+#### Parameters
+
+##### params
+
+[`PricingAnalyticsParams`](../interfaces/PricingAnalyticsParams.mdx)
+
+#### Returns
+
+`Promise`\<[`PricingAnalyticsResponse`](../interfaces/PricingAnalyticsResponse.mdx)\>
+
+***
+
+### subscribeApp()
+
+> **subscribeApp**(`params?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/business.ts:341
+
+Subscribes the calling app to this WABA's webhooks (required to receive
+messages). `POST /{waba-id}/subscribed_apps`.
+
+#### Parameters
+
+##### params?
+
+[`SubscribeAppParams`](../interfaces/SubscribeAppParams.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+***
+
+### unsubscribeApp()
+
+> **unsubscribeApp**(`options?`): `Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>
+
+Defined in: packages/wapi.js/src/managers/business.ts:369
+
+Unsubscribes the calling app from this WABA's webhooks. `DELETE /{waba-id}/subscribed_apps`.
+
+#### Parameters
+
+##### options?
+
+[`RequestOptions`](../interfaces/RequestOptions.mdx)
+
+#### Returns
+
+`Promise`\<[`SuccessResponse`](../interfaces/SuccessResponse.mdx)\>

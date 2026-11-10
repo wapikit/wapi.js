@@ -3,28 +3,128 @@ title: Sending Messages
 description: Learn how to send messages using the Wapi.js SDK
 ---
 
-Wapi.js SDK provides a simple and easy to use classes architecture to send messages. You can send message of following types using the Wapi.js SDK:
+Send any [message component](/guide/building-your-application/building-message-components) with `client.message.send()`. It sends from the default number (`phoneNumberId` in the client config).
 
-## Send a message
+```ts
+import { TextMessage } from "@wapijs/wapi.js";
 
-You can send a message to a user using the `send` method available on the [client](api-reference/classes/Client) class message manager. Here is an example of how you can send a message:
-
-
-
-```typescript
-// assuming you already have initiated the client,
-const textMessage = new TextMessage({
-    text: 'Hello, how are you?'
-})
-
-// send a message
-const response = await whatsappClient.message.send({
-    to: '919876543210',
-    message: textMessagew
-})
+const { messageId } = await client.message.send({
+  to: "15550001111",
+  message: new TextMessage({ text: "Your order has shipped 📦", previewUrl: true }),
+});
 ```
 
-<Warning>The .send() method is a asynchronous method and returns a promise of response which can either be a success response or a error response. It is suggested to acknowledge the response, as calling the .send() method does not gurantees the message has been sent, there may be some API error which may lead to message not being sent, the SDK does not retries the message, it is the application login responsibility to add retry mechanism. However, if you think this should be added to the SDK itlsef, you are invited to open a issue on the github repository of the SDK. </Warning>
+`send()` resolves with Meta's response plus a `messageId` shortcut (the `wamid.*` id). Status events for the message carry the same id, so store it to track delivery. See [status events](/guide/building-your-application/event-handling#status-events).
 
+## Parameters
 
+| Parameter | |
+|---|---|
+| `to` | Recipient: a phone number / wa_id string, `{ phoneNumber }`, or `{ userId }` for a business-scoped user id |
+| `message` | Any message component |
+| `replyToMessageId` | Quote this message id (shown as a reply in WhatsApp) |
+| `bizOpaqueCallbackData` | Any string; WhatsApp echoes it back on status events |
+| `signal` | `AbortSignal` to cancel the request |
 
+### Sending to a BSUID
+
+When a user hides their phone number, events identify them by a business-scoped user id (`event.fromUserId`). Send to it with `{ userId }`:
+
+```ts
+await client.message.send({
+  to: { userId: event.fromUserId! },
+  message: new TextMessage({ text: "Thanks for reaching out!" }),
+});
+```
+
+Event helpers such as `event.reply()` choose the right target for you.
+
+### Quoting a message
+
+```ts
+await client.message.send({
+  to: "15550001111",
+  replyToMessageId: "wamid.HBgL...",
+  message: new TextMessage({ text: "Following up on this" }),
+});
+```
+
+### Correlating statuses
+
+```ts
+await client.message.send({
+  to: "15550001111",
+  message: new TextMessage({ text: "Your invoice is ready" }),
+  bizOpaqueCallbackData: "invoice:1042",
+});
+
+client.on("MessageDelivered", (event) => {
+  console.log(event.bizOpaqueCallbackData); // "invoice:1042"
+});
+```
+
+## Sending from several numbers
+
+`client.messaging(phoneNumberId)` returns the messaging client of any number in your WhatsApp Business Account. Clients are cached, so calling it repeatedly is cheap.
+
+```ts
+const sales = client.messaging("<sales phone number id>");
+
+await sales.message.send({ to: "15550001111", message });
+await sales.send({ to: "15550001111", message }); // shortcut
+```
+
+`client.message` is the same as `client.messaging().message`. It throws a `TypeError` if `phoneNumberId` is not set in the config.
+
+## Marking messages as read
+
+```ts
+await client.message.markAsRead("wamid.HBgL...", { typingIndicator: true });
+```
+
+`typingIndicator` also shows "typing…" to the user until you reply, or for up to 25 seconds. Inside a listener, `event.markAsRead()` does the same.
+
+## Marketing messages
+
+`sendMarketing()` sends a marketing template through the Marketing Messages Lite API (`/marketing_messages`). Your WhatsApp Business Account must be onboarded to MM Lite. It takes the same parameters as `send()`:
+
+```ts
+await client.message.sendMarketing({
+  to: "15550001111",
+  message: new TemplateMessage({ name: "spring_sale", language: "en_US" }),
+});
+```
+
+## Handling errors
+
+`send()` throws when the message is not accepted. Catch it to retry or log.
+
+```ts
+import { GraphApiError, RequestError, ValidationError } from "@wapijs/wapi.js";
+
+try {
+  await client.message.send({ to, message });
+} catch (error) {
+  if (error instanceof GraphApiError) {
+    error.status; // HTTP status
+    error.code; // Meta error code, e.g. 131047 (24-hour window closed: send a template)
+    error.subcode;
+    error.details; // Meta's explanation
+    error.fbtraceId; // quote this to Meta support
+    error.body; // raw response body
+    if (error.isRetryable) {
+      // 429, 5xx or a throttling code: back off and retry
+    }
+  } else if (error instanceof RequestError) {
+    error.timedOut; // network failure, or the request exceeded timeoutMs
+  } else if (error instanceof ValidationError) {
+    // invalid input, thrown before any request was made
+  }
+}
+```
+
+All three extend `WapiError`. Use `instanceof WapiError` to tell SDK errors apart from your own.
+
+<Warning>
+  wapi.js does not retry for you. `isRetryable` tells you when a retry may succeed; your app decides the backoff. A resolved `send()` means Meta **accepted** the message. Delivery is reported later through status events, and a message can still fail there (`MessageFailed`).
+</Warning>

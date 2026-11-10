@@ -1,0 +1,27 @@
+[wapi.js](../README.mdx) / NodeWebhookHandler
+
+# Type Alias: NodeWebhookHandler
+
+> **NodeWebhookHandler** = (`request`, `response`) => `Promise`\<`void`\>
+
+Defined in: packages/wapi.js/src/webhook/adapters.ts:24
+
+Node.js handler: `(req, res) => Promise<void>`. Works with `node:http`,
+Express, Fastify (`reply.raw`), Koa (`ctx.req`, `ctx.res`) and Connect.
+
+For Express, mount it with the raw body so signatures can be verified:
+`app.use("/webhook", express.raw({ type: "application/json" }), client.webhook.nodeHandler)`.
+
+## Parameters
+
+### request
+
+`IncomingMessage` & `object`
+
+### response
+
+`ServerResponse`
+
+## Returns
+
+`Promise`\<`void`\>

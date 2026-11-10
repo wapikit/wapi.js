@@ -1,263 +1,110 @@
-[Wapi.js Docs](../README.mdx) / LocationMessage
+[wapi.js](../README.mdx) / LocationMessage
 
 # Class: LocationMessage
 
-Represents a location message.
+Defined in: packages/wapi.js/src/components/location.ts:50
 
-## Implements
+A location pin.
+
+## Example
+
+```ts
+new LocationMessage({ latitude: 37.4847, longitude: -122.1477, name: "Meta HQ" });
+```
 
 ## Extends
 
-- `BaseMessage`\<`"location"`\>
-
-## Implements
-
-- [`LocationMessageInterface`](../interfaces/LocationMessageInterface.mdx)
+- [`BaseMessage`](BaseMessage.mdx)\<[`Location`](../enumerations/MessageTypeEnum.mdx#location)\>
 
 ## Constructors
 
-### new LocationMessage()
+### Constructor
 
-> **new LocationMessage**(`params`): [`LocationMessage`](LocationMessage.mdx)
+> **new LocationMessage**(`data`): `LocationMessage`
 
-Creates a new LocationMessage instance.
+Defined in: packages/wapi.js/src/components/location.ts:53
 
 #### Parameters
 
-• **params**
+##### data
 
-The parameters for creating the LocationMessage.
-
-• **params.address?**: `string`= `undefined`
-
-• **params.latitude**: `number`= `undefined`
-
-• **params.longitude**: `number`= `undefined`
-
-• **params.name?**: `string`= `undefined`
+[`LocationMessageOptions`](../interfaces/LocationMessageOptions.mdx)
 
 #### Returns
 
-[`LocationMessage`](LocationMessage.mdx)
+`LocationMessage`
 
 #### Overrides
 
-`BaseMessage<"location">.constructor`
-
-#### Memberof
-
-LocationMessage
-
-#### Source
-
-[packages/wapi.js/src/structures/location/index.ts:31](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/location/index.ts#L31)
+[`BaseMessage`](BaseMessage.mdx).[`constructor`](BaseMessage.mdx#constructor)
 
 ## Properties
 
 ### data
 
-> **data**: `object`
+> `readonly` **data**: `Readonly`\<[`LocationMessageOptions`](../interfaces/LocationMessageOptions.mdx)\>
 
-#### address?
-
-> `optional` **address**: `string`
-
-#### latitude
-
-> **latitude**: `number`
-
-#### longitude
-
-> **longitude**: `number`
-
-#### name?
-
-> `optional` **name**: `string`
-
-#### Implementation of
-
-[`LocationMessageInterface`](../interfaces/LocationMessageInterface.mdx).[`data`](../interfaces/LocationMessageInterface.mdx#data)
-
-#### Source
-
-[packages/wapi.js/src/structures/location/index.ts:18](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/location/index.ts#L18)
-
-***
-
-### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-The messaging product.
-
-#### Implementation of
-
-[`LocationMessageInterface`](../interfaces/LocationMessageInterface.mdx).[`messaging_product`](../interfaces/LocationMessageInterface.mdx#messaging_product)
-
-#### Inherited from
-
-`BaseMessage.messaging_product`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:17](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L17)
-
-***
-
-### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-The recipient type.
-
-#### Implementation of
-
-[`LocationMessageInterface`](../interfaces/LocationMessageInterface.mdx).[`recipient_type`](../interfaces/LocationMessageInterface.mdx#recipient_type)
-
-#### Inherited from
-
-`BaseMessage.recipient_type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:18](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L18)
+Defined in: packages/wapi.js/src/components/location.ts:51
 
 ***
 
 ### type
 
-> **type**: `MessageTypeEnum`
+> `readonly` **type**: [`Location`](../enumerations/MessageTypeEnum.mdx#location)
 
-The type of the message.
-
-#### Implementation of
-
-[`LocationMessageInterface`](../interfaces/LocationMessageInterface.mdx).[`type`](../interfaces/LocationMessageInterface.mdx#type)
+Defined in: packages/wapi.js/src/components/base.ts:54
 
 #### Inherited from
 
-`BaseMessage.type`
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:16](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L16)
+[`BaseMessage`](BaseMessage.mdx).[`type`](BaseMessage.mdx#type)
 
 ## Methods
 
-### parseConstructorPayload()
+### content()
 
-> `protected` **parseConstructorPayload**(`schema`, `payload`): `any`
+> `protected` **content**(): `object`
 
-Parses the constructor payload using the provided schema.
+Defined in: packages/wapi.js/src/components/location.ts:61
 
-#### Parameters
-
-• **schema**: `ZodType`\<`any`, `ZodTypeDef`, `any`\>
-
-The Zod schema used for parsing the payload.
-
-• **payload**: `any`
-
-The payload to be parsed.
-
-#### Returns
-
-`any`
-
-The parsed data.
-
-#### Inherited from
-
-`BaseMessage.parseConstructorPayload`
-
-#### Throws
-
-An error if the parsing fails.
-
-#### Source
-
-[packages/wapi.js/src/structures/message/index.ts:42](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/message/index.ts#L42)
-
-***
-
-### toJson()
-
-> **toJson**(`params`): `object`
-
-Converts the LocationMessage to a JSON object that can be sent as a request payload to the WhatsApp Cloud API.
-
-#### Parameters
-
-• **params**
-
-The parameters for converting the LocationMessage to JSON.
-
-• **params.replyToMessageId?**: `string`
-
-The ID of the message being replied to.
-
-• **params.to**: `string`
-
-The recipient of the message.
+Returns the type specific part of the payload, keyed by the message type,
+for example `{ text: { body: "hi" } }`.
 
 #### Returns
 
 `object`
 
-- The JSON representation of the LocationMessage.
-
-##### biz\_opaque\_callback\_data?
-
-> `optional` **biz\_opaque\_callback\_data**: `string`
-
-##### context?
-
-> `optional` **context**: `object`
-
-##### context.message\_id
-
-> **message\_id**: `string`
-
 ##### location
 
-> **location**: `object` = `LocationDataPayloadSchemaType`
-
-##### location.address?
-
-> `optional` **address**: `string`
-
-##### location.latitude
-
-> **latitude**: `number`
-
-##### location.longitude
-
-> **longitude**: `number`
-
-##### location.name?
-
-> `optional` **name**: `string`
-
-##### messaging\_product
-
-> **messaging\_product**: `"whatsapp"`
-
-##### recipient\_type
-
-> **recipient\_type**: `"individual"`
-
-##### to
-
-> **to**: `string`
-
-##### type
-
-> **type**: `Location`
+> **location**: [`LocationMessagePayload`](../interfaces/LocationMessagePayload.mdx)
 
 #### Overrides
 
-`BaseMessage.toJson`
+[`BaseMessage`](BaseMessage.mdx).[`content`](BaseMessage.mdx#content)
 
-#### Source
+***
 
-[packages/wapi.js/src/structures/location/index.ts:48](https://github.com/sarthakjdev/wapi.js/blob/1b066ed4efaf997a4bb012da51514dfcb4165da6/packages/wapi.js/src/structures/location/index.ts#L48)
+### toJson()
+
+> **toJson**(`options`): [`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Location`](../enumerations/MessageTypeEnum.mdx#location)\>
+
+Defined in: packages/wapi.js/src/components/base.ts:71
+
+Builds the Cloud API payload for this message.
+
+#### Parameters
+
+##### options
+
+[`MessageEnvelopeOptions`](../interfaces/MessageEnvelopeOptions.mdx)
+
+#### Returns
+
+[`MessagePayload`](../type-aliases/MessagePayload.mdx)\<[`Location`](../enumerations/MessageTypeEnum.mdx#location)\>
+
+#### Throws
+
+when neither `to` nor `recipient` is given.
+
+#### Inherited from
+
+[`BaseMessage`](BaseMessage.mdx).[`toJson`](BaseMessage.mdx#tojson)

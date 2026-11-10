@@ -1,0 +1,161 @@
+[wapi.js](../README.mdx) / MessageTemplateCategoryUpdateEvent
+
+# Class: MessageTemplateCategoryUpdateEvent
+
+Defined in: packages/wapi.js/src/events/business-events.ts:292
+
+Meta changed (or will change) a template's category (`template_category_update`).
+
+## Extends
+
+- [`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new MessageTemplateCategoryUpdateEvent**(`init`): `MessageTemplateCategoryUpdateEvent`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:298
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`MessageTemplateCategoryUpdateEvent`
+
+#### Overrides
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`constructor`](BaseMessageTemplateEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: packages/wapi.js/src/events/base.ts:344
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`businessAccountId`](BaseMessageTemplateEvent.mdx#businessaccountid)
+
+***
+
+### correctCategory?
+
+> `readonly` `optional` **correctCategory?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateCategoryEnum`](../enumerations/MessageTemplateCategoryEnum.mdx)\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:296
+
+Category Meta determined to be correct, when included.
+
+***
+
+### messageTemplateId
+
+> `readonly` **messageTemplateId**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:221
+
+Template id, as a string (Meta sends a number that can exceed 2^53).
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateId`](BaseMessageTemplateEvent.mdx#messagetemplateid)
+
+***
+
+### messageTemplateLanguage
+
+> `readonly` **messageTemplateLanguage**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:224
+
+Language code, e.g. `"en_US"`.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateLanguage`](BaseMessageTemplateEvent.mdx#messagetemplatelanguage)
+
+***
+
+### messageTemplateName
+
+> `readonly` **messageTemplateName**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:222
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`messageTemplateName`](BaseMessageTemplateEvent.mdx#messagetemplatename)
+
+***
+
+### newCategory?
+
+> `readonly` `optional` **newCategory?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateCategoryEnum`](../enumerations/MessageTemplateCategoryEnum.mdx)\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:294
+
+***
+
+### previousCategory?
+
+> `readonly` `optional` **previousCategory?**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`MessageTemplateCategoryEnum`](../enumerations/MessageTemplateCategoryEnum.mdx)\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:293
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: packages/wapi.js/src/events/base.ts:346
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`raw`](BaseMessageTemplateEvent.mdx#raw)
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: packages/wapi.js/src/events/base.ts:87
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`timestamp`](BaseMessageTemplateEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: packages/wapi.js/src/events/base.ts:95
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseMessageTemplateEvent`](BaseMessageTemplateEvent.mdx).[`date`](BaseMessageTemplateEvent.mdx#date)

@@ -1,0 +1,45 @@
+[wapi.js](../README.mdx) / DeleteTemplateParams
+
+# Interface: DeleteTemplateParams
+
+Defined in: packages/wapi.js/src/managers/template.ts:245
+
+Parameters of [TemplateManager.delete](../classes/TemplateManager.mdx#delete).
+
+## Extends
+
+- [`RequestOptions`](RequestOptions.mdx)
+
+## Properties
+
+### id?
+
+> `optional` **id?**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:249
+
+Template id (`hsm_id`): deletes only that language version.
+
+***
+
+### name
+
+> **name**: `string`
+
+Defined in: packages/wapi.js/src/managers/template.ts:247
+
+Template name. Without `id`, every language of the template is deleted.
+
+***
+
+### signal?
+
+> `optional` **signal?**: `AbortSignal`
+
+Defined in: packages/wapi.js/src/managers/business.ts:8
+
+Aborts the request.
+
+#### Inherited from
+
+[`RequestOptions`](RequestOptions.mdx).[`signal`](RequestOptions.mdx#signal)

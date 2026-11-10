@@ -1,0 +1,71 @@
+[wapi.js](../README.mdx) / HistoryMessage
+
+# Interface: HistoryMessage
+
+Defined in: packages/wapi.js/src/events/business-events.ts:801
+
+A message from the chat history shared by the WhatsApp Business app.
+
+## Properties
+
+### content?
+
+> `optional` **content?**: `Record`\<`string`, `unknown`\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:812
+
+The type-specific body (`message[message.type]`).
+
+***
+
+### from
+
+> **from**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:802
+
+***
+
+### id
+
+> **id**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:805
+
+***
+
+### messageStatus?
+
+> `optional` **messageStatus?**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:810
+
+`history_context.status`, e.g. `READ`, `DELIVERED`.
+
+***
+
+### timestamp?
+
+> `optional` **timestamp?**: `number`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:807
+
+Unix seconds.
+
+***
+
+### to?
+
+> `optional` **to?**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:804
+
+Only on messages the business sent.
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:808

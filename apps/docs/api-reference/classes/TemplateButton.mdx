@@ -1,0 +1,175 @@
+[wapi.js](../README.mdx) / TemplateButton
+
+# Abstract Class: TemplateButton
+
+Defined in: packages/wapi.js/src/components/template.ts:328
+
+Factories for template button components. Only buttons with dynamic content
+need to be sent; static buttons defined in the template are added by
+WhatsApp automatically.
+
+## Example
+
+```ts
+TemplateButton.quickReply({ index: 0, payload: "unsubscribe" });
+TemplateButton.url({ index: 1, text: "order/42" });
+TemplateButton.copyCode({ index: 2, couponCode: "SAVE20" });
+```
+
+## Constructors
+
+### Constructor
+
+> **new TemplateButton**(): `TemplateButton`
+
+#### Returns
+
+`TemplateButton`
+
+## Methods
+
+### catalog()
+
+> `static` **catalog**(`options`): [`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:389
+
+"View catalog" button of a catalog template.
+
+#### Parameters
+
+##### options
+
+[`TemplateButtonIndexOptions`](../interfaces/TemplateButtonIndexOptions.mdx) & `object`
+
+#### Returns
+
+[`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+***
+
+### copyCode()
+
+> `static` **copyCode**(`options`): [`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:358
+
+Copy code (coupon) button of a marketing template. Codes are up to 15 characters.
+
+#### Parameters
+
+##### options
+
+[`TemplateButtonIndexOptions`](../interfaces/TemplateButtonIndexOptions.mdx) & `object`
+
+#### Returns
+
+[`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+***
+
+### flow()
+
+> `static` **flow**(`options`): [`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:439
+
+Flow button. `flowActionData` pre-fills the first screen of the flow.
+
+#### Parameters
+
+##### options
+
+[`TemplateButtonIndexOptions`](../interfaces/TemplateButtonIndexOptions.mdx) & `object`
+
+#### Returns
+
+[`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+***
+
+### multiProduct()
+
+> `static` **multiProduct**(`options`): [`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:410
+
+"View items" button of a multi-product (MPM) template.
+
+#### Parameters
+
+##### options
+
+[`TemplateButtonIndexOptions`](../interfaces/TemplateButtonIndexOptions.mdx) & `object`
+
+#### Returns
+
+[`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+***
+
+### otp()
+
+> `static` **otp**(`options`): [`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:376
+
+One-time password button of an authentication template (copy code,
+one-tap or zero-tap autofill). `index` defaults to 0. Remember to also
+send the code as the body parameter, or use [TemplateMessage.addOtp](TemplateMessage.mdx#addotp).
+
+#### Parameters
+
+##### options
+
+###### code
+
+`string`
+
+###### index?
+
+`number`
+
+#### Returns
+
+[`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+***
+
+### quickReply()
+
+> `static` **quickReply**(`options`): [`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:330
+
+Quick reply button; `payload` comes back in the button webhook.
+
+#### Parameters
+
+##### options
+
+[`TemplateButtonIndexOptions`](../interfaces/TemplateButtonIndexOptions.mdx) & `object`
+
+#### Returns
+
+[`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+***
+
+### url()
+
+> `static` **url**(`options`): [`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)
+
+Defined in: packages/wapi.js/src/components/template.ts:344
+
+URL button with a dynamic suffix, `text` replaces `{{1}}` in the template URL.
+
+#### Parameters
+
+##### options
+
+[`TemplateButtonIndexOptions`](../interfaces/TemplateButtonIndexOptions.mdx) & `object`
+
+#### Returns
+
+[`TemplateButtonComponentPayload`](../interfaces/TemplateButtonComponentPayload.mdx)

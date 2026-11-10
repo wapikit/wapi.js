@@ -1,0 +1,129 @@
+[wapi.js](../README.mdx) / PhoneNumberNameUpdateEvent
+
+# Class: PhoneNumberNameUpdateEvent
+
+Defined in: packages/wapi.js/src/events/business-events.ts:351
+
+A display name request was decided (`phone_number_name_update`).
+
+## Extends
+
+- [`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx)
+
+## Constructors
+
+### Constructor
+
+> **new PhoneNumberNameUpdateEvent**(`init`): `PhoneNumberNameUpdateEvent`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:358
+
+#### Parameters
+
+##### init
+
+`BusinessAccountEventInit`
+
+#### Returns
+
+`PhoneNumberNameUpdateEvent`
+
+#### Overrides
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`constructor`](BaseBusinessAccountEvent.mdx#constructor)
+
+## Properties
+
+### businessAccountId
+
+> `readonly` **businessAccountId**: `string`
+
+Defined in: packages/wapi.js/src/events/base.ts:344
+
+WhatsApp Business Account id (`entry.id`).
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`businessAccountId`](BaseBusinessAccountEvent.mdx#businessaccountid)
+
+***
+
+### decision
+
+> `readonly` **decision**: [`OpenEnum`](../type-aliases/OpenEnum.mdx)\<[`PhoneNumberNameUpdateDecisionEnum`](../enumerations/PhoneNumberNameUpdateDecisionEnum.mdx)\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:353
+
+***
+
+### displayPhoneNumber
+
+> `readonly` **displayPhoneNumber**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:352
+
+***
+
+### raw
+
+> `readonly` **raw**: `unknown`
+
+Defined in: packages/wapi.js/src/events/base.ts:346
+
+The untouched `change.value` from the webhook payload.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`raw`](BaseBusinessAccountEvent.mdx#raw)
+
+***
+
+### rejectionReason?
+
+> `readonly` `optional` **rejectionReason?**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:356
+
+Set when the name was rejected.
+
+***
+
+### requestedVerifiedName
+
+> `readonly` **requestedVerifiedName**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:354
+
+***
+
+### timestamp
+
+> `readonly` **timestamp**: `number`
+
+Defined in: packages/wapi.js/src/events/base.ts:87
+
+Unix timestamp (seconds) at which the event happened.
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`timestamp`](BaseBusinessAccountEvent.mdx#timestamp)
+
+## Accessors
+
+### date
+
+#### Get Signature
+
+> **get** **date**(): `Date`
+
+Defined in: packages/wapi.js/src/events/base.ts:95
+
+`timestamp` as a `Date`.
+
+##### Returns
+
+`Date`
+
+#### Inherited from
+
+[`BaseBusinessAccountEvent`](BaseBusinessAccountEvent.mdx).[`date`](BaseBusinessAccountEvent.mdx#date)

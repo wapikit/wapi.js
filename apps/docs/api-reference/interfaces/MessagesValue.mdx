@@ -1,0 +1,61 @@
+[wapi.js](../README.mdx) / MessagesValue
+
+# Interface: MessagesValue
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:34
+
+## Properties
+
+### contacts?
+
+> `optional` **contacts?**: [`SenderContact`](SenderContact.mdx)[]
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:37
+
+***
+
+### errors?
+
+> `optional` **errors?**: [`WebhookError`](WebhookError.mdx)[]
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:40
+
+***
+
+### messages?
+
+> `optional` **messages?**: [`InboundMessage`](InboundMessage.mdx)[]
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:38
+
+***
+
+### messaging\_product
+
+> **messaging\_product**: `"whatsapp"`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:35
+
+***
+
+### metadata
+
+> **metadata**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:36
+
+#### display\_phone\_number
+
+> **display\_phone\_number**: `string`
+
+#### phone\_number\_id
+
+> **phone\_number\_id**: `string`
+
+***
+
+### statuses?
+
+> `optional` **statuses?**: [`InboundStatus`](InboundStatus.mdx)[]
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:39

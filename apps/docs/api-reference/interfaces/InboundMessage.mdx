@@ -1,0 +1,345 @@
+[wapi.js](../README.mdx) / InboundMessage
+
+# Interface: InboundMessage
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:115
+
+## Properties
+
+### audio?
+
+> `optional` **audio?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:129
+
+***
+
+### button?
+
+> `optional` **button?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:142
+
+#### payload?
+
+> `optional` **payload?**: `string`
+
+#### text
+
+> **text**: `string`
+
+***
+
+### contacts?
+
+> `optional` **contacts?**: [`InboundContact`](InboundContact.mdx)[]
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:140
+
+***
+
+### context?
+
+> `optional` **context?**: [`InboundMessageContext`](InboundMessageContext.mdx)
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:124
+
+***
+
+### document?
+
+> `optional` **document?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:131
+
+***
+
+### errors?
+
+> `optional` **errors?**: [`WebhookError`](WebhookError.mdx)[]
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:126
+
+***
+
+### from
+
+> **from**: `string`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:117
+
+***
+
+### from\_parent\_user\_id?
+
+> `optional` **from\_parent\_user\_id?**: `string`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:120
+
+***
+
+### from\_user\_id?
+
+> `optional` **from\_user\_id?**: `string`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:119
+
+Sender BSUID.
+
+***
+
+### group\_id?
+
+> `optional` **group\_id?**: `string`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:123
+
+***
+
+### id
+
+> **id**: `string`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:116
+
+***
+
+### identity?
+
+> `optional` **identity?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:167
+
+#### acknowledged?
+
+> `optional` **acknowledged?**: `boolean`
+
+#### created\_timestamp?
+
+> `optional` **created\_timestamp?**: `number`
+
+#### hash?
+
+> `optional` **hash?**: `string`
+
+***
+
+### image?
+
+> `optional` **image?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:128
+
+***
+
+### interactive?
+
+> `optional` **interactive?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:143
+
+#### button\_reply?
+
+> `optional` **button\_reply?**: `object`
+
+##### button\_reply.id
+
+> **id**: `string`
+
+##### button\_reply.title
+
+> **title**: `string`
+
+#### list\_reply?
+
+> `optional` **list\_reply?**: `object`
+
+##### list\_reply.description?
+
+> `optional` **description?**: `string`
+
+##### list\_reply.id
+
+> **id**: `string`
+
+##### list\_reply.title
+
+> **title**: `string`
+
+#### nfm\_reply?
+
+> `optional` **nfm\_reply?**: `object`
+
+##### nfm\_reply.body?
+
+> `optional` **body?**: `string`
+
+##### nfm\_reply.name?
+
+> `optional` **name?**: `string`
+
+##### nfm\_reply.response\_json
+
+> **response\_json**: `string`
+
+#### type
+
+> **type**: `string` & `Record`\<`never`, `never`\> \| `"button_reply"` \| `"list_reply"` \| `"nfm_reply"`
+
+***
+
+### location?
+
+> `optional` **location?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:133
+
+#### address?
+
+> `optional` **address?**: `string`
+
+#### latitude
+
+> **latitude**: `number`
+
+#### longitude
+
+> **longitude**: `number`
+
+#### name?
+
+> `optional` **name?**: `string`
+
+#### url?
+
+> `optional` **url?**: `string`
+
+***
+
+### order?
+
+> `optional` **order?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:149
+
+#### catalog\_id
+
+> **catalog\_id**: `string`
+
+#### product\_items
+
+> **product\_items**: `object`[]
+
+#### text?
+
+> `optional` **text?**: `string`
+
+***
+
+### reaction?
+
+> `optional` **reaction?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:141
+
+#### emoji?
+
+> `optional` **emoji?**: `string`
+
+#### message\_id
+
+> **message\_id**: `string`
+
+***
+
+### referral?
+
+> `optional` **referral?**: [`InboundReferral`](InboundReferral.mdx)
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:125
+
+***
+
+### sticker?
+
+> `optional` **sticker?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:132
+
+***
+
+### system?
+
+> `optional` **system?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:159
+
+#### body?
+
+> `optional` **body?**: `string`
+
+#### customer?
+
+> `optional` **customer?**: `string`
+
+Deprecated by Meta; older payloads only.
+
+#### identity?
+
+> `optional` **identity?**: `string`
+
+#### type?
+
+> `optional` **type?**: `string`
+
+#### wa\_id?
+
+> `optional` **wa\_id?**: `string`
+
+***
+
+### text?
+
+> `optional` **text?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:127
+
+#### body
+
+> **body**: `string`
+
+***
+
+### timestamp
+
+> **timestamp**: `string`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:121
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:122
+
+***
+
+### unsupported?
+
+> `optional` **unsupported?**: `object`
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:172
+
+#### type?
+
+> `optional` **type?**: `string`
+
+***
+
+### video?
+
+> `optional` **video?**: [`InboundMedia`](InboundMedia.mdx)
+
+Defined in: packages/wapi.js/src/webhook/payload.ts:130

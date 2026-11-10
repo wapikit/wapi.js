@@ -11,7 +11,7 @@
   "bin": "./dist/bin/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sarthakjdev/wapi.js.git",
+    "url": "https://github.com/wapikit/wapi.js.git",
     "directory": "packages/create-wapi-app"
   },
   "files": [
@@ -28,7 +28,7 @@
     "pretty": "pnpm prettier --write \"src/**/*.ts\""
   },
   "bugs": {
-    "url": "https://github.com/sarthakjdev/wapi.js/issues"
+    "url": "https://github.com/wapikit/wapi.js/issues"
   },
   "keywords": [
     "whatsapp",

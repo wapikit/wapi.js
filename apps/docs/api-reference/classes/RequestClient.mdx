@@ -1,0 +1,155 @@
+[wapi.js](../README.mdx) / RequestClient
+
+# Class: RequestClient
+
+Defined in: packages/wapi.js/src/internal/request-client.ts:52
+
+Low level Graph API client shared by every manager. Safe to share across
+messaging clients; it holds no per-request state.
+
+## Constructors
+
+### Constructor
+
+> **new RequestClient**(`options`): `RequestClient`
+
+Defined in: packages/wapi.js/src/internal/request-client.ts:59
+
+#### Parameters
+
+##### options
+
+[`RequestClientOptions`](../interfaces/RequestClientOptions.mdx)
+
+#### Returns
+
+`RequestClient`
+
+## Properties
+
+### apiVersion
+
+> `readonly` **apiVersion**: `string`
+
+Defined in: packages/wapi.js/src/internal/request-client.ts:53
+
+***
+
+### baseUrl
+
+> `readonly` **baseUrl**: `string`
+
+Defined in: packages/wapi.js/src/internal/request-client.ts:54
+
+## Methods
+
+### buildUrl()
+
+> **buildUrl**(`path`, `query?`, `fields?`): `string`
+
+Defined in: packages/wapi.js/src/internal/request-client.ts:83
+
+Builds the full request URL. Query keys are emitted in sorted order.
+
+#### Parameters
+
+##### path
+
+`string`
+
+##### query?
+
+`Record`\<`string`, `string` \| `number` \| `boolean` \| `undefined`\>
+
+##### fields?
+
+(`string` \| [`GraphField`](../interfaces/GraphField.mdx))[]
+
+#### Returns
+
+`string`
+
+***
+
+### download()
+
+> **download**(`url`, `options?`): `Promise`\<`Response`\>
+
+Defined in: packages/wapi.js/src/internal/request-client.ts:161
+
+Downloads a binary resource (for example a media URL returned by
+`media.getUrl`). Media URLs require the access token as a bearer header.
+
+#### Parameters
+
+##### url
+
+`string`
+
+##### options?
+
+###### signal?
+
+`AbortSignal`
+
+###### timeoutMs?
+
+`number`
+
+#### Returns
+
+`Promise`\<`Response`\>
+
+***
+
+### request()
+
+> **request**\<`T`\>(`request`): `Promise`\<`T`\>
+
+Defined in: packages/wapi.js/src/internal/request-client.ts:105
+
+Sends a request and returns the parsed JSON body.
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### request
+
+[`GraphRequest`](../interfaces/GraphRequest.mdx)
+
+#### Returns
+
+`Promise`\<`T`\>
+
+#### Throws
+
+on a non-2xx status, or a 2xx body with an `error` envelope.
+
+#### Throws
+
+when the request could not be completed or timed out.
+
+***
+
+### setAccessToken()
+
+> **setAccessToken**(`accessToken`): `void`
+
+Defined in: packages/wapi.js/src/internal/request-client.ts:77
+
+Replaces the access token used for subsequent requests (token rotation).
+
+#### Parameters
+
+##### accessToken
+
+`string`
+
+#### Returns
+
+`void`

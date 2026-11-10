@@ -1,0 +1,11 @@
+[wapi.js](../README.mdx) / MessageTarget
+
+# Type Alias: MessageTarget
+
+> **MessageTarget** = `string` \| \{ `phoneNumber`: `string`; \} \| \{ `userId`: `string`; \}
+
+Defined in: packages/wapi.js/src/managers/message.ts:10
+
+Who to send a message to. A plain string is treated as a phone number /
+wa_id. Use `{ userId }` to target a business-scoped user id (BSUID) or
+parent BSUID, which Meta serialises as `recipient`.

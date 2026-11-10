@@ -1,0 +1,29 @@
+[wapi.js](../README.mdx) / verifyWebhookSignature
+
+# Function: verifyWebhookSignature()
+
+> **verifyWebhookSignature**(`appSecret`, `rawBody`, `signatureHeader`): `Promise`\<`void`\>
+
+Defined in: packages/wapi.js/src/webhook/signature.ts:65
+
+Like [isValidWebhookSignature](isValidWebhookSignature.mdx) but throws
+[InvalidWebhookSignatureError](../classes/InvalidWebhookSignatureError.mdx) on mismatch. Mirrors wapi.go's
+`VerifyWebhookSignature`.
+
+## Parameters
+
+### appSecret
+
+`string`
+
+### rawBody
+
+`string` \| `ArrayBuffer` \| `Uint8Array`
+
+### signatureHeader
+
+`string` \| `null` \| `undefined`
+
+## Returns
+
+`Promise`\<`void`\>

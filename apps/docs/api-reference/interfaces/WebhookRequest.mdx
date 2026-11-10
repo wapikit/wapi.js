@@ -1,0 +1,56 @@
+[wapi.js](../README.mdx) / WebhookRequest
+
+# Interface: WebhookRequest
+
+Defined in: packages/wapi.js/src/webhook/handler.ts:18
+
+A framework independent view of an incoming webhook request. The adapters
+(`fetchHandler`, `nodeHandler`) build it for you; use it directly to plug
+wapi.js into any other server or a queue consumer.
+
+## Properties
+
+### headers?
+
+> `optional` **headers?**: `HeaderBag`
+
+Defined in: packages/wapi.js/src/webhook/handler.ts:21
+
+***
+
+### method
+
+> **method**: `string`
+
+Defined in: packages/wapi.js/src/webhook/handler.ts:19
+
+***
+
+### parsedBody?
+
+> `optional` **parsedBody?**: `unknown`
+
+Defined in: packages/wapi.js/src/webhook/handler.ts:32
+
+An already parsed JSON body, for frameworks that parse it before you get
+the request. Ignored when `rawBody` is given. Signature verification is
+impossible from a parsed body, so this is rejected when `appSecret` is set.
+
+***
+
+### query?
+
+> `optional` **query?**: `QueryBag`
+
+Defined in: packages/wapi.js/src/webhook/handler.ts:20
+
+***
+
+### rawBody?
+
+> `optional` **rawBody?**: `string` \| `ArrayBuffer` \| `Uint8Array`
+
+Defined in: packages/wapi.js/src/webhook/handler.ts:26
+
+The body exactly as received. Required to verify `X-Hub-Signature-256`
+when `appSecret` is configured.

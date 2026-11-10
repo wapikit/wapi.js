@@ -1,0 +1,65 @@
+[wapi.js](../README.mdx) / SmbMessageEcho
+
+# Interface: SmbMessageEcho
+
+Defined in: packages/wapi.js/src/events/business-events.ts:764
+
+A message the business sent from the WhatsApp Business app.
+
+## Properties
+
+### content?
+
+> `optional` **content?**: `Record`\<`string`, `unknown`\>
+
+Defined in: packages/wapi.js/src/events/business-events.ts:775
+
+The type-specific body (`echo[echo.type]`), e.g. `{ body: "hi" }` for text.
+
+***
+
+### from
+
+> **from**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:766
+
+Business phone number.
+
+***
+
+### id
+
+> **id**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:769
+
+***
+
+### timestamp?
+
+> `optional` **timestamp?**: `number`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:771
+
+Unix seconds.
+
+***
+
+### to
+
+> **to**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:768
+
+Customer wa_id.
+
+***
+
+### type
+
+> **type**: `string`
+
+Defined in: packages/wapi.js/src/events/business-events.ts:773
+
+Message type, e.g. `text`, `image`.
